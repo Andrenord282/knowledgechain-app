@@ -1,0 +1,17 @@
+.nav {
+    background-color: var(--color-outer-space-main);
+}
+
+.nav__container {
+    padding: 0 30px;
+}
+
+.nav__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.nav__link {}
+

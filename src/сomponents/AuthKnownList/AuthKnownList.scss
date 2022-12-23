@@ -1,0 +1,19 @@
+.auth-known-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0s linear;
+}
+
+.auth-known-list.visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .3s linear;
+}
+
+.auth-known-list__btn {
+    width: 100%;
+    max-width: 100%;
+}

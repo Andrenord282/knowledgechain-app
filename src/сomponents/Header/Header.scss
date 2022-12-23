@@ -1,0 +1,47 @@
+.header {
+    position: relative;
+    background-color: var(--color-outer-space-main);
+    margin-bottom: 30px;
+}
+
+.header__container {}
+
+.header__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.header__item-logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: auto;
+}
+
+.header__img {
+    margin-right: 10px;
+
+    @media (min-width: 768px) {
+        margin-right: 20px;
+
+    }
+}
+
+.header__title {
+    font-size: 18px;
+
+    @media (min-width: 768px) {
+        font-size: 22px;
+    }
+}
+
+.header__item-auth-bar {
+    width: calc(100% - 182px);
+    height: 34px;
+
+    @media (min-width: 768px) {
+        max-width: 200px;
+    }
+}

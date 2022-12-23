@@ -1,0 +1,22 @@
+.post-footer {
+    display: flex;
+    align-items: center;
+}
+
+.post-footer__item {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    color: var(--color-text-main);
+}
+
+.post-footer__icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    fill: var(--color-orange);
+}
+
+.post-footer__value {
+    
+}

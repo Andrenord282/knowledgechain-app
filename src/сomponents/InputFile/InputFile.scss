@@ -1,0 +1,19 @@
+.input-file {}
+
+.input-file__label {
+    cursor: pointer;
+}
+
+.input-file__input {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.input-file__input:focus {
+   
+}
+
+.input-file__input:focus~.input-file__label {
+    outline: auto;
+}

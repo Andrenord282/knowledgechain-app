@@ -1,0 +1,36 @@
+.scheme-new-post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-outer-space-light);
+}
+
+.scheme-new-post__title,
+.scheme-new-post__content {
+    width: 100%;
+    background-color: var(--color-outer-space-light);
+}
+
+.scheme-new-post__title {
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+}
+
+.scheme-new-post__title:focus.custom-focus {
+    border-top: 1px solid var(--color-orange);
+    border-bottom: 1px solid var(--color-orange);
+}
+
+.scheme-new-post__title {
+    margin-bottom: 20px;
+}
+
+.scheme-new-post__text {}
+
+.scheme-new-post__options {
+    margin-bottom: 20px;
+}
+
+.scheme-new-post__sender {
+    align-self: flex-end;
+}

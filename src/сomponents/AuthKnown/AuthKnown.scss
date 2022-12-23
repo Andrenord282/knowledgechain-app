@@ -1,0 +1,54 @@
+.auth-bar_known {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 150;
+}
+
+.auth-bar_known__user-img {
+    display: none;
+
+    @media (min-width: 768px) {
+        display: block;
+        flex: 0 0 30px;
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+        border-radius: 50px;
+        border: 2px solid var(--color-orange);
+        overflow: hidden;
+    }
+}
+
+.auth-bar_known__img {}
+
+.auth-bar_known__btn {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    @media (min-width: 768px) {
+        width: auto;
+    }
+}
+
+.auth-bar_known__btn-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 5px;
+}
+
+.auth-bar_known__btn-icon {}
+
+.auth-bar_known__list {
+    position: absolute;
+    bottom: -96px;
+    max-width: 150px;
+    z-index: 150;
+
+    @media (min-width: 768px) {
+        bottom: -96px;
+    }
+}
