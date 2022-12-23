@@ -25,40 +25,32 @@ const SignUp = () => {
 	const [alertMessage, setAlertMessage] = useState(null);
 
 	const handlerRegistation = async () => {
-		const status = await authService.registration({
+		
+		const respons = await authService.registration({
 			email: email.value,
 			userName: login.value,
 			password: password.value,
 		});
 
-		console.log(status);
-		// dispatch(toggleLock());
-		// setStatusReq('loading');
-		// setAlertMessage({ title: 'Регистрация...' });
+		dispatch(toggleLock());
+		setStatusReq('loading');
+		setAlertMessage({ title: 'Регистрация...' });
 
-		// const statusRegistration = await registration({
-		// 	email: email.value,
-		// 	login: login.value,
-		// 	password: password.value,
-		// });
-
-		// if (statusRegistration.status) {
-		// 	setStatusReq('success');
-		// 	setAlertMessage({ title: 'Вы зарегистрировались' });
-		// 	setTimeout(() => {
-		// 		// dispatch(toggleLock());
-		// 		dispatch(toggleVisible());
-		// 		dispatch(toggleLoadedUser());
-		// 		setStatusReq(null);
-		// 	}, 700);
-		// } else if (!statusRegistration.status) {
-		// 	setStatusReq('error');
-		// 	setAlertMessage({ title: 'Ошибка регистрации' });
-		// 	setTimeout(() => {
-		// 		// dispatch(toggleLock());
-		// 		setStatusReq(null);
-		// 	}, 700);
-		// }
+		if (respons) {
+			setStatusReq('success');
+			setAlertMessage({ title: 'Вы зарегистрировались' });
+			setTimeout(() => {
+				dispatch(toggleVisible());
+				dispatch(toggleLoadedUser());
+				setStatusReq(null);
+			}, 700);
+		} else if (!respons) {
+			setStatusReq('error');
+			setAlertMessage({ title: 'Ошибка регистрации' });
+			setTimeout(() => {
+				setStatusReq(null);
+			}, 700);
+		}
 	};
 
 	const handlerToggleModal = (e) => {

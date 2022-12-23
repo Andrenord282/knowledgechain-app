@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser, toggleAuthUser, toggleLoadedUser } from 'Redux/slices/userSlice';
 
+import authService from 'services/authService';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from 'Firebase-services/index.js';
 
@@ -20,20 +21,13 @@ function App() {
 
 	useEffect(() => {
 		if (!isLoadedUser) {
-			onAuthStateChanged(auth, (user) => {
-				if (user) {
-					const { displayName, email, photoURL } = user;
-					dispatch(setUser({ displayName, email, photoURL }));
-					dispatch(toggleAuthUser());
-					dispatch(toggleLoadedUser());
-				}
-				if (!user) {
-					dispatch(
-						setUser({ displayName: null, email: null, photoURL: null }),
-					);
-					dispatch(toggleLoadedUser());
-				}
+			authService.checkAuth((respons) => {
+				const { userName, userImgUrl, email } = respons;
+				dispatch(setUser({ userName, userImgUrl, email }));
+				dispatch(toggleAuthUser());
+				dispatch(toggleLoadedUser());
 			});
+		
 		}
 	}, [isLoadedUser]);
 

@@ -4,9 +4,10 @@ import { useState } from 'react';
 
 import { useDispatch } from 'react-redux';
 import { toggleVisible, toggleLock, setType } from 'Redux/slices/modalSlice';
-import { toggleLoadedUser } from 'Redux/slices/userSlice';
+import { toggleLoadedUser, setUser } from 'Redux/slices/userSlice';
 
 import logIn from 'Firebase-services/auth/logIn';
+import authService from 'services/authService';
 
 import Alert from 'сomponents/Alert/Alert';
 import Button from 'сomponents/Button/Button';
@@ -27,24 +28,24 @@ const SignIn = () => {
 		setStatusReq('loading');
 		setAlertMessage({ title: 'Авторизация...' });
 
-		const statusLogIn = await logIn({
+		const respons = await authService.logIn({
 			email: email.value,
 			password: password.value,
 		});
-
-		if (statusLogIn.status) {
+		if (respons) {
+			console.log(respons);
 			setStatusReq('success');
 			setAlertMessage({ title: 'Вы авторизованный пользователь' });
 			setTimeout(() => {
 				dispatch(toggleLock());
 				dispatch(toggleVisible());
 				dispatch(toggleLoadedUser());
+				dispatch(setUser(respons))
 				setStatusReq(null);
 			}, 700);
-		} else if (!statusLogIn.status) {
-			const { errorMessage } = statusLogIn;
+		} else if (!respons.status) {
 			setStatusReq('error');
-			setAlertMessage({ title: errorMessage });
+			setAlertMessage({ title: 'errorMessage' });
 			setTimeout(() => {
 				dispatch(toggleLock());
 				setStatusReq(null);

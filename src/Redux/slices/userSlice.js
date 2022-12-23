@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-	isLoadedUser: false,
+	isLoadedUser: true,
 	isAuthUser: false,
-	displayName: null,
+	userName: null,
 	email: null,
-	photoURL: null,
+	userImgUrl: null,
 };
 
 const userSlice = createSlice({
@@ -19,10 +19,10 @@ const userSlice = createSlice({
 			state.isAuthUser = !state.isAuthUser;
 		},
 		setUser: (state, action) => {
-			const { displayName, email, photoURL } = action.payload;
-			state.displayName = displayName;
+			const { userName, email, userImgUrl } = action.payload;
+			state.userName = userName;
 			state.email = email;
-			state.photoURL = photoURL;
+			state.userImgUrl = userImgUrl;
 		},
 	},
 });
