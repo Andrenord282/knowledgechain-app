@@ -3,39 +3,54 @@ import apiServer from 'axios';
 class AuthService {
 	registration = async (data) => {
 		try {
-			const respons = await apiServer.post('/auth/registration', { ...data });
-
-			localStorage.setItem('accessToken', respons.data.accessToken);
-
-			return respons.data;
+			const response = await apiServer.post(
+				'auth/registration',
+				{ ...data },
+				{ withCredentials: true },
+			);
+			localStorage.setItem('accessToken', response.data.accessToken);
+			return response;
 		} catch (error) {
-			console.error(error);
+			return error.response;
 		}
 	};
 
 	logIn = async (data) => {
 		try {
-			const respons = await apiServer.post('/auth/login', { ...data });
-			localStorage.setItem('accessToken', respons.data.accessToken);
-			return respons.data;
-		} catch (error) {}
+			const response = await apiServer.post(
+				'auth/login',
+				{ ...data },
+				{ withCredentials: true },
+			);
+			localStorage.setItem('accessToken', response.data.accessToken);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
 	};
 
-	checkAuth = async (callback) => {
+	logOut = async () => {
 		try {
-			if (localStorage.getItem('accessToken')) {
-				const respons = await apiServer.get('/auth/refresh');
-				console.log(respons);
-				localStorage.setItem('accessToken', respons.data.accessToken);
-				if (callback) {
-					callback(respons.data);
-				} else {
-					return respons.data;
-				}
-			} else {
-				return false;
-			}
-		} catch (error) {}
+			await apiServer.get('auth/logout', {
+				withCredentials: true,
+			});
+			localStorage.setItem('accessToken', '');
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
+	checkAuth = async () => {
+		try {
+			const response = await apiServer.get('auth/refresh', {
+				withCredentials: true,
+			});
+			localStorage.setItem('accessToken', response.data.accessToken);
+
+			return response;
+		} catch (error) {
+			return error.response;
+		}
 	};
 }
 

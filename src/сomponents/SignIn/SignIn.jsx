@@ -4,9 +4,8 @@ import { useState } from 'react';
 
 import { useDispatch } from 'react-redux';
 import { toggleVisible, toggleLock, setType } from 'Redux/slices/modalSlice';
-import { toggleLoadedUser, setUser } from 'Redux/slices/userSlice';
+import { toggleAuthUser, setUser } from 'Redux/slices/userSlice';
 
-import logIn from 'Firebase-services/auth/logIn';
 import authService from 'services/authService';
 
 import Alert from 'сomponents/Alert/Alert';
@@ -28,28 +27,27 @@ const SignIn = () => {
 		setStatusReq('loading');
 		setAlertMessage({ title: 'Авторизация...' });
 
-		const respons = await authService.logIn({
+		const response = await authService.logIn({
 			email: email.value,
 			password: password.value,
 		});
-		if (respons) {
-			console.log(respons);
+		if (response.status === 200) {
 			setStatusReq('success');
 			setAlertMessage({ title: 'Вы авторизованный пользователь' });
 			setTimeout(() => {
 				dispatch(toggleLock());
 				dispatch(toggleVisible());
-				dispatch(toggleLoadedUser());
-				dispatch(setUser(respons))
+				dispatch(toggleAuthUser());
+				dispatch(setUser(response.data));
 				setStatusReq(null);
 			}, 700);
-		} else if (!respons.status) {
+		} else if (response.status !== 200) {
 			setStatusReq('error');
-			setAlertMessage({ title: 'errorMessage' });
+			setAlertMessage({ title: response.data.message });
 			setTimeout(() => {
 				dispatch(toggleLock());
 				setStatusReq(null);
-			}, 700);
+			}, 1000);
 		}
 	};
 

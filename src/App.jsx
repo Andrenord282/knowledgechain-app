@@ -6,8 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setUser, toggleAuthUser, toggleLoadedUser } from 'Redux/slices/userSlice';
 
 import authService from 'services/authService';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from 'Firebase-services/index.js';
 
 import PageLayout from 'pages/PageLayout/PageLayout';
 import Main from 'сomponents/Main/Main';
@@ -18,16 +16,19 @@ import NotFound from 'сomponents/NotFound/NotFound';
 function App() {
 	const dispatch = useDispatch();
 	const { isLoadedUser } = useSelector((state) => state.user);
-
 	useEffect(() => {
 		if (!isLoadedUser) {
-			authService.checkAuth((respons) => {
-				const { userName, userImgUrl, email } = respons;
-				dispatch(setUser({ userName, userImgUrl, email }));
-				dispatch(toggleAuthUser());
+			if (localStorage.getItem('accessToken')) {
+				authService.checkAuth().then((response) => {
+					if (response.status === 200) {
+						dispatch(toggleAuthUser());
+						dispatch(setUser(response.data));
+					}
+					dispatch(toggleLoadedUser());
+				});
+			} else {
 				dispatch(toggleLoadedUser());
-			});
-		
+			}
 		}
 	}, [isLoadedUser]);
 

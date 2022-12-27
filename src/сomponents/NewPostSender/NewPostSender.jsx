@@ -4,8 +4,6 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeAllScheme } from 'Redux/slices/newPostSlice';
 
-import sendPost from 'services/postservice';
-
 import Button from 'сomponents/Button/Button';
 
 import classNames from 'classnames';
@@ -34,12 +32,7 @@ const NewPostSender = ({ inheritClasses }) => {
 	});
 
 	const handlerSendNewPost = async () => {
-		const sendRequest = await sendPost(newPost);
-
-		if (sendRequest.status) {
-			console.log(sendRequest.status);
-			dispatch(removeAllScheme());
-		}
+		dispatch(removeAllScheme());
 	};
 
 	return (

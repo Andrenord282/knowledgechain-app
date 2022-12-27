@@ -5,7 +5,7 @@ import { setType } from 'Redux/slices/modalSlice';
 import { toggleLoadedUser, toggleAuthUser } from 'Redux/slices/userSlice';
 import { toggleActive } from 'Redux/slices/substrateSlice';
 
-import logOut from 'Firebase-services/auth/logOut';
+import authService from 'services/authService';
 
 import LinkCustom from 'сomponents/LinkCustom/LinkCustom';
 import Button from 'сomponents/Button/Button';
@@ -18,13 +18,12 @@ const AuthKnownList = ({ inheritClasses, visible }) => {
 	const dispatch = useDispatch();
 
 	const handlerLogOut = async () => {
-		const logOutUser = await logOut();
-		if (logOutUser) {
-			handlerToggleUserList();
-			dispatch(toggleLoadedUser());
-			dispatch(toggleAuthUser());
-			dispatch(setType('SignIn'));
-		}
+		await authService.logOut();
+		handlerToggleUserList();
+		dispatch(toggleLoadedUser());
+		dispatch(toggleAuthUser());
+		dispatch(setType('SignIn'));
+		
 	};
 
 	const handlerToggleUserList = () => {

@@ -15,7 +15,7 @@ const AuthKnown = ({ inheritClasses }) => {
 	const setInheritClasses = useInheritClasses(inheritClasses);
 	const dispatch = useDispatch();
 	const { active } = useSelector((state) => state.substrate);
-	const { displayName, photoURL } = useSelector((state) => state.user);
+	const { userName, photoURL } = useSelector((state) => state.user);
 	const [toggleList, setToggleList] = useState(false);
 
 	useEffect(() => {
@@ -50,7 +50,7 @@ const AuthKnown = ({ inheritClasses }) => {
 				inheritClasses="auth-bar_known__btn btn_auth-bar"
 				handleClick={handlerToggleList}>
 				<span className="auth-bar_known__btn-text btn__text">
-					{displayName}
+					{userName}
 				</span>
 				<IconTriangle
 					className={

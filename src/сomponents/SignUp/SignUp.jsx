@@ -4,10 +4,9 @@ import { useState } from 'react';
 
 import { useDispatch } from 'react-redux';
 import { toggleVisible, toggleLock, setType } from 'Redux/slices/modalSlice';
-import { toggleLoadedUser } from 'Redux/slices/userSlice';
+import { toggleAuthUser, setUser } from 'Redux/slices/userSlice';
 
 import authService from 'services/authService';
-import registration from 'Firebase-services/auth/registration';
 
 import Alert from 'сomponents/Alert/Alert';
 import Button from 'сomponents/Button/Button';
@@ -25,28 +24,26 @@ const SignUp = () => {
 	const [alertMessage, setAlertMessage] = useState(null);
 
 	const handlerRegistation = async () => {
-		
-		const respons = await authService.registration({
+		const response = await authService.registration({
 			email: email.value,
 			userName: login.value,
 			password: password.value,
 		});
-
 		dispatch(toggleLock());
 		setStatusReq('loading');
 		setAlertMessage({ title: 'Регистрация...' });
-
-		if (respons) {
+		if (response.status === 200) {
 			setStatusReq('success');
 			setAlertMessage({ title: 'Вы зарегистрировались' });
 			setTimeout(() => {
 				dispatch(toggleVisible());
-				dispatch(toggleLoadedUser());
+				dispatch(setUser(response.data));
+				dispatch(toggleAuthUser());
 				setStatusReq(null);
 			}, 700);
-		} else if (!respons) {
+		} else if (response.status !== 200) {
 			setStatusReq('error');
-			setAlertMessage({ title: 'Ошибка регистрации' });
+			setAlertMessage({ title: response.data.message });
 			setTimeout(() => {
 				setStatusReq(null);
 			}, 700);

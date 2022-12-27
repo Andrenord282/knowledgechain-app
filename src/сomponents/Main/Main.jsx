@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleVisible, setType } from 'Redux/slices/modalSlice';
-import getDocumentList from 'Firebase-services/get/getDocumentList';
 
 import LinkCustom from 'сomponents/LinkCustom/LinkCustom';
 import Navigation from 'сomponents/Navigation/Navigation';
