@@ -4,7 +4,7 @@ class AuthService {
 	registration = async (data) => {
 		try {
 			const response = await apiServer.post(
-				'auth/registration',
+				'/auth/registration',
 				{ ...data },
 				{ withCredentials: true },
 			);
@@ -18,7 +18,7 @@ class AuthService {
 	logIn = async (data) => {
 		try {
 			const response = await apiServer.post(
-				'auth/login',
+				'/auth/login',
 				{ ...data },
 				{ withCredentials: true },
 			);
@@ -31,7 +31,7 @@ class AuthService {
 
 	logOut = async () => {
 		try {
-			await apiServer.get('auth/logout', {
+			await apiServer.get('/auth/logout', {
 				withCredentials: true,
 			});
 			localStorage.setItem('accessToken', '');
@@ -42,7 +42,7 @@ class AuthService {
 
 	checkAuth = async () => {
 		try {
-			const response = await apiServer.get('auth/refresh', {
+			const response = await apiServer.get('/auth/refresh', {
 				withCredentials: true,
 			});
 			localStorage.setItem('accessToken', response.data.accessToken);
