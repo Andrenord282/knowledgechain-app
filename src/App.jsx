@@ -24,8 +24,8 @@ function App() {
 						dispatch(toggleAuthUser());
 						dispatch(setUser(response.data));
 					}
-					dispatch(toggleLoadedUser());
 				});
+				dispatch(toggleLoadedUser());
 			} else {
 				dispatch(toggleLoadedUser());
 			}

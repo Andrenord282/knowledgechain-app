@@ -1,13 +1,11 @@
-import apiServer from 'axios';
+import apiServer from 'axiosClient/index';
 
 class AuthService {
 	registration = async (data) => {
 		try {
-			const response = await apiServer.post(
-				'https://knowledgechain-server.herokuapp.com/auth/registration',
-				{ ...data },
-				{ withCredentials: true },
-			);
+			const response = await apiServer.post('auth/registration', data, {
+				withCredentials: true,
+			});
 			localStorage.setItem('accessToken', response.data.accessToken);
 			return response;
 		} catch (error) {
@@ -17,11 +15,9 @@ class AuthService {
 
 	logIn = async (data) => {
 		try {
-			const response = await apiServer.post(
-				'https://knowledgechain-server.herokuapp.com/auth/login',
-				{ ...data },
-				{ withCredentials: true },
-			);
+			const response = await apiServer.post('auth/login', data, {
+				withCredentials: true,
+			});
 			localStorage.setItem('accessToken', response.data.accessToken);
 			return response;
 		} catch (error) {
@@ -31,12 +27,9 @@ class AuthService {
 
 	logOut = async () => {
 		try {
-			await apiServer.get(
-				'https://knowledgechain-server.herokuapp.com/auth/logout',
-				{
-					withCredentials: true,
-				},
-			);
+			await apiServer.get('auth/logout', {
+				withCredentials: true,
+			});
 			localStorage.setItem('accessToken', '');
 		} catch (error) {
 			console.error(error);
@@ -45,12 +38,9 @@ class AuthService {
 
 	checkAuth = async () => {
 		try {
-			const response = await apiServer.get(
-				'https://knowledgechain-server.herokuapp.com/auth/refresh',
-				{
-					withCredentials: true,
-				},
-			);
+			const response = await apiServer.get('auth/refresh', {
+				withCredentials: true,
+			});
 			localStorage.setItem('accessToken', response.data.accessToken);
 
 			return response;

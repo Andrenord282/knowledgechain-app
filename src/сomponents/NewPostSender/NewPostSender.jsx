@@ -4,18 +4,21 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeAllScheme } from 'Redux/slices/newPostSlice';
 
+import postsService from 'services/postsService';
+import filesService from 'services/filesService';
+
 import Button from 'сomponents/Button/Button';
 
 import classNames from 'classnames';
 import 'сomponents/NewPostSender/NewPostSender.scss';
 
 const NewPostSender = ({ inheritClasses }) => {
+	const formData = new FormData();
 	const setInheritClasses = useInheritClasses(inheritClasses);
 	const dispatch = useDispatch();
-
 	const [isActive, setIsActive] = useState(false);
-
-	const newPost = useSelector((state) => state.newPost);
+	const post = useSelector((state) => state.newPost);
+	const schemePost = useSelector((state) => state.newPost.schemePost);
 	const [{ value: title }, { value: content }] = useSelector(
 		(state) => state.newPost.schemePost,
 	);
@@ -31,8 +34,28 @@ const NewPostSender = ({ inheritClasses }) => {
 		inactive: !isActive,
 	});
 
+	const collectData = (data) => {
+		formData.set('postName', post.postName);
+		const dataScheme = data.schemePost.map((dataItem) => {
+			const { id, name, type, value, file } = dataItem;
+			if (file !== undefined) {
+				const fileName = file.name.replace(/.+?\./, `${id}.`);
+				formData.set(id, file, fileName);
+				return { id, name, type, value };
+			} else {
+				return dataItem;
+			}
+		});
+		return {
+			...data,
+			schemePost: [...dataScheme],
+		};
+	};
+
 	const handlerSendNewPost = async () => {
-		dispatch(removeAllScheme());
+		const readyPost = collectData(post);
+		// const responsePost = await postsService.createNewPost(readyPost);
+		const responseFiles = await filesService.uploadsFiles(formData);
 	};
 
 	return (

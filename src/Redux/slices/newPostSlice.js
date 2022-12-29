@@ -2,6 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
 	author: null,
+	postId: null,
+	postName: null,
 	schemePost: [
 		{ id: 'title-id-defult', type: 'title', value: '' },
 		{
@@ -19,6 +21,14 @@ const newPostSlice = createSlice({
 		setAuthor: (state, action) => {
 			const { author } = action.payload;
 			state.author = author;
+		},
+		setPostId: (state, action) => {
+			const { postId } = action.payload;
+			state.postId = postId;
+		},
+		setPostName: (state, action) => {
+			const { postName } = action.payload;
+			state.postName = postName;
 		},
 		updateSchemeTitle: (state, action) => {
 			const { title } = action.payload;
@@ -49,6 +59,7 @@ const newPostSlice = createSlice({
 
 		removeAllScheme: (state) => {
 			state.author = initialState.author;
+
 			state.schemePost = initialState.schemePost;
 		},
 
@@ -58,12 +69,13 @@ const newPostSlice = createSlice({
 				return schemeItem.id !== idSchemeItem;
 			});
 		},
-
 	},
 });
 
 export const {
 	setAuthor,
+	setPostId,
+	setPostName,
 	updateSchemeTitle,
 	updateSchemeText,
 	resetValueSchemeItem,

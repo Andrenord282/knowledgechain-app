@@ -1,9 +1,9 @@
 import { nanoid } from 'nanoid';
 
 import useInheritClasses from 'hooks/useInheritClasses';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { pushMiddleSchemeItem, pushEndSchemeItem } from 'Redux/slices/newPostSlice';
 
 import 'сomponents/InputFile/InputFile.scss';
@@ -20,6 +20,8 @@ const InputFile = ({
 	const setInheritClasses = useInheritClasses(inheritClasses);
 	const dispatch = useDispatch();
 	const nodeInputFile = useRef(null);
+	const { author, postId } = useSelector((state) => state.newPost);
+	const rootPath = process.env.REACT_APP_API_SEREVER || 'http://localhost:4000';
 
 	const handlerPushSchemeItem = (schemeItem) => {
 		main
@@ -39,9 +41,14 @@ const InputFile = ({
 				const schemeItem = {
 					id: nanoid(5),
 					type: file.type,
-					size: file.size,
-					value: null,
 					dataUrl: fileReader.result,
+					file,
+					get name() {
+						return this.file.name.replace(/.+?./, `${this.id}.`);
+					},
+					get value() {
+						return `${rootPath}/images/posts-images/${author}-${postId}/${this.name}`;
+					},
 				};
 				handlerPushSchemeItem(schemeItem);
 			};
