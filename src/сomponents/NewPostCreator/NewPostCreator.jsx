@@ -4,7 +4,7 @@ import useInheritClasses from 'hooks/useInheritClasses';
 import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { setAuthor, setPostId, setPostName } from 'Redux/slices/newPostSlice';
+import { setParamsPost } from 'Redux/slices/newPostSlice';
 
 import NewPostScheme from 'сomponents/NewPostScheme/NewPostScheme';
 
@@ -13,14 +13,20 @@ import 'сomponents/NewPostCreator/NewPostCreator.scss';
 const NewPostCreator = ({ inheritClasses }) => {
 	const setInheritClasses = useInheritClasses(inheritClasses);
 	const dispatch = useDispatch();
-	const author = useSelector((state) => state.user.userName);
+	const { userName, userId } = useSelector((state) => state.user);
 	const postId = nanoid(5);
 
 	useEffect(() => {
-		dispatch(setAuthor({ author }));
-		dispatch(setPostId({ postId }));
-		dispatch(setPostName({ postName: `${author}-${postId}` }));
-	}, [author]);
+		dispatch(
+			setParamsPost({
+				userName,
+				userId,
+				postId,
+				postName: `${userName}-${postId}`,
+			}),
+		);
+	}, [userName]);
+
 	return (
 		<div className={setInheritClasses + ' new-post-creator'}>
 			<div className="new-post-creator__contaner">

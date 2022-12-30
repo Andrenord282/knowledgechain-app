@@ -18,7 +18,6 @@ const NewPostSender = ({ inheritClasses }) => {
 	const dispatch = useDispatch();
 	const [isActive, setIsActive] = useState(false);
 	const post = useSelector((state) => state.newPost);
-	const schemePost = useSelector((state) => state.newPost.schemePost);
 	const [{ value: title }, { value: content }] = useSelector(
 		(state) => state.newPost.schemePost,
 	);
@@ -35,7 +34,6 @@ const NewPostSender = ({ inheritClasses }) => {
 	});
 
 	const collectData = (data) => {
-		formData.set('postName', post.postName);
 		const dataScheme = data.schemePost.map((dataItem) => {
 			const { id, name, type, value, file } = dataItem;
 			if (file !== undefined) {
@@ -46,6 +44,12 @@ const NewPostSender = ({ inheritClasses }) => {
 				return dataItem;
 			}
 		});
+
+		console.log(formData.entries().next().done);
+
+		if (!formData.entries().next().done) {
+			formData.set('postName', post.postName);
+		}
 		return {
 			...data,
 			schemePost: [...dataScheme],
@@ -54,7 +58,7 @@ const NewPostSender = ({ inheritClasses }) => {
 
 	const handlerSendNewPost = async () => {
 		const readyPost = collectData(post);
-		// const responsePost = await postsService.createNewPost(readyPost);
+		const responsePost = await postsService.createNewPost(readyPost);
 		const responseFiles = await filesService.uploadsFiles(formData);
 	};
 
