@@ -4,7 +4,7 @@ class FilesService {
 	uploadsFiles = async (data) => {
 		try {
 			const response = await apiServer.post(
-				'http://localhost:4000/uploads',
+				'/uploads',
 				data,
 			);
 			return response;

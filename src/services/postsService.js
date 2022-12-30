@@ -4,7 +4,7 @@ class PostsService {
 	createNewPost = async (data) => {
 		try {
 			const response = await apiServer.post(
-				'http://localhost:4000/posts',
+				'/posts',
 				data,
 			);
 			return response;
