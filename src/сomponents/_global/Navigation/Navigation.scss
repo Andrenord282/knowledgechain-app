@@ -1,0 +1,25 @@
+.nav {
+	background-color: var(--color-outer-space-main);
+}
+
+.nav__container {
+	padding: 0 10px;
+}
+
+.nav__content {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	padding: 10px 0;
+}
+
+.nav__link {
+}
+
+.nav__sort {
+}
+.nav__filter {
+	width: 100%;
+	margin-top: 15px;
+}

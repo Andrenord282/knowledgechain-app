@@ -1,0 +1,14 @@
+.input-search-response-list {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.input-search-response-list__item {
+	margin-top: 10px;
+}
+.input-search-response-list__item:not(:last-child) {
+	margin-right: 10px;
+}
+
+.input-search-response-list__btn {
+}

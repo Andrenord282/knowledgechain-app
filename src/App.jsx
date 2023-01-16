@@ -2,40 +2,44 @@ import { Routes, Route } from 'react-router-dom';
 
 import { useEffect } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { setUser, toggleAuthUser, toggleLoadedUser } from 'Redux/slices/userSlice';
+import { useDispatch } from 'react-redux';
+import {
+	setUser,
+	toggleAuthUser,
+	toggleLoadedUser,
+} from 'store/slices/userSlice/userSlice';
 
 import authService from 'services/authService';
 
-import PageLayout from 'pages/PageLayout/PageLayout';
-import Main from 'сomponents/Main/Main';
-import NewPost from 'сomponents/NewPost/NewPost';
-import Profile from 'сomponents/Profile/Profile';
+import DefaultLayout from 'layouts/DefaultLayout';
+import Profile from 'pages/Profile/Profile';
 import NotFound from 'сomponents/NotFound/NotFound';
+import Main from 'pages/Main';
+import NewPost from 'pages/NewPost';
 
 function App() {
 	const dispatch = useDispatch();
-	const { isLoadedUser } = useSelector((state) => state.user);
 	useEffect(() => {
-		if (!isLoadedUser) {
-			if (localStorage.getItem('accessToken')) {
-				authService.checkAuth().then((response) => {
-					if (response.status === 200) {
-						dispatch(toggleAuthUser());
-						dispatch(setUser(response.data));
-					}
-				});
-				dispatch(toggleLoadedUser());
-			} else {
-				dispatch(toggleLoadedUser());
-			}
+		if (localStorage.getItem('accessToken')) {
+			authService.checkAuth().then((response) => {
+				if (response.status === 200) {
+					dispatch(toggleAuthUser());
+					dispatch(setUser(response.data));
+					dispatch(toggleLoadedUser());
+				}
+				if (response.status === 400) {
+					dispatch(toggleLoadedUser());
+				}
+			});
+		} else {
+			dispatch(toggleLoadedUser());
 		}
-	}, [isLoadedUser]);
+	}, [dispatch]);
 
 	return (
 		<div className="App">
 			<Routes>
-				<Route path="/" element={<PageLayout />}>
+				<Route path="/" element={<DefaultLayout />}>
 					<Route index element={<Main />} />
 					<Route path="profile" element={<Profile />} />
 					<Route path="new-post" element={<NewPost />} />

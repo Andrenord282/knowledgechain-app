@@ -1,0 +1,33 @@
+.input-search {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin-top: 10px;
+
+	@media (min-width: 768px) {
+		flex-direction: row;
+	}
+}
+
+.input-search__input {
+	@media (min-width: 768px) {
+		margin-right: 10px;
+	}
+}
+
+.input-search__input input {
+	width: 250px;
+	font-size: inherit;
+	padding: 8px;
+	color: var(--color-text-main);
+	background-color: var(--color-outer-space-light);
+
+	@media (min-width: 768px) {
+	}
+}
+.input-search__values {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 10;
+}

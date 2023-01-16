@@ -1,37 +1,31 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { toggleVisible, setType } from 'Redux/slices/modalSlice';
-
-import SignIn from 'сomponents/SignIn/SignIn';
-import SignUp from 'сomponents/SignUp/SignUp';
+import { createPortal } from 'react-dom';
 
 import classNames from 'classnames';
 import 'сomponents/Modal/Modal.scss';
 
-const Modal = () => {
-	const dispatch = useDispatch();
+const Modal = (props) => {
+	const { isOpenModal, handlerCloseModal, children } = props;
 
-	const { visible, lock, type } = useSelector((state) => state.modal);
+	if (!isOpenModal) return;
 
-	const setVisibleClass = classNames({
-		visible: visible,
-		'': !visible,
+	const modalClass = classNames({
+		visible: isOpenModal,
+		'': !isOpenModal,
 	});
 
-	const handlerToggleModal = (e) => {
-		const self = e.target;
-		if (self.classList.contains('modal') && !lock) {
-			dispatch(toggleVisible());
-			dispatch(setType(null));
-		}
-	};
-
-	return (
-		<div className={'modal ' + setVisibleClass} onClick={handlerToggleModal}>
-			<div className="modal__content">
-				{type === 'SignIn' && <SignIn />}
-				{type === 'SignUp' && <SignUp />}
+	return createPortal(
+		<div
+			className={'modal ' + modalClass}
+			onClick={handlerCloseModal ? handlerCloseModal : null}>
+			<div
+				className="modal__content"
+				onClick={(e) => {
+					e.stopPropagation();
+				}}>
+				{children}
 			</div>
-		</div>
+		</div>,
+		document.getElementById('modal'),
 	);
 };
 

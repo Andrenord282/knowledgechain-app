@@ -1,0 +1,32 @@
+.select {
+	position: relative;
+    width: 7em;
+}
+.select__label {
+	display: block;
+	padding: 5px;
+	background-color: var(--color-btn-bg-hover);
+}
+
+.select__list {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 100%;
+    width: 100%;
+    z-index: 10;
+}
+
+.select__list.open {
+	display: block;
+}
+
+.select__option {
+}
+.select__btn-selected {
+	width: 100%;
+}
+
+.select__btn-option {
+	width: 100%;
+}

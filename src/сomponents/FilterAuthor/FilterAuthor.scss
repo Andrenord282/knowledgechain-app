@@ -1,0 +1,57 @@
+.filter-author {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 100%;
+
+	@media (min-width: 768px) {
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+}
+
+.filter-author__btn-open {
+}
+
+.filter-author__nav {
+	width: 100%;
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+
+	@media (min-width: 768px) {
+		flex-direction: row;
+	}
+}
+
+.filter-author__search-list {
+}
+
+.filter-author__query {
+	position: relative;
+}
+
+.filter-author__values {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 10;
+}
+
+.filter-author__input {
+	@media (min-width: 768px) {
+		margin-right: 10px;
+	}
+}
+
+.filter-author__input input {
+	width: 250px;
+	font-size: 16px;
+	padding: 8px;
+	color: var(--color-text-main);
+	background-color: var(--color-outer-space-light);
+
+	@media (min-width: 768px) {
+	}
+}

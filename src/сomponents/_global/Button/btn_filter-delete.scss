@@ -1,0 +1,27 @@
+.btn_filter-delete {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-radius: 0;
+	border: 0;
+}
+
+.btn_filter-delete:active {
+	background-color: var(--color-btn-bg-hover);
+}
+
+.btn_filter-delete:hover {
+	@media (min-width: 1000px) {
+		background-color: var(--color-btn-bg-hover);
+	}
+}
+
+.btn_filter-delete .btn__icon {
+	width: 10px;
+	height: 10px;
+
+	@media (min-width: 1000px) {
+		width: 15px;
+		height: 15px;
+	}
+}

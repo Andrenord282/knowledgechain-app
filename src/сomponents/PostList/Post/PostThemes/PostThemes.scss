@@ -1,0 +1,20 @@
+.post-themes {
+	display: flex;
+	flex-wrap: wrap;
+	justify-items: flex-start;
+	justify-content: flex-start;
+}
+
+.post-themes__item {
+	max-width: max-content;
+	font-size: 16px;
+	color: var(--color-text-main);
+	padding: 4px 10px;
+	border-radius: 5px;
+	background-color: var(--color-outer-space-light);
+	margin-bottom: 10px;
+}
+
+.post-themes__item:not(:last-child) {
+	margin-right: 15px;
+}

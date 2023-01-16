@@ -1,0 +1,64 @@
+.sort-posts {
+	display: flex;
+	align-items: center;
+}
+
+.sort-posts__options {
+	position: relative;
+	margin-right: 15px;
+
+	@media (min-width: 768px) {
+		margin-right: 20px;
+	}
+}
+
+.sort-posts__btn-set {
+}
+
+.sort-posts__list {
+	position: absolute;
+	top: 100%;
+	z-index: 10;
+	width: 100%;
+	height: 0;
+	overflow: hidden;
+}
+
+.sort-posts__list.open {
+	height: auto;
+	transition: height 1s linear;
+}
+
+.sort-posts__list-item {
+}
+
+.sort-posts__btn-list-item {
+	width: 100%;
+}
+
+.sort-posts__btn-order {
+	display: flex;
+	align-items: center;
+}
+
+.btn_sort-posts-set {
+	border-radius: 0;
+}
+.btn_sort-posts-order {
+}
+
+.btn_sort-posts-order .btn__text {
+	margin-right: 5px;
+}
+
+.btn_sort-posts-order .btn__icon {
+	width: 15px;
+	height: 8px;
+	fill: var(--color-alabaster);
+	transition: transform 0.1s linear;
+}
+
+.btn_sort-posts-order .btn__icon.active {
+	transform: rotate(180deg);
+	transition: transform 0.1s linear;
+}

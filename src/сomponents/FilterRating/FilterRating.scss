@@ -1,0 +1,25 @@
+.filter-rating {
+}
+.filter-rating__btn-open {
+}
+.filter-rating__query {
+	display: flex;
+    flex-direction: column;
+	align-items: flex-start;
+	margin-top: 10px;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+    }
+}
+.filter-rating__input {
+	width: 300px;
+	margin-right: 20px;
+}
+
+.filter-rating__input input {
+	width: 100%;
+}
+
+.filter-rating__value {
+}
