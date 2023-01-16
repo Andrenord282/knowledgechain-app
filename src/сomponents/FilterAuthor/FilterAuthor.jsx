@@ -12,13 +12,13 @@ import {
 import searchService from 'services/searchService';
 
 import { ReactComponent as IconPlus } from 'assets/img/svg/icon-plus.svg';
-import Button from 'сomponents/_global/Button';
+import Button from 'сomponents/Button';
 import FilterAuthorValues from 'сomponents/FilterAuthorValues/FilterAuthorValues';
 import FilterListSearch from 'сomponents/FilterListSearch/FilterListSearch';
 import InputFilter from 'сomponents/_global/Input/Input';
 import classNames from 'classnames';
 import 'сomponents/FilterAuthor/FilterAuthor.scss';
-import 'сomponents/_global/Button/btn_filter-open.scss';
+import 'сomponents/Button/btn_filter-open.scss';
 
 const FilterAuthor = ({ classes }) => {
 	const inheritClasses = useClasses(classes);

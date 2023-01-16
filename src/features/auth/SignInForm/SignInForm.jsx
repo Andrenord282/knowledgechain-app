@@ -1,6 +1,6 @@
 import useClasses from 'hooks/useClasses';
 
-import Button from 'сomponents/_global/Button';
+import Button from 'сomponents/Button';
 import * as Icon from 'сomponents/_global/Icon';
 import InputBar from 'сomponents/_global/Input/Input';
 const SignInForm = (props) => {

@@ -6,11 +6,11 @@ import { useDispatch } from 'react-redux';
 import { setFilterRating } from 'store/slices/optionsPostListSlice/optionsPostListSlice';
 
 import { ReactComponent as IconPlus } from 'assets/img/svg/icon-plus.svg';
-import Button from 'сomponents/_global/Button';
+import Button from 'сomponents/Button';
 import InputRange from 'сomponents/_global/InputRange/InputRange';
 import classNames from 'classnames';
 import 'сomponents/FilterRating/FilterRating.scss';
-import 'сomponents/_global/Button/btn_filter-open.scss';
+import 'сomponents/Button/btn_filter-open.scss';
 
 const FilterRating = ({ classes }) => {
 	const inheritClasses = useClasses(classes);
@@ -23,7 +23,7 @@ const FilterRating = ({ classes }) => {
 	};
 
 	useEffect(() => {
-		dispatch(setFilterRating({ rating: rating.value }));
+		// dispatch(setFilterRating({ rating: rating.value }));
 	}, [rating, dispatch]);
 
 	const filterBtnClass = classNames({

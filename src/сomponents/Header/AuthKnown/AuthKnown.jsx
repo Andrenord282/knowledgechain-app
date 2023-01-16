@@ -3,11 +3,11 @@ import { useRef, useState } from 'react';
 import useEventOutside from 'hooks/useEventOutside';
 
 import * as Icon from 'сomponents/_global/Icon';
-import Button from 'сomponents/_global/Button';
+import Button from 'сomponents/Button';
 import AuthKnownList from './AuthKnownList';
 import classNames from 'classnames';
 import './AuthKnown.scss';
-import 'сomponents/_global/Button/btn_auth-bar.scss';
+import 'сomponents/Button/btn_auth-bar.scss';
 
 const AuthKnown = ({ classes, userImgUrl, userName, handlerLogOut }) => {
 	const inheritClasses = useClasses(classes);

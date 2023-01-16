@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import { selectPostCreator } from '../../model';
 
 import Modal from 'сomponents/Modal/Modal';
-import Button from 'сomponents/_global/Button';
+import Button from 'сomponents/Button';
 import { AlertLoading } from 'сomponents/Alert';
 import { AlertSuccess } from 'сomponents/Alert';
 import { AlertError } from 'сomponents/Alert';

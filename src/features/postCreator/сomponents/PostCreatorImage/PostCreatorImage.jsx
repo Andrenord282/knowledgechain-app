@@ -3,7 +3,7 @@ import useToggle from 'hooks/useToggle';
 import useDataUrl from './hooks/useDataUrl';
 
 import PostCreatorOptions from '../PostCreatorOptions';
-import Button from 'сomponents/_global/Button';
+import Button from 'сomponents/Button';
 import * as Icon from 'сomponents/_global/Icon';
 import './PostCreatorImage.scss';
 

@@ -2,7 +2,7 @@ import useClasses from 'hooks/useClasses';
 import { useState } from 'react';
 
 import FilterList from 'сomponents/FilterList/FilterList';
-import Button from 'сomponents/_global/Button';
+import Button from 'сomponents/Button';
 import { ReactComponent as IconCross } from 'assets/img/svg/icon-close.svg';
 import classNames from 'classnames';
 import 'сomponents/FilterPosts/FilterPosts.scss';

@@ -11,7 +11,7 @@ import {
 } from 'store/slices/optionsPostListSlice/optionsPostListSlice';
 import { resetPostList } from 'store/slices/postList/postList';
 
-import Button from 'сomponents/_global/Button';
+import Button from 'сomponents/Button';
 import { ReactComponent as IconTriangle } from 'assets/img/svg/icons-triangle.svg';
 import classNames from 'classnames';
 import 'сomponents/SortPosts/SortPosts.scss';

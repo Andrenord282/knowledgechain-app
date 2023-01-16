@@ -1,10 +1,10 @@
 import useClasses from 'hooks/useClasses';
 import { memo } from 'react';
 
-import Button from 'сomponents/_global/Button';
+import Button from 'сomponents/Button';
 import { ReactComponent as IconCross } from 'assets/img/svg/icon-cross.svg';
 import 'сomponents/FilterListSearch/FilterListSearch.scss';
-import 'сomponents/_global/Button/btn_filter-delete.scss';
+import 'сomponents/Button/btn_filter-delete.scss';
 
 const FilterListSearch = ({ classes, list, deleteItem }) => {
 	const inheritClasses = useClasses(classes);

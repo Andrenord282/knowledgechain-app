@@ -1,0 +1,90 @@
+.post-content {
+	position: relative;
+
+	@media (min-width: 768px) {
+		font-size: 20px;
+	}
+}
+
+.post-content__container {
+	// min-height: 120px;
+	max-height: 250px;
+	overflow: hidden;
+}
+
+.post-content__container.deploy {
+	// max-height: none;
+}
+
+.post-content__body {
+}
+
+.post-content__title {
+	font-size: 22px;
+	margin-bottom: 20px;
+
+	@media (min-width: 768px) {
+		font-size: 30px;
+	}
+}
+
+.post-content__text {
+}
+
+.post-content__img {
+	margin: 0 auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.post-content__text:not(:last-child),
+.post-content__img:not(:last-child) {
+	margin-bottom: 10px;
+}
+
+.post-content__nav {
+	position: relative;
+	display: flex;
+	width: 100%;
+}
+
+.post-content__nav::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: 100%;
+	width: 100%;
+	height: 60px;
+	background: rgb(38, 45, 52);
+	background: linear-gradient(
+		0deg,
+		rgba(38, 45, 52, 1) 30%,
+		rgba(38, 45, 52, 0.5998774509803921) 75%,
+		rgba(255, 255, 255, 0) 100%
+	);
+}
+
+.post-content__btn-visible:active .btn__text {
+	color: var(--color-btn-bg-active);
+}
+
+.post-content__btn-visible:hover .btn__text {
+	@media (min-width: 1000px) {
+		color: var(--color-btn-bg-hover);
+	}
+}
+
+.post-content__btn-visible .btn__text {
+	color: var(--color-btn-bg-main);
+	transition: color 0.1s linear;
+}
+
+.post-content__btn-visible .btn__text:active {
+	color: var(--color-btn-bg-active);
+}
+
+.post-content__btn-visible .btn__text:hover {
+	@media (min-width: 1000px) {
+		color: var(--color-btn-bg-hover);
+	}
+}

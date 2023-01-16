@@ -1,8 +1,8 @@
 import useClasses from 'hooks/useClasses';
 
-import Button from '../../_global/Button';
+import Button from 'сomponents/Button';
 import * as Icon from 'сomponents/_global/Icon';
-import 'сomponents/_global/Button/btn_filter-add.scss';
+import 'сomponents/Button/btn_filter-add.scss';
 import './InputSearchItemsList.scss';
 
 const InputSearchItemsList = (props) => {

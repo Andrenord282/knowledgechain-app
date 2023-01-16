@@ -4,7 +4,7 @@ import useToggle from 'hooks/useToggle';
 import useUpdateSchemaText from './hooks/useUpdateSchemaText';
 
 import TextArea from 'сomponents/_global/TextArea/TextArea';
-import Button from 'сomponents/_global/Button';
+import Button from 'сomponents/Button';
 import * as Icon from 'сomponents/_global/Icon';
 import PostCreatorOptions from '../PostCreatorOptions';
 import classNames from 'classnames';

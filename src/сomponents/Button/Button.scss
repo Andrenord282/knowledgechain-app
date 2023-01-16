@@ -143,41 +143,7 @@
 	fill: var(--color-btn-bg-active);
 }
 
-.btn_set-visible-content {
-}
 
-.btn_set-visible-content .btn__text {
-}
-
-.btn_set-visible-content:active .btn__text {
-	color: var(--color-btn-bg-active);
-}
-
-.btn_set-visible-content:hover .btn__text {
-	@media (min-width: 1000px) {
-		color: var(--color-btn-bg-hover);
-	}
-}
-
-.btn_set-visible-content {
-	cursor: default;
-}
-
-.btn_set-visible-content .btn__text {
-	cursor: pointer;
-	color: var(--color-btn-bg-main);
-	transition: color 0.1s linear;
-}
-
-.btn_set-visible-content .btn__text:active {
-	color: var(--color-btn-bg-active);
-}
-
-.btn_set-visible-content .btn__text:hover {
-	@media (min-width: 1000px) {
-		color: var(--color-btn-bg-hover);
-	}
-}
 
 .btn_list-item {
 }

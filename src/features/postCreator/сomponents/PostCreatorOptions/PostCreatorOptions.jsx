@@ -2,7 +2,7 @@ import useClasses from 'hooks/useClasses';
 import usePushSchemaItem from './hooks/usePushSchemaItem';
 import useRemoveSchemaItem from './hooks/useRemoveSchemaItem';
 
-import Button from 'сomponents/_global/Button';
+import Button from 'сomponents/Button';
 import * as Icon from 'сomponents/_global/Icon';
 import PostCreatorFiler from '../PostCreatorFiler/PostCreatorFiler';
 import './PostCreatorOptions.scss';

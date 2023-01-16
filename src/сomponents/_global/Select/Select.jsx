@@ -2,7 +2,7 @@ import useEventOutside from 'hooks/useEventInside';
 import useClasses from 'hooks/useClasses';
 import { useRef, useState } from 'react';
 
-import Button from 'сomponents/_global/Button';
+import Button from 'сomponents/Button';
 import IconTriangle from '../Icons/IconTriangle';
 import { ReactComponent as IconTriangle } from 'assets/img/svg/icons-triangle.svg';
 import classNames from 'classnames';

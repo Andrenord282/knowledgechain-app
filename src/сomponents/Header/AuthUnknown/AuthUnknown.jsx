@@ -1,7 +1,7 @@
 import useClasses from 'hooks/useClasses';
 import useToggle from 'hooks/useToggle';
 import Auth from 'features/auth';
-import Button from 'сomponents/_global/Button';
+import Button from 'сomponents/Button';
 import './AuthUnknown.scss';
 
 const AuthUnknown = ({ classes }) => {

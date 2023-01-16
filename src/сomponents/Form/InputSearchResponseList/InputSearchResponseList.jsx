@@ -1,9 +1,9 @@
 import useClasses from 'hooks/useClasses';
 
-import Button from 'сomponents/_global/Button';
+import Button from 'сomponents/Button';
 import * as Icon from 'сomponents/_global/Icon';
 import 'сomponents/FilterListSearch/FilterListSearch.scss';
-import 'сomponents/_global/Button/btn_filter-delete.scss';
+import 'сomponents/Button/btn_filter-delete.scss';
 import './InputSearchResponseList.scss';
 
 const InputSearchResponseList = (props) => {

@@ -8,12 +8,12 @@ import { addFilterDates, datesSelector } from 'store/slices/optionsPostListSlice
 import { datesDifference } from 'hooks/useDate';
 
 import { ReactComponent as IconPlus } from 'assets/img/svg/icon-plus.svg';
-import Button from 'сomponents/_global/Button';
+import Button from 'сomponents/Button';
 import Input from 'сomponents/_global/Input/Input';
 import classNames from 'classnames';
 import 'сomponents/FilterDates/FilterDates.scss';
 import 'сomponents/FilterListDates/FilterListDates.scss';
-import 'сomponents/_global/Button/btn_filter-add.scss';
+import 'сomponents/Button/btn_filter-add.scss';
 
 const FilterDates = ({ classes }) => {
 	const inheritClasses = useClasses(classes);
@@ -51,7 +51,7 @@ const FilterDates = ({ classes }) => {
 
 	useEffect(() => {
 		const dates = [];
-		dispatch(addFilterDates({ dates }));
+		// dispatch(addFilterDates({ dates }));
 	}, [startDate.value, endDate.value, dispatch]);
 
 	const datesBtnClass = classNames({

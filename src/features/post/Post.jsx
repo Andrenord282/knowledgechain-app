@@ -14,6 +14,7 @@ const Post = ({
 	postName,
 	author,
 	schemaPost,
+	themesPost,
 	createdAt,
 	ratingCounter,
 	viewCounter,
@@ -33,7 +34,7 @@ const Post = ({
 			/>
 			<PostBar classes="post__bar" ratingCounter={ratingCounter} />
 			<PostContent classes="post__content" schemaPost={schemaPost} />
-			<PostThemes classes="post__themes" />
+			<PostThemes classes="post__themes" themesPost={themesPost} />
 			<PostFooter
 				classes="post__footer"
 				viewCounter={viewCounter}

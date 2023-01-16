@@ -18,8 +18,6 @@ const postList = createSlice({
 	},
 });
 
-const postListSelector = (state) => state.postList.posts;
 
 export const { pushPostList, resetPostList } = postList.actions;
-export { postListSelector };
 export default postList.reducer;

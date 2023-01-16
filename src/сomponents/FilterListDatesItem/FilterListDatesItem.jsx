@@ -6,9 +6,9 @@ import { addFilterDates } from 'store/slices/optionsPostListSlice/optionsPostLis
 
 import { datesDifference } from 'hooks/useDate';
 
-import Button from 'сomponents/_global/Button';
+import Button from 'сomponents/Button';
 import classNames from 'classnames';
-import 'сomponents/_global/Button/btn_filter-add.scss';
+import 'сomponents/Button/btn_filter-add.scss';
 
 const FilterListDatesItem = ({ classes, dataAttrValue, text }) => {
 	const inheritClasses = useClasses(classes);
