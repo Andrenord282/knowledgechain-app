@@ -1,9 +1,14 @@
 import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+
+import { useDispatch } from 'react-redux';
+import { removeAllSchema } from 'features/postCreator/model';
+
 import postsService from 'services/postsService';
 import filesService from 'services/filesService';
 
 const usePostCreatorSender = (formData, readyForm, handlerOpenModal, handlerCloseModal) => {
+	const dispatch = useDispatch();
 	const [statusReq, setStatusReq] = useState(null);
 	const [alertMessage, setAlertMessage] = useState(null);
 	let navigate = useNavigate();
@@ -22,6 +27,7 @@ const usePostCreatorSender = (formData, readyForm, handlerOpenModal, handlerClos
 			setTimeout(() => {
 				setStatusReq(null);
 				handlerCloseModal();
+				dispatch(removeAllSchema());
 				return navigate('/');
 			}, 1000);
 		} else if (responsePost.status !== 200) {

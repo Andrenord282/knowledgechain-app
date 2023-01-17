@@ -21,17 +21,14 @@ const Post = ({
 	commentsCounter,
 }) => {
 	const inheritClasses = useClasses(classes);
+
 	return (
 		<div
 			className={inheritClasses + ' post'}
 			data-post-id={postId}
 			data-post-name={postName}
 			data-id-db={_id}>
-			<PostHeader
-				classes="post__header"
-				author={author}
-				date={createdAt}
-			/>
+			<PostHeader classes="post__header" author={author} date={createdAt} />
 			<PostBar classes="post__bar" ratingCounter={ratingCounter} />
 			<PostContent classes="post__content" schemaPost={schemaPost} />
 			<PostThemes classes="post__themes" themesPost={themesPost} />

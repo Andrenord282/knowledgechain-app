@@ -3,7 +3,10 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectOptionPost, selectPostList } from 'store/selectors';
 import { pushPostList } from 'store/slices/postList/postList';
-import { setLoadedPost } from 'store/slices/optionsPostListSlice/optionsPostListSlice';
+import {
+	setLoadedPost,
+	updateQuantitySkipPost,
+} from 'store/slices/optionsPostListSlice/optionsPostListSlice';
 
 import postsService from 'services/postsService';
 
@@ -16,8 +19,13 @@ const useGetPostList = () => {
 		const handlerGetPostList = async () => {
 			const response = await postsService.getPosts(optionsPostList);
 			if (response.status === 200) {
-				dispatch(pushPostList({ posts: response.data }));
-				dispatch(setLoadedPost({ status: true }));
+				setTimeout(() => {
+					dispatch(pushPostList({ posts: response.data }));
+					dispatch(setLoadedPost({ status: true }));
+					if (Array.isArray(response.data)) {
+						dispatch(updateQuantitySkipPost());
+					}
+				}, 10);
 			}
 		};
 		if (!isLoadedPost) {

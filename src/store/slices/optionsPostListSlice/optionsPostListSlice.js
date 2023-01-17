@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
 	isLoadedPost: false,
 	postCursor: -1,
+	quantitySkipPost: 0,
 	limit: 10,
 	sort: {
 		name: 'Дате',
@@ -53,6 +54,10 @@ const optionsPostListSlice = createSlice({
 			const { dates } = action.payload;
 			state.filters.dates = dates;
 		},
+
+		updateQuantitySkipPost: (state) => {
+			state.quantitySkipPost = state.quantitySkipPost + state.limit;
+		},
 	},
 });
 
@@ -69,6 +74,9 @@ export const {
 	deleteFilterAuthor,
 	setFilterRating,
 	addFilterDates,
+	updateQuantitySkipPost,
 } = optionsPostListSlice.actions;
+
 export { optionsSelector, sortSelector, authorsSelector, datesSelector };
+
 export default optionsPostListSlice.reducer;

@@ -6,7 +6,6 @@ const useDisplayPostContent = () => {
 	const containerRef = useRef(null);
 	const bodyRef = useRef(null);
 	const [isTrimContainer, setIsTrimContainer] = useState(false);
-
 	const setAnimatePostContent = useSetAnimatePostContent(containerRef, bodyRef);
 	const [startAnimatePostContent] = useRequestAnimationFrame(200, setAnimatePostContent);
 

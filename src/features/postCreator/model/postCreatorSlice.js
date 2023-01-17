@@ -33,11 +33,6 @@ const postCreatorSlice = createSlice({
 			state.schemaPost[schemItemIndex].value = value;
 		},
 
-		resetValueSchemaItem: (state, action) => {
-			const { schemItemIndex } = action.payload;
-			state.schemaPost[schemItemIndex].value = '';
-		},
-
 		pushMiddleSchemaItem: (state, action) => {
 			const { cursorInex, schemaItem } = action.payload;
 			const startSchema = state.schemaPost.slice(0, cursorInex + 1);
@@ -52,7 +47,6 @@ const postCreatorSlice = createSlice({
 
 		removeAllSchema: (state) => {
 			state.author = initialState.author;
-
 			state.schemaPost = initialState.schemaPost;
 		},
 
@@ -81,7 +75,6 @@ export const {
 	setAuthor,
 	setParamsPost,
 	updateSchemaText,
-	resetValueSchemaItem,
 	pushMiddleSchemaItem,
 	pushEndSchemaItem,
 	removeAllSchema,
