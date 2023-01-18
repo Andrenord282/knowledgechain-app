@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
 	isLoadedPost: false,
+	postListIsOver: false,
 	postCursor: -1,
 	quantitySkipPost: 0,
 	limit: 10,
@@ -58,6 +59,10 @@ const optionsPostListSlice = createSlice({
 		updateQuantitySkipPost: (state) => {
 			state.quantitySkipPost = state.quantitySkipPost + state.limit;
 		},
+		setPostListIsOver: (state) => {
+			// const { isOver } = action.payload;
+			state.postListIsOver = !state.postListIsOver;
+		},
 	},
 });
 
@@ -75,6 +80,7 @@ export const {
 	setFilterRating,
 	addFilterDates,
 	updateQuantitySkipPost,
+	setPostListIsOver,
 } = optionsPostListSlice.actions;
 
 export { optionsSelector, sortSelector, authorsSelector, datesSelector };

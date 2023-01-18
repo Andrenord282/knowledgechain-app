@@ -13,7 +13,6 @@ const useDisplayPostContent = () => {
 		if (isTrimContainer) return;
 		const containerHegth = containerRef.current.offsetHeight;
 		const bodyHegth = bodyRef.current.scrollHeight;
-
 		if (containerHegth < bodyHegth) {
 			setIsTrimContainer(true);
 		}

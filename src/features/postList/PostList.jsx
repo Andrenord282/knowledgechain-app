@@ -10,20 +10,19 @@ import './PostList.scss';
 const PostList = (props) => {
 	const { classes } = props;
 	const inheritClasses = useClasses(classes);
-	const { isLoadedPost, postList } = useGetPostList();
-	const { triggerItemUpdate } = useUpdatePostList();
+	const { isLoadedPost, postListIsOver, postList } = useGetPostList();
+	const { triggeriItemLoading } = useUpdatePostList(postListIsOver);
 
 	return (
 		<ul className={inheritClasses + ' post-list'}>
 			{postList.length > 0 && (
 				<>
 					{postList.map((post, index) => {
-						if (index === postList.length - 2) {
+						if (index === postList.length - 3 && !postListIsOver) {
 							return (
 								<li
-									ref={triggerItemUpdate}
+									ref={triggeriItemLoading}
 									key={post._id}
-									data-trigger-loader="true"
 									className="post-list__item">
 									<Post {...post} />
 								</li>

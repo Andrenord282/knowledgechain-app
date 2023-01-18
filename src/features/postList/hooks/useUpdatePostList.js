@@ -1,21 +1,26 @@
-import useObserverScroll from 'hooks/useObserverScroll';
-import { useCallback } from 'react';
+import { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setLoadedPost } from 'store/slices/optionsPostListSlice/optionsPostListSlice';
-import { selectOptionPost } from 'store/selectors';
 
-const useUpdatePostList = () => {
+const useUpdatePostList = (postListIsOver) => {
 	const dispatch = useDispatch();
-	const { isLoadedPost } = useSelector(selectOptionPost);
-
-	const updatePostList = useCallback(() => {
-		dispatch(setLoadedPost({ status: false }));
+	const [triggeriItemLoading, inView] = useInView({
+		threshold: 0,
+		triggerOnce: true,
 	});
 
-	const { observeItem } = useObserverScroll([isLoadedPost], updatePostList);
+	useEffect(() => {
+		if (postListIsOver) return;
+		const updatePostList = () => {
+			dispatch(setLoadedPost({ status: false }));
+		};
 
-	return { triggerItemUpdate: observeItem };
+		if (inView) updatePostList();
+	}, [inView, postListIsOver]);
+
+	return { triggeriItemLoading };
 };
 
 export default useUpdatePostList;
