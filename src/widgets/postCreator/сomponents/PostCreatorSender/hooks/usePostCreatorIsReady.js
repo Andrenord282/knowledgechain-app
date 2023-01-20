@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectSchemaPost } from 'features/postCreator/model';
+import { selectSchemaPost } from 'widgets/postCreator/model';
 
 const usePostCreatorIsReady = () => {
 	const schemaPost = useSelector(selectSchemaPost);

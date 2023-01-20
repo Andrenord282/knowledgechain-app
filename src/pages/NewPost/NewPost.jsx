@@ -1,7 +1,7 @@
 import Navigation from 'сomponents/_global/Navigation/Navigation';
 import LinkCustom from 'сomponents/_global/LinkCustom/LinkCustom';
 import { ReactComponent as IconBack } from 'assets/img/svg/icon-back.svg';
-import PostCreator from 'features/postCreator';
+import PostCreator from 'widgets/postCreator';
 import './NewPost.scss';
 
 const NewPost = () => {

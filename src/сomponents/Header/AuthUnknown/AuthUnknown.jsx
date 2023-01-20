@@ -1,6 +1,6 @@
 import useClasses from 'hooks/useClasses';
 import useToggle from 'hooks/useToggle';
-import Auth from 'features/auth';
+import Auth from 'widgets/auth';
 import Button from 'сomponents/Button';
 import './AuthUnknown.scss';
 

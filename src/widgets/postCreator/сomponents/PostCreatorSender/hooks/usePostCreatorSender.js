@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
-import { removeAllSchema } from 'features/postCreator/model';
+import { removeAllSchema } from 'widgets/postCreator/model';
 
 import postsService from 'services/postsService';
 import filesService from 'services/filesService';

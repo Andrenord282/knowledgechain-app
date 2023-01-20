@@ -59,6 +59,11 @@ const optionsPostListSlice = createSlice({
 		updateQuantitySkipPost: (state) => {
 			state.quantitySkipPost = state.quantitySkipPost + state.limit;
 		},
+
+		resetQuantitySkipPost: (state) => {
+			state.quantitySkipPost = 0;
+		},
+
 		setPostListIsOver: (state) => {
 			// const { isOver } = action.payload;
 			state.postListIsOver = !state.postListIsOver;
@@ -67,7 +72,6 @@ const optionsPostListSlice = createSlice({
 });
 
 const optionsSelector = (state) => state.optionsPostList;
-const sortSelector = (state) => state.optionsPostList.sort;
 const authorsSelector = (state) => state.optionsPostList.filters.authors;
 const datesSelector = (state) => state.optionsPostList.filters.dates;
 
@@ -80,9 +84,10 @@ export const {
 	setFilterRating,
 	addFilterDates,
 	updateQuantitySkipPost,
+	resetQuantitySkipPost,
 	setPostListIsOver,
 } = optionsPostListSlice.actions;
 
-export { optionsSelector, sortSelector, authorsSelector, datesSelector };
+export { optionsSelector, authorsSelector, datesSelector };
 
 export default optionsPostListSlice.reducer;

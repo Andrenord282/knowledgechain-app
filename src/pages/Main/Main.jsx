@@ -1,11 +1,11 @@
 import useCheckAuthUser from 'hooks/useCheckAuthUser';
 
 import Navigation from 'сomponents/_global/Navigation/Navigation';
-import SortPosts from 'сomponents/SortPosts/SortPosts';
+import SortPosts from 'widgets/sortPost';
 import LinkCustom from 'сomponents/_global/LinkCustom/LinkCustom';
 import FilterPosts from 'сomponents/FilterPosts/FilterPosts';
-import PostList from 'features/postList';
-import Auth from 'features/auth';
+import PostList from 'widgets/postList';
+import Auth from 'widgets/auth';
 import * as Icon from 'сomponents/_global/Icon';
 import './Main.scss';
 
@@ -27,7 +27,7 @@ const Main = () => {
 							</LinkCustom>
 							<FilterPosts classes="nav__filter" />
 						</Navigation>
-						<PostList classes="main__list"/>
+						<PostList classes="main__list" />
 					</div>
 				</div>
 			</section>

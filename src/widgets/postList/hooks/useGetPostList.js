@@ -29,6 +29,7 @@ const useGetPostList = () => {
 				}
 			}
 		};
+
 		if (!isLoadedPost) {
 			handlerGetPostList();
 		}

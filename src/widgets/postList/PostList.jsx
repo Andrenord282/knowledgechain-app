@@ -1,7 +1,7 @@
 import useClasses from 'hooks/useClasses';
 import useGetPostList from './hooks/useGetPostList';
 import useUpdatePostList from './hooks/useUpdatePostList';
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 
 import Post from '../post';
 import { SkeletonPost } from 'сomponents/Skeleton';
@@ -11,7 +11,7 @@ const PostList = (props) => {
 	const { classes } = props;
 	const inheritClasses = useClasses(classes);
 	const { isLoadedPost, postListIsOver, postList } = useGetPostList();
-	const { triggeriItemLoading } = useUpdatePostList(postListIsOver);
+	const { triggeriItemLoading } = useUpdatePostList();
 
 	return (
 		<ul className={inheritClasses + ' post-list'}>
@@ -23,7 +23,7 @@ const PostList = (props) => {
 								<li
 									ref={triggeriItemLoading}
 									key={post._id}
-									className="post-list__item">
+									className="post-list__item" dada-kek="123">
 									<Post {...post} />
 								</li>
 							);
