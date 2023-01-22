@@ -13,7 +13,7 @@ const useSearchList = (initialValue) => {
 		if (e.target.value.length < 2) {
 			return;
 		}
-		debounsSearch('themes', { name: e.target.value }, setItemList);
+		debounsSearch('themes', { value: e.target.value, variant: 'creatorPost' }, setItemList);
 	};
 
 	useEffect(() => {

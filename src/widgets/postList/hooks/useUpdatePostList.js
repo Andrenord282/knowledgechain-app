@@ -1,6 +1,5 @@
+import useIntersectionObserver from 'hooks/useIntersectionObserver';
 import { useEffect } from 'react';
-import { useInView } from 'react-intersection-observer';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { setLoadedPost } from 'store/slices/optionsPostListSlice/optionsPostListSlice';
 import { selectOptionPost } from 'store/selectors';
@@ -8,20 +7,18 @@ import { selectOptionPost } from 'store/selectors';
 const useUpdatePostList = () => {
 	const dispatch = useDispatch();
 	const { postListIsOver } = useSelector(selectOptionPost);
-	const [triggeriItemLoading, inView] = useInView({
-		threshold: 0,
-		triggerOnce: true,
-	});
+	const [setNode, isDisplay] = useIntersectionObserver();
+
 	useEffect(() => {
-		if (postListIsOver) return;
+		if (postListIsOver || !isDisplay) return;
 		const updatePostList = () => {
 			dispatch(setLoadedPost({ status: false }));
 		};
 
-		if (inView) updatePostList();
-	}, [inView, postListIsOver]);
+		updatePostList();
+	}, [isDisplay, postListIsOver]);
 
-	return { triggeriItemLoading };
+	return [setNode, isDisplay];
 };
 
 export default useUpdatePostList;

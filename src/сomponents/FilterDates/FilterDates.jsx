@@ -13,7 +13,7 @@ import Input from 'сomponents/_global/Input/Input';
 import classNames from 'classnames';
 import 'сomponents/FilterDates/FilterDates.scss';
 import 'сomponents/FilterListDates/FilterListDates.scss';
-import 'сomponents/Button/btn_filter-add.scss';
+// import 'сomponents/Button/btn_filter-add.scss';
 
 const FilterDates = ({ classes }) => {
 	const inheritClasses = useClasses(classes);

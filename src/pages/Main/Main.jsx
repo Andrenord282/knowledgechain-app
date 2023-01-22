@@ -1,17 +1,17 @@
 import useCheckAuthUser from 'hooks/useCheckAuthUser';
+import { memo } from 'react';
 
 import Navigation from 'сomponents/_global/Navigation/Navigation';
 import SortPosts from 'widgets/sortPost';
 import LinkCustom from 'сomponents/_global/LinkCustom/LinkCustom';
-import FilterPosts from 'сomponents/FilterPosts/FilterPosts';
+import FilterPosts from 'widgets/filterPost';
 import PostList from 'widgets/postList';
 import Auth from 'widgets/auth';
 import * as Icon from 'сomponents/_global/Icon';
 import './Main.scss';
 
-const Main = () => {
+const Main = (props) => {
 	const checkAuth = useCheckAuthUser();
-
 	return (
 		<>
 			<section className="main">
@@ -36,4 +36,4 @@ const Main = () => {
 	);
 };
 
-export default Main;
+export default memo(Main);

@@ -1,7 +1,8 @@
 import useClasses from 'hooks/useClasses';
 import useGetPostList from './hooks/useGetPostList';
 import useUpdatePostList from './hooks/useUpdatePostList';
-import { memo, useMemo } from 'react';
+
+import { memo } from 'react';
 
 import Post from '../post';
 import { SkeletonPost } from 'сomponents/Skeleton';
@@ -10,9 +11,8 @@ import './PostList.scss';
 const PostList = (props) => {
 	const { classes } = props;
 	const inheritClasses = useClasses(classes);
-	const { isLoadedPost, postListIsOver, postList } = useGetPostList();
-	const { triggeriItemLoading } = useUpdatePostList();
-
+	const [setNode] = useUpdatePostList();
+	const { postListIsOver, postList } = useGetPostList();
 	return (
 		<ul className={inheritClasses + ' post-list'}>
 			{postList.length > 0 && (
@@ -21,9 +21,10 @@ const PostList = (props) => {
 						if (index === postList.length - 3 && !postListIsOver) {
 							return (
 								<li
-									ref={triggeriItemLoading}
+									ref={setNode}
 									key={post._id}
-									className="post-list__item" dada-kek="123">
+									className="post-list__item"
+									dada-kek="123">
 									<Post {...post} />
 								</li>
 							);
@@ -36,7 +37,7 @@ const PostList = (props) => {
 					})}
 				</>
 			)}
-			{!isLoadedPost && <SkeletonPost count={10} />}
+			{postList.length === 0 && <SkeletonPost count={10} />}
 		</ul>
 	);
 };

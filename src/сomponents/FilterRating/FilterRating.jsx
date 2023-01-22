@@ -10,7 +10,7 @@ import Button from 'сomponents/Button';
 import InputRange from 'сomponents/_global/InputRange/InputRange';
 import classNames from 'classnames';
 import 'сomponents/FilterRating/FilterRating.scss';
-import 'сomponents/Button/btn_filter-open.scss';
+// import 'сomponents/Button/btn_filter-open.scss';
 
 const FilterRating = ({ classes }) => {
 	const inheritClasses = useClasses(classes);

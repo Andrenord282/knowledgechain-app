@@ -1,4 +1,5 @@
 import useClasses from 'hooks/useClasses';
+import { memo } from 'react';
 
 import PostHeader from './PostHeader';
 import PostBar from './PostBar';
@@ -41,4 +42,4 @@ const Post = ({
 	);
 };
 
-export default Post;
+export default memo(Post);

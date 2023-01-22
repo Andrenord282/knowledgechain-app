@@ -1,13 +1,9 @@
-.btn_reset {
-	cursor: pointer;
-	border: none;
-	background-color: transparent;
-	font-size: 14px;
-}
-
 .btn {
+	cursor: pointer;
 	font-size: 14px;
 	color: var(--color-text-main);
+	border: none;
+	background-color: transparent;
 
 	@media (min-width: 768px) {
 		font-size: 18px;

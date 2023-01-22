@@ -13,7 +13,7 @@ const AuthKnown = ({ classes, userImgUrl, userName, handlerLogOut }) => {
 	const inheritClasses = useClasses(classes);
 	const btnMenuRef = useRef(null);
 	const [toggleList, setToggleList] = useState(false);
-	
+
 	useEventOutside(btnMenuRef, () => {
 		setToggleList(false);
 	});

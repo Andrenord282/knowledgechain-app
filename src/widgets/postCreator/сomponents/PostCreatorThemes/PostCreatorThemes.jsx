@@ -37,7 +37,9 @@ const PostCreatorThemes = (proops) => {
 				id="Тема"
 				name="Тема"
 				itemList={itemList}
-				placeholder="Напишите текст"
+				placeholder="Напишите темы поста"
+				nameValue="name"
+				idValue="_id"
 				openFilter={true}
 				currentValue={value}
 				handlerChange={onChenge}

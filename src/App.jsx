@@ -1,13 +1,10 @@
+import './wdyr';
 import { Routes, Route } from 'react-router-dom';
 
 import { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
-import {
-	setUser,
-	toggleAuthUser,
-	toggleLoadedUser,
-} from 'store/slices/userSlice/userSlice';
+import { setUser, toggleAuthUser, toggleLoadedUser } from 'store/slices/userSlice/userSlice';
 
 import authService from 'services/authService';
 
@@ -33,7 +30,7 @@ function App() {
 			});
 		} else {
 			dispatch(toggleLoadedUser());
-		}
+	}
 	}, [dispatch]);
 
 	return (

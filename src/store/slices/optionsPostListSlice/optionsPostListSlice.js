@@ -11,7 +11,6 @@ const initialState = {
 		order: -1,
 		value: 'createdAt',
 	},
-	filters: { authors: [], rating: null, dates: [] },
 };
 
 const optionsPostListSlice = createSlice({

@@ -12,13 +12,15 @@ const InputSearch = (props) => {
 		name,
 		currentValue,
 		itemList,
+		nameValue,
+		idValue,
+		notFoundText,
 		handlerBlur,
 		handlerFocus,
 		handlerChange,
 		addItem,
 	} = props;
 	const inheritClasses = useClasses(classes);
-
 	return (
 		<div className={inheritClasses + ' input-search'}>
 			{openFilter && (
@@ -38,6 +40,9 @@ const InputSearch = (props) => {
 					classes="input-search__values"
 					itemList={itemList}
 					addItem={addItem}
+					nameValue={nameValue}
+					idValue={idValue}
+					notFoundText={notFoundText}
 				/>
 			)}
 		</div>

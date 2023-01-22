@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { selectOptionPost, selectPostList } from 'store/selectors';
-import { pushPostList } from 'store/slices/postList/postList';
+import { selectOptionPost } from 'store/selectors';
+import { selectPostList } from 'store/selectors';
+import { pushPostList } from 'store/slices/postList/postListSlice';
 import {
 	setLoadedPost,
 	updateQuantitySkipPost,
@@ -21,8 +22,8 @@ const useGetPostList = () => {
 			const response = await postsService.getPosts(optionsPostList);
 			if (response.status === 200) {
 				const { postList, postListIsOver } = response.data;
+
 				dispatch(pushPostList({ posts: postList }));
-				dispatch(setLoadedPost({ status: true }));
 				dispatch(updateQuantitySkipPost());
 				if (postListIsOver) {
 					dispatch(setPostListIsOver());
@@ -32,6 +33,7 @@ const useGetPostList = () => {
 
 		if (!isLoadedPost) {
 			handlerGetPostList();
+			dispatch(setLoadedPost({ status: true }));
 		}
 	}, [isLoadedPost, optionsPostList, dispatch]);
 

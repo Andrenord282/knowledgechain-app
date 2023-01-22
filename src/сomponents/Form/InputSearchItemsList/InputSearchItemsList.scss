@@ -7,6 +7,43 @@
 	padding: 8px 10px;
 	background-color: var(--color-btn-bg-main);
 }
+
 .input-search-values__btn {
 	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-radius: 0;
+	border: 0;
+}
+
+.input-search-values__btn:active {
+	background-color: var(--color-btn-bg-hover);
+}
+
+.input-search-values__btn.active {
+	background-color: var(--color-btn-bg-hover);
+}
+
+.input-search-values__btn:hover {
+	@media (min-width: 1000px) {
+		background-color: var(--color-btn-bg-hover);
+	}
+}
+
+.input-search-values__btn .btn__icon {
+	width: 10px;
+	height: 10px;
+
+	@media (min-width: 1000px) {
+		width: 15px;
+		height: 15px;
+	}
+}
+
+.input-search-values__not-found {
+	color: var(--color-text-main);
+	padding: 6px 12px;
+	background-color: var(--color-btn-bg-main);
+	transition: background-color 0.1s linear;
 }

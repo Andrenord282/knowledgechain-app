@@ -6,7 +6,7 @@ import {
 	setSortOrder,
 	resetQuantitySkipPost,
 } from 'store/slices/optionsPostListSlice/optionsPostListSlice';
-import { resetPostList } from 'store/slices/postList/postList';
+import { resetPostList } from 'store/slices/postList/postListSlice';
 
 const useSetSortPost = () => {
 	const dispatch = useDispatch();
