@@ -8,5 +8,6 @@ export {
 	deleteFilterThemes,
 	setFilterRating,
 	addFilterDates,
+	addCustomFilterDates,
 } from './filterPostListSlice';
-export { selectFilterAuthors, selectFilterThemes } from './selectors';
+export { selectFilterAuthors, selectFilterThemes, selectDates } from './selectors';

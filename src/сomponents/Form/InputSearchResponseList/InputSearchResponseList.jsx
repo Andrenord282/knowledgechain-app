@@ -9,7 +9,6 @@ import './InputSearchResponseList.scss';
 const InputSearchResponseList = (props) => {
 	const { classes, itemList, deleteItem } = props;
 	const inheritClasses = useClasses(classes);
-	console.log(itemList);
 	return (
 		<>
 			{itemList.length > 0 && (

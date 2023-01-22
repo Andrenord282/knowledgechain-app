@@ -1,0 +1,128 @@
+.filter-dates {
+}
+.filter-dates__btn-open {
+}
+.filter-dates__nav {
+}
+
+.filter-dates {
+}
+
+.filter-dates__toggle {
+	display: flex;
+	align-items: center;
+	border-radius: 0;
+	background-color: transparent;
+	padding: 6px 0;
+}
+
+.filter-dates__toggle:hover,
+.filter-dates__toggle:active {
+	background-color: transparent;
+}
+
+.filter-dates__toggle .btn__wrapper-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 5px;
+	margin-right: 10px;
+	background-color: var(--color-btn-bg-main);
+}
+
+.filter-dates__toggle.active .btn__wrapper-icon {
+	background-color: var(--color-btn-bg-hover);
+}
+
+.filter-dates__toggle .btn__icon {
+	width: 10px;
+	height: 10px;
+
+	@media (min-width: 1000px) {
+		width: 15px;
+		height: 15px;
+	}
+}
+
+.filter-dates__toggle.active .btn__icon {
+	transform: rotate(45deg);
+}
+
+.filter-dates__nav {
+	@media (min-width: 768px) {
+		display: flex;
+		align-items: center;
+	}
+}
+
+.filter-dates__list {
+	display: flex;
+	align-items: center;
+	margin-top: 10px;
+}
+.filter-dates__iten-list {
+}
+
+.filter-dates__iten-list:not(:last-of-type) {
+	margin-right: 8px;
+}
+
+.filter-dates__btn-list {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-radius: 0;
+	border: 0;
+}
+
+.filter-dates__btn-list:active {
+	background-color: var(--color-btn-bg-hover);
+}
+
+.filter-dates__btn-list.active {
+	background-color: var(--color-btn-bg-hover);
+}
+
+.filter-dates__btn-list:hover {
+	@media (min-width: 1000px) {
+		background-color: var(--color-btn-bg-hover);
+	}
+}
+
+.filter-dates__btn-list .btn__icon {
+	width: 10px;
+	height: 10px;
+
+	@media (min-width: 1000px) {
+		width: 15px;
+		height: 15px;
+	}
+}
+
+.filter-dates__custom {
+	display: flex;
+	align-items: center;
+	margin-top: 10px;
+
+	@media (min-width: 768px) {
+		margin-left: 30px;
+	}
+}
+.filter-dates__custom-span {
+	margin-right: 10px;
+}
+.filter-dates__custom-input {
+}
+.filter-dates__custom-input input {
+	padding: 6px;
+	width: 115px;
+}
+
+.filter-dates__custom-input:not(:last-child) {
+	margin-right: 15px;
+}
+
+.filter-dates__search-value {
+	width: 100%;
+	margin-top: 15px;
+}

@@ -3,8 +3,8 @@ import useClasses from 'hooks/useClasses';
 import FilterAuthor from '../FilterAuthor';
 import FilterThemes from '../FilterThemes';
 import FilterRating from '../FilterRating';
-// import FilterDates from '../FilterDates';
-import 'сomponents/FilterList/FilterList.scss';
+import FilterDates from '../FilterDates';
+import './FilterList.scss';
 
 const FilterList = ({ classes }) => {
 	const inheritClasses = useClasses(classes);
@@ -20,9 +20,9 @@ const FilterList = ({ classes }) => {
 			<li className="filter-list__item">
 				<FilterRating />
 			</li>
-			{/* <li className="filter-list__item"> */}
-				{/* <FilterDates /> */}
-			{/* </li> */}
+			<li className="filter-list__item">
+				<FilterDates />
+			</li>
 		</ul>
 	);
 };

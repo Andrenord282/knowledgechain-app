@@ -10,7 +10,7 @@ const Button = (props) => {
 		<button
 			{...otherProps}
 			ref={valueRef ? valueRef : null}
-			className={inheritClasses + ' btn_reset'}
+			className={inheritClasses + ' btn'}
 			onClick={(e) => {
 				e.preventDefault();
 				handleClick(e);
