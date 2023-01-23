@@ -1,25 +1,29 @@
 import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { selectOptionPost } from 'store/selectors';
-import { selectPostList } from 'store/selectors';
-import { pushPostList } from 'store/slices/postList/postListSlice';
+import { selectSort } from 'widgets/sortPost/model';
+import { selectFilters } from 'widgets/filterPost/model';
 import {
+	selectPostList,
+	pushPostList,
 	setLoadedPost,
 	updateQuantitySkipPost,
 	setPostListIsOver,
-} from 'store/slices/optionsPostListSlice/optionsPostListSlice';
+} from '../model';
 
 import postsService from 'services/postsService';
 
 const useGetPostList = () => {
 	const dispatch = useDispatch();
-	const { isLoadedPost, postListIsOver, ...optionsPostList } = useSelector(selectOptionPost);
-	const postList = useSelector(selectPostList);
-
+	const sort = useSelector(selectSort);
+	const filters = useSelector(selectFilters);
+	const { isLoadedPost, limit, quantitySkipPost, postListIsOver, posts } =
+		useSelector(selectPostList);
+		
+	const optionQuery = { limit, quantitySkipPost, sort, filters };
 	useEffect(() => {
 		const handlerGetPostList = async () => {
-			const response = await postsService.getPosts(optionsPostList);
+			const response = await postsService.getPosts(optionQuery);
 			if (response.status === 200) {
 				const { postList, postListIsOver } = response.data;
 
@@ -35,9 +39,9 @@ const useGetPostList = () => {
 			handlerGetPostList();
 			dispatch(setLoadedPost({ status: true }));
 		}
-	}, [isLoadedPost, optionsPostList, dispatch]);
+	}, [isLoadedPost, dispatch]);
 
-	return { isLoadedPost, postListIsOver, postList };
+	return { isLoadedPost, postListIsOver, posts };
 };
 
 export default useGetPostList;

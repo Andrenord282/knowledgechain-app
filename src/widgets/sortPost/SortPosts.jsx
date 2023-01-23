@@ -1,5 +1,5 @@
 import useClasses from 'hooks/useClasses';
-import useSetSortPost from './hooks/useSetSortPost';
+import useQuerySortPosts from './hooks/useQuerySortPosts';
 import useOpenSortList from './hooks/useOpenSortList';
 
 import Button from 'сomponents/Button';
@@ -12,7 +12,7 @@ import { namesSortList } from './constants';
 const SortPosts = (props) => {
 	const { classes } = props;
 	const inheritClasses = useClasses(classes);
-	const { name, order, handlerSetSortName, handlerSetSortOrder } = useSetSortPost();
+	const { name, order, handlerSetSortName, handlerSetSortOrder } = useQuerySortPosts();
 	const { openSortList, refBtnSet, handlerOpenSortList } = useOpenSortList();
 
 	const orderBtnClass = classNames({

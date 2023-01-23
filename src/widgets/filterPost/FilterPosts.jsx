@@ -25,16 +25,13 @@ const FilterPosts = ({ classes }) => {
 		<div className={inheritClasses + ' filter-posts'}>
 			<Button
 				classes={
-					'filter-posts__btn-set btn btn_default btn_filter-posts-set ' +
-					filterBtnClass
+					'filter-posts__btn-set btn btn_default ' + filterBtnClass
 				}
 				handleClick={handlerOpenFilterList}>
 				<span className="btn__text">Расширенный поиск</span>
 				<Icon.Cross className={'btn__icon '} />
 			</Button>
-			{openFilterList && (
-				<FilterList classes="filter-posts__list" />
-			)}
+			{openFilterList && <FilterList classes="filter-posts__list" />}
 		</div>
 	);
 };

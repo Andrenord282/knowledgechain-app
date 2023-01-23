@@ -10,4 +10,4 @@ export {
 	addFilterDates,
 	addCustomFilterDates,
 } from './filterPostListSlice';
-export { selectFilterAuthors, selectFilterThemes, selectDates } from './selectors';
+export { selectFilters, selectFilterAuthors, selectFilterThemes, selectDates } from './selectors';

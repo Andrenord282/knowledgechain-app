@@ -12,13 +12,13 @@ const PostList = (props) => {
 	const { classes } = props;
 	const inheritClasses = useClasses(classes);
 	const [setNode] = useUpdatePostList();
-	const { postListIsOver, postList } = useGetPostList();
+	const { postListIsOver, posts } = useGetPostList();
 	return (
 		<ul className={inheritClasses + ' post-list'}>
-			{postList.length > 0 && (
+			{posts.length > 0 && (
 				<>
-					{postList.map((post, index) => {
-						if (index === postList.length - 3 && !postListIsOver) {
+					{posts.map((post, index) => {
+						if (index === posts.length - 3 && !postListIsOver) {
 							return (
 								<li
 									ref={setNode}
@@ -37,7 +37,7 @@ const PostList = (props) => {
 					})}
 				</>
 			)}
-			{postList.length === 0 && <SkeletonPost count={10} />}
+			{posts.length === 0 && <SkeletonPost count={10} />}
 		</ul>
 	);
 };

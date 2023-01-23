@@ -7,7 +7,7 @@ import { setFilterRating } from '../../model';
 
 const useSetRating = () => {
 	const dispatch = useDispatch();
-	const { value, onChenge } = useInputChange(100);
+	const { value, onChenge } = useInputChange();
 
 	useEffect(() => {
 		dispatch(setFilterRating({ rating: value }));

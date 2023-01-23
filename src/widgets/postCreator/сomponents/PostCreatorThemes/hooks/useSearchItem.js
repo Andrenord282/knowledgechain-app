@@ -6,7 +6,7 @@ const useSearchItem = (setValue, setItemList) => {
 
 	const addItem = (e) => {
 		const self = e.target;
-		if (self.closest('.btn_filter-add')) {
+		if (self.closest('.input-search-values__btn')) {
 			const theme = self.textContent;
 			dispatch(pushThemePost({ theme }));
 			setValue('');

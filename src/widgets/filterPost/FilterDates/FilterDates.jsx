@@ -18,7 +18,6 @@ const FilterDates = ({ classes }) => {
 	const [openToggle, setOpenToggle] = useToggle(false);
 	const { activeBtn, handlerSetRangeDates } = useSetRangeDates();
 	const { startDate, endDate } = useSetCustomDates();
-	console.log(dates);
 	const datesBtnClass = classNames({
 		'btn btn_default filter-dates__btn-list active': activeBtn,
 		'': activeBtn === null,

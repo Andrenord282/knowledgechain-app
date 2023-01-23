@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-	authors: [],
-	rating: null,
+	author: [],
+	ratingCounter: null,
 	dates: [],
-	themes: [],
+	themesPost: [],
 };
 
 const filterPostListSlice = createSlice({
@@ -13,31 +13,31 @@ const filterPostListSlice = createSlice({
 	reducers: {
 		addFilterAuthor: (state, action) => {
 			const { author } = action.payload;
-			state.authors = [...state.authors, author];
+			state.author = [...state.author, author];
 		},
 
 		deleteFilterAuthor: (state, action) => {
 			const { authorIndex } = action.payload;
-			state.authors = state.authors.filter((_, index) => {
+			state.author = state.author.filter((_, index) => {
 				return index !== authorIndex;
 			});
 		},
 
 		addFilterThemes: (state, action) => {
 			const { theme } = action.payload;
-			state.themes = [...state.themes, theme];
+			state.themesPost = [...state.themesPost, theme];
 		},
 
 		deleteFilterThemes: (state, action) => {
 			const { themeIndex } = action.payload;
-			state.themes = state.themes.filter((_, index) => {
+			state.themesPost = state.themesPost.filter((_, index) => {
 				return index !== themeIndex;
 			});
 		},
 
 		setFilterRating: (state, action) => {
 			const { rating } = action.payload;
-			state.rating = rating;
+			state.ratingCounter = rating;
 		},
 
 		addFilterDates: (state, action) => {

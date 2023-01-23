@@ -1,16 +1,16 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { postCreatorReducer } from 'widgets/postCreator/model';
-import postListSlice from './slices/postList/postListSlice';
+import { postListReducer } from 'widgets/postList/model';
 import { filterPostListReducer } from 'widgets/filterPost/model';
-import optionsPostListSlice from './slices/optionsPostListSlice/optionsPostListSlice';
+import { sortPostListReducer } from 'widgets/sortPost/model';
 import userSlice from 'store/slices/userSlice/userSlice';
 
 const rootReducer = combineReducers({
 	user: userSlice,
 	postCreator: postCreatorReducer,
-	postList: postListSlice,
+	postList: postListReducer,
 	filterPostList: filterPostListReducer,
-	optionsPostList: optionsPostListSlice,
+	sortPostList: sortPostListReducer,
 });
 
 const store = configureStore({

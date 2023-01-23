@@ -1,14 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectSort } from 'store/selectors';
-import {
-	setLoadedPost,
-	setSortName,
-	setSortOrder,
-	resetQuantitySkipPost,
-} from 'store/slices/optionsPostListSlice/optionsPostListSlice';
-import { resetPostList } from 'store/slices/postList/postListSlice';
+import { selectSort } from '../model';
+import { setSortName, setSortOrder } from '../model';
+import { setLoadedPost, resetQuantitySkipPost, resetPostList } from 'widgets/postList/model';
 
-const useSetSortPost = () => {
+const useQuerySortPosts = () => {
 	const dispatch = useDispatch();
 
 	const { name, order } = useSelector(selectSort);
@@ -37,4 +32,4 @@ const useSetSortPost = () => {
 	return { name, order, handlerSetSortName, handlerSetSortOrder };
 };
 
-export default useSetSortPost;
+export default useQuerySortPosts;
