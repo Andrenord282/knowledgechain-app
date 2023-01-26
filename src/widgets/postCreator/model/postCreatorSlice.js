@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
 	author: null,
-	userId: null,
+	idUser: null,
 	postId: null,
 	postName: null,
 	schemaPost: [
@@ -21,9 +21,9 @@ const postCreatorSlice = createSlice({
 	initialState,
 	reducers: {
 		setParamsPost: (state, action) => {
-			const { userName, userId, postId, postName } = action.payload;
+			const { userName, idUser, postId, postName } = action.payload;
 			state.author = userName;
-			state.userId = userId;
+			state.idUser = idUser;
 			state.postId = postId;
 			state.postName = postName;
 		},

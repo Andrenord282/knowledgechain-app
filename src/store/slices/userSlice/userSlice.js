@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
 	isLoadedUser: false,
 	isAuthUser: false,
-	userId: null,
+	idUser: null,
 	userName: null,
 	email: null,
 	userImgUrl: null,
@@ -20,17 +20,21 @@ const userSlice = createSlice({
 			state.isAuthUser = !state.isAuthUser;
 		},
 		setUser: (state, action) => {
-			const { userId, userName, email, userImgUrl } = action.payload;
-			state.userId = userId;
+			const { idUser, userName, email, userImgUrl } = action.payload;
+			state.idUser = idUser;
 			state.userName = userName;
 			state.email = email;
 			state.userImgUrl = userImgUrl;
 		},
+		resetUser: (state) => {
+			state.idUser = null;
+			state.userName = null;
+			state.email = null;
+			state.userImgUrl = null;
+		},
 	},
 });
 
-const userSelector = (state) => state.user;
 
-export const { toggleLoadedUser, toggleAuthUser, setUser } = userSlice.actions;
-export { userSelector };
+export const { toggleLoadedUser, toggleAuthUser, setUser, resetUser } = userSlice.actions;
 export default userSlice.reducer;

@@ -12,7 +12,7 @@ const PostList = (props) => {
 	const { classes } = props;
 	const inheritClasses = useClasses(classes);
 	const [setNode] = useUpdatePostList();
-	const { postListIsOver, posts } = useGetPostList();
+	const { postListIsOver, posts, isLoadedPost } = useGetPostList();
 	return (
 		<ul className={inheritClasses + ' post-list'}>
 			{posts.length > 0 && (
@@ -37,7 +37,7 @@ const PostList = (props) => {
 					})}
 				</>
 			)}
-			{posts.length === 0 && <SkeletonPost count={10} />}
+			{!isLoadedPost && <SkeletonPost count={10} />}
 		</ul>
 	);
 };

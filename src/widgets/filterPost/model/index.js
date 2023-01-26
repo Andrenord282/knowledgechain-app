@@ -9,5 +9,6 @@ export {
 	setFilterRating,
 	addFilterDates,
 	addCustomFilterDates,
+	resertAllFilters,
 } from './filterPostListSlice';
-export { selectFilters, selectFilterAuthors, selectFilterThemes, selectDates } from './selectors';
+export { selectFilters, selectFilterAuthors, selectFilterThemes, selectDates, selectFilterRatingCounter } from './selectors';

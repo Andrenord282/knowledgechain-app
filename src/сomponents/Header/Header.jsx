@@ -1,6 +1,6 @@
 import useLogOut from 'hooks/useLogOut';
 import { useSelector } from 'react-redux';
-import { selectUser } from 'store/selectors';
+import { selectUser } from 'store/slices/userSlice';
 
 import HeaderLogo from './HeaderLogo';
 import AuthSkeleton from './AuthSkeleton';

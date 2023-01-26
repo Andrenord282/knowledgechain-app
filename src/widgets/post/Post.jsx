@@ -30,7 +30,7 @@ const Post = ({
 			data-post-name={postName}
 			data-id-db={_id}>
 			<PostHeader classes="post__header" author={author} date={createdAt} />
-			<PostBar classes="post__bar" ratingCounter={ratingCounter} />
+			<PostBar classes="post__bar" ratingCounter={ratingCounter} indexPost={_id} />
 			<PostContent classes="post__content" schemaPost={schemaPost} />
 			<PostThemes classes="post__themes" themesPost={themesPost} />
 			<PostFooter

@@ -47,8 +47,13 @@ const filterPostListSlice = createSlice({
 
 		addCustomFilterDates: (state, action) => {
 			const { startDate, endDate } = action.payload;
-			console.log(startDate, endDate);
 			state.dates = [startDate, endDate];
+		},
+		resertAllFilters: (state) => {
+			state.author = [];
+			state.ratingCounter = null;
+			state.dates = [];
+			state.themesPost = [];
 		},
 	},
 });
@@ -61,5 +66,6 @@ export const {
 	setFilterRating,
 	addFilterDates,
 	addCustomFilterDates,
+	resertAllFilters,
 } = filterPostListSlice.actions;
 export default filterPostListSlice.reducer;

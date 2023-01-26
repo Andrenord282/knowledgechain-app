@@ -3,10 +3,12 @@ import { postCreatorReducer } from 'widgets/postCreator/model';
 import { postListReducer } from 'widgets/postList/model';
 import { filterPostListReducer } from 'widgets/filterPost/model';
 import { sortPostListReducer } from 'widgets/sortPost/model';
-import userSlice from 'store/slices/userSlice/userSlice';
+import { userReducer } from './slices/userSlice';
+import { userActivityPostsReducer } from 'store/slices/userActivityPostsSlice';
 
 const rootReducer = combineReducers({
-	user: userSlice,
+	user: userReducer,
+	userActivityPosts: userActivityPostsReducer,
 	postCreator: postCreatorReducer,
 	postList: postListReducer,
 	filterPostList: filterPostListReducer,

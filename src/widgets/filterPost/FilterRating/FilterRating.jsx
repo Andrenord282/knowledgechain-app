@@ -11,7 +11,7 @@ import './FilterRating.scss';
 const FilterRating = ({ classes }) => {
 	const inheritClasses = useClasses(classes);
 	const [openToggle, setOpenToggle] = useToggle(false);
-	const { value, onChenge } = useSetRating();
+	const { valueRatingStore, valueRatingState, handlerChaneRating } = useSetRating();
 
 	const btnOpenClass = classNames({
 		active: openToggle,
@@ -21,10 +21,7 @@ const FilterRating = ({ classes }) => {
 	return (
 		<div className={inheritClasses + 'filter-rating'}>
 			<Button
-				classes={
-					btnOpenClass +
-					' filter-rating__btn-open btn btn_filter-open filter-rating__toggle'
-				}
+				classes={btnOpenClass + 'btn filter-rating__toggle'}
 				handleClick={setOpenToggle}>
 				<span className="btn__wrapper-icon">
 					<Icon.Plus className="btn__icon" />
@@ -32,19 +29,20 @@ const FilterRating = ({ classes }) => {
 				<span className="btn__text">Рейтинг:</span>
 			</Button>
 			{openToggle && (
-				<div className="filter-author__query filter-rating__nav">
+				<div className="filter-rating__nav">
 					<InputRange
 						id="filter-rating"
 						name="filter-rating"
 						min={-200}
 						max={8000}
-						value={value}
+						value={valueRatingState}
 						step={100}
-						handlerChange={onChenge}
+						handlerChange={handlerChaneRating}
 					/>
-					<div className="filter-rating__value">от: {value}</div>
+					<span>рейтинг от -200 до 8000</span>
 				</div>
 			)}
+			{valueRatingStore && <div className="filter-rating__value">от: {valueRatingStore}</div>}
 		</div>
 	);
 };

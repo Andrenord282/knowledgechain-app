@@ -1,5 +1,6 @@
 import useClasses from 'hooks/useClasses';
 import useQueryFilterPosts from './hooks/useQueryFilterPosts';
+import useResetFilterPosts from './hooks/useResetFilterPosts';
 
 import FilterAuthor from '../FilterAuthor';
 import FilterThemes from '../FilterThemes';
@@ -12,6 +13,7 @@ import './FilterList.scss';
 const FilterList = ({ classes }) => {
 	const inheritClasses = useClasses(classes);
 	const handlerQueryFilterPosts = useQueryFilterPosts();
+	const handlerResetFilterPosts = useResetFilterPosts();
 
 	return (
 		<>
@@ -29,11 +31,18 @@ const FilterList = ({ classes }) => {
 					<FilterDates />
 				</li>
 			</ul>
-			<Button
-				classes="filter-list__search-btn btn btn_default"
-				handleClick={handlerQueryFilterPosts}>
-				<span className="btn__text">Поиск</span>
-			</Button>
+			<div className="filter-list__nav">
+				<Button
+					classes="filter-list__search-btn btn btn_default"
+					handleClick={handlerQueryFilterPosts}>
+					<span className="btn__text">Поиск</span>
+				</Button>
+				<Button
+					classes="filter-list__search-btn btn btn_default"
+					handleClick={handlerResetFilterPosts}>
+					<span className="btn__text">Сбросить</span>
+				</Button>
+			</div>
 		</>
 	);
 };

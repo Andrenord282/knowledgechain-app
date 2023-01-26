@@ -1,6 +1,6 @@
 import useToggle from './useToggle';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from 'store/selectors';
+import { useSelector } from 'react-redux';
+import { selectUser } from 'store/slices/userSlice';
 
 const useCheckAuthUser = () => {
 	const { isAuthUser } = useSelector(selectUser);

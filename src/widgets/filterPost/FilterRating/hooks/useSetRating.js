@@ -2,20 +2,27 @@ import useInputChange from 'hooks/useInputChange';
 
 import { useEffect } from 'react';
 
-import { useDispatch } from 'react-redux';
-import { setFilterRating } from '../../model';
+import { useDispatch, useSelector } from 'react-redux';
+import { setFilterRating, selectFilterRatingCounter } from '../../model';
 
 const useSetRating = () => {
 	const dispatch = useDispatch();
-	const { value, onChenge } = useInputChange();
+	const valueRatingStore = useSelector(selectFilterRatingCounter);
+	const { valueRatingState, setValue } = useInputChange();
 
 	useEffect(() => {
-		dispatch(setFilterRating({ rating: value }));
-	}, [value]);
+		dispatch(setFilterRating({ rating: valueRatingStore }));
+	}, [valueRatingStore]);
+
+	const handlerChaneRating = (e) => {
+		dispatch(setFilterRating({ rating: e.target.value }));
+		setValue(valueRatingStore);
+	};
 
 	return {
-		value,
-		onChenge,
+		valueRatingStore,
+		valueRatingState,
+		handlerChaneRating,
 	};
 };
 

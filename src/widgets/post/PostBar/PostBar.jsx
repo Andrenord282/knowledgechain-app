@@ -1,15 +1,28 @@
 import useClasses from 'hooks/useClasses';
+import useMarkPost from './hooks/useMarkPost';
 
 import Button from 'сomponents/Button';
 import * as Icon from 'сomponents/_global/Icon';
+import classNames from 'classnames';
 import './PostBar.scss';
 
-const PostBar = ({ classes, ratingCounter }) => {
+const PostBar = (props) => {
+	const { classes, ratingCounter, indexPost } = props;
 	const inheritClasses = useClasses(classes);
+	const { handlerMarkPost, markedPosts } = useMarkPost();
+	console.log(markedPosts);
+
+	const btnMarkClass = classNames({
+		active: markedPosts[indexPost],
+		'': markedPosts[indexPost] === undefined,
+	});
 
 	return (
 		<div className={inheritClasses + ' post-bar'}>
-			<Button classes="post-bar__marker btn_marker-post">
+			<Button
+				classes={'post-bar__marker btn_marker-post ' + btnMarkClass}
+				data-index-post={indexPost}
+				handleClick={handlerMarkPost}>
 				<Icon.Marker className="btn__icon" />
 			</Button>
 			<Button classes="post-bar__rating-up btn_rating-up-post">
