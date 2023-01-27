@@ -6,5 +6,7 @@ export {
 	resetUserActivityPosts,
 	removeMarkPost,
 	addMarkPost,
+	addRatingPost,
+	removeRatingPost,
 } from './userActivityPostsSlice';
 export { selectUserActivityPosts } from './selectors';

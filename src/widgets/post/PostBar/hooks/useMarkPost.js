@@ -1,16 +1,9 @@
 import userActivityPostsService from 'services/userActivityPostsService';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-	selectUserActivityPosts,
-	addMarkPost,
-	removeMarkPost,
-} from 'store/slices/userActivityPostsSlice';
-import { selectUser } from 'store/slices/userSlice';
+import { useDispatch } from 'react-redux';
+import { addMarkPost, removeMarkPost } from 'store/slices/userActivityPostsSlice';
 
-const useMarkPost = () => {
+const useMarkPost = (idUser) => {
 	const dispatch = useDispatch();
-	const { markedPosts } = useSelector(selectUserActivityPosts);
-	const { idUser } = useSelector(selectUser);
 	const handlerMarkPost = async (e) => {
 		const self = e.target;
 		if (self.closest('.post-bar__marker')) {
@@ -21,7 +14,7 @@ const useMarkPost = () => {
 		}
 	};
 
-	return { handlerMarkPost, markedPosts };
+	return { handlerMarkPost };
 };
 
 export default useMarkPost;

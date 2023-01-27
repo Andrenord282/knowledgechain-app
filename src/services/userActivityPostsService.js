@@ -14,7 +14,15 @@ class UserActivityPostsService {
 
 	markPost = async (data) => {
 		try {
-			const response = await apiServer.post('/mark', data);
+			const response = await apiServer.post('/mark-post', data);
+			return response;
+		} catch (error) {
+			return error.response;
+		}
+	};
+	ratingPost = async (data) => {
+		try {
+			const response = await apiServer.post('/rating-post', data);
 			return response;
 		} catch (error) {
 			return error.response;
