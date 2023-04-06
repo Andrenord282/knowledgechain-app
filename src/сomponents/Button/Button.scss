@@ -1,0 +1,11 @@
+.btn {
+	cursor: pointer;
+	font-size: 14px;
+	color: var(--first-color-text-btn);
+	border: none;
+	background-color: transparent;
+
+	@media (min-width: 768px) {
+		font-size: 18px;
+	}
+}

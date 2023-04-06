@@ -1,0 +1,75 @@
+.auth-bar-known {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	z-index: 150;
+}
+
+.auth-bar-known__user-item {
+	display: none;
+
+	@media (min-width: 768px) {
+		display: block;
+		flex: 0 0 30px;
+		width: 30px;
+		height: 30px;
+		margin-right: 10px;
+		border-radius: 50px;
+		border: 2px solid var(--color-orange);
+		overflow: hidden;
+	}
+}
+.auth-bar-known__user-img {
+	max-width: 100%;
+}
+
+.auth-bar-known__btn {
+	max-width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+
+	@media (min-width: 768px) {
+		width: auto;
+	}
+}
+
+.auth-bar-known__btn:focus {
+	outline: none;
+}
+
+.auth-bar-known__btn:focus .auth-bar-known__btn-text {
+	color: var(--first-color-text-hover);
+}
+
+.auth-bar-known__btn-text {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin-right: 4px;
+}
+
+.auth-bar-known__btn-text:active {
+	color: var(--first-color-text-hover);
+}
+
+.auth-bar-known__btn-text.active {
+	color: var(--first-color-text-hover);
+}
+
+.auth-bar-known__btn-text:hover {
+	@media (min-width: 1000px) {
+		color: var(--first-color-text-hover);
+	}
+}
+
+.auth-bar-known__btn-icon {
+	width: 15px;
+	height: 8px;
+	fill: var(--color-alabaster);
+	transition: transform 0.1s linear;
+}
+
+.auth-bar-known__list {
+}
