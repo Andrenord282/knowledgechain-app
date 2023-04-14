@@ -1,10 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-	isLoadedUser: true,
-	isAuthUser: false,
+	isLoadedUser: false,
 	idUser: null,
-	userName: 'Andre Chuvashevskii',
+	userName: '',
 	email: null,
 	userImgUrl: null,
 };
@@ -13,12 +12,6 @@ const userSlice = createSlice({
 	name: 'user',
 	initialState,
 	reducers: {
-		toggleLoadedUser: (state) => {
-			state.isLoadedUser = !state.isLoadedUser;
-		},
-		toggleAuthUser: (state) => {
-			state.isAuthUser = !state.isAuthUser;
-		},
 		setUser: (state, action) => {
 			const { idUser, userName, email, userImgUrl } = action.payload;
 			state.idUser = idUser;
@@ -26,6 +19,12 @@ const userSlice = createSlice({
 			state.email = email;
 			state.userImgUrl = userImgUrl;
 		},
+
+		toggleLodaedUser: (state, action) => {
+			const { isLoaded } = action.payload;
+			state.isLoadedUser = isLoaded;
+		},
+
 		resetUser: (state) => {
 			state.idUser = null;
 			state.userName = null;
@@ -35,5 +34,6 @@ const userSlice = createSlice({
 	},
 });
 
-export const { toggleLoadedUser, toggleAuthUser, setUser, resetUser } = userSlice.actions;
-export default userSlice.reducer;
+export const { setUser, toggleLodaedUser, resetUser } = userSlice.actions;
+const userReducer = userSlice.reducer;
+export { userReducer };

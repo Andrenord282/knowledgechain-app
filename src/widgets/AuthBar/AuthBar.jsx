@@ -1,9 +1,7 @@
 //-----hooks-----//
 import useClasses from 'hooks/useClasses';
-
-//-----redux-----//
-import { useSelector } from 'react-redux';
-import { selectUser } from 'store/slices/userSlice';
+import useUserSlice from 'hooks/slices/useUserSlice';
+import useAuthSlice from 'hooks/slices/useAuthSlice';
 
 //-----сomponents-----//
 import AuthBarSkeleton from './сomponents/AuthBarSkeleton';
@@ -13,15 +11,17 @@ import AuthBarKnown from './сomponents/AuthBarKnown';
 //-----style-----//
 import './AuthBar.scss';
 
-const AuthBar = ({ classes }) => {
+const AuthBar = (props) => {
+	const { classes } = props;
 	const inheritClasses = useClasses(classes);
-	const { isLoadedUser, isAuthUser } = useSelector(selectUser);
+	const userModel = useUserSlice();
+	const authModel = useAuthSlice();
 
 	return (
 		<div className={inheritClasses + ' auth-bar'}>
-			{!isLoadedUser && <AuthBarSkeleton classes={'auth-bar__item'} />}
-			{isLoadedUser && !isAuthUser && <AuthBarUnknown classes={'auth-bar__item'} />}
-			{isLoadedUser && isAuthUser && <AuthBarKnown classes={'auth-bar__item'} />}
+			{!authModel.statusAuthUser && !authModel.isLoadedAuth && <AuthBarSkeleton classes={'auth-bar__item'} />}
+			{!authModel.statusAuthUser && authModel.isLoadedAuth && <AuthBarUnknown classes={'auth-bar__item'} />}
+			{authModel.statusAuthUser && <AuthBarKnown classes={'auth-bar__item'} userModel={userModel} />}
 		</div>
 	);
 };

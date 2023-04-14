@@ -1,5 +1,8 @@
-import userReducer from './userSlice';
-import useUserSlice from './useUserSlice';
+//-----slice-----//
+export { userReducer } from './userSlice';
 
-export { userReducer, useUserSlice };
+//-----selectors-----//
 export { selectUser } from './selectors';
+
+//-----actions-----//
+export { setUser, toggleLodaedUser, resetUser } from './userSlice';

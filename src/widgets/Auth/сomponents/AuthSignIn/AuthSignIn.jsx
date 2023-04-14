@@ -1,13 +1,8 @@
-//-----modules-----//
-
-//-----react-----//
-
 //-----hooks-----//
 import { useForm } from 'react-hook-form';
 import useClasses from 'hooks/useClasses';
 import useAuthSignIn from 'widgets/Auth/hooks/useAuthSignIn';
-
-//-----redux-----//
+import useNavigateLocation from 'hooks/useNavigateLocation';
 
 //-----widgets-----//
 
@@ -19,38 +14,42 @@ import * as Icon from 'сomponents/Icon';
 import './AuthSignIn.scss';
 
 const AuthSignIn = (props) => {
-	const { classes, authState, setAuthAlert } = props;
+	const { classes, authModel, setAuthAlert } = props;
 	const inheritClasses = useClasses(classes);
+	const { setLocationPage } = useNavigateLocation();
 
 	const {
 		register,
 		handleSubmit,
 		setError,
-		formState: { isValid },
+		formState: { isValid, errors },
 	} = useForm();
 
 	const signIn = useAuthSignIn();
 
-	const onSubmit = async (data) => {
-		const response = await signIn(data, { authState, setAuthAlert });
+	const handlerOnSubmit = async (data) => {
+		const response = await signIn(data, { authModel, setAuthAlert });
 
 		if (response?.errorName) {
 			response.arrErrors.map((error) => {
-				setError(error.field, {
-					message: error.message,
-				});
+				if (error.field) {
+					setError(error.field, {
+						message: error.message,
+					});
+				}
 			});
+			return;
 		}
 	};
 
 	return (
 		<form
-			className={inheritClasses + ' auth-sign-in ' + authState.toggleVisibleAuthForm}
-			onSubmit={handleSubmit(onSubmit)}
+			className={inheritClasses + ' auth-sign-in ' + authModel.toggleVisibleAuthForm}
+			onSubmit={handleSubmit(handlerOnSubmit)}
 			onClick={(e) => {
 				e.stopPropagation();
 			}}>
-			<Button classes="auth-sign-in__btn-close" handleClick={authState.closeAuth}>
+			<Button classes="auth-sign-in__btn-close" handleClick={authModel.closeAuthModal}>
 				<Icon.СrossClose className="auth-sign-in__btn-icon" />
 			</Button>
 			<h4 className="auth-sign-in__title">Авторизация</h4>
@@ -60,15 +59,16 @@ const AuthSignIn = (props) => {
 						Введите Ваш логин
 					</label>
 					<input
-						id="login"
-						name="login"
+						id="userName"
+						name="userName"
 						type="text"
 						placeholder="Введите логин"
-						className="auth-sign-in__input"
-						{...register('login', {
+						className={errors.userName ? 'auth-sign-in__input error' : 'auth-sign-in__input'}
+						{...register('userName', {
 							required: true,
 						})}
 					/>
+					{errors.userName && <span className="auth-sign-in__input-alert">{errors.userName.message}</span>}
 				</div>
 				<div className="auth-sign-in__input-content">
 					<label htmlFor="password" className="auth-sign-in__label">
@@ -78,11 +78,12 @@ const AuthSignIn = (props) => {
 						id="password"
 						type="password"
 						placeholder="Введите пароль"
-						className="auth-sign-in__input"
+						className={errors.password ? 'auth-sign-in__input error' : 'auth-sign-in__input'}
 						{...register('password', {
 							required: true,
 						})}
 					/>
+					{errors.password && <span className="auth-sign-in__input-alert">{errors.password.message}</span>}
 				</div>
 			</div>
 			<div className="auth-sign-in__nav-btns">
@@ -91,7 +92,7 @@ const AuthSignIn = (props) => {
 					type="submit">
 					<span className="auth-sign-in__btn-text">Войти</span>
 				</button>
-				<Button classes="auth-sign-in__btn-auth" handleClick={authState.setAuthFormState}>
+				<Button classes="auth-sign-in__btn-auth" handleClick={authModel.setAuthFormState}>
 					<span className="auth-sign-in__btn-text">Создать учетную запись</span>
 				</Button>
 			</div>

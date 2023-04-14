@@ -1,11 +1,30 @@
 import axios from 'axios';
 
-// http://localhost:4000
-
-const DEV_URL = 'https://knowledgechain-server.herokuapp.com';
+const DEV_URL = 'http://localhost:4000';
 
 const apiServer = axios.create({
 	baseURL: process.env.REACT_APP_API_SEREVER || DEV_URL,
 });
+
+apiServer.interceptors.response.use(
+	(config) => {
+		return config;
+	},
+	async (error) => {
+		const originalRequest = error.config;
+		if (error.response.status == 401 && error.config && !error.config.retry) {
+			originalRequest.retry = true;
+			try {
+				const response = await apiServer.get('/refresh', { withCredentials: true });
+
+				localStorage.setItem('accessToken', response.data.accessToken);
+				return apiServer.request(originalRequest);
+			} catch (e) {
+				console.log('НЕ АВТОРИЗОВАН');
+			}
+		}
+		throw error;
+	},
+);
 
 export default apiServer;

@@ -1,0 +1,21 @@
+.main {
+}
+
+.main__container {
+	max-width: 100%;
+	padding: 0 10px;
+	margin: 0 auto;
+
+	@media (min-width: 768px) {
+		max-width: 900px;
+	}
+}
+
+.main__content {
+}
+
+.main__nav {
+}
+
+.main__list {
+}

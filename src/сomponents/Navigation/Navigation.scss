@@ -1,0 +1,38 @@
+.nav {
+	background-color: var(--first-color-bg-components);
+}
+
+.nav__container {
+	padding: 0 10px;
+}
+
+.nav__content {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	padding: 10px 0;
+}
+
+.nav__link {
+	padding: 4px;
+	border: 1px solid var(--first-color-br-btn);
+	border-radius: 10px;
+	background-color: transparent;
+	transition: background-color 0.1s linear;
+    margin-left: auto;
+}
+.nav__link-icon {
+	fill: var(--third-color-text-btn);
+	width: 20px;
+	height: 20px;
+	transition: fill 0.1s linear;
+}
+
+.nav__link:hover {
+	background-color: var(--third-color-text-btn);
+}
+
+.nav__link:hover .nav__link-icon {
+	fill: var(--second-color-text-btn);
+}

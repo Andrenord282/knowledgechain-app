@@ -1,13 +1,5 @@
-//-----modules-----//
-
-//-----react-----//
-
 //-----hooks-----//
 import useClasses from 'hooks/useClasses';
-
-//-----redux-----//
-
-//-----widgets-----//
 
 //-----сomponents-----//
 import AlertIcon from './сomponents/AlertIcon';

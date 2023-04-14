@@ -1,0 +1,19 @@
+.new-post {
+}
+
+.new-post__container {
+	max-width: 100%;
+	padding: 0 10px;
+	margin: 0 auto;
+
+	@media (min-width: 768px) {
+		max-width: 900px;
+	}
+}
+
+.new-post__content {
+}
+
+.new-post__nav {
+	margin-bottom: 30px;
+}

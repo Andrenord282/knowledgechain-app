@@ -2,12 +2,18 @@
 import authService from 'services/axios/api/authService';
 import errorService from 'shared/errorService/errorService';
 
+//-----hooks-----//
+import useUserSlice from 'hooks/slices/useUserSlice';
+import useNavigateLocation from 'hooks/useNavigateLocation';
+
 const useAuthSignIn = () => {
-	return async (data, { authState, setAuthAlert }) => {
+	const userModel = useUserSlice();
+	const { setLocationPage } = useNavigateLocation();
+
+	return async (data, { authModel, setAuthAlert }) => {
 		try {
-            console.log(data);
-			authState.toggleLockAuthModal(true);
-			authState.setVisibleAuthForm('');
+			authModel.toggleLockAuthModal(true);
+			authModel.setVisibleAuthForm('');
 			setAuthAlert.setToggleAlert(true);
 			setAuthAlert.setFields.iconAlert('loading');
 			setAuthAlert.setFields.titleAlert('Авторизация...');
@@ -20,20 +26,28 @@ const useAuthSignIn = () => {
 					setAuthAlert.setToggleAlert(false);
 					setAuthAlert.setFields.iconAlert(null);
 					setAuthAlert.setFields.titleAlert(null);
-					authState.toggleLockAuthModal(false);
-					authState.closeAuth();
-					authState.setVisibleAuthForm('visble');
+					authModel.toggleLockAuthModal(false);
+					authModel.closeAuthModal();
+					authModel.setVisibleAuthForm('visble');
+					authModel.setStatusAuthUser(true);
+					authModel.setToggleIsLoadedAuth(true);
+					authModel.setToggleAuthModal(false);
+					if (authModel.requestAuth) {
+						authModel.setToggleRequestAuth(false);
+						setLocationPage();
+					}
+					userModel.writeSetUser(response.data);
+					userModel.setLoadedUser(true);
 				}, 1000);
-
-				return response.data;
-			} else {
-				setAuthAlert.setToggleAlert(false);
-				setAuthAlert.setFields.iconAlert(null);
-				setAuthAlert.setFields.titleAlert(null);
-				authState.toggleLockAuthModal(false);
-				authState.setVisibleAuthForm('visble');
-				throw new errorService(response.data.errorName, response.data.message, response.data.arrErrors);
+				return 'success';
 			}
+
+			setAuthAlert.setToggleAlert(false);
+			setAuthAlert.setFields.iconAlert(null);
+			setAuthAlert.setFields.titleAlert(null);
+			authModel.toggleLockAuthModal(false);
+			authModel.setVisibleAuthForm('visble');
+			throw new errorService(response.data.errorName, response.data.message, response.data.arrErrors);
 		} catch (error) {
 			return {
 				errorName: error.name,

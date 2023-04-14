@@ -1,0 +1,45 @@
+.editor-new-post-title {
+	position: relative;
+}
+
+.editor-new-post-title__input {
+	width: 100%;
+	font-size: 20px;
+	padding: 25px 15px;
+	color: var(--second-color-title);
+	background-color: var(--second-color-bg-components);
+	margin-bottom: 1px;
+
+	@media (min-width: 768px) {
+		font-size: 24px;
+	}
+}
+
+.editor-new-post-title__btn-reset {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 6%;
+	right: 5px;
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	padding: 3px;
+	background-color: var(--third-color-text-btn);
+
+	@media (min-width: 768px) {
+		width: 24px;
+		height: 24px;
+	}
+}
+
+.editor-new-post-title__icon-btn-reset {
+	width: 8px;
+	height: 8px;
+
+	@media (min-width: 768px) {
+		width: 14px;
+		height: 14px;
+	}
+}

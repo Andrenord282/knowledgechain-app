@@ -1,0 +1,61 @@
+.editor-new-post-tools {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.editor-new-post-tools__list-tools {
+	display: flex;
+	align-items: center;
+}
+
+.editor-new-post-tools__btn-tools,
+.input-file-custom__label {
+	width: 40px;
+	height: 40px;
+	padding: 5px;
+	background-color: var(--first-color-bg-btn);
+	border-radius: 10px;
+	transition: background-color 0.3s linear, color 0.3s linear;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
+.editor-new-post-tools__btn-tools:active {
+	background-color: var(--first-color-bg-btn-hover);
+}
+
+.editor-new-post-tools__btn-tools:hover {
+	@media (min-width: 1000px) {
+		background-color: var(--first-color-bg-btn-hover);
+	}
+}
+
+.editor-new-post-tools__btn-tools:not(:last-of-type) {
+	margin-right: 30px;
+}
+
+.editor-new-post-tools__btn-tools .btn-icon,
+.input-file-custom__label .btn-icon {
+	width: 100%;
+	height: 100%;
+	fill: var(--second-color-text-btn);
+	transition: fill 0.1s linear;
+}
+
+.editor-new-post-tools__btn-tools:active .btn-icon,
+.input-file-custom__label .btn-icon {
+	fill: var(--first-color-text-btn);
+}
+
+.editor-new-post-tools__btn-tools:hover .btn-icon,
+.input-file-custom__label .btn-icon {
+	@media (min-width: 1000px) {
+		fill: var(--first-color-text-btn);
+	}
+}
+
+.editor-new-post-tools__btn-tools-input {
+	display: none;
+}

@@ -1,5 +1,7 @@
 //-----hooks-----//
-import useAuthState from './hooks/useAuthState';
+import { useEffect } from 'react';
+import useAuthSlice from 'hooks/slices/useAuthSlice';
+import useAuthRefresh from './hooks/useAuthRefresh';
 import useAuthAlertState from './hooks/useAuthAlertState';
 
 //-----widgets-----//
@@ -11,26 +13,38 @@ import AuthSignIn from './сomponents/AuthSignIn';
 
 //-----style-----//
 import './Auth.scss';
+import Layout from 'layouts/Layout';
 
-const Auth = (props) => {
-	const { toggleAuth } = props;
-	const authState = useAuthState(props);
+const Auth = () => {
+	const authModel = useAuthSlice();
 	const authAlertState = useAuthAlertState();
+	const authRefresh = useAuthRefresh();
 
-	if (!toggleAuth) return;
+	useEffect(() => {
+		authRefresh();
+	}, []);
 
 	return (
-		<div className="auth" onClick={authState.closeAuth}>
-			{!authState.toggleVisibleAuthForm && authAlertState.toggleAlert && (
-				<Alert classes="auth__item" alertFields={authAlertState.alertFields} />
+		<>
+			{authModel.isLoadedAuth && <Layout />}
+			{authModel.visibleAuthModal && (
+				<div
+					className="auth"
+					onClick={() => {
+						authModel.setToggleAuthModal(false);
+					}}>
+					{!authModel.toggleVisibleAuthForm && authAlertState.toggleAlert && (
+						<Alert classes="auth__item" alertFields={authAlertState.alertFields} />
+					)}
+					{authModel.typeAuthForm === 'signUp' && (
+						<AuthSignUp authModel={authModel} setAuthAlert={authAlertState} classes="auth__item" />
+					)}
+					{authModel.typeAuthForm === 'signIn' && (
+						<AuthSignIn authModel={authModel} setAuthAlert={authAlertState} classes="auth__item" />
+					)}
+				</div>
 			)}
-			{authState.typeAuthForm === 'signUp' && (
-				<AuthSignUp authState={authState} setAuthAlert={authAlertState} classes="auth__item" />
-			)}
-			{authState.typeAuthForm === 'signIn' && (
-				<AuthSignIn authState={authState} setAuthAlert={authAlertState} classes="auth__item" />
-			)}
-		</div>
+		</>
 	);
 };
 

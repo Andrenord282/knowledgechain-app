@@ -1,18 +1,25 @@
+//-----router-----//
 import { Routes, Route } from 'react-router-dom';
 
-import DefaultLayout from 'layouts/DefaultLayout';
-import Main from 'pages/Main';
+//-----pages-----//
+import Layout from 'layouts/Layout';
+import PageMain from 'pages/PageMain';
+import PageNewPost from 'pages/PageNewPost';
+
+//-----widgets-----//
+import Auth from 'widgets/Auth';
+import AuthRequired from 'widgets/AuthRequired';
 
 function App() {
-
 	return (
-		<div className="App">
-			<Routes>
-				<Route path="/" element={<DefaultLayout />}>
-					<Route index element={<Main />} />
+		<Routes>
+			<Route path="/" element={<Auth />}>
+				<Route path="/" element={<PageMain />} />
+				<Route element={<AuthRequired />}>
+					<Route path="/new-post" element={<PageNewPost />} />
 				</Route>
-			</Routes>
-		</div>
+			</Route>
+		</Routes>
 	);
 }
 

@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 //-----hooks-----//
 import useClasses from 'hooks/useClasses';
+import useAuthSignOut from 'widgets/Auth/hooks/useAuthSignOut';
 
 //-----сomponents-----//
 import LinkCustom from 'сomponents/LinkCustom/LinkCustom';
@@ -12,8 +13,10 @@ import Button from 'сomponents/Button';
 import './AuthBarKnownList.scss';
 
 const AuthBarKnownList = (props) => {
-	const { classes, toggleList, handlerLogOut } = props;
+	const { classes, toggleList } = props;
 	const inheritClasses = useClasses(classes);
+
+	const userSignOut = useAuthSignOut();
 
 	const classesStateList = classNames({
 		active: toggleList,
@@ -25,7 +28,7 @@ const AuthBarKnownList = (props) => {
 			<LinkCustom classes="auth-bar-known-list__btn" link={'/profile'}>
 				<span className="auth-bar-known-list__btn-text">Профиль</span>
 			</LinkCustom>
-			<Button classes="auth-bar-known-list__btn" handleClick={handlerLogOut}>
+			<Button classes="auth-bar-known-list__btn" handleClick={userSignOut}>
 				<span className="auth-bar-known-list__btn-text">Выйти</span>
 			</Button>
 		</div>

@@ -3,9 +3,6 @@ import { useForm } from 'react-hook-form';
 import useClasses from 'hooks/useClasses';
 import useAuthSignUp from 'widgets/Auth/hooks/useAuthSignUp';
 
-//-----redux-----//
-import { useUserSlice } from 'store/slices/userSlice';
-
 //-----сomponents-----//
 import Button from 'сomponents/Button';
 import * as Icon from 'сomponents/Icon';
@@ -14,7 +11,7 @@ import * as Icon from 'сomponents/Icon';
 import './AuthSignUp.scss';
 
 const AuthSignUp = (props) => {
-	const { classes, authState, setAuthAlert } = props;
+	const { classes, authModel, setAuthAlert } = props;
 	const inheritClasses = useClasses(classes);
 	const {
 		register,
@@ -25,16 +22,9 @@ const AuthSignUp = (props) => {
 	} = useForm({ mode: 'onChange' });
 
 	const signUp = useAuthSignUp();
-	const userSlice = useUserSlice();
 
-	const onSubmit = async (data) => {
-		const response = await signUp(data, { authState, setAuthAlert });
-
-		if (response?.idUser) {
-			userSlice.setToggleAuthUser();
-			userSlice.writeSetUser(response);
-			return;
-		}
+	const handlerOnSubmit = async (data) => {
+		const response = await signUp(data, { authModel, setAuthAlert });
 
 		if (response?.errorName) {
 			response.arrErrors.map((error) => {
@@ -50,12 +40,12 @@ const AuthSignUp = (props) => {
 
 	return (
 		<form
-			className={inheritClasses + ' auth-sign-up ' + authState.toggleVisibleAuthForm}
-			onSubmit={handleSubmit(onSubmit)}
+			className={inheritClasses + ' auth-sign-up ' + authModel.toggleVisibleAuthForm}
+			onSubmit={handleSubmit(handlerOnSubmit)}
 			onClick={(e) => {
 				e.stopPropagation();
 			}}>
-			<Button classes="auth-sign-up__btn-close" handleClick={authState.closeAuth}>
+			<Button classes="auth-sign-up__btn-close" handleClick={authModel.closeAuthModal}>
 				<Icon.СrossClose className="auth-sign-up__btn-icon" />
 			</Button>
 			<h4 className="auth-sign-up__title">Регистрация</h4>
@@ -92,10 +82,10 @@ const AuthSignUp = (props) => {
 						className={errors.userName ? 'auth-sign-up__input error' : 'auth-sign-up__input'}
 						{...register('userName', {
 							required: 'Обязательное поле',
-							pattern: {
-								value: /^[a-zA-Z0-9]+$/,
-								message: 'Используйте символы: A-Z, a-z, 0-9 ',
-							},
+							// pattern: {
+							// 	value: /^[a-zA-Z0-9]+$/,
+							// 	message: 'Используйте символы: A-Z, a-z, 0-9 ',
+							// },
 							minLength: {
 								value: 3,
 								message: 'Логин должен быть не менее 3 символов',
@@ -115,11 +105,11 @@ const AuthSignUp = (props) => {
 						className={errors.password ? 'auth-sign-up__input error' : 'auth-sign-up__input'}
 						{...register('password', {
 							required: 'Обязательное поле',
-							validate: {
-								minLength: (value) => value.length >= 6 || 'Пароль должен быть не менее 6 символов',
-								latinOnly: (value) =>
-									/^[A-Za-z0-9]+$/.test(value) || 'Используйте символы: A-Z, a-z, 0-9 ',
-							},
+							// validate: {
+							// 	minLength: (value) => value.length >= 6 || 'Пароль должен быть не менее 6 символов',
+							// 	latinOnly: (value) =>
+							// 		/^[A-Za-z0-9]+$/.test(value) || 'Используйте символы: A-Z, a-z, 0-9 ',
+							// },
 						})}
 					/>
 					{errors.password && <span className="auth-sign-up__input-alert">{errors.password.message}</span>}
@@ -133,12 +123,12 @@ const AuthSignUp = (props) => {
 						type="password"
 						placeholder="Повторите пароль"
 						className={errors.confirmPassword ? 'auth-sign-up__input error' : 'auth-sign-up__input'}
-						{...register('confirmPassword', {
-							required: 'Обязательное поле',
-							validate: {
-								matchPassword: (value) => value === watch('password') || 'Пароль не совпадает',
-							},
-						})}
+						// {...register('confirmPassword', {
+						// 	required: 'Обязательное поле',
+						// 	validate: {
+						// 		matchPassword: (value) => value === watch('password') || 'Пароль не совпадает',
+						// 	},
+						// })}
 					/>
 					{errors.confirmPassword && (
 						<span className="auth-sign-up__input-alert">{errors.confirmPassword.message}</span>
@@ -151,7 +141,7 @@ const AuthSignUp = (props) => {
 					type="submit">
 					<span className="auth-sign-up__btn-text">Регистрация</span>
 				</button>
-				<Button classes="auth-sign-up__btn-auth" handleClick={authState.setAuthFormState}>
+				<Button classes="auth-sign-up__btn-auth" handleClick={authModel.setAuthFormState}>
 					<span className="auth-sign-up__btn-text">Войти в учетную запись</span>
 				</Button>
 			</div>
