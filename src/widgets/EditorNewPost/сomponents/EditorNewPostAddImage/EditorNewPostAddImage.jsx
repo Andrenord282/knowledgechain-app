@@ -1,17 +1,16 @@
 //-----modules-----//
-import filesService from 'shared/filesService';
-//-----router-----//
+import formService from 'shared/formService';
+
 //-----hooks-----//
 import { useRef } from 'react';
 import useClasses from 'hooks/useClasses';
 import useEditorNewPostSlice from 'hooks/slices/useEditorNewPostSlice';
-//-----redux-----//
-//-----widgets-----//
+
 //-----сomponents-----//
 import * as Icon from 'сomponents/Icon';
 import Button from 'сomponents/Button';
 
-const EditorNewAddImage = (props) => {
+const EditorNewPostAddImage = (props) => {
 	const { classes, schemaItemIndex, schemaLength } = props;
 	const inheritClasses = useClasses(classes);
 	const InputFileRef = useRef();
@@ -23,9 +22,9 @@ const EditorNewAddImage = (props) => {
 
 	const handleFileInputChange = (event) => {
 		const file = event.target.files[0];
-		filesService.pushFile(file);
 		const imageUrl = URL.createObjectURL(file);
-		editorNewPostModel.addNewSchemaItem(schemaItemIndex, schemaLength, imageUrl, 'image');
+		editorNewPostModel.addNewSchemaItem(schemaItemIndex, schemaLength, imageUrl, 'image', file.name);
+		formService.pushFile(file);
 	};
 
 	return (
@@ -37,7 +36,7 @@ const EditorNewAddImage = (props) => {
 				multiple
 				ref={InputFileRef}
 				type="file"
-				id="EditorNewAddImage"
+				id="EditorNewPostAddImage"
 				className={inheritClasses + '-input'}
 				onChange={handleFileInputChange}
 			/>
@@ -45,4 +44,4 @@ const EditorNewAddImage = (props) => {
 	);
 };
 
-export default EditorNewAddImage;
+export default EditorNewPostAddImage;

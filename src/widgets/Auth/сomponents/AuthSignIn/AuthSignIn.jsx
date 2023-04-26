@@ -2,7 +2,6 @@
 import { useForm } from 'react-hook-form';
 import useClasses from 'hooks/useClasses';
 import useAuthSignIn from 'widgets/Auth/hooks/useAuthSignIn';
-import useNavigateLocation from 'hooks/useNavigateLocation';
 
 //-----widgets-----//
 
@@ -16,7 +15,6 @@ import './AuthSignIn.scss';
 const AuthSignIn = (props) => {
 	const { classes, authModel, setAuthAlert } = props;
 	const inheritClasses = useClasses(classes);
-	const { setLocationPage } = useNavigateLocation();
 
 	const {
 		register,

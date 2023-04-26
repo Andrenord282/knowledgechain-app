@@ -1,13 +1,10 @@
-//-----modules-----//
-//-----router-----//
 //-----hooks-----//
 import useClasses from 'hooks/useClasses';
-//-----redux-----//
-//-----widgets-----//
+
 //-----сomponents-----//
 import EditorNewPostAddText from '../EditorNewPostAddText';
 import EditorNewPostDelete from '../EditorNewPostDelete';
-import EditorNewAddImage from '../EditorNewAddImage';
+import EditorNewPostAddImage from '../EditorNewPostAddImage';
 
 //-----style-----//
 import './EditorNewPostTools.scss';
@@ -24,7 +21,7 @@ const EditorNewPostTools = (props) => {
 					schemaItemIndex={schemaItemIndex}
 					schemaLength={schemaLength}
 				/>
-				<EditorNewAddImage
+				<EditorNewPostAddImage
 					classes="editor-new-post-tools__btn-tools"
 					schemaItemIndex={schemaItemIndex}
 					schemaLength={schemaLength}

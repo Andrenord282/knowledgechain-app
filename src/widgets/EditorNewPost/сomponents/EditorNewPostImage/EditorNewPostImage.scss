@@ -68,9 +68,7 @@
 }
 
 .editor-new-post-image__nav-btn-toggle:hover {
-	@media (min-width: 1000px) {
-		background-color: var(--first-color-bg-btn-hover);
-	}
+	background-color: var(--first-color-bg-btn-hover);
 }
 
 .editor-new-post-image__nav-btn-toggle .btn-icon {
@@ -95,7 +93,5 @@
 }
 
 .editor-new-post-image__nav-btn-toggle:hover .btn-icon {
-	@media (min-width: 1000px) {
-		fill: var(--first-color-text-btn);
-	}
+	fill: var(--first-color-text-btn);
 }

@@ -13,7 +13,7 @@ const initialState = {
 			value: '',
 		},
 	],
-	postThemes: [],
+	postTopics: [],
 };
 
 const editorNewPostSlice = createSlice({
@@ -62,44 +62,15 @@ const editorNewPostSlice = createSlice({
 			});
 		},
 
-		// updatepostSchemaText: (state, action) => {
-		// 	const { schemItemIndex, value } = action.payload;
-		// 	state.postSchema[schemItemIndex].value = value;
-		// },
-
-		pushMiddlepostSchemaItem: (state, action) => {
-			const { cursorInex, postSchemaItem } = action.payload;
-			const startpostSchema = state.postSchema.slice(0, cursorInex + 1);
-			const endpostSchema = state.postSchema.slice(cursorInex + 1);
-			state.postSchema = [...startpostSchema, postSchemaItem, ...endpostSchema];
+		pushPostTopic: (state, action) => {
+			const { newTopic } = action.payload;
+			state.postTopics = [...state.postTopics, newTopic];
 		},
 
-		pushEndpostSchemaItem: (state, action) => {
-			const { postSchemaItem } = action.payload;
-			state.postSchema = [...state.postSchema, postSchemaItem];
-		},
-
-		removeAllpostSchema: (state) => {
-			state.author = initialState.author;
-			state.postSchema = initialState.postSchema;
-		},
-
-		removepostSchemaItem: (state, action) => {
-			const { idpostSchemaItem } = action.payload;
-			state.postSchema = state.postSchema.filter((postSchemaItem) => {
-				return postSchemaItem.id !== idpostSchemaItem;
-			});
-		},
-
-		pushThemePost: (state, action) => {
-			const { theme } = action.payload;
-			state.postThemes = [...state.postThemes, theme];
-		},
-
-		deleteThemePost: (state, action) => {
-			const { themeIndex } = action.payload;
-			state.postThemes = state.postThemes.filter((_, index) => {
-				return index !== themeIndex;
+		deletePostTopic: (state, action) => {
+			const { deleteTopic } = action.payload;
+			state.postTopics = state.postTopics.filter((topic) => {
+				return topic !== deleteTopic;
 			});
 		},
 	},
@@ -111,14 +82,8 @@ export const {
 	updateSchemaText,
 	addSchemaItem,
 	deleteSchemaItem,
-
-	updatepostSchemaText,
-	pushMiddlepostSchemaItem,
-	pushEndpostSchemaItem,
-	removeAllpostSchema,
-	removepostSchemaItem,
-	pushThemePost,
-	deleteThemePost,
+	pushPostTopic,
+	deletePostTopic,
 } = editorNewPostSlice.actions;
 
 const editorNewPostReducer = editorNewPostSlice.reducer;

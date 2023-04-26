@@ -18,10 +18,10 @@ const Button = forwardRef((props, ref) => {
 			{...otherProps}
 			className={'btn ' + inheritClasses}
 			onClick={(e) => {
-				if (type != 'submit') {
+				if (type !== 'submit') {
 					e.preventDefault();
+					handleClick(e);
 				}
-				handleClick(e);
 			}}>
 			{children}
 		</button>

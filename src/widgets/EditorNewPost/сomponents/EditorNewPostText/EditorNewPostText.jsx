@@ -14,7 +14,8 @@ import EditorNewPostTools from '../EditorNewPostTools';
 import './EditorNewPostText.scss';
 
 const EditorNewPostText = (props) => {
-	const { classes, schemaItemId, schemaItemIndex, schemaLength, schemaItemIsLast } = props;
+	const { classes, schemaItemId, showError, errorValidListNewPost, schemaItemIndex, schemaLength, schemaItemIsLast } =
+		props;
 	const inheritClasses = useClasses(classes);
 	const textModel = useInputChange('');
 	const [toggleTools, setToggleTools] = useState(false);
@@ -29,12 +30,17 @@ const EditorNewPostText = (props) => {
 
 	return (
 		<div className={inheritClasses + ' editor-new-post-text'}>
-			<TextAreaCustom
-				classes="editor-new-post-text__input"
-				value={textModel.value}
-				handlerChange={textModel.onChenge}
-				placeholder="Напишите текст"
-			/>
+			<div className="editor-new-post-text__input-body">
+				<TextAreaCustom
+					classes="editor-new-post-text__input"
+					value={textModel.value}
+					handlerChange={textModel.onChenge}
+					placeholder="Напишите текст"
+				/>
+				{showError && (
+					<span className="editor-new-post-text__error-valid">{errorValidListNewPost[schemaItemId]}</span>
+				)}
+			</div>
 			<Button classes="editor-new-post-text__btn-reset" handleClick={textModel.onReset}>
 				<Icon.ResetTest className="btn-icon" />
 			</Button>

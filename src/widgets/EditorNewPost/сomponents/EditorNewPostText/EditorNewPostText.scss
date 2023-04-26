@@ -1,10 +1,15 @@
 .editor-new-post-text {
 	position: relative;
 }
+
+.editor-new-post-text__input-body {
+	position: relative;
+}
+
 .editor-new-post-text__input {
 	width: 100%;
 	padding: 25px 15px;
-	font-size: 16px;
+	font-size: 18px;
 	color: var(--first-color-text);
 	background-color: var(--second-color-bg-components);
 	margin-bottom: 1px;
@@ -12,6 +17,14 @@
 	@media (min-width: 768px) {
 		font-size: 22px;
 	}
+}
+
+.editor-new-post-text__error-valid {
+	position: absolute;
+	left: 15px;
+	bottom: 5px;
+	font-size: 14px;
+	color: var(--third-color-text);
 }
 
 .editor-new-post-text__btn-reset {
@@ -69,9 +82,7 @@
 }
 
 .editor-new-post-text__nav-btn-toggle:hover {
-	@media (min-width: 1000px) {
-		background-color: var(--first-color-bg-btn-hover);
-	}
+	background-color: var(--first-color-bg-btn-hover);
 }
 
 .editor-new-post-text__nav-btn-toggle .btn-icon {
@@ -96,7 +107,5 @@
 }
 
 .editor-new-post-text__nav-btn-toggle:hover .btn-icon {
-	@media (min-width: 1000px) {
-		fill: var(--first-color-text-btn);
-	}
+	fill: var(--first-color-text-btn);
 }

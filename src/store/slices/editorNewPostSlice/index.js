@@ -2,7 +2,15 @@
 export { editorNewPostReducer } from './editorNewPostSlice';
 
 //-----selectors-----//
-export { selectEditorNewPost, selectPostSchema, selectPostThemes } from './selectors';
+export { selectEditorNewPost, selectPostSchema, selectPostTopics } from './selectors';
 
 //-----actions-----//
-export { setParams, updateSchemaTitle, updateSchemaText, addSchemaItem, deleteSchemaItem } from './editorNewPostSlice';
+export {
+	setParams,
+	updateSchemaTitle,
+	updateSchemaText,
+	addSchemaItem,
+	deleteSchemaItem,
+	pushPostTopic,
+	deletePostTopic,
+} from './editorNewPostSlice';

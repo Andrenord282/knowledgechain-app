@@ -27,9 +27,7 @@
 }
 
 .editor-new-post-tools__btn-tools:hover {
-	@media (min-width: 1000px) {
-		background-color: var(--first-color-bg-btn-hover);
-	}
+	background-color: var(--first-color-bg-btn-hover);
 }
 
 .editor-new-post-tools__btn-tools:not(:last-of-type) {
@@ -51,9 +49,7 @@
 
 .editor-new-post-tools__btn-tools:hover .btn-icon,
 .input-file-custom__label .btn-icon {
-	@media (min-width: 1000px) {
-		fill: var(--first-color-text-btn);
-	}
+	fill: var(--first-color-text-btn);
 }
 
 .editor-new-post-tools__btn-tools-input {

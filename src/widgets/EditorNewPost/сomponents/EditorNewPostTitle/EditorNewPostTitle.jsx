@@ -12,7 +12,7 @@ import Button from 'сomponents/Button';
 import './EditorNewPostTitle.scss';
 
 const EditorNewPostTitle = (props) => {
-	const { classes } = props;
+	const { classes, showError, schemaItemId, errorValidListNewPost } = props;
 	const inheritClasses = useClasses(classes);
 	const titleModel = useInputChange('');
 	const editorNewPostModel = useEditorNewPostSlice();
@@ -27,9 +27,13 @@ const EditorNewPostTitle = (props) => {
 				type="text"
 				className="editor-new-post-title__input"
 				placeholder="Напишите заголовок"
+				name={titleModel.name}
 				value={titleModel.value}
 				onChange={titleModel.onChenge}
 			/>
+			{showError && (
+				<span className="editor-new-post-title__error-valid">{errorValidListNewPost[schemaItemId]}</span>
+			)}
 			<Button classes="editor-new-post-title__btn-reset" handleClick={titleModel.onReset}>
 				<Icon.ResetTest className="editor-new-post-title__icon-btn-reset" />
 			</Button>

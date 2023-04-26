@@ -2,6 +2,7 @@
 	background-color: var(--first-color-bg-components);
 	margin-bottom: 30px;
 }
+
 .header__container {
 	max-width: 100%;
 	padding: 0 10px;
@@ -11,18 +12,21 @@
 		max-width: 900px;
 	}
 }
+
 .header__content {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	padding: 10px 0;
 }
+
 .header__logo {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	margin-right: auto;
 }
+
 .header__logo-img {
 	margin-right: 10px;
 
@@ -30,6 +34,7 @@
 		margin-right: 20px;
 	}
 }
+
 .header__logo-title {
 	display: none;
 	color: var(--first-color-title);

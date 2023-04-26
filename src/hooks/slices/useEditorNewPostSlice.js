@@ -8,7 +8,7 @@ import useUserSlice from './useUserSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 //-----selectors-----//
-import { selectNewPost, selectPostSchema, selectPostThemes } from '../../store/slices/editorNewPostSlice';
+import { selectEditorNewPost, selectPostSchema } from '../../store/slices/editorNewPostSlice';
 
 //-----actions-----//
 import {
@@ -17,29 +17,24 @@ import {
 	updateSchemaText,
 	addSchemaItem,
 	deleteSchemaItem,
+	pushPostTopic,
+	deletePostTopic,
 } from '../../store/slices/editorNewPostSlice';
-
-//-----modules-----//
-//-----router-----//
-//-----hooks-----//
-//-----redux-----//
-//-----widgets-----//
-//-----сomponents-----//
-//-----style-----//
 
 const useEditorNewPostSlice = () => {
 	const postId = nanoid(5);
 	const { userName, idUser } = useUserSlice();
 	const dispatch = useDispatch();
+	const dataNewPost = useSelector(selectEditorNewPost);
 	const postSchema = useSelector(selectPostSchema);
 
 	const setNewPostParams = () => {
 		dispatch(setParams({ userName, idUser, postId, postName: `${userName}-${postId}` }));
 	};
 
-	const createTemplateSchemaItem = (data, type) => {
+	const createTemplateSchemaItem = (data, type, idItem) => {
 		return {
-			id: nanoid(5),
+			id: idItem ? idItem : nanoid(5),
 			type: type,
 			value: data,
 		};
@@ -53,24 +48,35 @@ const useEditorNewPostSlice = () => {
 		dispatch(updateSchemaText(data));
 	};
 
-	const addNewSchemaItem = (activationIndex, schemaLength, data = '', type = 'text') => {
-		const newSchemaItem = createTemplateSchemaItem(data, type);
+	const addNewSchemaItem = (activationIndex, schemaLength, data = '', type = 'text', idItem = false) => {
+		const newSchemaItem = createTemplateSchemaItem(data, type, idItem);
 		dispatch(addSchemaItem({ activationIndex, schemaLength, newSchemaItem }));
 	};
 
-	const deletCurrentSchemaItem = (deleteSchemaItemId) => {
+	const deleteCurrentSchemaItem = (deleteSchemaItemId) => {
 		dispatch(deleteSchemaItem({ deleteSchemaItemId: deleteSchemaItemId }));
 	};
 
-	const renderSchema = () => {};
+	const updatePostTopics = (topic, operation) => {
+		switch (true) {
+			case operation === 'add':
+				dispatch(pushPostTopic({ newTopic: topic }));
+				break;
+			case operation === 'delete':
+				dispatch(deletePostTopic({ deleteTopic: topic }));
+				break;
+		}
+	};
 
 	return {
+		dataNewPost,
 		postSchema,
 		setNewPostParams,
 		setNewPostTitle,
 		setNewPostText,
 		addNewSchemaItem,
-		deletCurrentSchemaItem,
+		deleteCurrentSchemaItem,
+		updatePostTopics,
 	};
 };
 export default useEditorNewPostSlice;

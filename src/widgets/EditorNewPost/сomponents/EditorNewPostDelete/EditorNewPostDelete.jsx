@@ -1,10 +1,7 @@
-//-----modules-----//
-//-----router-----//
 //-----hooks-----//
 import useClasses from 'hooks/useClasses';
 import useEditorNewPostSlice from 'hooks/slices/useEditorNewPostSlice';
-//-----redux-----//
-//-----widgets-----//
+
 //-----сomponents-----//
 import * as Icon from 'сomponents/Icon';
 import Button from 'сomponents/Button';
@@ -15,7 +12,7 @@ const EditorNewPostDelete = (props) => {
 	const editorNewPostModel = useEditorNewPostSlice();
 
 	const hamdlerDeleteSchemaItem = () => {
-		editorNewPostModel.deletCurrentSchemaItem(schemaItemId);
+		editorNewPostModel.deleteCurrentSchemaItem(schemaItemId);
 	};
 
 	return (
