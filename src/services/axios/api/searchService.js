@@ -1,9 +1,9 @@
 import apiServer from 'services/axios/client';
 
-class searchService {
-	searchValue = async (params, query) => {
+class SearchService {
+	searchValue = async (value, query) => {
 		try {
-			const response = await apiServer.get(`/search/${params}/`, {
+			const response = await apiServer.get(`/search/${value}/`, {
 				params: { ...query },
 			});
 
@@ -14,4 +14,4 @@ class searchService {
 	};
 }
 
-export default new searchService();
+export default new SearchService();

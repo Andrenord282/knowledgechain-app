@@ -9,7 +9,7 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: var(--first-color-bg-modal);
+	background-color: var(--first-modal-bg-color);
 }
 
 .alert__content {
@@ -17,7 +17,7 @@
 	flex-direction: column;
 	align-items: center;
 	padding: 20px 40px;
-	background-color: var(--first-color-bg-components);
+	background-color: var(--first-component-bg-color);
 }
 
 .alert__icon {

@@ -3,7 +3,7 @@ import useClasses from 'hooks/useClasses';
 
 import './LinkCustom.scss';
 
-const LinkCustom = ({ classes, link, activeClass = 'active', handleClick, children }) => {
+const LinkCustom = ({ classes, link, target = '_self', activeClass = 'active', handleClick, children }) => {
 	const inheritClasses = useClasses(classes);
 	const match = useMatch(link);
 	const setClassesLink = () => {
@@ -15,7 +15,11 @@ const LinkCustom = ({ classes, link, activeClass = 'active', handleClick, childr
 	};
 
 	return (
-		<Link to={link} className={setClassesLink()} onClick={(e) => (handleClick ? handleClick(e) : null)}>
+		<Link
+			to={link}
+			target={target}
+			className={setClassesLink()}
+			onClick={(e) => (handleClick ? handleClick(e) : null)}>
 			{children}
 		</Link>
 	);

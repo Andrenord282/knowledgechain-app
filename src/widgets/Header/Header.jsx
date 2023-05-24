@@ -12,7 +12,7 @@ const Header = () => {
 		<header className="header">
 			<div className="header__container">
 				<div className="header__content">
-					<HeaderLogo />
+					<HeaderLogo classes="header__logo" />
 					<AuthBar classes="header__auth-bar" />
 				</div>
 			</div>

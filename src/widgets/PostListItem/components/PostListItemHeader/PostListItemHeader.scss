@@ -1,0 +1,67 @@
+.post-list-item-header {
+	display: flex;
+	align-items: center;
+	padding: 15px 10px;
+	border: 1px solid red;
+}
+
+.post-list-item-header__author {
+	display: flex;
+	align-items: center;
+	margin-right: 30px;
+}
+
+.post-list-item-header__author-text {
+	margin-right: 10px;
+}
+
+.post-list-item-header__btn-author {
+}
+
+.post-list-item-header__btn-author:focus {
+	outline: none;
+}
+
+.post-list-item-header__btn-author .btn-text {
+	color: var(--first-btn-bg-color);
+	transition: color 0.1s linear;
+}
+
+.post-list-item-header__btn-author:hover .btn-text {
+	color: var(--first-btn-bg-color-hover);
+	transition: color 0.1s linear;
+}
+
+.post-list-item-header__btn-author:active .btn-text {
+	color: var(--first-btn-bg-color-hover);
+	transition: color 0.1s linear;
+}
+
+.post-list-item-header__btn-author:focus .btn-text {
+	color: var(--first-btn-bg-color-hover);
+	transition: color 0.1s linear;
+}
+
+.post-list-item-header__created {
+	margin-right: auto;
+}
+
+.post-list-item-header__view {
+	position: relative;
+	padding-left: 34px;
+}
+
+.post-list-item-header__view::before {
+	content: '';
+	position: absolute;
+	fill: red !important;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	width: 25px;
+	height: 25px;
+	background-position: center;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-image: url(../../../../assets/img/svg/view.svg);
+}

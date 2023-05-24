@@ -1,20 +1,16 @@
-//-----react-----//
-import { forwardRef } from 'react';
-
 //-----hooks-----//
 import useClasses from 'hooks/useClasses';
 
 //-----style-----//
 import './Button.scss';
 
-const Button = forwardRef((props, ref) => {
+const Button = (props) => {
 	const { classes, type, children, handleClick, ...otherProps } = props;
 	const inheritClasses = useClasses(classes);
 
 	return (
 		<button
 			type={type ? type : 'button'}
-			ref={ref}
 			{...otherProps}
 			className={'btn ' + inheritClasses}
 			onClick={(e) => {
@@ -26,6 +22,6 @@ const Button = forwardRef((props, ref) => {
 			{children}
 		</button>
 	);
-});
+};
 
 export default Button;

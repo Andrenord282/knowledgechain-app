@@ -1,9 +1,9 @@
+//-----modules-----//
+import classNames from 'classnames';
+
 //-----hooks-----//
 import { useForm } from 'react-hook-form';
 import useClasses from 'hooks/useClasses';
-import useAuthSignIn from 'widgets/Auth/hooks/useAuthSignIn';
-
-//-----widgets-----//
 
 //-----сomponents-----//
 import Button from 'сomponents/Button';
@@ -13,7 +13,7 @@ import * as Icon from 'сomponents/Icon';
 import './AuthSignIn.scss';
 
 const AuthSignIn = (props) => {
-	const { classes, authModel, setAuthAlert } = props;
+	const { classes, authSlice } = props;
 	const inheritClasses = useClasses(classes);
 
 	const {
@@ -23,11 +23,8 @@ const AuthSignIn = (props) => {
 		formState: { isValid, errors },
 	} = useForm();
 
-	const signIn = useAuthSignIn();
-
 	const handlerOnSubmit = async (data) => {
-		const response = await signIn(data, { authModel, setAuthAlert });
-
+		const response = await authSlice.hanlderAuthSignIn(data);
 		if (response?.errorName) {
 			response.arrErrors.map((error) => {
 				if (error.field) {
@@ -40,14 +37,23 @@ const AuthSignIn = (props) => {
 		}
 	};
 
+	const classVisibleAuthForm = classNames({
+		visible: authSlice.visibleAuthForm,
+		'': !authSlice.visibleAuthForm,
+	});
+
 	return (
 		<form
-			className={inheritClasses + ' auth-sign-in ' + authModel.toggleVisibleAuthForm}
+			className={inheritClasses + ' auth-sign-in ' + classVisibleAuthForm}
 			onSubmit={handleSubmit(handlerOnSubmit)}
 			onClick={(e) => {
 				e.stopPropagation();
 			}}>
-			<Button classes="auth-sign-in__btn-close" handleClick={authModel.closeAuthModal}>
+			<Button
+				classes="auth-sign-in__btn-close"
+				handleClick={() => {
+					authSlice.handlerCloseAuthModal();
+				}}>
 				<Icon.СrossClose className="auth-sign-in__btn-icon" />
 			</Button>
 			<h4 className="auth-sign-in__title">Авторизация</h4>
@@ -90,7 +96,11 @@ const AuthSignIn = (props) => {
 					type="submit">
 					<span className="auth-sign-in__btn-text">Войти</span>
 				</button>
-				<Button classes="auth-sign-in__btn-auth" handleClick={authModel.setAuthFormState}>
+				<Button
+					classes="auth-sign-in__btn-auth"
+					handleClick={() => {
+						authSlice.handlerAuthFormState();
+					}}>
 					<span className="auth-sign-in__btn-text">Создать учетную запись</span>
 				</Button>
 			</div>

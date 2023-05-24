@@ -2,13 +2,13 @@
 import { nanoid } from 'nanoid';
 
 //-----hooks-----//
-import useUserSlice from './useUserSlice';
+import useUserSlice from 'hooks/slices/useUserSlice';
 
 //-----redux-----//
 import { useDispatch, useSelector } from 'react-redux';
 
 //-----selectors-----//
-import { selectEditorNewPost, selectPostSchema } from '../../store/slices/editorNewPostSlice';
+import { selectEditorNewPost, selectPostSchema } from 'store/slices/editorNewPostSlice';
 
 //-----actions-----//
 import {
@@ -19,7 +19,7 @@ import {
 	deleteSchemaItem,
 	pushPostTopic,
 	deletePostTopic,
-} from '../../store/slices/editorNewPostSlice';
+} from 'store/slices/editorNewPostSlice';
 
 const useEditorNewPostSlice = () => {
 	const postId = nanoid(5);

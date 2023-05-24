@@ -1,5 +1,5 @@
 .editor-new-post-form {
-	background-color: var(--first-color-bg-components);
+	background-color: var(--first-component-bg-color);
 	padding: 0 0 60px 0;
 
 	@media (max-width: 768px) {
@@ -25,29 +25,29 @@
 	display: block;
 	padding: 6px 12px;
 	border-radius: 10px;
-	background-color: var(--first-color-bg-btn);
+	background-color: var(--first-btn-bg-color);
 	transition: background-color 0.1s linear;
 	margin-right: 20px;
 	margin-left: auto;
 }
 
 .editor-new-post-form__btn-send.inactive {
-	background-color: var(--color-btn-bg-inactive);
+	background-color: var(--first-btn-bg-color-inactive);
 }
 
 .editor-new-post-form__btn-send.inactive:hover {
-	background-color: var(--color-btn-bg-inactive);
+	background-color: var(--first-btn-bg-color-inactive);
 }
 .editor-new-post-form__btn-send.inactive:active {
-	background-color: var(--color-btn-bg-inactive);
+	background-color: var(--first-btn-bg-color-inactive);
 }
 
 .editor-new-post-form__btn-send:active {
-	background-color: var(--first-color-bg-btn-hover);
+	background-color: var(--first-btn-bg-color-hover);
 }
 
 .editor-new-post-form__btn-send:hover {
-	background-color: var(--first-color-bg-btn-hover);
+	background-color: var(--first-btn-bg-color-hover);
 }
 
 .editor-new-post-form__btn-send .btn-text {

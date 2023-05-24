@@ -1,0 +1,21 @@
+.post-list-item-body-title {
+	@media (min-width: 768px) {
+		font-size: 28px;
+	}
+}
+
+.post-list-item-body-title:focus {
+	outline: none;
+}
+
+.post-list-item-body-title__text {
+	@media (min-width: 768px) {
+		font-size: 28px;
+	}
+}
+
+.post-list-item-body-title:hover .post-list-item-body-title__text,
+.post-list-item-body-title:active .post-list-item-body-title__text,
+.post-list-item-body-title:focus .post-list-item-body-title__text {
+	color: var(--first-title-color-effect);
+}

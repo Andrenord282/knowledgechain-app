@@ -1,4 +1,5 @@
 //-----widgets-----//
+import PostList from 'widgets/PostList';
 
 //-----сomponents-----//
 import Navigation from 'сomponents/Navigation';
@@ -18,6 +19,7 @@ const PageMain = () => {
 							<Icon.Plus className="nav__link-icon" />
 						</LinkCustom>
 					</Navigation>
+					<PostList classes="main__post-list" />
 				</div>
 			</div>
 		</section>

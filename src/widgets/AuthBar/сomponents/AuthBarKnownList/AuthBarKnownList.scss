@@ -6,7 +6,7 @@
 	opacity: 0;
 	transition: opacity 0s linear;
 	position: absolute;
-	bottom: -104px;
+	top: 100%;
 	max-width: 150px;
 	z-index: 150;
 }
@@ -21,30 +21,18 @@
 	width: 100%;
 	max-width: 100%;
 	padding: 12px 24px;
-	background-color: var(--first-color-bg-btn);
+	background-color: var(--first-btn-bg-color);
 	transition: background-color 0.3s linear, color 0.3s linear;
 }
 
-.auth-bar-known-list__btn:active {
-	background-color: var(--first-color-bg-btn-hover);
-}
-
-.auth-bar-known-list__btn.active {
-	background-color: var(--first-color-bg-btn-hover);
-}
-
 .auth-bar-known-list__btn:hover {
-	@media (min-width: 1000px) {
-		background-color: var(--first-color-bg-btn-hover);
-	}
+	background-color: var(--first-btn-bg-color-hover);
 }
 
 .auth-bar-known-list__btn-text {
-	color: var(--first-color-text-btn);
+	color: var(--first-text-color);
 }
 
-.auth-bar-known-list__btn:active .auth-bar-known-list__btn-text,
-.auth-bar-known-list__btn.active .auth-bar-known-list__btn-text,
 .auth-bar-known-list__btn:hover .auth-bar-known-list__btn-text {
-	color: var(--second-color-text-btn);
+	color: var(--third-text-color);
 }

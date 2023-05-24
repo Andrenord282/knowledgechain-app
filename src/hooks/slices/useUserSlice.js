@@ -2,24 +2,20 @@
 import { useDispatch, useSelector } from 'react-redux';
 
 //-----selectors-----//
-import { selectUser } from '../../store/slices/userSlice';
+import { selectUser } from 'store/slices/userSlice';
 
 //-----actions-----//
-import { setUser, toggleLodaedUser, resetUser } from '../../store/slices/userSlice';
+import { setUser, resetUser } from 'store/slices/userSlice';
 
 const useUserSlice = () => {
 	const { isLoadedUser, idUser, userName, email, userImgUrl } = useSelector(selectUser);
 	const dispatch = useDispatch();
 
-	const writeSetUser = (data) => {
+	const handlerWriteSetUser = (data) => {
 		dispatch(setUser(data));
 	};
 
-	const setLoadedUser = (status) => {
-		dispatch(toggleLodaedUser({ isLoaded: status }));
-	};
-
-	const setResetUser = () => {
+	const handlerResetUser = () => {
 		dispatch(resetUser());
 	};
 
@@ -29,9 +25,8 @@ const useUserSlice = () => {
 		userName,
 		email,
 		userImgUrl,
-		writeSetUser,
-		setLoadedUser,
-		setResetUser,
+		handlerWriteSetUser,
+		handlerResetUser,
 	};
 };
 

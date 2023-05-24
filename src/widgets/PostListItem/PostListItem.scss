@@ -1,0 +1,22 @@
+.post-list-item {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 10px;
+	background-color: var(--first-component-bg-color);
+}
+
+.post-list-item__header {
+	width: 100%;
+}
+
+.post-list-item__rating {
+	width: 20%;
+}
+
+.post-list-item__body {
+	width: 80%;
+}
+
+.post-list-item__footer {
+	width: 100%;
+}

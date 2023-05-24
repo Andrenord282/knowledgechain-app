@@ -1,46 +1,42 @@
 //-----hooks-----//
 import { useEffect } from 'react';
 import useAuthSlice from 'hooks/slices/useAuthSlice';
-import useAuthRefresh from './hooks/useAuthRefresh';
-import useAuthAlertState from './hooks/useAuthAlertState';
 
-//-----widgets-----//
-import Alert from 'widgets/Alert';
+//-----pages-----//
+import Layout from 'layouts/Layout';
 
 //-----сomponents-----//
+import Alert from 'сomponents/Alert';
 import AuthSignUp from './сomponents/AuthSignUp';
 import AuthSignIn from './сomponents/AuthSignIn';
 
 //-----style-----//
 import './Auth.scss';
-import Layout from 'layouts/Layout';
 
 const Auth = () => {
-	const authModel = useAuthSlice();
-	const authAlertState = useAuthAlertState();
-	const authRefresh = useAuthRefresh();
+	const authSlice = useAuthSlice();
 
 	useEffect(() => {
-		authRefresh();
+		authSlice.handlerAuthRefresh();
 	}, []);
 
 	return (
 		<>
-			{authModel.isLoadedAuth && <Layout />}
-			{authModel.visibleAuthModal && (
+			<Layout />
+			{authSlice.visibleAuthModal && (
 				<div
 					className="auth"
 					onClick={() => {
-						authModel.setToggleAuthModal(false);
+						authSlice.handlerToggleAuthModal(false);
 					}}>
-					{!authModel.toggleVisibleAuthForm && authAlertState.toggleAlert && (
-						<Alert classes="auth__item" alertFields={authAlertState.alertFields} />
+					{!authSlice.visibleAuthForm && authSlice.alert.toggleAlert && (
+						<Alert classes="auth__item" alertFields={authSlice.alert.alertFields} />
 					)}
-					{authModel.typeAuthForm === 'signUp' && (
-						<AuthSignUp authModel={authModel} setAuthAlert={authAlertState} classes="auth__item" />
+					{authSlice.typeAuth === 'signUp' && (
+						<AuthSignUp authSlice={authSlice} setAuthAlert={authSlice.alert} classes="auth__item" />
 					)}
-					{authModel.typeAuthForm === 'signIn' && (
-						<AuthSignIn authModel={authModel} setAuthAlert={authAlertState} classes="auth__item" />
+					{authSlice.typeAuth === 'signIn' && (
+						<AuthSignIn authSlice={authSlice} setAuthAlert={authSlice.alert} classes="auth__item" />
 					)}
 				</div>
 			)}

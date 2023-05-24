@@ -1,11 +1,14 @@
+//-----modules-----//
+import classNames from 'classnames';
+
 //-----hooks-----//
 import { useState, useRef } from 'react';
 import useClasses from 'hooks/useClasses';
+import useEventInside from 'hooks/useEventInside';
 import useEventOutside from 'hooks/useEventOutside';
 
 //-----сomponents-----//
 import * as Icon from 'сomponents/Icon';
-import Button from 'сomponents/Button';
 import AuthBarKnownList from '../AuthBarKnownList';
 import ava from 'assets/img/ava.jpg';
 
@@ -13,36 +16,36 @@ import ava from 'assets/img/ava.jpg';
 import './AuthBarKnown.scss';
 
 const AuthBarKnown = (props) => {
-	const { classes, userModel } = props;
+	const { classes, userSlice, authSlice } = props;
 	const inheritClasses = useClasses(classes);
 	const [toggleList, setToggleList] = useState(false);
-	const refBtnAuthBarKnownList = useRef(null);
+	const refBtnAuthBar = useRef(null);
 
-	const handlerToggleList = (e) => {
-		const self = e.target;
-		if (self.closest('.auth-bar-known__btn')) {
-			setToggleList(!toggleList);
-		}
-	};
+	useEventInside(refBtnAuthBar, () => {
+		setToggleList((prevToggleList) => !prevToggleList);
+	});
 
-	useEventOutside(refBtnAuthBarKnownList, () => {
+	useEventOutside(refBtnAuthBar, () => {
 		setToggleList(false);
 	});
 
+	const classActiveIcon = classNames({
+		active: toggleList,
+		'': !toggleList,
+	});
+
 	return (
-		<div className={inheritClasses + ' auth-bar-known'}>
-			<span className="auth-bar-known__user-item">
+		<div className={inheritClasses + ' auth-bar-known'} ref={refBtnAuthBar}>
+			<div className="auth-bar-known__user-item">
 				<img
-					src={userModel.userImgUrl ? userModel.userImgUrl : ava}
+					src={userSlice.userImgUrl ? userSlice.userImgUrl : ava}
 					alt="Ваша фотография"
 					className="auth-bar-known__user-img"
 				/>
-			</span>
-			<Button ref={refBtnAuthBarKnownList} classes="auth-bar-known__btn" handleClick={handlerToggleList}>
-				<span className="auth-bar-known__btn-text">{userModel.userName}</span>
-				<Icon.Triangle className="auth-bar-known__btn-icon" />
-			</Button>
-			<AuthBarKnownList classes="auth-bar-known__list" toggleList={toggleList} />
+				<span className="auth-bar-known__user-name">{userSlice.userName}</span>
+				<Icon.Triangle className={'auth-bar-known__user-icon ' + classActiveIcon} />
+			</div>
+			<AuthBarKnownList classes="auth-bar-known__list" toggleList={toggleList} authSlice={authSlice} />
 		</div>
 	);
 };

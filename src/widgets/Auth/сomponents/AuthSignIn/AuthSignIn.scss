@@ -4,13 +4,13 @@
 	flex-direction: column;
 	align-items: center;
 	padding: 30px 30px;
-	background-color: var(--first-color-bg-components);
+	background-color: var(--first-component-bg-color);
 	opacity: 0;
 	transition: opacity 0s linear;
 	z-index: -10;
 }
 
-.auth-sign-in.visble {
+.auth-sign-in.visible {
 	position: relative;
 	opacity: 1;
 	transition: opacity 0.3s linear;
@@ -37,19 +37,19 @@
 }
 
 .auth-sign-in__btn-close:hover {
-	background-color: var(--first-color-bg-btn-hover);
+	background-color: var(--first-btn-bg-color-hover);
 	transition: background-color 0.2s linear;
 }
 
 .auth-sign-in__btn-close:hover .auth-sign-in__btn-icon {
-	fill: var(--first-color-text-btn);
+	fill: var(--first-text-color);
 	transition: fill 0.2s linear;
 }
 
 .auth-sign-in__btn-icon {
 	width: 15px;
 	height: 15px;
-	fill: var(--third-color-text-btn);
+	fill: var(--third-text-color);
 	transition: fill 0.2s linear;
 }
 
@@ -87,8 +87,8 @@
 .auth-sign-in__input {
 	font-size: 20px;
 	padding: 4px 8px;
-	color: var(--first-color-text);
-	background-color: var(--second-color-bg-components);
+	color: var(--first-text-color);
+	background-color: var(--second-component-bg-color);
 
 	@media (min-width: 768px) {
 		width: 250px;
@@ -98,10 +98,10 @@
 }
 
 .auth-sign-in__input:-webkit-autofill {
-	background-color: var(--second-color-bg-components) !important;
-	color: var(--first-color-text) !important;
-	-webkit-box-shadow: 0 0 0px 1000px var(--second-color-bg-components) inset !important;
-	-webkit-text-fill-color: var(--first-color-text) !important;
+	background-color: var(--second-component-bg-color) !important;
+	color: var(--first-text-color) !important;
+	-webkit-box-shadow: 0 0 0px 1000px var(--second-component-bg-color) inset !important;
+	-webkit-text-fill-color: var(--first-text-color) !important;
 }
 
 .auth-sign-in__input.error {
@@ -112,7 +112,7 @@
 	position: absolute;
 	bottom: -18px;
 	font-size: 12px;
-	color: var(--third-color-text);
+	color: var(--third-text-color);
 }
 
 .auth-sign-in__nav-btns {
@@ -124,38 +124,38 @@
 
 .auth-sign-in__btn-auth {
 	width: 100%;
-	color: var(--first-color-text-btn);
+	color: var(--first-text-color);
 	padding: 6px 12px;
 	border-radius: 10px;
-	background-color: var(--first-color-bg-btn);
+	background-color: var(--first-btn-bg-color);
 	transition: background-color 0.1s linear;
 }
 
 .auth-sign-in__btn-auth.inactive {
-	background-color: var(--color-btn-bg-inactive);
+	background-color: var(--first-btn-bg-color-inactive);
 }
 
 .auth-sign-in__btn-auth:active {
-	background-color: var(--first-color-bg-btn-hover);
+	background-color: var(--first-btn-bg-color-hover);
 }
 
 .auth-sign-in__btn-auth:hover {
 	@media (min-width: 1000px) {
-		background-color: var(--first-color-bg-btn-hover);
+		background-color: var(--first-btn-bg-color-hover);
 	}
 }
 
 .auth-sign-in__btn-auth.inactive {
 	pointer-events: none;
-	background-color: var(--color-btn-bg-inactive);
+	background-color: var(--first-btn-bg-color-inactive);
 }
 
 .auth-sign-in__btn-auth.inactive:active {
-	background-color: var(--color-btn-bg-inactive);
+	background-color: var(--first-btn-bg-color-inactive);
 }
 
 .auth-sign-in__btn-auth.inactive:hover {
-	background-color: var(--color-btn-bg-inactive);
+	background-color: var(--first-btn-bg-color-inactive);
 }
 
 .auth-sign-in__btn-auth:not(:last-of-type) {

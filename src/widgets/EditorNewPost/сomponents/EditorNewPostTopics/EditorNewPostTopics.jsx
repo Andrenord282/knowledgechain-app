@@ -12,7 +12,6 @@ import './EditorNewPostTopics.scss';
 const EditorNewPostTopics = (props) => {
 	const { classes } = props;
 	const inheritClasses = useClasses(classes);
-
 	const editorTopicsModel = useEditorNewPostTopics();
 
 	return (

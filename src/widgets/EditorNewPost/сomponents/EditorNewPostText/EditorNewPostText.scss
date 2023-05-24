@@ -10,8 +10,8 @@
 	width: 100%;
 	padding: 25px 15px;
 	font-size: 18px;
-	color: var(--first-color-text);
-	background-color: var(--second-color-bg-components);
+	color: var(--first-text-color);
+	background-color: var(--second-component-bg-color);
 	margin-bottom: 1px;
 
 	@media (min-width: 768px) {
@@ -24,7 +24,7 @@
 	left: 15px;
 	bottom: 5px;
 	font-size: 14px;
-	color: var(--third-color-text);
+	color: var(--third-text-color);
 }
 
 .editor-new-post-text__btn-reset {
@@ -38,7 +38,7 @@
 	height: 18px;
 	border-radius: 50%;
 	padding: 3px;
-	background-color: var(--third-color-text-btn);
+	background-color: var(--third-text-color);
 
 	@media (min-width: 768px) {
 		width: 24px;
@@ -60,7 +60,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: var(--second-color-bg-components);
+	background-color: var(--second-component-bg-color);
 	// padding: 10px 1% 10px 1%;
 	justify-content: center;
 }
@@ -73,16 +73,16 @@
 	top: 72px;
 	right: 5px;
 	border-radius: 50px;
-	background-color: var(--first-color-bg-btn);
+	background-color: var(--first-btn-bg-color);
 	align-self: flex-end;
 }
 
 .editor-new-post-text__nav-btn-toggle:active {
-	background-color: var(--first-color-bg-btn-hover);
+	background-color: var(--first-btn-bg-color-hover);
 }
 
 .editor-new-post-text__nav-btn-toggle:hover {
-	background-color: var(--first-color-bg-btn-hover);
+	background-color: var(--first-btn-bg-color-hover);
 }
 
 .editor-new-post-text__nav-btn-toggle .btn-icon {
@@ -93,7 +93,7 @@
 	height: 18px;
 	border-radius: 50%;
 	padding: 3px;
-	fill: var(--second-color-text-btn);
+	fill: var(--second-text-color);
 	transition: fill 0.1s linear;
 
 	@media (min-width: 768px) {
@@ -103,9 +103,9 @@
 }
 
 .editor-new-post-text__nav-btn-toggle:active .btn-icon {
-	fill: var(--first-color-text-btn);
+	fill: var(--first-text-color);
 }
 
 .editor-new-post-text__nav-btn-toggle:hover .btn-icon {
-	fill: var(--first-color-text-btn);
+	fill: var(--first-text-color);
 }

@@ -1,5 +1,5 @@
 .nav {
-	background-color: var(--first-color-bg-components);
+	background-color: var(--first-component-bg-color);
 }
 
 .nav__container {
@@ -16,7 +16,7 @@
 
 .nav__link {
 	padding: 4px;
-	border: 1px solid var(--first-color-br-btn);
+	border: 1px solid var(--first-btn-br-color);
 	border-radius: 10px;
 	background-color: transparent;
 	transition: background-color 0.1s linear;
@@ -24,16 +24,16 @@
 }
 
 .nav__link-icon {
-	fill: var(--third-color-text-btn);
+	fill: var(--third-text-color);
 	width: 20px;
 	height: 20px;
 	transition: fill 0.1s linear;
 }
 
 .nav__link:hover {
-	background-color: var(--third-color-text-btn);
+	background-color: var(--third-text-color);
 }
 
 .nav__link:hover .nav__link-icon {
-	fill: var(--second-color-text-btn);
+	fill: var(--second-text-color);
 }

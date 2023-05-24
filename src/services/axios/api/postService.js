@@ -9,20 +9,9 @@ class PostsService {
 			return error.response;
 		}
 	};
-	getPosts = async (option) => {
+	getPosts = async (query) => {
 		try {
-			const response = await apiServer.get('/posts', {
-				params: option,
-			});
-			return response;
-		} catch (error) {
-			return error.response;
-		}
-	};
-
-	getThemes = async (themeName) => {
-		try {
-			const response = await apiServer.get('/post-themes', { themeName: themeName });
+			const response = await apiServer.get('/posts', { params: { ...query } });
 			return response;
 		} catch (error) {
 			return error.response;

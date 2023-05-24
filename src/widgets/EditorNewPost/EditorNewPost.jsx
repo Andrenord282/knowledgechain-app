@@ -1,9 +1,9 @@
 //-----hooks-----//
 import useClasses from 'hooks/useClasses';
-import useAlertState from 'widgets/Alert/hooks/useAlertState';
+import useAlertState from 'hooks/useAlertState';
 
 //-----widgets-----//
-import Alert from 'widgets/Alert';
+import Alert from 'сomponents/Alert';
 
 //-----сomponents-----//
 import EditorNewPostForm from './сomponents/EditorNewPostForm';

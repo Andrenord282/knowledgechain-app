@@ -8,18 +8,18 @@ import useUserSlice from 'hooks/slices/useUserSlice';
 import useNavigateLocation from 'hooks/useNavigateLocation';
 
 const AuthRequired = () => {
-	const authModel = useAuthSlice();
-	const userModel = useUserSlice();
+	const authSlice = useAuthSlice();
+	const userSlice = useUserSlice();
 	const handlerNavigate = useNavigateLocation();
 
 	useEffect(() => {
-		if (authModel.isLoadedAuth && !authModel.statusAuthUser) {
-			authModel.setToggleRequestAuth(true);
-			authModel.setToggleAuthModal(true);
+		if (authSlice.isLoadedAuth && !authSlice.statusAuth) {
+			authSlice.handlerToggleRequestAuth(true);
+			authSlice.handlerToggleAuthModal(true);
 		}
-	}, [authModel.isLoadedAuth, authModel.statusAuthUser]);
+	}, [authSlice.isLoadedAuth, authSlice.statusAuth]);
 
-	return authModel.isLoadedAuth && !authModel.statusAuthUser && !userModel.isLoadedUser ? (
+	return authSlice.isLoadedAuth && !authSlice.statusAuth && !userSlice.isLoadedUser ? (
 		<Navigate to="/" state={{ from: handlerNavigate.location.pathname }} replace />
 	) : (
 		<Outlet />

@@ -1,6 +1,7 @@
 .auth-bar {
-	width: 30%;
-	height: 34px;
+	position: relative;
+	padding: 10px 0;
+	min-width: 100px;
 }
 
 .auth-bar__item {

@@ -64,11 +64,13 @@ const editorNewPostSlice = createSlice({
 
 		pushPostTopic: (state, action) => {
 			const { newTopic } = action.payload;
+			
 			state.postTopics = [...state.postTopics, newTopic];
 		},
 
 		deletePostTopic: (state, action) => {
 			const { deleteTopic } = action.payload;
+
 			state.postTopics = state.postTopics.filter((topic) => {
 				return topic !== deleteTopic;
 			});

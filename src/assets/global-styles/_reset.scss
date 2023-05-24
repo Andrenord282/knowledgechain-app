@@ -1,0 +1,42 @@
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	box-sizing: border-box;
+}
+
+*:focus {
+	outline: 1px solid var(--first-outline-color);
+}
+
+body {
+	font-family: var(--fontMain);
+	font-weight: 400;
+	font-size: 18px;
+	color: var(--first-text-color);
+	background-color: var(--first-color-bg-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: 22px;
+	color: var(--first-title-color);
+}
+
+a {
+	text-decoration-line: none;
+}
+
+input {
+	border: none;
+}
+
+textarea {
+	resize: none;
+}

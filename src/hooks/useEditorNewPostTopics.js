@@ -19,7 +19,7 @@ const useEditorNewPostTopics = () => {
 	const debounsSearch = useDebouncePromise(searchService.searchValue, 500);
 
 	const requestVariantTopic = async () => {
-		const response = await debounsSearch('topics', { value: input.value });
+		const response = await debounsSearch('topics', { topicName: input.value });
 		if (response.status === 200) {
 			setVariantListApi(response.data);
 		}
@@ -32,7 +32,7 @@ const useEditorNewPostTopics = () => {
 	};
 
 	const searchSiblingTopics = async (value) => {
-		const response = await searchService.searchValue('sibling-topics', { value });
+		const response = await searchService.searchValue('sibling-topics', { topicName: value });
 		setSiblingList(response.data);
 	};
 

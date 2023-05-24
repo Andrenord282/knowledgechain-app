@@ -11,3 +11,4 @@ export { ReactComponent as ArrowBack } from 'assets/img/svg/arrow-back.svg';
 export { ReactComponent as AlertError } from 'assets/img/svg/alert-error.svg';
 export { ReactComponent as AlertLoading } from 'assets/img/svg/alert-loading.svg';
 export { ReactComponent as AlertSuccess } from 'assets/img/svg/alert-success.svg';
+export { ReactComponent as View } from 'assets/img/svg/view.svg';

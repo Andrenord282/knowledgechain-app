@@ -14,14 +14,16 @@ import './AuthBar.scss';
 const AuthBar = (props) => {
 	const { classes } = props;
 	const inheritClasses = useClasses(classes);
-	const userModel = useUserSlice();
-	const authModel = useAuthSlice();
+	const userSlice = useUserSlice();
+	const authSlice = useAuthSlice();
 
 	return (
 		<div className={inheritClasses + ' auth-bar'}>
-			{!authModel.statusAuthUser && !authModel.isLoadedAuth && <AuthBarSkeleton classes={'auth-bar__item'} />}
-			{!authModel.statusAuthUser && authModel.isLoadedAuth && <AuthBarUnknown classes={'auth-bar__item'} />}
-			{authModel.statusAuthUser && <AuthBarKnown classes={'auth-bar__item'} userModel={userModel} />}
+			{!authSlice.statusAuth && !authSlice.isLoadedAuth && <AuthBarSkeleton classes="auth-bar__item" />}
+			{!authSlice.statusAuth && authSlice.isLoadedAuth && <AuthBarUnknown classes="auth-bar__item" />}
+			{authSlice.statusAuth && (
+				<AuthBarKnown classes="auth-bar__item" userSlice={userSlice} authSlice={authSlice} />
+			)}
 		</div>
 	);
 };

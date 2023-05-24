@@ -1,0 +1,27 @@
+.header-logo {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 0;
+}
+
+.header-logo__img {
+	margin-right: 10px;
+
+	@media (min-width: 768px) {
+		margin-right: 20px;
+	}
+}
+
+.header-logo__title {
+	color: var(--first-title-color);
+	font-size: 22px;
+
+	@media (max-width: 768px) {
+		font-size: 18px;
+	}
+
+	@media (max-width: 425px) {
+		display: none;
+	}
+}

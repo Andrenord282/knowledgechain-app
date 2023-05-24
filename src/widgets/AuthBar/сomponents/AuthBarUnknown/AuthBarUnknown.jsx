@@ -11,17 +11,16 @@ import './AuthBarUnknown.scss';
 const AuthBarUnknown = (props) => {
 	const { classes } = props;
 	const inheritClasses = useClasses(classes);
-
-	const { setToggleAuthModal } = useAuthSlice();
-
-	const handlerToggleAuthModal = () => {
-		setToggleAuthModal(true);
-	};
+	const authSlice = useAuthSlice();
 
 	return (
 		<>
 			<div className={inheritClasses + ' auth-bar-unknown'}>
-				<Button classes="auth-bar-unknown__btn" handleClick={handlerToggleAuthModal}>
+				<Button
+					classes="auth-bar-unknown__btn"
+					handleClick={() => {
+						authSlice.handlerToggleAuthModal(true);
+					}}>
 					<span className="auth-bar-unknown__btn-text">Войти</span>
 				</Button>
 			</div>

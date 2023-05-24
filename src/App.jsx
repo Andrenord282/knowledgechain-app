@@ -2,7 +2,6 @@
 import { Routes, Route } from 'react-router-dom';
 
 //-----pages-----//
-import Layout from 'layouts/Layout';
 import PageMain from 'pages/PageMain';
 import PageNewPost from 'pages/PageNewPost';
 
@@ -10,7 +9,7 @@ import PageNewPost from 'pages/PageNewPost';
 import Auth from 'widgets/Auth';
 import AuthRequired from 'widgets/AuthRequired';
 
-function App() {
+const App = () => {
 	return (
 		<Routes>
 			<Route path="/" element={<Auth />}>
@@ -21,6 +20,6 @@ function App() {
 			</Route>
 		</Routes>
 	);
-}
+};
 
 export default App;
