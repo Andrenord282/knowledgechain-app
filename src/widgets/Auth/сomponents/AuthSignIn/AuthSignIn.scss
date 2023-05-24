@@ -23,17 +23,12 @@
 	justify-content: center;
 	border-radius: 50px;
 	padding: 5px;
-	background-color: var(--color-btn-bg-shark);
+	background-color: var(--first-btn-bg-color);
 	overflow: hidden;
 	position: absolute;
 	transition: background-color 0.2s linear;
 	top: 1.5%;
 	right: 1.5%;
-
-	@media (min-width: 768px) {
-		top: 1.5%;
-		right: 1.5%;
-	}
 }
 
 .auth-sign-in__btn-close:hover {
@@ -41,23 +36,24 @@
 	transition: background-color 0.2s linear;
 }
 
-.auth-sign-in__btn-close:hover .auth-sign-in__btn-icon {
-	fill: var(--first-text-color);
-	transition: fill 0.2s linear;
-}
-
 .auth-sign-in__btn-icon {
 	width: 15px;
 	height: 15px;
-	fill: var(--third-text-color);
+	fill: var(--third-fill-color);
+	transition: fill 0.2s linear;
+}
+
+.auth-sign-in__btn-close:hover .auth-sign-in__btn-icon {
+	fill: var(--first-fill-color-hover);
 	transition: fill 0.2s linear;
 }
 
 .auth-sign-in__title {
+	font-size: 26px;
 	margin-bottom: 20px;
 
-	@media (min-width: 768px) {
-		font-size: 26px;
+	@media (max-width: 768px) {
+		font-size: 22px;
 	}
 }
 
@@ -72,28 +68,28 @@
 }
 
 .auth-sign-in__input-content:not(:last-of-type) {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 .auth-sign-in__label {
-	font-size: 20px;
+	font-size: 16px;
 	margin-bottom: 5px;
 
-	@media (min-width: 768px) {
-		font-size: 16px;
+	@media (max-width: 768px) {
+		font-size: 20px;
 	}
 }
 
 .auth-sign-in__input {
-	font-size: 20px;
-	padding: 4px 8px;
+	width: 250px;
+	font-size: 16px;
+	padding: 10px;
 	color: var(--first-text-color);
 	background-color: var(--second-component-bg-color);
 
-	@media (min-width: 768px) {
+	@media (max-width: 768px) {
 		width: 250px;
-		font-size: 16px;
-		padding: 10px;
+		font-size: 20px;
 	}
 }
 
@@ -105,14 +101,14 @@
 }
 
 .auth-sign-in__input.error {
-	outline: 1px solid var(--color-outline);
+	outline: 1px solid var(--first-outline-color);
 }
 
 .auth-sign-in__input-alert {
 	position: absolute;
 	bottom: -18px;
 	font-size: 12px;
-	color: var(--third-text-color);
+	color: var(--second-text-color);
 }
 
 .auth-sign-in__nav-btns {
@@ -132,30 +128,12 @@
 }
 
 .auth-sign-in__btn-auth.inactive {
-	background-color: var(--first-btn-bg-color-inactive);
-}
-
-.auth-sign-in__btn-auth:active {
-	background-color: var(--first-btn-bg-color-hover);
-}
-
-.auth-sign-in__btn-auth:hover {
-	@media (min-width: 1000px) {
-		background-color: var(--first-btn-bg-color-hover);
-	}
-}
-
-.auth-sign-in__btn-auth.inactive {
 	pointer-events: none;
 	background-color: var(--first-btn-bg-color-inactive);
 }
 
-.auth-sign-in__btn-auth.inactive:active {
-	background-color: var(--first-btn-bg-color-inactive);
-}
-
-.auth-sign-in__btn-auth.inactive:hover {
-	background-color: var(--first-btn-bg-color-inactive);
+.auth-sign-in__btn-auth:hover {
+	background-color: var(--first-btn-bg-color-hover);
 }
 
 .auth-sign-in__btn-auth:not(:last-of-type) {

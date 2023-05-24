@@ -27,7 +27,7 @@ const Auth = () => {
 				<div
 					className="auth"
 					onClick={() => {
-						authSlice.handlerToggleAuthModal(false);
+						authSlice.handlerCloseAuthModal();
 					}}>
 					{!authSlice.visibleAuthForm && authSlice.alert.toggleAlert && (
 						<Alert classes="auth__item" alertFields={authSlice.alert.alertFields} />

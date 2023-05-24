@@ -23,7 +23,7 @@
 	justify-content: center;
 	border-radius: 50px;
 	padding: 5px;
-	background-color: var(--color-btn-bg-shark);
+	background-color: var(--first-btn-bg-color);
 	overflow: hidden;
 	position: absolute;
 	transition: background-color 0.2s linear;
@@ -41,23 +41,24 @@
 	transition: background-color 0.2s linear;
 }
 
-.auth-sign-up__btn-close:hover .auth-sign-up__btn-icon {
-	fill: var(--first-text-color);
-	transition: fill 0.2s linear;
-}
-
 .auth-sign-up__btn-icon {
 	width: 15px;
 	height: 15px;
-	fill: var(--third-text-color);
+	fill: var(--third-fill-color);
+	transition: fill 0.2s linear;
+}
+
+.auth-sign-up__btn-close:hover .auth-sign-up__btn-icon {
+	fill: var(--first-fill-color-hover);
 	transition: fill 0.2s linear;
 }
 
 .auth-sign-up__title {
+	font-size: 26px;
 	margin-bottom: 20px;
 
-	@media (min-width: 768px) {
-		font-size: 26px;
+	@media (max-width: 768px) {
+		font-size: 22px;
 	}
 }
 
@@ -72,28 +73,28 @@
 }
 
 .auth-sign-up__input-content:not(:last-of-type) {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 .auth-sign-up__label {
-	font-size: 20px;
+	font-size: 16px;
 	margin-bottom: 5px;
 
-	@media (min-width: 768px) {
-		font-size: 16px;
+	@media (max-width: 768px) {
+		font-size: 20px;
 	}
 }
 
 .auth-sign-up__input {
-	font-size: 20px;
-	padding: 4px 8px;
+	width: 250px;
+	font-size: 16px;
+	padding: 10px;
 	color: var(--first-text-color);
 	background-color: var(--second-component-bg-color);
 
-	@media (min-width: 768px) {
+	@media (max-width: 768px) {
 		width: 250px;
-		font-size: 16px;
-		padding: 10px;
+		font-size: 20px;
 	}
 }
 
@@ -105,14 +106,14 @@
 }
 
 .auth-sign-up__input.error {
-	outline: 1px solid var(--color-outline);
+	outline: 1px solid var(--first-outline-color);
 }
 
 .auth-sign-up__input-alert {
 	position: absolute;
 	bottom: -18px;
 	font-size: 12px;
-	color: var(--third-text-color);
+	color: var(--second-text-color);
 }
 
 .auth-sign-up__nav-btns {
@@ -132,30 +133,12 @@
 }
 
 .auth-sign-up__btn-auth.inactive {
-	background-color: var(--first-btn-bg-color-inactive);
-}
-
-.auth-sign-up__btn-auth:active {
-	background-color: var(--first-btn-bg-color-hover);
-}
-
-.auth-sign-up__btn-auth:hover {
-	@media (min-width: 1000px) {
-		background-color: var(--first-btn-bg-color-hover);
-	}
-}
-
-.auth-sign-up__btn-auth.inactive {
 	pointer-events: none;
 	background-color: var(--first-btn-bg-color-inactive);
 }
 
-.auth-sign-up__btn-auth.inactive:active {
-	background-color: var(--first-btn-bg-color-inactive);
-}
-
-.auth-sign-up__btn-auth.inactive:hover {
-	background-color: var(--first-btn-bg-color-inactive);
+.auth-sign-up__btn-auth:hover {
+	background-color: var(--first-btn-bg-color-hover);
 }
 
 .auth-sign-up__btn-auth:not(:last-of-type) {

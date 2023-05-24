@@ -47,12 +47,12 @@ const useAuthSlice = () => {
 	};
 
 	const handlerToggleLockAuthModal = () => {
-		setLockAuthModal((state) => !state);
+		setLockAuthModal((prevToggle) => !prevToggle);
 	};
 
 	const handlerCloseAuthModal = () => {
-		if (toggleAuthModal && !lockAuthModal) {
-			dispatch(toggleAuthModal({ toggle: false }));
+		if (visibleAuthForm && !lockAuthModal) {
+			handlerToggleAuthModal(false);
 			setTypeAuth('signIn');
 		}
 	};
@@ -99,7 +99,7 @@ const useAuthSlice = () => {
 						setLocationPage();
 					}
 					userSlice.handlerWriteSetUser(response.data);
-				}, 700);
+				}, 1000);
 
 				return response.data;
 			}
