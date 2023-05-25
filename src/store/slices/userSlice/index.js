@@ -5,4 +5,4 @@ export { userReducer } from './userSlice';
 export { selectUser } from './selectors';
 
 //-----actions-----//
-export { setUser, toggleLodaedUser, resetUser } from './userSlice';
+export { setUser, resetUser } from './userSlice';

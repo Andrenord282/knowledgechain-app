@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-	isLoadedAuth: false,
+	loadedAuth: false,
 	requestAuth: false,
 	statusAuth: false,
-	toggleAuthModal: false,
+	setToggleAuthModal: false,
 	verifiedUser: false,
 	accessToken: '',
 };
@@ -13,25 +13,25 @@ const authSlice = createSlice({
 	name: 'auth',
 	initialState,
 	reducers: {
-		toggleIsLoadedAuth: (state, action) => {
+		setToggleLoadedAuth: (state, action) => {
 			const { toggle } = action.payload;
 
-			state.isLoadedAuth = toggle;
+			state.loadedAuth = toggle;
 		},
 
-		toggleRequestAuth: (state, action) => {
+		setToggleRequestAuth: (state, action) => {
 			const { toggle } = action.payload;
 
 			state.requestAuth = toggle;
 		},
 
-		toggleAuthModal: (state, action) => {
+		setToggleAuthModal: (state, action) => {
 			const { toggle } = action.payload;
 
-			state.toggleAuthModal = toggle;
+			state.setToggleAuthModal = toggle;
 		},
 
-		toggleStatusAuth: (state, action) => {
+		setToggleStatusAuth: (state, action) => {
 			const { status } = action.payload;
 
 			state.statusAuth = status;
@@ -39,6 +39,6 @@ const authSlice = createSlice({
 	},
 });
 
-export const { toggleIsLoadedAuth, toggleRequestAuth, toggleAuthModal, toggleStatusAuth } = authSlice.actions;
+export const { setToggleLoadedAuth, setToggleRequestAuth, setToggleAuthModal, setToggleStatusAuth } = authSlice.actions;
 const authReducer = authSlice.reducer;
 export { authReducer };

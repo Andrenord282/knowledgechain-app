@@ -12,10 +12,15 @@ import useUserSlice from 'hooks/slices/useUserSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 //-----selectors-----//
-import { selectIsLoadedAuth, selectRequestAuth, selectStatusAuth, selectToggleAuthModal } from 'store/slices/authSlice';
+import { selectLoadedAuth, selectRequestAuth, selectStatusAuth, selectToggleAuthModal } from 'store/slices/authSlice';
 
 //-----actions-----//
-import { toggleIsLoadedAuth, toggleRequestAuth, toggleAuthModal, toggleStatusAuth } from 'store/slices/authSlice';
+import {
+	setToggleLoadedAuth,
+	setToggleRequestAuth,
+	setToggleAuthModal,
+	setToggleStatusAuth,
+} from 'store/slices/authSlice';
 
 //-----models-----//
 
@@ -25,43 +30,36 @@ const useAuthSlice = () => {
 	const dispatch = useDispatch();
 	const userSlice = useUserSlice();
 	const alert = useAlertState();
-	const isLoadedAuth = useSelector(selectIsLoadedAuth);
+	const loadedAuth = useSelector(selectLoadedAuth);
 	const requestAuth = useSelector(selectRequestAuth);
 	const statusAuth = useSelector(selectStatusAuth);
 	const visibleAuthModal = useSelector(selectToggleAuthModal);
 
-	const [typeAuth, setTypeAuth] = useState('signIn');
 	const [visibleAuthForm, setVisibleAuthForm] = useState('visible');
+	const [typeAuth, setTypeAuth] = useState('signIn');
 	const [lockAuthModal, setLockAuthModal] = useState(false);
 
-	const handlerToggleStatusAuth = (status) => {
-		dispatch(toggleStatusAuth({ status }));
+	const handlerSetToggleStatusAuth = (status) => {
+		dispatch(setToggleStatusAuth({ status }));
 	};
 
-	const handlerToggleIsLoadedAuth = (toggle) => {
-		dispatch(toggleIsLoadedAuth({ toggle }));
+	const handlerSetToggleLoadedAuth = (toggle) => {
+		dispatch(setToggleLoadedAuth({ toggle }));
 	};
 
-	const handlerToggleAuthModal = (toggle) => {
-		dispatch(toggleAuthModal({ toggle }));
+	const handlerSetToggleAuthModal = (toggle) => {
+		dispatch(setToggleAuthModal({ toggle }));
 	};
 
-	const handlerToggleLockAuthModal = () => {
+	const handlerSetToggleLockAuthModal = () => {
 		setLockAuthModal((prevToggle) => !prevToggle);
 	};
 
-	const handlerCloseAuthModal = () => {
-		if (visibleAuthForm && !lockAuthModal) {
-			handlerToggleAuthModal(false);
-			setTypeAuth('signIn');
-		}
+	const handlerSetToggleRequestAuth = (toggle) => {
+		dispatch(setToggleRequestAuth({ toggle }));
 	};
 
-	const handlerToggleRequestAuth = (toggle) => {
-		dispatch(toggleRequestAuth({ toggle }));
-	};
-
-	const handlerAuthFormState = () => {
+	const handlerSetAuthFormState = () => {
 		switch (true) {
 			case typeAuth === 'signIn':
 				setTypeAuth('signUp');
@@ -72,9 +70,16 @@ const useAuthSlice = () => {
 		}
 	};
 
+	const handlerCloseAuthModal = () => {
+		if (visibleAuthForm && !lockAuthModal) {
+			handlerSetToggleAuthModal(false);
+			setTypeAuth('signIn');
+		}
+	};
+
 	const handlerAuthSignUp = async (data) => {
 		try {
-			handlerToggleLockAuthModal(true);
+			handlerSetToggleLockAuthModal(true);
 			setVisibleAuthForm('');
 			alert.setToggleAlert(true);
 			alert.setFields.iconAlert('loading');
@@ -88,17 +93,17 @@ const useAuthSlice = () => {
 					alert.setToggleAlert(false);
 					alert.setFields.iconAlert(null);
 					alert.setFields.titleAlert(null);
-					handlerToggleLockAuthModal(false);
+					handlerSetToggleLockAuthModal(false);
 					handlerCloseAuthModal();
 					setVisibleAuthForm('visible');
-					handlerToggleStatusAuth(true);
-					handlerToggleIsLoadedAuth(true);
-					handlerToggleAuthModal(false);
+					handlerSetToggleStatusAuth(true);
+					handlerSetToggleLoadedAuth(true);
+					handlerSetToggleAuthModal(false);
 					if (requestAuth) {
-						handlerToggleRequestAuth(false);
+						handlerSetToggleRequestAuth(false);
 						setLocationPage();
 					}
-					userSlice.handlerWriteSetUser(response.data);
+					userSlice.handlerSetUser(response.data);
 				}, 1000);
 
 				return response.data;
@@ -107,7 +112,7 @@ const useAuthSlice = () => {
 			alert.setToggleAlert(false);
 			alert.setFields.iconAlert(null);
 			alert.setFields.titleAlert(null);
-			handlerToggleLockAuthModal(false);
+			handlerSetToggleLockAuthModal(false);
 			setVisibleAuthForm('visible');
 			throw new errorService(response.data.errorName, response.data.message, response.data.arrErrors);
 		} catch (error) {
@@ -121,7 +126,7 @@ const useAuthSlice = () => {
 
 	const hanlderAuthSignIn = async (data) => {
 		try {
-			handlerToggleLockAuthModal(true);
+			handlerSetToggleLockAuthModal(true);
 			setVisibleAuthForm('');
 			alert.setToggleAlert(true);
 			alert.setFields.iconAlert('loading');
@@ -135,17 +140,17 @@ const useAuthSlice = () => {
 					alert.setToggleAlert(false);
 					alert.setFields.iconAlert(null);
 					alert.setFields.titleAlert(null);
-					handlerToggleLockAuthModal(false);
+					handlerSetToggleLockAuthModal(false);
 					handlerCloseAuthModal();
 					setVisibleAuthForm('visible');
-					handlerToggleStatusAuth(true);
-					handlerToggleIsLoadedAuth(true);
-					handlerToggleAuthModal(false);
+					handlerSetToggleStatusAuth(true);
+					handlerSetToggleLoadedAuth(true);
+					handlerSetToggleAuthModal(false);
 					if (requestAuth) {
-						handlerToggleRequestAuth(false);
+						handlerSetToggleRequestAuth(false);
 						setLocationPage();
 					}
-					userSlice.handlerWriteSetUser(response.data);
+					userSlice.handlerSetUser(response.data);
 				}, 1000);
 				return 'success';
 			}
@@ -153,7 +158,7 @@ const useAuthSlice = () => {
 			alert.setToggleAlert(false);
 			alert.setFields.iconAlert(null);
 			alert.setFields.titleAlert(null);
-			handlerToggleLockAuthModal(false);
+			handlerSetToggleLockAuthModal(false);
 			setVisibleAuthForm('visible');
 			throw new errorService(response.data.errorName, response.data.message, response.data.arrErrors);
 		} catch (error) {
@@ -169,7 +174,7 @@ const useAuthSlice = () => {
 		setLocationPage();
 		await authService.logOut();
 		userSlice.handlerResetUser();
-		handlerToggleStatusAuth(false);
+		handlerSetToggleStatusAuth(false);
 	};
 
 	const handlerAuthRefresh = async () => {
@@ -177,18 +182,18 @@ const useAuthSlice = () => {
 			if (accessToken) {
 				const response = await authService.refresh();
 				if (response.status === 200) {
-					userSlice.handlerWriteSetUser(response.data);
+					userSlice.handlerSetUser(response.data);
 					console.log('обновлен токен');
-					handlerToggleStatusAuth(true);
-					handlerToggleIsLoadedAuth(true);
+					handlerSetToggleStatusAuth(true);
+					handlerSetToggleLoadedAuth(true);
 
 					return response.data;
 				}
 				console.log('не обновлен токен');
-				handlerToggleIsLoadedAuth(true);
+				handlerSetToggleLoadedAuth(true);
 				throw new errorService(response.data.errorName, response.data.message, response.data.arrErrors);
 			}
-			handlerToggleIsLoadedAuth(true);
+			handlerSetToggleLoadedAuth(true);
 		} catch (error) {
 			return {
 				errorName: error.name,
@@ -199,17 +204,17 @@ const useAuthSlice = () => {
 
 	return {
 		alert,
-		isLoadedAuth,
+		loadedAuth,
 		requestAuth,
-		statusAuth,
 		visibleAuthModal,
+		statusAuth,
 		typeAuth,
 		visibleAuthForm,
 		lockAuthModal,
-		handlerToggleAuthModal,
+		handlerSetToggleAuthModal,
+		handlerSetToggleRequestAuth,
+		handlerSetAuthFormState,
 		handlerCloseAuthModal,
-		handlerToggleRequestAuth,
-		handlerAuthFormState,
 		hanlderAuthSignIn,
 		handlerAuthSignUp,
 		handlerAuthSignOut,

@@ -99,7 +99,7 @@ const AuthSignIn = (props) => {
 				<Button
 					classes="auth-sign-in__btn-auth"
 					handleClick={() => {
-						authSlice.handlerAuthFormState();
+						authSlice.handlerSetAuthFormState();
 					}}>
 					<span className="auth-sign-in__btn-text">Создать учетную запись</span>
 				</Button>

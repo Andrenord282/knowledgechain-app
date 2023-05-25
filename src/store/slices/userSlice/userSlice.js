@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-	isLoadedUser: false,
+	loadedUser: false,
 	idUser: null,
 	userName: null,
 	email: null,
@@ -20,11 +20,6 @@ const userSlice = createSlice({
 			state.userImgUrl = userImgUrl;
 		},
 
-		toggleLodaedUser: (state, action) => {
-			const { isLoaded } = action.payload;
-			state.isLoadedUser = isLoaded;
-		},
-
 		resetUser: (state) => {
 			state.idUser = null;
 			state.userName = null;
@@ -34,6 +29,6 @@ const userSlice = createSlice({
 	},
 });
 
-export const { setUser, toggleLodaedUser, resetUser } = userSlice.actions;
+export const { setUser, resetUser } = userSlice.actions;
 const userReducer = userSlice.reducer;
 export { userReducer };

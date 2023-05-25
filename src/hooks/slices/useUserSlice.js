@@ -8,10 +8,10 @@ import { selectUser } from 'store/slices/userSlice';
 import { setUser, resetUser } from 'store/slices/userSlice';
 
 const useUserSlice = () => {
-	const { isLoadedUser, idUser, userName, email, userImgUrl } = useSelector(selectUser);
+	const { loadedUser, idUser, userName, email, userImgUrl } = useSelector(selectUser);
 	const dispatch = useDispatch();
 
-	const handlerWriteSetUser = (data) => {
+	const handlerSetUser = (data) => {
 		dispatch(setUser(data));
 	};
 
@@ -20,12 +20,12 @@ const useUserSlice = () => {
 	};
 
 	return {
-		isLoadedUser,
+		loadedUser,
 		idUser,
 		userName,
 		email,
 		userImgUrl,
-		handlerWriteSetUser,
+		handlerSetUser,
 		handlerResetUser,
 	};
 };

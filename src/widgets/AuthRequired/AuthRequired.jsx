@@ -13,13 +13,13 @@ const AuthRequired = () => {
 	const handlerNavigate = useNavigateLocation();
 
 	useEffect(() => {
-		if (authSlice.isLoadedAuth && !authSlice.statusAuth) {
-			authSlice.handlerToggleRequestAuth(true);
-			authSlice.handlerToggleAuthModal(true);
+		if (authSlice.loadedAuth && !authSlice.statusAuth) {
+			authSlice.handlerSetToggleRequestAuth(true);
+			authSlice.handlerSetToggleAuthModal(true);
 		}
-	}, [authSlice.isLoadedAuth, authSlice.statusAuth]);
+	}, [authSlice.loadedAuth, authSlice.statusAuth]);
 
-	return authSlice.isLoadedAuth && !authSlice.statusAuth && !userSlice.isLoadedUser ? (
+	return authSlice.loadedAuth && !authSlice.statusAuth && !userSlice.loadedUser ? (
 		<Navigate to="/" state={{ from: handlerNavigate.location.pathname }} replace />
 	) : (
 		<Outlet />

@@ -1,7 +1,6 @@
 //-----hooks-----//
 import { useEffect } from 'react';
 import useClasses from 'hooks/useClasses';
-import useEditorNewPostSlice from 'hooks/slices/useEditorNewPostSlice';
 import useNewPostForm from '../../hooks/useNewPostForm';
 
 //-----сomponents-----//
@@ -15,22 +14,21 @@ import EditorNewPostTopics from '../EditorNewPostTopics';
 import './EditorNewPostForm.scss';
 
 const EditorNewPostForm = (props) => {
-	const { classes, setAlert } = props;
+	const { classes, setAlert, editorNewPostSlice } = props;
 	const inheritClasses = useClasses(classes);
-	const editorNewPostModel = useEditorNewPostSlice();
-	const handlerNewPostForm = useNewPostForm(editorNewPostModel, setAlert);
+	const handlerNewPostForm = useNewPostForm(editorNewPostSlice, setAlert);
 
-	useEffect(() => {
-		editorNewPostModel.setNewPostParams();
-	}, []);
+	// useEffect(() => {
+	// 	editorNewPostSlice.handlerSetNewPostParams();
+	// }, []);
 
 	return (
 		<form
 			encType="multipart/form-data"
 			className={inheritClasses + ' editor-new-post-form'}
 			onSubmit={handlerNewPostForm.submitNewPost}>
-			{editorNewPostModel.postSchema.map((schemaItem, schemaItemIndex) => {
-				const schemaItemIsLast = schemaItemIndex === editorNewPostModel.postSchema.length - 1;
+			{editorNewPostSlice.postSchema.map((schemaItem, schemaItemIndex) => {
+				const schemaItemIsLast = schemaItemIndex === editorNewPostSlice.postSchema.length - 1;
 				switch (true) {
 					case schemaItem.type === 'title':
 						return (
@@ -52,7 +50,7 @@ const EditorNewPostForm = (props) => {
 								showError={handlerNewPostForm.showError}
 								errorValidListNewPost={handlerNewPostForm.errorValidListNewPost}
 								schemaItemIndex={schemaItemIndex}
-								schemaLength={editorNewPostModel.postSchema.length}
+								schemaLength={editorNewPostSlice.postSchema.length}
 								schemaItemIsLast={schemaItemIsLast}
 							/>
 						);
@@ -64,7 +62,7 @@ const EditorNewPostForm = (props) => {
 								schemaItemImageUrl={schemaItem.value}
 								schemaItemId={schemaItem.id}
 								schemaItemIndex={schemaItemIndex}
-								schemaLength={editorNewPostModel.postSchema.length}
+								schemaLength={editorNewPostSlice.postSchema.length}
 								schemaItemIsLast={schemaItemIsLast}
 							/>
 						);

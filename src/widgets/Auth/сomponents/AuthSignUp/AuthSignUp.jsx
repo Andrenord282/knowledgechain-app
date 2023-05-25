@@ -153,7 +153,7 @@ const AuthSignUp = (props) => {
 				<Button
 					classes="auth-sign-up__btn-auth"
 					handleClick={() => {
-						authSlice.handlerAuthFormState();
+						authSlice.handlerSetAuthFormState();
 					}}>
 					<span className="auth-sign-up__btn-text">Войти в учетную запись</span>
 				</Button>

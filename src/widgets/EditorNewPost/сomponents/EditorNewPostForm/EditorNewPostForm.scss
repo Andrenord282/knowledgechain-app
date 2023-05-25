@@ -19,7 +19,8 @@
 	width: 100%;
 }
 
-.editor-new-post-form__topics {}
+.editor-new-post-form__topics {
+}
 
 .editor-new-post-form__btn-send {
 	display: block;
@@ -33,17 +34,6 @@
 
 .editor-new-post-form__btn-send.inactive {
 	background-color: var(--first-btn-bg-color-inactive);
-}
-
-.editor-new-post-form__btn-send.inactive:hover {
-	background-color: var(--first-btn-bg-color-inactive);
-}
-.editor-new-post-form__btn-send.inactive:active {
-	background-color: var(--first-btn-bg-color-inactive);
-}
-
-.editor-new-post-form__btn-send:active {
-	background-color: var(--first-btn-bg-color-hover);
 }
 
 .editor-new-post-form__btn-send:hover {

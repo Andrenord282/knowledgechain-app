@@ -16,24 +16,25 @@
 
 .nav__link {
 	padding: 4px;
-	border: 1px solid var(--first-btn-br-color);
+	border: 2px solid var(--second-border-color);
 	border-radius: 10px;
 	background-color: transparent;
-	transition: background-color 0.1s linear;
-    margin-left: auto;
+	transition: background-color 0.1s linear, border 0.1s linear;
+	margin-left: auto;
 }
 
 .nav__link-icon {
-	fill: var(--third-text-color);
+	fill: var(--second-fill-color);
 	width: 20px;
 	height: 20px;
 	transition: fill 0.1s linear;
 }
 
 .nav__link:hover {
+	border: 2px solid var(--fourth-border-color);
 	background-color: var(--third-text-color);
 }
 
 .nav__link:hover .nav__link-icon {
-	fill: var(--second-text-color);
+	fill: var(--fourth-fill-color);
 }

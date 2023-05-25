@@ -20,17 +20,21 @@ import {
 	pushPostTopic,
 	deletePostTopic,
 } from 'store/slices/editorNewPostSlice';
+import { useEffect } from 'react';
 
 const useEditorNewPostSlice = () => {
 	const postId = nanoid(5);
-	const { userName, idUser } = useUserSlice();
 	const dispatch = useDispatch();
+	const { userName, idUser } = useUserSlice();
 	const dataNewPost = useSelector(selectEditorNewPost);
 	const postSchema = useSelector(selectPostSchema);
 
-	const setNewPostParams = () => {
+	const handlerSetNewPostParams = () => {
 		dispatch(setParams({ userName, idUser, postId, postName: `${userName}-${postId}` }));
 	};
+	useEffect(() => {
+		handlerSetNewPostParams();
+	}, [userName]);
 
 	const createTemplateSchemaItem = (data, type, idItem) => {
 		return {
@@ -71,7 +75,9 @@ const useEditorNewPostSlice = () => {
 	return {
 		dataNewPost,
 		postSchema,
-		setNewPostParams,
+
+		handlerSetNewPostParams,
+
 		setNewPostTitle,
 		setNewPostText,
 		addNewSchemaItem,

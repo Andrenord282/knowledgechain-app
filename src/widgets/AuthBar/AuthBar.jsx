@@ -19,8 +19,8 @@ const AuthBar = (props) => {
 
 	return (
 		<div className={inheritClasses + ' auth-bar'}>
-			{!authSlice.statusAuth && !authSlice.isLoadedAuth && <AuthBarSkeleton classes="auth-bar__item" />}
-			{!authSlice.statusAuth && authSlice.isLoadedAuth && <AuthBarUnknown classes="auth-bar__item" />}
+			{!authSlice.statusAuth && !authSlice.loadedAuth && <AuthBarSkeleton classes="auth-bar__item" />}
+			{!authSlice.statusAuth && authSlice.loadedAuth && <AuthBarUnknown classes="auth-bar__item" />}
 			{authSlice.statusAuth && (
 				<AuthBarKnown classes="auth-bar__item" userSlice={userSlice} authSlice={authSlice} />
 			)}
