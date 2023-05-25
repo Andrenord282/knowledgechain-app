@@ -20,6 +20,7 @@ const EditorNewPostText = (props) => {
 	const textModel = useInputChange('');
 	const [toggleTools, setToggleTools] = useState(false);
 	const editorNewPostModel = useEditorNewPostSlice();
+	
 	useEffect(() => {
 		editorNewPostModel.setNewPostText({ index: schemaItemIndex, value: textModel.value });
 	}, [textModel.value]);

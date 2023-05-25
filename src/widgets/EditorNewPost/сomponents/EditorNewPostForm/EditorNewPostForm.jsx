@@ -1,7 +1,5 @@
 //-----hooks-----//
-import { useEffect } from 'react';
 import useClasses from 'hooks/useClasses';
-import useNewPostForm from '../../hooks/useNewPostForm';
 
 //-----сomponents-----//
 import Button from 'сomponents/Button';
@@ -14,19 +12,14 @@ import EditorNewPostTopics from '../EditorNewPostTopics';
 import './EditorNewPostForm.scss';
 
 const EditorNewPostForm = (props) => {
-	const { classes, setAlert, editorNewPostSlice } = props;
+	const { classes, editorNewPostSlice } = props;
 	const inheritClasses = useClasses(classes);
-	const handlerNewPostForm = useNewPostForm(editorNewPostSlice, setAlert);
-
-	// useEffect(() => {
-	// 	editorNewPostSlice.handlerSetNewPostParams();
-	// }, []);
 
 	return (
 		<form
 			encType="multipart/form-data"
 			className={inheritClasses + ' editor-new-post-form'}
-			onSubmit={handlerNewPostForm.submitNewPost}>
+			onSubmit={editorNewPostSlice.submitNewPost}>
 			{editorNewPostSlice.postSchema.map((schemaItem, schemaItemIndex) => {
 				const schemaItemIsLast = schemaItemIndex === editorNewPostSlice.postSchema.length - 1;
 				switch (true) {
@@ -37,8 +30,8 @@ const EditorNewPostForm = (props) => {
 								classes="editor-new-post-form__title"
 								schemaItemIndex={schemaItemIndex}
 								schemaItemId={schemaItem.id}
-								showError={handlerNewPostForm.showError}
-								errorValidListNewPost={handlerNewPostForm.errorValidListNewPost}
+								showError={editorNewPostSlice.showError}
+								errorValidListNewPost={editorNewPostSlice.errorValidListNewPost}
 							/>
 						);
 					case schemaItem.type === 'text':
@@ -47,8 +40,8 @@ const EditorNewPostForm = (props) => {
 								classes="editor-new-post-form__text"
 								key={schemaItem.id}
 								schemaItemId={schemaItem.id}
-								showError={handlerNewPostForm.showError}
-								errorValidListNewPost={handlerNewPostForm.errorValidListNewPost}
+								showError={editorNewPostSlice.showError}
+								errorValidListNewPost={editorNewPostSlice.errorValidListNewPost}
 								schemaItemIndex={schemaItemIndex}
 								schemaLength={editorNewPostSlice.postSchema.length}
 								schemaItemIsLast={schemaItemIsLast}
@@ -59,6 +52,7 @@ const EditorNewPostForm = (props) => {
 							<EditorNewPostImage
 								classes="editor-new-post-form__image"
 								key={schemaItem.id}
+								editorNewPostSlice={editorNewPostSlice}
 								schemaItemImageUrl={schemaItem.value}
 								schemaItemId={schemaItem.id}
 								schemaItemIndex={schemaItemIndex}
@@ -71,7 +65,7 @@ const EditorNewPostForm = (props) => {
 			<EditorNewPostTopics classes="editor-new-post-form__topics" />
 			<Button
 				classes={
-					!handlerNewPostForm.isValid
+					!editorNewPostSlice.isValid
 						? 'editor-new-post-form__btn-send inactive'
 						: 'editor-new-post-form__btn-send'
 				}

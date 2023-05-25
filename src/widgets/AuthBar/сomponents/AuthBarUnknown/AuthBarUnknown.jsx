@@ -21,7 +21,7 @@ const AuthBarUnknown = (props) => {
 					handleClick={() => {
 						authSlice.handlerSetToggleAuthModal(true);
 					}}>
-					<span className="auth-bar-unknown__btn-text">Войти</span>
+					<span className="btn-text">Войти</span>
 				</Button>
 			</div>
 		</>

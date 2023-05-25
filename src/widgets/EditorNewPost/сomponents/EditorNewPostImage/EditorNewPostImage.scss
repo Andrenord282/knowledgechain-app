@@ -23,26 +23,37 @@
 	position: absolute;
 	top: 6px;
 	right: 5px;
-	width: 18px;
-	height: 18px;
+	width: 24px;
+	height: 24px;
 	border-radius: 50%;
 	padding: 3px;
-	background-color: var(--third-text-color);
+	background-color: var(--first-btn-bg-color);
+	transition: fill 0.1s linear;
 
-	@media (min-width: 768px) {
-		width: 24px;
-		height: 24px;
+	@media (max-width: 768px) {
+		width: 18px;
+		height: 18px;
 	}
 }
 
-.editor-new-post-iamge__btn-delete .btn-icon {
-	width: 8px;
-	height: 8px;
+.editor-new-post-iamge__btn-delete:hover {
+	background-color: var(--first-btn-bg-color-hover);
+}
 
-	@media (min-width: 768px) {
-		width: 14px;
-		height: 14px;
+.editor-new-post-iamge__btn-delete .btn-icon {
+	width: 14px;
+	height: 14px;
+	fill: var(--third-fill-color);
+	transition: fill 0.1s linear;
+
+	@media (max-width: 768px) {
+		width: 8px;
+		height: 8px;
 	}
+}
+
+.editor-new-post-iamge__btn-delete:hover .btn-icon {
+	fill: var(--first-fill-color);
 }
 
 .editor-new-post-image__nav {
@@ -75,16 +86,16 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 18px;
-	height: 18px;
+	width: 24px;
+	height: 24px;
 	border-radius: 50%;
 	padding: 3px;
 	fill: var(--second-text-color);
 	transition: fill 0.1s linear;
 
-	@media (min-width: 768px) {
-		width: 24px;
-		height: 24px;
+	@media (max-width: 768px) {
+		width: 18px;
+		height: 18px;
 	}
 }
 

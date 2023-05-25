@@ -6,10 +6,10 @@
 }
 
 .header-logo__img {
-	margin-right: 10px;
+	margin-right: 20px;
 
-	@media (min-width: 768px) {
-		margin-right: 20px;
+	@media (max-width: 768px) {
+		margin-right: 10px;
 	}
 }
 

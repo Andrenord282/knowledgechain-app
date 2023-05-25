@@ -1,8 +1,15 @@
 //-----modules-----//
 import { nanoid } from 'nanoid';
+import formService from 'shared/formService';
+import postService from 'services/axios/api/postService';
+import errorService from 'shared/errorService/errorService';
 
 //-----hooks-----//
+import { useEffect } from 'react';
+import useAlertState from 'hooks/useAlertState';
 import useUserSlice from 'hooks/slices/useUserSlice';
+import useNavigateLocation from 'hooks/useNavigateLocation';
+import useCheckValidNewPost from 'hooks/useCheckValidNewPost';
 
 //-----redux-----//
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,20 +27,25 @@ import {
 	pushPostTopic,
 	deletePostTopic,
 } from 'store/slices/editorNewPostSlice';
-import { useEffect } from 'react';
 
 const useEditorNewPostSlice = () => {
 	const postId = nanoid(5);
 	const dispatch = useDispatch();
 	const { userName, idUser } = useUserSlice();
+	const alert = useAlertState();
 	const dataNewPost = useSelector(selectEditorNewPost);
 	const postSchema = useSelector(selectPostSchema);
+	const checkValidNewPost = useCheckValidNewPost(postSchema);
+	const handlerNavigate = useNavigateLocation();
 
-	const handlerSetNewPostParams = () => {
-		dispatch(setParams({ userName, idUser, postId, postName: `${userName}-${postId}` }));
-	};
 	useEffect(() => {
-		handlerSetNewPostParams();
+		const handlerSetNewPostParams = () => {
+			dispatch(setParams({ userName, idUser, postId, postName: `${userName}-${postId}` }));
+		};
+
+		if (userName) {
+			handlerSetNewPostParams();
+		}
 	}, [userName]);
 
 	const createTemplateSchemaItem = (data, type, idItem) => {
@@ -72,17 +84,56 @@ const useEditorNewPostSlice = () => {
 		}
 	};
 
+	const submitNewPost = async (e) => {
+		try {
+			e.preventDefault();
+			if (checkValidNewPost.isValid) {
+				alert.setToggleAlert(true);
+				alert.setFields.iconAlert('loading');
+				alert.setFields.titleAlert('Отправка поста...');
+				const newPost = formService.collectDataNewPost(dataNewPost);
+				const response = await postService.createNewPost(newPost);
+				console.log(response);
+				if (response.status === 200) {
+					alert.setFields.iconAlert('success');
+					alert.setFields.titleAlert(response.data.message);
+					setTimeout(() => {
+						alert.setToggleAlert(false);
+						alert.setFields.iconAlert(null);
+						alert.setFields.titleAlert(null);
+						handlerNavigate.setLocationPage();
+					}, 700);
+
+					return;
+				}
+				throw new errorService(response.data.errorName, response.data.message);
+			} else {
+				checkValidNewPost.setShowError(true);
+			}
+		} catch (error) {
+			console.log(error);
+			alert.setFields.iconAlert('error');
+			alert.setFields.titleAlert(error.message);
+			setTimeout(() => {
+				alert.setToggleAlert(false);
+				alert.setFields.iconAlert(null);
+				alert.setFields.titleAlert(null);
+			}, 1000);
+		}
+	};
+
 	return {
-		dataNewPost,
+		alert,
 		postSchema,
-
-		handlerSetNewPostParams,
-
+		isValid: checkValidNewPost.isValid,
+		showError: checkValidNewPost.showError,
+		errorValidListNewPost: checkValidNewPost.errorValidListNewPost,
 		setNewPostTitle,
 		setNewPostText,
 		addNewSchemaItem,
 		deleteCurrentSchemaItem,
 		updatePostTopics,
+		submitNewPost,
 	};
 };
 export default useEditorNewPostSlice;

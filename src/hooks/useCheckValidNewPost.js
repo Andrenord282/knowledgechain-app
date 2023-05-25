@@ -67,7 +67,7 @@ const useCheckValidNewPost = (postSchema) => {
 							};
 						});
 						break;
-					case schemaItem.value.length < 10:
+					case schemaItem.value.length < 3:
 						setErrorValidListNewPost((errorValidNewPost) => {
 							return {
 								...errorValidNewPost,
@@ -76,7 +76,7 @@ const useCheckValidNewPost = (postSchema) => {
 						});
 						break;
 
-					case schemaItem.value.length >= 10:
+					case schemaItem.value.length >= 3:
 						setErrorValidListNewPost((errorValidNewPost) => {
 							return {
 								...errorValidNewPost,

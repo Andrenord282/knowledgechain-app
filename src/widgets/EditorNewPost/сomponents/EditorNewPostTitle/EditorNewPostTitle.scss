@@ -35,6 +35,7 @@
 	border-radius: 50%;
 	padding: 3px;
 	background-color: var(--first-btn-bg-color);
+	transition: fill 0.1s linear;
 
 	@media (max-width: 768px) {
 		width: 18px;
@@ -42,12 +43,22 @@
 	}
 }
 
-.editor-new-post-title__icon-btn-reset {
+.editor-new-post-title__btn-reset:hover {
+	background-color: var(--first-btn-bg-color-hover);
+}
+
+.editor-new-post-title__btn-reset .btn-icon {
 	width: 14px;
 	height: 14px;
+	transition: fill 0.1s linear;
+	fill: var(--third-fill-color);
 
 	@media (max-width: 768px) {
 		width: 8px;
 		height: 8px;
 	}
+}
+
+.editor-new-post-title__btn-reset:hover .btn-icon {
+	fill: var(--first-fill-color);
 }

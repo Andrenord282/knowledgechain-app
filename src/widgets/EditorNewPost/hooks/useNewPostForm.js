@@ -5,7 +5,7 @@ import errorService from 'shared/errorService/errorService';
 
 //-----hooks-----//
 import useNavigateLocation from 'hooks/useNavigateLocation';
-import useCheckValidNewPost from './useCheckValidNewPost';
+import useCheckValidNewPost from '../../../hooks/useCheckValidNewPost';
 
 const useNewPostForm = (editorNewPostModel, setAlert) => {
 	const checkValidNewPost = useCheckValidNewPost(editorNewPostModel.postSchema);
@@ -30,6 +30,8 @@ const useNewPostForm = (editorNewPostModel, setAlert) => {
 						setAlert.setFields.titleAlert(null);
 						handlerNavigate.setLocationPage();
 					}, 700);
+
+					return;
 				}
 				throw new errorService(response.data.errorName, response.data.message);
 			} else {

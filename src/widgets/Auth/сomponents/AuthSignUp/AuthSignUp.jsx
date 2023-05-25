@@ -55,7 +55,7 @@ const AuthSignUp = (props) => {
 				handleClick={() => {
 					authSlice.handlerCloseAuthModal();
 				}}>
-				<Icon.СrossClose className="auth-sign-up__btn-icon" />
+				<Icon.СrossClose className="btn-icon" />
 			</Button>
 			<h4 className="auth-sign-up__title">Регистрация</h4>
 			<div className="auth-sign-up__body">
@@ -148,14 +148,14 @@ const AuthSignUp = (props) => {
 				<button
 					className={!isValid ? 'btn auth-sign-up__btn-auth inactive' : 'btn auth-sign-up__btn-auth'}
 					type="submit">
-					<span className="auth-sign-up__btn-text">Регистрация</span>
+					<span className="btn-text">Регистрация</span>
 				</button>
 				<Button
 					classes="auth-sign-up__btn-auth"
 					handleClick={() => {
 						authSlice.handlerSetAuthFormState();
 					}}>
-					<span className="auth-sign-up__btn-text">Войти в учетную запись</span>
+					<span className="btn-text">Войти в учетную запись</span>
 				</Button>
 			</div>
 		</form>

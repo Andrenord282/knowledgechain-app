@@ -35,7 +35,7 @@ const EditorNewPostTitle = (props) => {
 				<span className="editor-new-post-title__error-valid">{errorValidListNewPost[schemaItemId]}</span>
 			)}
 			<Button classes="editor-new-post-title__btn-reset" handleClick={titleModel.onReset}>
-				<Icon.ResetTest className="editor-new-post-title__icon-btn-reset" />
+				<Icon.ResetTest className="btn-icon" />
 			</Button>
 		</div>
 	);

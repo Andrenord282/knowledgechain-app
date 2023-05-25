@@ -29,10 +29,10 @@
 	background-color: var(--first-btn-bg-color-hover);
 }
 
-.auth-bar-known-list__btn-text {
+.auth-bar-known-list__btn .btn-text {
 	color: var(--first-text-color);
 }
 
-.auth-bar-known-list__btn:hover .auth-bar-known-list__btn-text {
+.auth-bar-known-list__btn:hover .btn-text {
 	color: var(--third-text-color);
 }

@@ -36,14 +36,14 @@
 	transition: background-color 0.2s linear;
 }
 
-.auth-sign-in__btn-icon {
+.auth-sign-in__btn-close .btn-icon {
 	width: 15px;
 	height: 15px;
 	fill: var(--third-fill-color);
 	transition: fill 0.2s linear;
 }
 
-.auth-sign-in__btn-close:hover .auth-sign-in__btn-icon {
+.auth-sign-in__btn-close:hover .btn-icon {
 	fill: var(--first-fill-color);
 	transition: fill 0.2s linear;
 }

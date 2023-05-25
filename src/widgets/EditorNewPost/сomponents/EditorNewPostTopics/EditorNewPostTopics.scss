@@ -26,12 +26,12 @@
 .editor-new-post-topics__input {
 	width: 100%;
 	padding: 15px;
-	font-size: 16px;
+	font-size: 18px;
 	color: var(--first-text-color);
 	background-color: var(--second-component-bg-color);
 
-	@media (min-width: 768px) {
-		font-size: 18px;
+	@media (max-width: 768px) {
+		font-size: 16px;
 	}
 
 	@media (max-width: 670px) {
@@ -53,45 +53,35 @@
 	justify-content: space-between;
 	padding: 10px 15px;
 	background-color: var(--first-btn-bg-color);
-	border-bottom: 1px solid var(--first-border-color);
+	border-bottom: 1px solid var(--third-border-color);
 	transition: border-bottom 0.1s linear, background-color 0.1s linear;
 }
 
 .editor-new-post-topics__btn-variant:hover {
 	background-color: var(--first-btn-bg-color-hover);
-	border-bottom: 1px solid var(--second-border-color);
+	border-bottom: 1px solid var(--first-border-color);
 	transition: border-bottom 0.1s linear, background-color 0.1s linear;
 }
 
 .editor-new-post-topics__btn-variant .btn-text {
-	color: var(--first-text-color);
+	color: var(--third-text-color);
 	transition: color 0.1s linear;
 }
 
 .editor-new-post-topics__btn-variant:hover .btn-text {
-	color: var(--second-text-color);
-	transition: color 0.1s linear;
-}
-
-.editor-new-post-topics__btn-variant:active .btn-text {
-	color: var(--second-text-color);
+	color: var(--first-title-color);
 	transition: color 0.1s linear;
 }
 
 .editor-new-post-topics__btn-variant .btn-icon {
 	width: 10px;
 	height: 10px;
-	fill: var(--first-text-color);
+	fill: var(--third-fill-color);
 	transition: fill 0.1s linear;
 }
 
 .editor-new-post-topics__btn-variant:hover .btn-icon {
-	fill: var(--second-text-color);
-	transition: fill 0.1s linear;
-}
-
-.editor-new-post-topics__btn-variant:active .btn-icon {
-	fill: var(--second-text-color);
+	fill: var(--first-fill-color);
 	transition: fill 0.1s linear;
 }
 
@@ -117,11 +107,6 @@
 	transition: border-bottom 0.1s linear, background-color 0.1s linear;
 }
 
-.editor-new-post-topics__btn-selected:active {
-	background-color: var(--first-btn-bg-color-hover);
-	transition: background-color 0.1s linear;
-}
-
 .editor-new-post-topics__btn-selected:hover {
 	background-color: var(--first-btn-bg-color-hover);
 	transition: background-color 0.1s linear;
@@ -129,34 +114,25 @@
 
 .editor-new-post-topics__btn-selected .btn-text {
 	text-align: left;
-	color: var(--first-text-color);
+	color: var(--third-text-color);
 	margin-right: 10px;
 	transition: color 0.1s linear;
 }
 
-.editor-new-post-topics__btn-selected:active .btn-text {
-	color: var(--second-text-color);
-	transition: color 0.1s linear;
-}
 .editor-new-post-topics__btn-selected:hover .btn-text {
-	color: var(--second-text-color);
+	color: var(--first-text-color);
 	transition: color 0.1s linear;
 }
 
 .editor-new-post-topics__btn-selected .btn-icon {
 	width: 10px;
 	height: 10px;
-	fill: var(--first-text-color);
-	transition: fill 0.1s linear;
-}
-
-.editor-new-post-topics__btn-selected:active .btn-icon {
-	fill: var(--second-text-color);
+	fill: var(--third-border-color);
 	transition: fill 0.1s linear;
 }
 
 .editor-new-post-topics__btn-selected:hover .btn-icon {
-	fill: var(--second-text-color);
+	fill: var(--first-fill-color);
 	transition: fill 0.1s linear;
 }
 
@@ -193,11 +169,6 @@
 	transition: color 0.1s linear;
 }
 
-.editor-new-post-topics__btn-sibling:active .btn-text {
-	color: var(--second-text-color);
-	transition: color 0.1s linear;
-}
-
 .editor-new-post-topics__btn-sibling:hover .btn-text {
 	color: var(--second-text-color);
 	transition: color 0.1s linear;
@@ -207,11 +178,6 @@
 	width: 10px;
 	height: 10px;
 	fill: var(--first-text-color);
-	transition: fill 0.1s linear;
-}
-
-.editor-new-post-topics__btn-sibling:active .btn-icon {
-	fill: var(--second-text-color);
 	transition: fill 0.1s linear;
 }
 
