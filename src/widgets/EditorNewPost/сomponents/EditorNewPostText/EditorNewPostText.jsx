@@ -14,39 +14,43 @@ import EditorNewPostTools from '../EditorNewPostTools';
 import './EditorNewPostText.scss';
 
 const EditorNewPostText = (props) => {
-	const { classes, schemaItemId, showError, errorValidListNewPost, schemaItemIndex, schemaLength, schemaItemIsLast } =
-		props;
+	const { classes, editorNewPostSlice, schemaItemIndex, schemaItemId, schemaLength, schemaItemIsLast } = props;
 	const inheritClasses = useClasses(classes);
-	const textModel = useInputChange('');
+	const inputText = useInputChange('');
 	const [toggleTools, setToggleTools] = useState(false);
-	const editorNewPostModel = useEditorNewPostSlice();
-	
-	useEffect(() => {
-		editorNewPostModel.setNewPostText({ index: schemaItemIndex, value: textModel.value });
-	}, [textModel.value]);
 
-	const handlerToggleTools = () => {
-		setToggleTools(!toggleTools);
-	};
+	useEffect(() => {
+		if (editorNewPostSlice.postSchema[schemaItemIndex].value !== inputText.value) {
+			editorNewPostSlice.setNewPostText({ index: schemaItemIndex, value: inputText.value });
+		}
+	}, [inputText.value]);
 
 	return (
 		<div className={inheritClasses + ' editor-new-post-text'}>
 			<div className="editor-new-post-text__input-body">
 				<TextAreaCustom
 					classes="editor-new-post-text__input"
-					value={textModel.value}
-					handlerChange={textModel.onChenge}
+					value={inputText.value}
+					handlerChange={() => {
+						inputText.onChenge();
+					}}
 					placeholder="Напишите текст"
 				/>
-				{showError && (
-					<span className="editor-new-post-text__error-valid">{errorValidListNewPost[schemaItemId]}</span>
+				{editorNewPostSlice.showError && (
+					<span className="editor-new-post-text__error-valid">
+						{editorNewPostSlice.errorValidListNewPost[schemaItemId]}
+					</span>
 				)}
 			</div>
-			<Button classes="editor-new-post-text__btn-reset" handleClick={textModel.onReset}>
+			<Button classes="editor-new-post-text__btn-reset" handleClick={inputText.onReset}>
 				<Icon.ResetTest className="btn-icon" />
 			</Button>
 			{!schemaItemIsLast && (
-				<Button classes="editor-new-post-text__nav-btn-toggle" handleClick={handlerToggleTools}>
+				<Button
+					classes="editor-new-post-text__nav-btn-toggle"
+					handleClick={() => {
+						setToggleTools((prevToggleTools) => !prevToggleTools);
+					}}>
 					{!toggleTools ? <Icon.Plus className="btn-icon" /> : <Icon.Minus className="btn-icon" />}
 				</Button>
 			)}
@@ -55,8 +59,9 @@ const EditorNewPostText = (props) => {
 					{toggleTools && (
 						<EditorNewPostTools
 							classes="editor-new-post-text__tools"
-							schemaItemId={schemaItemId}
+							editorNewPostSlice={editorNewPostSlice}
 							schemaItemIndex={schemaItemIndex}
+							schemaItemId={schemaItemId}
 							schemaLength={schemaLength}
 							schemaItemIsLast={schemaItemIsLast}
 						/>
@@ -67,8 +72,9 @@ const EditorNewPostText = (props) => {
 				<div className="editor-new-post-text__nav">
 					<EditorNewPostTools
 						classes="editor-new-post-text__tools"
-						schemaItemId={schemaItemId}
+						editorNewPostSlice={editorNewPostSlice}
 						schemaItemIndex={schemaItemIndex}
+						schemaItemId={schemaItemId}
 						schemaLength={schemaLength}
 						schemaItemIsLast={schemaItemIsLast}
 					/>

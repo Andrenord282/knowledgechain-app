@@ -22,7 +22,6 @@ const editorNewPostSlice = createSlice({
 	reducers: {
 		setParams: (state, action) => {
 			const { idUser, userName, postId, postName } = action.payload;
-
 			state.author = userName;
 			state.idUser = idUser;
 			state.postId = postId;
@@ -64,7 +63,7 @@ const editorNewPostSlice = createSlice({
 
 		pushPostTopic: (state, action) => {
 			const { newTopic } = action.payload;
-			
+
 			state.postTopics = [...state.postTopics, newTopic];
 		},
 

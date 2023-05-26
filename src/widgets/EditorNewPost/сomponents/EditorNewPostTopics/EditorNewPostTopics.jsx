@@ -1,6 +1,9 @@
 //-----hooks-----//
+import { useState, useEffect, useRef } from 'react';
 import useClasses from 'hooks/useClasses';
-import useEditorNewPostTopics from 'hooks/useEditorNewPostTopics';
+import useInputChange from 'hooks/useInputChange';
+import useFocusComponent from 'hooks/useFocusComponent';
+// import useEditorNewPostTopics from 'hooks/useEditorNewPostTopics';
 
 //-----сomponents-----//
 import * as Icon from 'сomponents/Icon';
@@ -10,24 +13,37 @@ import Button from 'сomponents/Button';
 import './EditorNewPostTopics.scss';
 
 const EditorNewPostTopics = (props) => {
-	const { classes } = props;
+	const { classes, editorNewPostSlice } = props;
 	const inheritClasses = useClasses(classes);
-	const editorTopicsModel = useEditorNewPostTopics();
+	const inputTopic = useInputChange('');
+	const inputTopicRef = useRef(null);
+	const [variantListApi, setVariantListApi] = useState([]);
+	const [selectedList, setSelectedList] = useState([]);
+	const [siblingList, setSiblingList] = useState([]);
+	const handlerFocus = useFocusComponent(inputTopicRef);
+	// const editorTopicsModel = useEditorNewPostTopics(editorNewPostSlice);
+	console.log(variantListApi);
+	useEffect(() => {
+		if (inputTopic.value) {
+			console.log(123);
+			editorNewPostSlice.requestVariantTopic().then((list) => setVariantListApi(list));
+		}
+	}, [inputTopic.value]);
 
 	return (
 		<div className={inheritClasses + ' editor-new-post-topics'}>
 			<div className="editor-new-post-topics__input-body">
 				<input
-					ref={editorTopicsModel.focusRef}
+					ref={inputTopicRef}
 					type="text"
 					className="editor-new-post-topics__input"
 					placeholder="Напишите тему поста"
-					value={editorTopicsModel.inputValue}
-					onChange={editorTopicsModel.onChenge}
-					onKeyDown={editorTopicsModel.handleKeyDown}
-					onKeyUp={editorTopicsModel.handleKeyUp}
+					value={inputTopic.value}
+					onChange={inputTopic.onChenge}
+					onKeyDown={inputTopic.handleKeyDown}
+					onKeyUp={inputTopic.handleKeyUp}
 				/>
-				{editorTopicsModel.inputValue && (
+				{/* {editorTopicsModel.inputValue && (
 					<div className="editor-new-post-topics__variant-list">
 						<Button
 							classes="editor-new-post-topics__btn-variant"
@@ -50,9 +66,9 @@ const EditorNewPostTopics = (props) => {
 								}
 							})}
 					</div>
-				)}
+				)} */}
 			</div>
-			<div className="editor-new-post-topics__navigate">
+			{/* <div className="editor-new-post-topics__navigate">
 				{editorTopicsModel.selectedList.length > 0 && (
 					<div className="editor-new-post-topics__selected-list">
 						{editorTopicsModel.selectedList.map((selectedItem) => {
@@ -84,7 +100,7 @@ const EditorNewPostTopics = (props) => {
 						})}
 					</div>
 				)}
-			</div>
+			</div> */}
 		</div>
 	);
 };

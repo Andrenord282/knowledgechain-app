@@ -1,22 +1,20 @@
 //-----hooks-----//
 import useClasses from 'hooks/useClasses';
-import useEditorNewPostSlice from 'hooks/slices/useEditorNewPostSlice';
 
 //-----сomponents-----//
 import * as Icon from 'сomponents/Icon';
 import Button from 'сomponents/Button';
 
 const EditorNewPostAddText = (props) => {
-	const { classes, schemaItemIndex, schemaLength } = props;
+	const { classes, editorNewPostSlice, schemaItemIndex, schemaLength } = props;
 	const inheritClasses = useClasses(classes);
-	const editorNewPostModel = useEditorNewPostSlice();
-
-	const handlerAddNewSchemaItem = () => {
-		editorNewPostModel.addNewSchemaItem(schemaItemIndex, schemaLength);
-	};
 
 	return (
-		<Button classes={inheritClasses} handleClick={handlerAddNewSchemaItem}>
+		<Button
+			classes={inheritClasses}
+			handleClick={() => {
+				editorNewPostSlice.addNewSchemaItem(schemaItemIndex, schemaLength);
+			}}>
 			<Icon.AddText className="btn-icon" />
 		</Button>
 	);

@@ -37,11 +37,7 @@ const AuthBarKnown = (props) => {
 	return (
 		<div className={inheritClasses + ' auth-bar-known'} ref={refBtnAuthBar}>
 			<div className="auth-bar-known__user-item">
-				<img
-					src={userSlice.userImgUrl ? userSlice.userImgUrl : ava}
-					alt="Ваша фотография"
-					className="auth-bar-known__user-img"
-				/>
+				<img src={ava} alt="Ваша фотография" className="auth-bar-known__user-img" />
 				<span className="auth-bar-known__user-name">{userSlice.userName}</span>
 				<Icon.Triangle className={'auth-bar-known__user-icon ' + classActiveIcon} />
 			</div>

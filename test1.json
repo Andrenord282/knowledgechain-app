@@ -1,0 +1,31 @@
+{
+    "classes": "editor-new-post-form__title",
+    "editorNewPostSlice": {
+        "alert": {
+            "toggleAlert": false,
+            "setFields": {},
+            "alertFields": {
+                "iconALert": null,
+                "titleALert": null,
+                "textALert": null
+            }
+        },
+        "postSchema": [
+            {
+                "id": "title-id-defult",
+                "type": "title",
+                "value": ""
+            },
+            {
+                "id": "text-id-defult",
+                "type": "text",
+                "value": ""
+            }
+        ],
+        "isValid": false,
+        "errorValidListNewPost": {},
+        "showError": false
+    },
+    "schemaItemIndex": 0,
+    "schemaItemId": "title-id-defult"
+}

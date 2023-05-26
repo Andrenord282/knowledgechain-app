@@ -8,8 +8,8 @@ import { selectUser } from 'store/slices/userSlice';
 import { setUser, resetUser } from 'store/slices/userSlice';
 
 const useUserSlice = () => {
-	const { loadedUser, idUser, userName, email, userImgUrl } = useSelector(selectUser);
 	const dispatch = useDispatch();
+	const { loadedUser, idUser, userName, email, userImgUrl } = useSelector(selectUser);
 
 	const handlerSetUser = (data) => {
 		dispatch(setUser(data));

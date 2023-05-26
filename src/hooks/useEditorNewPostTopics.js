@@ -5,13 +5,11 @@ import searchService from 'services/axios/api/searchService';
 import { useEffect, useRef, useState } from 'react';
 import useInputChange from 'hooks/useInputChange';
 import useDebouncePromise from './useDebouncePromise';
-import useEditorNewPostSlice from './slices/useEditorNewPostSlice';
 import useFocusComponent from 'hooks/useFocusComponent';
 
-const useEditorNewPostTopics = () => {
+const useEditorNewPostTopics = (editorNewPostSlice) => {
 	const focusRef = useRef(null);
 	const handlerFocus = useFocusComponent(focusRef);
-	const editorNewPostModel = useEditorNewPostSlice();
 	const input = useInputChange('');
 	const [variantListApi, setVariantListApi] = useState([]);
 	const [selectedList, setSelectedList] = useState([]);
@@ -45,7 +43,7 @@ const useEditorNewPostTopics = () => {
 			}
 			input.onReset();
 			setVariantListApi([]);
-			editorNewPostModel.updatePostTopics(newListItem, 'add');
+			editorNewPostSlice.updatePostTopics(newListItem, 'add');
 			searchSiblingTopics(newListItem);
 			handlerFocus.onFocus();
 		}
@@ -59,7 +57,7 @@ const useEditorNewPostTopics = () => {
 				setSelectedList((oldList) => [...oldList, newListItem]);
 			}
 			setSiblingList((oldList) => oldList.filter((listItem) => listItem.name !== newListItem));
-			editorNewPostModel.updatePostTopics(newListItem, 'add');
+			editorNewPostSlice.updatePostTopics(newListItem, 'add');
 			handlerFocus.onFocus();
 		}
 	};
@@ -69,7 +67,7 @@ const useEditorNewPostTopics = () => {
 		if (self.closest('.editor-new-post-topics__btn-selected')) {
 			const deleteListItem = self.closest('.editor-new-post-topics__btn-selected').textContent.trim();
 			setSelectedList((oldList) => oldList.filter((listItem) => listItem !== deleteListItem));
-			editorNewPostModel.updatePostTopics(deleteListItem, 'delete');
+			editorNewPostSlice.updatePostTopics(deleteListItem, 'delete');
 		}
 	};
 

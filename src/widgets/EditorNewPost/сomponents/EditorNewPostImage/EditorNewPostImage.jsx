@@ -23,10 +23,6 @@ const EditorNewPostImage = (props) => {
 	const inheritClasses = useClasses(classes);
 	const [toggleTools, setToggleTools] = useState(false);
 
-	const handlerToggleTools = () => {
-		setToggleTools(!toggleTools);
-	};
-
 	return (
 		<div className={inheritClasses + ' editor-new-post-image'}>
 			<div className="editor-new-post-image__wrapper-item">
@@ -40,7 +36,11 @@ const EditorNewPostImage = (props) => {
 				</Button>
 			</div>
 			{!schemaItemIsLast && (
-				<Button classes="editor-new-post-image__nav-btn-toggle" handleClick={handlerToggleTools}>
+				<Button
+					classes="editor-new-post-image__nav-btn-toggle"
+					handleClick={() => {
+						setToggleTools((prevToggleTools) => !prevToggleTools);
+					}}>
 					{!toggleTools ? <Icon.Plus className="btn-icon" /> : <Icon.Minus className="btn-icon" />}
 				</Button>
 			)}

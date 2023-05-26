@@ -182,14 +182,14 @@ const useAuthSlice = () => {
 			if (accessToken) {
 				const response = await authService.refresh();
 				if (response.status === 200) {
-					userSlice.handlerSetUser(response.data);
-					console.log('обновлен токен');
+					// console.log('обновлен токен');
 					handlerSetToggleStatusAuth(true);
 					handlerSetToggleLoadedAuth(true);
+					userSlice.handlerSetUser(response.data);
 
 					return response.data;
 				}
-				console.log('не обновлен токен');
+				// console.log('не обновлен токен');
 				handlerSetToggleLoadedAuth(true);
 				throw new errorService(response.data.errorName, response.data.message, response.data.arrErrors);
 			}

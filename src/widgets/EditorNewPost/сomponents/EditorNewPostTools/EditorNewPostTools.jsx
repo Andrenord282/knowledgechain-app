@@ -10,7 +10,7 @@ import EditorNewPostAddImage from '../EditorNewPostAddImage';
 import './EditorNewPostTools.scss';
 
 const EditorNewPostTools = (props) => {
-	const { classes, schemaItemId, schemaItemIndex, schemaLength } = props;
+	const { classes, editorNewPostSlice, schemaItemId, schemaItemIndex, schemaLength } = props;
 	const inheritClasses = useClasses(classes);
 
 	return (
@@ -18,16 +18,22 @@ const EditorNewPostTools = (props) => {
 			<div className="editor-new-post-tools__list-tools">
 				<EditorNewPostAddText
 					classes="editor-new-post-tools__btn-tools"
+					editorNewPostSlice={editorNewPostSlice}
 					schemaItemIndex={schemaItemIndex}
 					schemaLength={schemaLength}
 				/>
 				<EditorNewPostAddImage
 					classes="editor-new-post-tools__btn-tools"
+					editorNewPostSlice={editorNewPostSlice}
 					schemaItemIndex={schemaItemIndex}
 					schemaLength={schemaLength}
 				/>
 				{schemaLength > 2 && (
-					<EditorNewPostDelete classes="editor-new-post-tools__btn-tools" schemaItemId={schemaItemId} />
+					<EditorNewPostDelete
+						classes="editor-new-post-tools__btn-tools"
+						editorNewPostSlice={editorNewPostSlice}
+						schemaItemId={schemaItemId}
+					/>
 				)}
 			</div>
 		</div>

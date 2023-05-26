@@ -1,6 +1,7 @@
 //-----widgets-----//
 import EditorNewPost from 'widgets/EditorNewPost';
 
+
 //-----сomponents-----//
 import Navigation from 'сomponents/Navigation';
 import LinkCustom from 'сomponents/LinkCustom';

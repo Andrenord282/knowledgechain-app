@@ -7,6 +7,7 @@ import EditorNewPostTitle from '../EditorNewPostTitle';
 import EditorNewPostText from '../EditorNewPostText';
 import EditorNewPostImage from '../EditorNewPostImage';
 import EditorNewPostTopics from '../EditorNewPostTopics';
+import Render from 'сomponents/Render';
 
 //-----style-----//
 import './EditorNewPostForm.scss';
@@ -19,30 +20,32 @@ const EditorNewPostForm = (props) => {
 		<form
 			encType="multipart/form-data"
 			className={inheritClasses + ' editor-new-post-form'}
-			onSubmit={editorNewPostSlice.submitNewPost}>
+			onSubmit={() => {
+				editorNewPostSlice.submitNewPost();
+			}}>
 			{editorNewPostSlice.postSchema.map((schemaItem, schemaItemIndex) => {
 				const schemaItemIsLast = schemaItemIndex === editorNewPostSlice.postSchema.length - 1;
 				switch (true) {
 					case schemaItem.type === 'title':
 						return (
-							<EditorNewPostTitle
-								key={schemaItem.id}
-								classes="editor-new-post-form__title"
-								schemaItemIndex={schemaItemIndex}
-								schemaItemId={schemaItem.id}
-								showError={editorNewPostSlice.showError}
-								errorValidListNewPost={editorNewPostSlice.errorValidListNewPost}
-							/>
+							<Render key={schemaItem.id} name="EditorNewPostTitle">
+								<EditorNewPostTitle
+									key={schemaItem.id}
+									classes="editor-new-post-form__title"
+									editorNewPostSlice={editorNewPostSlice}
+									schemaItemIndex={schemaItemIndex}
+									schemaItemId={schemaItem.id}
+								/>
+							</Render>
 						);
 					case schemaItem.type === 'text':
 						return (
 							<EditorNewPostText
-								classes="editor-new-post-form__text"
 								key={schemaItem.id}
-								schemaItemId={schemaItem.id}
-								showError={editorNewPostSlice.showError}
-								errorValidListNewPost={editorNewPostSlice.errorValidListNewPost}
+								classes="editor-new-post-form__text"
+								editorNewPostSlice={editorNewPostSlice}
 								schemaItemIndex={schemaItemIndex}
+								schemaItemId={schemaItem.id}
 								schemaLength={editorNewPostSlice.postSchema.length}
 								schemaItemIsLast={schemaItemIsLast}
 							/>
@@ -62,7 +65,7 @@ const EditorNewPostForm = (props) => {
 						);
 				}
 			})}
-			<EditorNewPostTopics classes="editor-new-post-form__topics" />
+			{/* <EditorNewPostTopics classes="editor-new-post-form__topics" editorNewPostSlice={editorNewPostSlice} /> */}
 			<Button
 				classes={
 					!editorNewPostSlice.isValid
