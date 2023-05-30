@@ -1,6 +1,6 @@
 {
     "classes": "editor-new-post-form__title",
-    "editorNewPostSlice": {
+    "editorPostSlice": {
         "alert": {
             "toggleAlert": false,
             "setFields": {},

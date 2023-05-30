@@ -8,7 +8,6 @@ import errorService from 'shared/errorService/errorService';
 //-----hooks-----//
 import { useState, useEffect } from 'react';
 import useAlertState from 'hooks/useAlertState';
-import useUserSlice from 'hooks/slices/useUserSlice';
 import useNavigateLocation from 'hooks/useNavigateLocation';
 import useDebouncePromise from 'hooks/useDebouncePromise';
 
@@ -16,18 +15,17 @@ import useDebouncePromise from 'hooks/useDebouncePromise';
 import { useDispatch, useSelector } from 'react-redux';
 
 //-----selectors-----//
-import { selectEditorNewPost, selectPostSchema } from 'store/slices/editorNewPostSlice';
+import { selectEditorPost, selectPostSchema } from 'store/editorPostSlice';
 
 //-----actions-----//
 import {
 	setParams,
-	updateSchemaTitle,
-	updateSchemaText,
+	updateSchemaItem,
 	addSchemaItem,
 	deleteSchemaItem,
 	pushPostTopic,
 	deletePostTopic,
-} from 'store/slices/editorNewPostSlice';
+} from 'store/editorPostSlice';
 
 const errorList = {
 	title: {
@@ -40,11 +38,10 @@ const errorList = {
 	},
 };
 
-const useEditorNewPostSlice = () => {
+const useEditorPostSlice = () => {
 	const dispatch = useDispatch();
-	const { userName, idUser } = useUserSlice();
 	const alert = useAlertState();
-	const dataNewPost = useSelector(selectEditorNewPost);
+	const dataNewPost = useSelector(selectEditorPost);
 	const postSchema = useSelector(selectPostSchema);
 	const [isDirty, setIsDirty] = useState(false);
 	const [showError, setShowError] = useState(false);
@@ -53,85 +50,74 @@ const useEditorNewPostSlice = () => {
 	const handlerNavigate = useNavigateLocation();
 	const debounsSearch = useDebouncePromise(searchService.searchValue, 500);
 
-	useEffect(() => {
-		const handlerSetNewPostParams = () => {
-			const postId = nanoid(5);
-			dispatch(setParams({ idUser, userName, postId, postName: `${userName}-${postId}` }));
-		};
+	// const ckeckValidNewPost = () => {
+	// 	let countError = 0;
+	// 	postSchema.forEach((schemaItem) => {
+	// 		if (schemaItem.type === 'title') {
+	// 			switch (true) {
+	// 				case schemaItem.value.length === 0:
+	// 					setErrorValidListNewPost((errorValidNewPost) => {
+	// 						return {
+	// 							...errorValidNewPost,
+	// 							[schemaItem.id]: errorList.title.emptyText,
+	// 						};
+	// 					});
+	// 					countError++;
+	// 					break;
+	// 				case schemaItem.value.length < 3:
+	// 					setErrorValidListNewPost((errorValidNewPost) => {
+	// 						return {
+	// 							...errorValidNewPost,
+	// 							[schemaItem.id]: errorList.title.lengthText,
+	// 						};
+	// 					});
+	// 					countError++;
+	// 					break;
 
-		if (userName) {
-			handlerSetNewPostParams();
-		}
-	}, [userName]);
+	// 				case schemaItem.value.length >= 3:
+	// 					setErrorValidListNewPost((errorValidNewPost) => {
+	// 						return {
+	// 							...errorValidNewPost,
+	// 							[schemaItem.id]: '',
+	// 						};
+	// 					});
+	// 					break;
+	// 			}
+	// 		}
+	// 		if (schemaItem.type === 'text') {
+	// 			switch (true) {
+	// 				case schemaItem.value.length === 0:
+	// 					setErrorValidListNewPost((errorValidNewPost) => {
+	// 						return {
+	// 							...errorValidNewPost,
+	// 							[schemaItem.id]: errorList.text.emptyText,
+	// 						};
+	// 					});
+	// 					countError++;
+	// 					break;
+	// 				case schemaItem.value.length < 3:
+	// 					setErrorValidListNewPost((errorValidNewPost) => {
+	// 						return {
+	// 							...errorValidNewPost,
+	// 							[schemaItem.id]: errorList.text.lengthText,
+	// 						};
+	// 					});
+	// 					countError++;
+	// 					break;
 
-	const ckeckValidNewPost = () => {
-		let countError = 0;
-		postSchema.forEach((schemaItem) => {
-			if (schemaItem.type === 'title') {
-				switch (true) {
-					case schemaItem.value.length === 0:
-						setErrorValidListNewPost((errorValidNewPost) => {
-							return {
-								...errorValidNewPost,
-								[schemaItem.id]: errorList.title.emptyText,
-							};
-						});
-						countError++;
-						break;
-					case schemaItem.value.length < 3:
-						setErrorValidListNewPost((errorValidNewPost) => {
-							return {
-								...errorValidNewPost,
-								[schemaItem.id]: errorList.title.lengthText,
-							};
-						});
-						countError++;
-						break;
-
-					case schemaItem.value.length >= 3:
-						setErrorValidListNewPost((errorValidNewPost) => {
-							return {
-								...errorValidNewPost,
-								[schemaItem.id]: '',
-							};
-						});
-						break;
-				}
-			}
-			if (schemaItem.type === 'text') {
-				switch (true) {
-					case schemaItem.value.length === 0:
-						setErrorValidListNewPost((errorValidNewPost) => {
-							return {
-								...errorValidNewPost,
-								[schemaItem.id]: errorList.text.emptyText,
-							};
-						});
-						countError++;
-						break;
-					case schemaItem.value.length < 3:
-						setErrorValidListNewPost((errorValidNewPost) => {
-							return {
-								...errorValidNewPost,
-								[schemaItem.id]: errorList.text.lengthText,
-							};
-						});
-						countError++;
-						break;
-
-					case schemaItem.value.length >= 3:
-						setErrorValidListNewPost((errorValidNewPost) => {
-							return {
-								...errorValidNewPost,
-								[schemaItem.id]: '',
-							};
-						});
-						break;
-				}
-			}
-		});
-		countError === 0 ? setIsValid(true) : setIsValid(false);
-	};
+	// 				case schemaItem.value.length >= 3:
+	// 					setErrorValidListNewPost((errorValidNewPost) => {
+	// 						return {
+	// 							...errorValidNewPost,
+	// 							[schemaItem.id]: '',
+	// 						};
+	// 					});
+	// 					break;
+	// 			}
+	// 		}
+	// 	});
+	// 	countError === 0 ? setIsValid(true) : setIsValid(false);
+	// };
 
 	// useEffect(() => {
 	// 	if (isDirty) {
@@ -147,18 +133,11 @@ const useEditorNewPostSlice = () => {
 		};
 	};
 
-	const setNewPostTitle = (data) => {
+	const setNewPostSchemaItem = (index, data) => {
 		if (!isDirty) {
 			setIsDirty(true);
 		}
-		dispatch(updateSchemaTitle(data));
-	};
-
-	const setNewPostText = (data) => {
-		if (!isDirty) {
-			setIsDirty(true);
-		}
-		dispatch(updateSchemaText(data));
+		dispatch(updateSchemaItem({ index, data }));
 	};
 
 	const addNewSchemaItem = (activationIndex, schemaLength, data = '', type = 'text', idItem = false) => {
@@ -196,21 +175,21 @@ const useEditorNewPostSlice = () => {
 				alert.setToggleAlert(true);
 				alert.setFields.iconAlert('loading');
 				alert.setFields.titleAlert('Отправка поста...');
-				// const newPost = formService.collectDataNewPost(dataNewPost);
-				// const response = await postService.createNewPost(newPost);
-				// if (response.status === 200) {
-				// 	alert.setFields.iconAlert('success');
-				// 	alert.setFields.titleAlert(response.data.message);
-				// 	setTimeout(() => {
-				// 		alert.setToggleAlert(false);
-				// 		alert.setFields.iconAlert(null);
-				// 		alert.setFields.titleAlert(null);
-				// 		handlerNavigate.setLocationPage();
-				// 	}, 700);
+				const newPost = formService.collectDataNewPost(dataNewPost);
+				const response = await postService.createNewPost(newPost);
+				if (response.status === 200) {
+					alert.setFields.iconAlert('success');
+					alert.setFields.titleAlert(response.data.message);
+					setTimeout(() => {
+						alert.setToggleAlert(false);
+						alert.setFields.iconAlert(null);
+						alert.setFields.titleAlert(null);
+						handlerNavigate.setLocationPage();
+					}, 700);
 
-				// 	return;
-				// }
-				// throw new errorService(response.data.errorName, response.data.message);
+					return;
+				}
+				throw new errorService(response.data.errorName, response.data.message);
 			} else {
 				setShowError(true);
 			}
@@ -232,8 +211,7 @@ const useEditorNewPostSlice = () => {
 		isValid,
 		errorValidListNewPost,
 		showError,
-		setNewPostTitle,
-		setNewPostText,
+		setNewPostSchemaItem,
 		addNewSchemaItem,
 		deleteCurrentSchemaItem,
 		requestVariantTopic,
@@ -241,4 +219,4 @@ const useEditorNewPostSlice = () => {
 		submitNewPost,
 	};
 };
-export default useEditorNewPostSlice;
+export default useEditorPostSlice;

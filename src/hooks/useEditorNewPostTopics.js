@@ -7,7 +7,7 @@ import useInputChange from 'hooks/useInputChange';
 import useDebouncePromise from './useDebouncePromise';
 import useFocusComponent from 'hooks/useFocusComponent';
 
-const useEditorNewPostTopics = (editorNewPostSlice) => {
+const useEditorNewPostTopics = (editorPostSlice) => {
 	const focusRef = useRef(null);
 	const handlerFocus = useFocusComponent(focusRef);
 	const input = useInputChange('');
@@ -43,7 +43,7 @@ const useEditorNewPostTopics = (editorNewPostSlice) => {
 			}
 			input.onReset();
 			setVariantListApi([]);
-			editorNewPostSlice.updatePostTopics(newListItem, 'add');
+			editorPostSlice.updatePostTopics(newListItem, 'add');
 			searchSiblingTopics(newListItem);
 			handlerFocus.onFocus();
 		}
@@ -57,7 +57,7 @@ const useEditorNewPostTopics = (editorNewPostSlice) => {
 				setSelectedList((oldList) => [...oldList, newListItem]);
 			}
 			setSiblingList((oldList) => oldList.filter((listItem) => listItem.name !== newListItem));
-			editorNewPostSlice.updatePostTopics(newListItem, 'add');
+			editorPostSlice.updatePostTopics(newListItem, 'add');
 			handlerFocus.onFocus();
 		}
 	};
@@ -67,7 +67,7 @@ const useEditorNewPostTopics = (editorNewPostSlice) => {
 		if (self.closest('.editor-new-post-topics__btn-selected')) {
 			const deleteListItem = self.closest('.editor-new-post-topics__btn-selected').textContent.trim();
 			setSelectedList((oldList) => oldList.filter((listItem) => listItem !== deleteListItem));
-			editorNewPostSlice.updatePostTopics(deleteListItem, 'delete');
+			editorPostSlice.updatePostTopics(deleteListItem, 'delete');
 		}
 	};
 

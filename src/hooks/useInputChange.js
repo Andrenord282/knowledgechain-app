@@ -10,7 +10,6 @@ const useInputChange = (initialValue) => {
 
 	const handleKeyUp = (e, callback, ...args) => {
 		if (value.length < prevLength) {
-			console.log(callback);
 			callback(...args);
 		}
 	};

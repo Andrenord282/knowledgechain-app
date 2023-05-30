@@ -1,13 +1,15 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import { userReducer } from './slices/userSlice';
-import { authReducer } from './slices/authSlice';
-import { editorNewPostReducer } from './slices/editorNewPostSlice';
-import { postListReducer } from './slices/postListSlice/postListSlice';
+import { userReducer } from './userSlice';
+import { authReducer } from './authSlice';
+import { editPostParamsReducer } from './editPostParamsSlice';
+import { editorPostSchemaReducer } from './editorPostSchemaSlice';
+import { postListReducer } from './postListSlice/postListSlice';
 
 const rootReducer = combineReducers({
 	user: userReducer,
 	auth: authReducer,
-	editorNewPost: editorNewPostReducer,
+	editPostParams: editPostParamsReducer,
+	editorPostSchema: editorPostSchemaReducer,
 	postList: postListReducer,
 });
 

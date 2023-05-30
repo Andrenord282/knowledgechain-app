@@ -12,7 +12,7 @@ import useUserSlice from 'hooks/slices/useUserSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 //-----selectors-----//
-import { selectLoadedAuth, selectRequestAuth, selectStatusAuth, selectToggleAuthModal } from 'store/slices/authSlice';
+import { selectLoadedAuth, selectRequestAuth, selectStatusAuth, selectToggleAuthModal } from 'store/authSlice';
 
 //-----actions-----//
 import {
@@ -20,7 +20,7 @@ import {
 	setToggleRequestAuth,
 	setToggleAuthModal,
 	setToggleStatusAuth,
-} from 'store/slices/authSlice';
+} from 'store/authSlice';
 
 //-----models-----//
 

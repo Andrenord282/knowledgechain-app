@@ -2,10 +2,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 
 //-----selectors-----//
-import { selectUser } from 'store/slices/userSlice';
+import { selectUser } from 'store/userSlice';
 
 //-----actions-----//
-import { setUser, resetUser } from 'store/slices/userSlice';
+import { setUser, resetUser } from 'store/userSlice';
 
 const useUserSlice = () => {
 	const dispatch = useDispatch();

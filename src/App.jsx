@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 //-----pages-----//
 import PageMain from 'pages/PageMain';
-import PageNewPost from 'pages/PageNewPost';
+import PageEditorPost from 'pages/PageEditorPost';
 
 //-----widgets-----//
 import Auth from 'widgets/Auth';
@@ -15,7 +15,7 @@ const App = () => {
 			<Route path="/" element={<Auth />}>
 				<Route path="/" element={<PageMain />} />
 				<Route element={<AuthRequired />}>
-					<Route path="/new-post" element={<PageNewPost />} />
+					<Route path="/editor-post" element={<PageEditorPost />} />
 				</Route>
 			</Route>
 		</Routes>

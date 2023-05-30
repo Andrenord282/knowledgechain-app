@@ -13,10 +13,10 @@ import {
 	selectSortPost,
 	selectFilterPost,
 	selectPostList,
-} from '../../store/slices/postListSlice';
+} from '../../store/postListSlice';
 
 //-----actions-----//
-import { togglePostListLoaded, updatePostList, setCursorPost } from '../../store/slices/postListSlice';
+import { togglePostListLoaded, updatePostList, setCursorPost } from '../../store/postListSlice';
 
 const usePostListSlice = () => {
 	const dispatch = useDispatch();

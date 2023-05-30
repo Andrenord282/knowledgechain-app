@@ -1,31 +1,41 @@
 {
-    "classes": "editor-new-post-form__title",
-    "editorNewPostSlice": {
-        "alert": {
-            "toggleAlert": false,
-            "setFields": {},
-            "alertFields": {
-                "iconALert": null,
-                "titleALert": null,
-                "textALert": null
-            }
-        },
-        "postSchema": [
-            {
-                "id": "title-id-defult",
-                "type": "title",
-                "value": ""
-            },
-            {
-                "id": "text-id-defult",
-                "type": "text",
-                "value": ""
-            }
-        ],
-        "isValid": false,
-        "errorValidListNewPost": {},
-        "showError": false
+    "Zlvro": {
+        "id": "Zlvro",
+        "type": "title",
+        "value": ""
     },
-    "schemaItemIndex": 0,
-    "schemaItemId": "title-id-defult"
+    "z9IOt": {
+        "id": "z9IOt",
+        "type": "text",
+        "value": ""
+    },
+    "G7INe": {
+        "id": "G7INe",
+        "type": "title",
+        "value": ""
+    },
+    "rwK6C": {
+        "id": "rwK6C",
+        "type": "text",
+        "value": ""
+    }
 }
+
+
+[
+    {
+        "id": "Zlvro",
+        "type": "title",
+        "value": ""
+    },
+    {
+        "id": "z9IOt",
+        "type": "text",
+        "value": ""
+    },
+    {
+        "id": "rwK6C",
+        "type": "text",
+        "value": ""
+    }
+]
