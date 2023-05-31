@@ -1,14 +1,8 @@
 //-----hooks-----//
-import { memo, useEffect } from 'react';
+import { memo } from 'react';
 import useClasses from 'hooks/useClasses';
 import useInputChange from 'hooks/useInputChange';
 import { useEditorPostSchemaController } from 'hooks/editorPostSlice';
-
-//-----redux-----//
-import { useSelector } from 'react-redux';
-
-//-----selectors-----//
-import { selectPostSchemaItem } from 'store/editorPostSchemaSlice';
 
 //-----сomponents-----//
 import * as Icon from 'сomponents/Icon';
@@ -18,15 +12,16 @@ import Button from 'сomponents/Button';
 import './EditorPostTitle.scss';
 import Render from 'сomponents/Render';
 
-const EditorPostTitle = (props) => {
+const EditorPostTitle = memo((props) => {
 	const { classes, schemaItemIndex, schemaItemId } = props;
 	const inheritClasses = useClasses(classes);
 	const editorPostSchemaController = useEditorPostSchemaController();
-	const inputTitle = useInputChange('');
+	const titleInput = useInputChange('');
 
-	useEffect(() => {
-		editorPostSchemaController.updateSchemaItem(schemaItemId, inputTitle.value);
-	}, [inputTitle.value]);
+	const handlerChangeTitle = (e) => {
+		titleInput.onChenge(e);
+		editorPostSchemaController.updateSchemaItem(schemaItemId, titleInput.value);
+	};
 
 	return (
 		<Render name="EditorPostTitle">
@@ -35,20 +30,20 @@ const EditorPostTitle = (props) => {
 					type="text"
 					className="editor-post-title__input"
 					placeholder="Напишите заголовок"
-					value={inputTitle.value}
-					onChange={inputTitle.onChenge}
+					value={titleInput.value}
+					onChange={handlerChangeTitle}
 				/>
 				{/* {editorPostForm.showError && (
 				<span className="editor-post-title__error-valid">
 					{editorPostForm.errorValidListNewPost[schemaItemId]}
 				</span>
 			)} */}
-				<Button classes="editor-post-title__btn-reset" handleClick={inputTitle.onReset}>
+				<Button classes="editor-post-title__btn-reset" handleClick={titleInput.onReset}>
 					<Icon.ResetTest className="btn-icon" />
 				</Button>
 			</div>
 		</Render>
 	);
-};
+});
 
-export default memo(EditorPostTitle);
+export default EditorPostTitle;

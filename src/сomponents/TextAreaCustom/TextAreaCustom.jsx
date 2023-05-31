@@ -7,7 +7,7 @@ import useAutosizeTextArea from 'hooks/useAutosizeTextArea';
 import './TextAreaCustom.scss';
 
 const TextAreaCustom = (props) => {
-	const { classes, value, handlerChange, placeholder, handlerFocus, handlerBlur } = props;
+	const { classes, value, onChange, placeholder, handlerFocus, handlerBlur } = props;
 	const inheritClasses = useClasses(classes);
 	const nodeTextArea = useRef(null);
 	useAutosizeTextArea(nodeTextArea.current, value);
@@ -20,7 +20,7 @@ const TextAreaCustom = (props) => {
 			placeholder={placeholder}
 			onFocus={handlerFocus ? handlerFocus : null}
 			onBlur={handlerBlur ? handlerBlur : null}
-			onChange={handlerChange}
+			onChange={onChange}
 		/>
 	);
 };

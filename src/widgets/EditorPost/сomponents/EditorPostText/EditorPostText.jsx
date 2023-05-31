@@ -1,5 +1,5 @@
 //-----hooks-----//
-import { useState, useEffect, memo } from 'react';
+import { useState, memo } from 'react';
 import useClasses from 'hooks/useClasses';
 import useInputChange from 'hooks/useInputChange';
 import { useEditorPostSchemaController } from 'hooks/editorPostSlice';
@@ -14,16 +14,17 @@ import EditorPostTools from '../EditorPostTools';
 import './EditorPostText.scss';
 import Render from 'сomponents/Render';
 
-const EditorPostText = (props) => {
+const EditorPostText = memo((props) => {
 	const { classes, schemaItemIndex, schemaItemId, schemaLength, schemaItemIsLast } = props;
 	const inheritClasses = useClasses(classes);
 	const editorPostSchemaController = useEditorPostSchemaController();
-	const inputText = useInputChange('');
+	const textInput = useInputChange('');
 	const [toggleTools, setToggleTools] = useState(false);
 
-	useEffect(() => {
-		editorPostSchemaController.updateSchemaItem(schemaItemId, inputText.value);
-	}, [inputText.value]);
+	const handlerChangeText = (e) => {
+		textInput.onChenge(e);
+		editorPostSchemaController.updateSchemaItem(schemaItemId, textInput.value);
+	};
 
 	const handlerToggleTools = () => {
 		setToggleTools((prevToggleTools) => !prevToggleTools);
@@ -35,10 +36,8 @@ const EditorPostText = (props) => {
 				<div className="editor-post-text__input-body">
 					<TextAreaCustom
 						classes="editor-post-text__input"
-						value={inputText.value}
-						handlerChange={(e) => {
-							inputText.onChenge(e);
-						}}
+						value={textInput.value}
+						onChange={handlerChangeText}
 						placeholder="Напишите текст"
 					/>
 					{/* {editorPostForm.showError && (
@@ -47,7 +46,7 @@ const EditorPostText = (props) => {
 					</span>
 				)} */}
 				</div>
-				<Button classes="editor-post-text__btn-reset" handleClick={inputText.onReset}>
+				<Button classes="editor-post-text__btn-reset" handleClick={textInput.onReset}>
 					<Icon.ResetTest className="btn-icon" />
 				</Button>
 				{!schemaItemIsLast && (
@@ -82,6 +81,6 @@ const EditorPostText = (props) => {
 			</div>
 		</Render>
 	);
-};
+});
 
-export default memo(EditorPostText);
+export default EditorPostText;
