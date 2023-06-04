@@ -5,4 +5,4 @@ export { editPostParamsReducer } from './editPostParamsSlice';
 export { selectDirty, selectPostParams } from './selectors';
 
 //-----actions-----//
-export { initParams, setToggleDirty } from './editPostParamsSlice';
+export { editPostParamsActions } from './editPostParamsSlice';

@@ -2,6 +2,8 @@
 import { useState, memo } from 'react';
 import useClasses from 'hooks/useClasses';
 import useInputChange from 'hooks/useInputChange';
+
+//-----controllers-----//
 import { useEditorPostSchemaController } from 'hooks/editorPostSlice';
 
 //-----сomponents-----//
@@ -14,16 +16,21 @@ import EditorPostTools from '../EditorPostTools';
 import './EditorPostText.scss';
 import Render from 'сomponents/Render';
 
-const EditorPostText = memo((props) => {
-	const { classes, schemaItemIndex, schemaItemId, schemaLength, schemaItemIsLast } = props;
+const EditorPostText = (props) => {
+	const { classes, schemaItemIndex, schemaLength, schemaItemIsLast } = props;
 	const inheritClasses = useClasses(classes);
-	const editorPostSchemaController = useEditorPostSchemaController();
 	const textInput = useInputChange('');
 	const [toggleTools, setToggleTools] = useState(false);
+	const editorPostSchemaController = useEditorPostSchemaController();
 
 	const handlerChangeText = (e) => {
 		textInput.onChenge(e);
-		editorPostSchemaController.updateSchemaItem(schemaItemId, textInput.value);
+		editorPostSchemaController.updateSchemaItem(schemaItemIndex, e.target.value);
+	};
+
+	const handlerResetText = () => {
+		textInput.onReset();
+		editorPostSchemaController.updateSchemaItem(schemaItemIndex, '');
 	};
 
 	const handlerToggleTools = () => {
@@ -41,46 +48,38 @@ const EditorPostText = memo((props) => {
 						placeholder="Напишите текст"
 					/>
 					{/* {editorPostForm.showError && (
-					<span className="editor-post-text__error-valid">
+					<span className="editor-post-text__error">
 						{editorPostForm.errorValidListNewPost[schemaItemId]}
 					</span>
 				)} */}
 				</div>
-				<Button classes="editor-post-text__btn-reset" handleClick={textInput.onReset}>
+				<Button classes="editor-post-text__btn-reset" handleClick={handlerResetText}>
 					<Icon.ResetTest className="btn-icon" />
 				</Button>
 				{!schemaItemIsLast && (
-					<Button classes="editor-post-text__nav-btn-toggle" handleClick={handlerToggleTools}>
+					<Button classes="editor-post-text__btn-toggle" handleClick={handlerToggleTools}>
 						{!toggleTools ? <Icon.Plus className="btn-icon" /> : <Icon.Minus className="btn-icon" />}
 					</Button>
 				)}
-				{!schemaItemIsLast && (
-					<div className="editor-post-text__nav">
-						{toggleTools && (
-							<EditorPostTools
-								classes="editor-post-text__tools"
-								schemaItemIndex={schemaItemIndex}
-								schemaItemId={schemaItemId}
-								schemaLength={schemaLength}
-								schemaItemIsLast={schemaItemIsLast}
-							/>
-						)}
-					</div>
+				{!schemaItemIsLast && toggleTools && (
+					<EditorPostTools
+						classes="editor-post-text__tools"
+						schemaItemIndex={schemaItemIndex}
+						schemaLength={schemaLength}
+						schemaItemIsLast={schemaItemIsLast}
+					/>
 				)}
 				{schemaItemIsLast && (
-					<div className="editor-post-text__nav">
-						<EditorPostTools
-							classes="editor-post-text__tools"
-							schemaItemIndex={schemaItemIndex}
-							schemaItemId={schemaItemId}
-							schemaLength={schemaLength}
-							schemaItemIsLast={schemaItemIsLast}
-						/>
-					</div>
+					<EditorPostTools
+						classes="editor-post-text__tools"
+						schemaItemIndex={schemaItemIndex}
+						schemaLength={schemaLength}
+						schemaItemIsLast={schemaItemIsLast}
+					/>
 				)}
 			</div>
 		</Render>
 	);
-});
+};
 
-export default EditorPostText;
+export default memo(EditorPostText);

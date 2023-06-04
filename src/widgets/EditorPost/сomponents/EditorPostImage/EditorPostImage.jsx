@@ -1,6 +1,12 @@
 //-----hooks-----//
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import useClasses from 'hooks/useClasses';
+
+//-----redux-----//
+import { useSelector } from 'react-redux';
+
+//-----selectors-----//
+import { selectPostSchemaItem } from 'store/editorPostSchemaSlice';
 
 //-----сomponents-----//
 import * as Icon from 'сomponents/Icon';
@@ -11,65 +17,43 @@ import EditorPostTools from '../EditorPostTools';
 import './EditorPostImage.scss';
 
 const EditorPostImage = (props) => {
-	const {
-		classes,
-		editorPostSlice,
-		schemaItemImageUrl,
-		schemaItemId,
-		schemaItemIndex,
-		schemaLength,
-		schemaItemIsLast,
-	} = props;
+	const { classes, schemaItemIndex, schemaLength, schemaItemIsLast } = props;
 	const inheritClasses = useClasses(classes);
+	const postSchemaItem = useSelector((state) => selectPostSchemaItem(state, schemaItemIndex));
 	const [toggleTools, setToggleTools] = useState(false);
+
+	const handlerToggleTools = () => {
+		setToggleTools((prevToggleTools) => !prevToggleTools);
+	};
 
 	return (
 		<div className={inheritClasses + ' editor-post-image'}>
 			<div className="editor-post-image__wrapper-item">
-				<img src={schemaItemImageUrl} alt="" className="editor-post-image__item" />
-				<Button
-					classes="editor-new-post-iamge__btn-delete"
-					handleClick={() => {
-						editorPostSlice.deleteCurrentSchemaItem(schemaItemId);
-					}}>
-					<Icon.ResetTest className="btn-icon" />
-				</Button>
+				<img src={postSchemaItem.value} alt="" className="editor-post-image__item" />
 			</div>
 			{!schemaItemIsLast && (
-				<Button
-					classes="editor-post-image__nav-btn-toggle"
-					handleClick={() => {
-						setToggleTools((prevToggleTools) => !prevToggleTools);
-					}}>
+				<Button classes="editor-post-image__btn-toggle" handleClick={handlerToggleTools}>
 					{!toggleTools ? <Icon.Plus className="btn-icon" /> : <Icon.Minus className="btn-icon" />}
 				</Button>
 			)}
-			{!schemaItemIsLast && (
-				<div className="editor-post-image__nav">
-					{toggleTools && (
-						<EditorPostTools
-							classes="editor-post-image__tools"
-							schemaItemId={schemaItemId}
-							schemaItemIndex={schemaItemIndex}
-							schemaLength={schemaLength}
-							schemaItemIsLast={schemaItemIsLast}
-						/>
-					)}
-				</div>
+			{!schemaItemIsLast && toggleTools && (
+				<EditorPostTools
+					classes="editor-post-image__tools"
+					schemaItemIndex={schemaItemIndex}
+					schemaLength={schemaLength}
+					schemaItemIsLast={schemaItemIsLast}
+				/>
 			)}
 			{schemaItemIsLast && (
-				<div className="editor-post-image__nav">
-					<EditorPostTools
-						classes="editor-post-image__tools"
-						schemaItemId={schemaItemId}
-						schemaItemIndex={schemaItemIndex}
-						schemaLength={schemaLength}
-						schemaItemIsLast={schemaItemIsLast}
-					/>
-				</div>
+				<EditorPostTools
+					classes="editor-post-image__tools"
+					schemaItemIndex={schemaItemIndex}
+					schemaLength={schemaLength}
+					schemaItemIsLast={schemaItemIsLast}
+				/>
 			)}
 		</div>
 	);
 };
 
-export default EditorPostImage;
+export default memo(EditorPostImage);

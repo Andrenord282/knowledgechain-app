@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
 	loadedUser: false,
-	idUser: null,
+	userId: null,
 	userName: null,
 	email: null,
 	userImgUrl: null,
@@ -13,15 +13,15 @@ const userSlice = createSlice({
 	initialState,
 	reducers: {
 		setUser: (state, action) => {
-			const { idUser, userName, email, userImgUrl } = action.payload;
-			state.idUser = idUser;
+			const { userId, userName, email, userImgUrl } = action.payload;
+			state.userId = userId;
 			state.userName = userName;
 			state.email = email;
 			state.userImgUrl = userImgUrl;
 		},
 
 		resetUser: (state) => {
-			state.idUser = null;
+			state.userId = null;
 			state.userName = null;
 			state.email = null;
 			state.userImgUrl = null;

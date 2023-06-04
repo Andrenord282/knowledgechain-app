@@ -2,6 +2,8 @@
 import { memo } from 'react';
 import useClasses from 'hooks/useClasses';
 import useInputChange from 'hooks/useInputChange';
+
+//-----controllers-----//
 import { useEditorPostSchemaController } from 'hooks/editorPostSlice';
 
 //-----сomponents-----//
@@ -12,15 +14,20 @@ import Button from 'сomponents/Button';
 import './EditorPostTitle.scss';
 import Render from 'сomponents/Render';
 
-const EditorPostTitle = memo((props) => {
-	const { classes, schemaItemIndex, schemaItemId } = props;
+const EditorPostTitle = (props) => {
+	const { classes, schemaItemIndex } = props;
 	const inheritClasses = useClasses(classes);
-	const editorPostSchemaController = useEditorPostSchemaController();
 	const titleInput = useInputChange('');
+	const editorPostSchemaController = useEditorPostSchemaController();
 
 	const handlerChangeTitle = (e) => {
 		titleInput.onChenge(e);
-		editorPostSchemaController.updateSchemaItem(schemaItemId, titleInput.value);
+		editorPostSchemaController.updateSchemaItem(schemaItemIndex, e.target.value);
+	};
+
+	const handlerResetTitle = () => {
+		titleInput.onReset();
+		editorPostSchemaController.updateSchemaItem(schemaItemIndex, '');
 	};
 
 	return (
@@ -38,12 +45,12 @@ const EditorPostTitle = memo((props) => {
 					{editorPostForm.errorValidListNewPost[schemaItemId]}
 				</span>
 			)} */}
-				<Button classes="editor-post-title__btn-reset" handleClick={titleInput.onReset}>
+				<Button classes="editor-post-title__btn-reset" handleClick={handlerResetTitle}>
 					<Icon.ResetTest className="btn-icon" />
 				</Button>
 			</div>
 		</Render>
 	);
-});
+};
 
-export default EditorPostTitle;
+export default memo(EditorPostTitle);

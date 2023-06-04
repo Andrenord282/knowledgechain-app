@@ -1,6 +1,7 @@
 //-----modules-----//
 //-----router-----//
 //-----hooks-----//
+//-----controllers-----//
 //-----redux-----//
 //-----selectors-----//
 //-----actions-----//

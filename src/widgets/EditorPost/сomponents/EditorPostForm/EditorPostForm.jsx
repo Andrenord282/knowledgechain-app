@@ -26,15 +26,15 @@ const EditorPostForm = (props) => {
 	const { classes } = props;
 	const inheritClasses = useClasses(classes);
 	const postSchema = useSelector(selectPostSchema);
-	const { userName, idUser } = useUserSlice();
+	const { userName, userId } = useUserSlice();
 	const editorPostSchemaController = useEditorPostSchemaController();
 	const editorPostParams = useEditorPostParams();
 
 	useEffect(() => {
-		if (userName && idUser) {
-			editorPostParams.handlerInitPostParams(userName, idUser);
+		if (userName && userId) {
+			// editorPostParams.handlerInitPostParams(userName, userId);
 		}
-	}, [userName, idUser]);
+	}, [userName, userId]);
 
 	useEffect(() => {
 		editorPostSchemaController.initSchema();

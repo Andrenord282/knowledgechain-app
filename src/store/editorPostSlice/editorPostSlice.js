@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
 	dirty: false,
-	idUser: null,
+	userId: null,
 	author: null,
 	postId: null,
 	postName: null,
@@ -23,9 +23,9 @@ const editorPostSlice = createSlice({
 		},
 
 		setPostParams: (state, action) => {
-			const { idUser, userName, postId, postName, postSchema } = action.payload;
+			const { userId, userName, postId, postName, postSchema } = action.payload;
 
-			state.idUser = idUser;
+			state.userId = userId;
 			state.author = userName;
 			state.postId = postId;
 			state.postName = postName;

@@ -1,8 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, nanoid } from '@reduxjs/toolkit';
 
 const initialState = {
-	dirty: false,
-	idUser: null,
+	userId: null,
 	author: null,
 	postId: null,
 	postName: null,
@@ -12,25 +11,18 @@ const editPostParamsSlice = createSlice({
 	name: 'editPostParams',
 	initialState,
 	reducers: {
-		initParams: (state, action) => {
-			const { idUser, userName, postId, postName, postSchema } = action.payload;
+		initPostParams: (state, action) => {
+			const { userId, userName } = action.payload;
+			const postId = nanoid(5);
 
-			state.idUser = idUser;
+			state.userId = userId;
 			state.author = userName;
 			state.postId = postId;
-			state.postName = postName;
-			state.postSchema = postSchema;
-		},
-
-		setToggleDirty: (state, action) => {
-			const { toggle } = action.payload;
-
-			state.dirty = toggle;
+			state.postName = `${userName}-${postId}`;
 		},
 	},
 });
 
-export const { initParams, setToggleDirty } = editPostParamsSlice.actions;
+export const editPostParamsActions = editPostParamsSlice.actions;
 
-const editPostParamsReducer = editPostParamsSlice.reducer;
-export { editPostParamsReducer };
+export const editPostParamsReducer = editPostParamsSlice.reducer;

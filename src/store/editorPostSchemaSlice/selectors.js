@@ -1,2 +1,2 @@
-export const selectPostSchema = (state) => Object.values(state.editorPostSchema);
-export const selectPostSchemaItem = (state, schemaItemId) => state.editorPostSchema[schemaItemId];
+export const selectPostSchema = (state) => state.editorPostSchema.postSchema;
+export const selectPostSchemaItem = (state, schemaItemIndex) => state.editorPostSchema.postSchema[schemaItemIndex];

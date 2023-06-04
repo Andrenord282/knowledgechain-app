@@ -10,26 +10,16 @@ import EditorPostAddImage from '../EditorPostAddImage';
 import './EditorPostTools.scss';
 
 const EditorPostTools = (props) => {
-	const { classes, schemaItemId, schemaItemIndex, schemaLength } = props;
+	const { classes, schemaItemIndex, schemaLength } = props;
 	const inheritClasses = useClasses(classes);
 
 	return (
 		<div className={inheritClasses + ' editor-post-tools'}>
-			<div className="editor-post-tools__list-tools">
-				<EditorPostAddText
-					classes="editor-post-tools__btn-tools"
-					schemaItemIndex={schemaItemIndex}
-					schemaLength={schemaLength}
-				/>
-				<EditorPostAddImage
-					classes="editor-post-tools__btn-tools"
-					schemaItemIndex={schemaItemIndex}
-					schemaLength={schemaLength}
-				/>
-				{schemaLength > 2 && (
-					<EditorPostDelete classes="editor-post-tools__btn-tools" schemaItemId={schemaItemId} />
-				)}
-			</div>
+			<EditorPostAddText classes="editor-post-tools__btn-tools" schemaItemIndex={schemaItemIndex} />
+			<EditorPostAddImage classes="editor-post-tools__btn-tools" schemaItemIndex={schemaItemIndex} />
+			{schemaLength > 2 && (
+				<EditorPostDelete classes="editor-post-tools__btn-tools" schemaItemIndex={schemaItemIndex} />
+			)}
 		</div>
 	);
 };

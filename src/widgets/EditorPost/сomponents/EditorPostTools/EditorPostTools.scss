@@ -1,7 +1,7 @@
 .editor-post-tools {
 	display: flex;
-	flex-direction: column;
 	align-items: center;
+	background-color: var(--second-component-bg-color);
 	justify-content: center;
 }
 
@@ -10,8 +10,7 @@
 	align-items: center;
 }
 
-.editor-post-tools__btn-tools,
-.input-file-custom__label {
+.editor-post-tools__btn-tools {
 	width: 40px;
 	height: 40px;
 	padding: 5px;
@@ -30,16 +29,14 @@
 	margin-right: 30px;
 }
 
-.editor-post-tools__btn-tools .btn-icon,
-.input-file-custom__label .btn-icon {
+.editor-post-tools__btn-tools .btn-icon {
 	width: 100%;
 	height: 100%;
 	fill: var(--third-fill-color);
 	transition: fill 0.1s linear;
 }
 
-.editor-post-tools__btn-tools:hover .btn-icon,
-.input-file-custom__label .btn-icon {
+.editor-post-tools__btn-tools:hover .btn-icon {
 	fill: var(--first-text-color);
 }
 
