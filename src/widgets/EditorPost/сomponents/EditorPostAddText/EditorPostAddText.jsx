@@ -13,12 +13,12 @@ const EditorPostAddText = (props) => {
 	const inheritClasses = useClasses(classes);
 	const editorPostSchemaController = useEditorPostSchemaController();
 
+	const hanlderAddSchemaItem = () => {
+		editorPostSchemaController.addSchemaItem(schemaItemIndex);
+	};
+
 	return (
-		<Button
-			classes={inheritClasses}
-			handleClick={() => {
-				editorPostSchemaController.addSchemaItem(schemaItemIndex);
-			}}>
+		<Button classes={inheritClasses} handleClick={hanlderAddSchemaItem}>
 			<Icon.AddText className="btn-icon" />
 		</Button>
 	);

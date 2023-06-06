@@ -14,6 +14,7 @@ const userSlice = createSlice({
 	reducers: {
 		setUser: (state, action) => {
 			const { userId, userName, email, userImgUrl } = action.payload;
+
 			state.userId = userId;
 			state.userName = userName;
 			state.email = email;
@@ -29,6 +30,5 @@ const userSlice = createSlice({
 	},
 });
 
-export const { setUser, resetUser } = userSlice.actions;
-const userReducer = userSlice.reducer;
-export { userReducer };
+export const userActions = userSlice.actions;
+export const userReducer = userSlice.reducer;

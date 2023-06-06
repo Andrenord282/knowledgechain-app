@@ -11,8 +11,6 @@ import { useSelector } from 'react-redux';
 import { selectUser } from 'store/userSlice';
 import { selectPostSchema } from 'store/editorPostSchemaSlice';
 
-//-----widgets-----//
-
 //-----сomponents-----//
 import Button from 'сomponents/Button';
 import Alert from 'сomponents/Alert';

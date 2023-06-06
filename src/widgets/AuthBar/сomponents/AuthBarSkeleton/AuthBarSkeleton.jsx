@@ -1,8 +1,8 @@
-//-----modules-----//
-import Skeleton from 'react-loading-skeleton';
-
 //-----hooks-----//
 import useClasses from 'hooks/useClasses';
+
+//-----сomponents-----//
+import Skeleton from 'react-loading-skeleton';
 
 //-----style-----//
 import 'react-loading-skeleton/dist/skeleton.css';

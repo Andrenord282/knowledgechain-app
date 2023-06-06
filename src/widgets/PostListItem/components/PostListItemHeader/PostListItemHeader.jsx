@@ -20,7 +20,6 @@ const PostListItemHeader = (props) => {
 	const { classes, author, createdAt, view } = props;
 	const inheritClasses = useClasses(classes);
 	const createdDate = useDayJs(createdAt);
-	console.log(createdDate);
 
 	return (
 		<div className={inheritClasses + ' post-list-item-header'}>

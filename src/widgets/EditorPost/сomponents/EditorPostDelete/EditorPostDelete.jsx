@@ -13,12 +13,12 @@ const EditorPostDelete = (props) => {
 	const inheritClasses = useClasses(classes);
 	const editorPostSchemaController = useEditorPostSchemaController();
 
+	const handlerDeleteSchemaItem = () => {
+		editorPostSchemaController.deleteSchemaItem(schemaItemIndex);
+	};
+
 	return (
-		<Button
-			classes={inheritClasses}
-			handleClick={() => {
-				editorPostSchemaController.deleteSchemaItem(schemaItemIndex);
-			}}>
+		<Button classes={inheritClasses} handleClick={handlerDeleteSchemaItem}>
 			<Icon.Delete className="btn-icon" />
 		</Button>
 	);

@@ -6,8 +6,8 @@ const useNavigateLocation = () => {
 	const navigate = useNavigate();
 	const fromPage = location.state?.from || '/';
 
-	const setLocationPage = () => {
-		navigate(fromPage, { replace: true, state: null });
+	const setLocationPage = (location) => {
+		navigate(location ? location : fromPage, { replace: true, state: null });
 	};
 
 	return {

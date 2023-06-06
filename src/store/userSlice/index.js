@@ -2,7 +2,7 @@
 export { userReducer } from './userSlice';
 
 //-----selectors-----//
-export { selectUser } from './selectors';
+export { selectUser, selectUserName, selectUserImgUrl } from './selectors';
 
 //-----actions-----//
-export { setUser, resetUser } from './userSlice';
+export { userActions } from './userSlice';

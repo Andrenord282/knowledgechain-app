@@ -1,12 +1,19 @@
 //-----hooks-----//
 import { useEffect } from 'react';
-import useAuthSlice from 'hooks/slices/useAuthSlice';
+
+//-----controllers-----//
+import { useAuthController } from './controllers';
+
+//-----redux-----//
+import { useSelector } from 'react-redux';
+
+//-----selectors-----//
+import { selectToggleAuthModal, selectLockAuthModal, selectTypeAuth } from 'store/authSlice';
 
 //-----pages-----//
 import Layout from 'layouts/Layout';
 
 //-----сomponents-----//
-import Alert from 'сomponents/Alert';
 import AuthSignUp from './сomponents/AuthSignUp';
 import AuthSignIn from './сomponents/AuthSignIn';
 
@@ -14,30 +21,27 @@ import AuthSignIn from './сomponents/AuthSignIn';
 import './Auth.scss';
 
 const Auth = () => {
-	const authSlice = useAuthSlice();
+	const accessToken = localStorage.getItem('accessToken');
+	const toggleAuthModal = useSelector(selectToggleAuthModal);
+	const lockAuthModal = useSelector(selectLockAuthModal);
+	const typeAuth = useSelector(selectTypeAuth);
+	const authController = useAuthController();
 
 	useEffect(() => {
-		authSlice.handlerAuthRefresh();
+		authController.refresh(accessToken);
 	}, []);
+
+	const handlerCloseAuthModal = () => {
+		authController.closeAuthModal(lockAuthModal);
+	};
 
 	return (
 		<>
 			<Layout />
-			{authSlice.visibleAuthModal && (
-				<div
-					className="auth"
-					onClick={() => {
-						authSlice.handlerCloseAuthModal();
-					}}>
-					{!authSlice.visibleAuthForm && authSlice.alert.toggleAlert && (
-						<Alert classes="auth__item" alertFields={authSlice.alert.alertFields} />
-					)}
-					{authSlice.typeAuth === 'signUp' && (
-						<AuthSignUp authSlice={authSlice} setAuthAlert={authSlice.alert} classes="auth__item" />
-					)}
-					{authSlice.typeAuth === 'signIn' && (
-						<AuthSignIn authSlice={authSlice} setAuthAlert={authSlice.alert} classes="auth__item" />
-					)}
+			{toggleAuthModal && (
+				<div className="auth" onClick={handlerCloseAuthModal}>
+					{typeAuth === 'signIn' && <AuthSignIn classes="auth__item" />}
+					{typeAuth === 'signUp' && <AuthSignUp classes="auth__item" />}
 				</div>
 			)}
 		</>

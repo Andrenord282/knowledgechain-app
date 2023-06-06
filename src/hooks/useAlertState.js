@@ -8,18 +8,14 @@ const useAlertState = () => {
 	const [textALert, setTextAlert] = useState(null);
 
 	return {
+		iconALert,
+		titleALert,
+		textALert,
 		toggleAlert,
 		setToggleAlert,
-		setFields: {
-			iconAlert: setIconAlert,
-			titleAlert: setTitleAlert,
-			textAlert: setTextAlert,
-		},
-		alertFields: {
-			iconALert,
-			titleALert,
-			textALert,
-		},
+		setIconAlert,
+		setTitleAlert,
+		setTextAlert,
 	};
 };
 

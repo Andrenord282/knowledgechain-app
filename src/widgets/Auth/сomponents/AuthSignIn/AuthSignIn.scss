@@ -1,19 +1,10 @@
 .auth-sign-in {
+	position: relative;
 	display: flex;
-	position: absolute;
 	flex-direction: column;
 	align-items: center;
 	padding: 30px 30px;
 	background-color: var(--first-component-bg-color);
-	opacity: 0;
-	transition: opacity 0s linear;
-	z-index: -10;
-}
-
-.auth-sign-in.visible {
-	position: relative;
-	opacity: 1;
-	transition: opacity 0.3s linear;
 	z-index: 31;
 }
 
@@ -105,17 +96,8 @@
 }
 
 .auth-sign-in__input-alert {
-	position: absolute;
-	bottom: -18px;
 	font-size: 12px;
 	color: var(--second-text-color);
-}
-
-.auth-sign-in__nav-btns {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
 }
 
 .auth-sign-in__btn-auth {
@@ -138,7 +120,4 @@
 
 .auth-sign-in__btn-auth:not(:last-of-type) {
 	margin-bottom: 20px;
-}
-
-.auth-sign-in__btn-text {
 }

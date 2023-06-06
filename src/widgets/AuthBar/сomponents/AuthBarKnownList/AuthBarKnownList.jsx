@@ -1,8 +1,8 @@
-//-----modules-----//
-import classNames from 'classnames';
-
 //-----hooks-----//
 import useClasses from 'hooks/useClasses';
+
+//-----controllers-----//
+import { useAuthController } from '../../controllers';
 
 //-----сomponents-----//
 import LinkCustom from 'сomponents/LinkCustom/LinkCustom';
@@ -12,24 +12,16 @@ import Button from 'сomponents/Button';
 import './AuthBarKnownList.scss';
 
 const AuthBarKnownList = (props) => {
-	const { classes, toggleList, authSlice } = props;
+	const { classes } = props;
 	const inheritClasses = useClasses(classes);
-
-	const classVisibleList = classNames({
-		active: toggleList,
-		'': !toggleList,
-	});
+	const authController = useAuthController();
 
 	return (
-		<div className={inheritClasses + ' auth-bar-known-list ' + classVisibleList}>
+		<div className={inheritClasses + ' auth-bar-known-list active'}>
 			<LinkCustom classes="auth-bar-known-list__btn" link={'/profile'}>
 				<span className="btn-text">Профиль</span>
 			</LinkCustom>
-			<Button
-				classes="auth-bar-known-list__btn"
-				handleClick={() => {
-					authSlice.handlerAuthSignOut();
-				}}>
+			<Button classes="auth-bar-known-list__btn" handleClick={authController.signOut}>
 				<span className="btn-text">Выйти</span>
 			</Button>
 		</div>

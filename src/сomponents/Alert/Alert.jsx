@@ -8,15 +8,15 @@ import AlertIcon from './сomponents/AlertIcon';
 import './Alert.scss';
 
 const Alert = (props) => {
-	const { classes, alertFields } = props;
+	const { classes, iconALert, titleALert, textALert } = props;
 	const inheritClasses = useClasses(classes);
 
 	return (
 		<div className={inheritClasses + ' alert'}>
 			<div className="alert__content">
-				<AlertIcon iconALert={alertFields?.iconALert} />
-				{alertFields?.titleALert && <h4 className="alert__title">{alertFields.titleALert}</h4>}
-				{alertFields?.textALert && <p className="alert__text">{alertFields.textALert}</p>}
+				{iconALert && <AlertIcon iconALert={iconALert} />}
+				{titleALert && <h4 className="alert__title">{titleALert}</h4>}
+				{textALert && <p className="alert__text">{textALert}</p>}
 			</div>
 		</div>
 	);

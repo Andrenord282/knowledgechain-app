@@ -2,7 +2,14 @@
 export { authReducer } from './authSlice';
 
 //-----selectors-----//
-export { selectLoadedAuth, selectRequestAuth, selectStatusAuth, selectToggleAuthModal } from './selectors';
+export {
+	selectLoadedAuth,
+	selectRequestAuth,
+	selectStatusAuth,
+	selectToggleAuthModal,
+	selectLockAuthModal,
+	selectTypeAuth,
+} from './selectors';
 
 //-----actions-----//
-export { setToggleRequestAuth, setToggleAuthModal, setToggleStatusAuth, setToggleLoadedAuth } from './authSlice';
+export { authActions } from './authSlice';

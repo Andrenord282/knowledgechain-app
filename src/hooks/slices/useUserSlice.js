@@ -5,18 +5,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from 'store/userSlice';
 
 //-----actions-----//
-import { setUser, resetUser } from 'store/userSlice';
+import { userActions } from 'store/userSlice';
 
 const useUserSlice = () => {
 	const dispatch = useDispatch();
 	const { loadedUser, userId, userName, email, userImgUrl } = useSelector(selectUser);
 
 	const handlerSetUser = (data) => {
-		dispatch(setUser(data));
+		dispatch(userActions.setUser(data));
 	};
 
 	const handlerResetUser = () => {
-		dispatch(resetUser());
+		dispatch(userActions.resetUser());
 	};
 
 	return {

@@ -15,12 +15,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectLoadedAuth, selectRequestAuth, selectStatusAuth, selectToggleAuthModal } from 'store/authSlice';
 
 //-----actions-----//
-import {
-	setToggleLoadedAuth,
-	setToggleRequestAuth,
-	setToggleAuthModal,
-	setToggleStatusAuth,
-} from 'store/authSlice';
+import { authActions } from 'store/authSlice';
 
 //-----models-----//
 
@@ -40,15 +35,15 @@ const useAuthSlice = () => {
 	const [lockAuthModal, setLockAuthModal] = useState(false);
 
 	const handlerSetToggleStatusAuth = (status) => {
-		dispatch(setToggleStatusAuth({ status }));
+		dispatch(authActions.setToggleStatusAuth({ status }));
 	};
 
 	const handlerSetToggleLoadedAuth = (toggle) => {
-		dispatch(setToggleLoadedAuth({ toggle }));
+		dispatch(authActions.setToggleLoadedAuth({ toggle }));
 	};
 
 	const handlerSetToggleAuthModal = (toggle) => {
-		dispatch(setToggleAuthModal({ toggle }));
+		dispatch(authActions.setToggleAuthModal({ toggle }));
 	};
 
 	const handlerSetToggleLockAuthModal = () => {
@@ -56,7 +51,7 @@ const useAuthSlice = () => {
 	};
 
 	const handlerSetToggleRequestAuth = (toggle) => {
-		dispatch(setToggleRequestAuth({ toggle }));
+		dispatch(authActions.setToggleRequestAuth({ toggle }));
 	};
 
 	const handlerSetAuthFormState = () => {
@@ -170,38 +165,6 @@ const useAuthSlice = () => {
 		}
 	};
 
-	const handlerAuthSignOut = async () => {
-		setLocationPage();
-		await authService.logOut();
-		userSlice.handlerResetUser();
-		handlerSetToggleStatusAuth(false);
-	};
-
-	const handlerAuthRefresh = async () => {
-		try {
-			if (accessToken) {
-				const response = await authService.refresh();
-				if (response.status === 200) {
-					// console.log('обновлен токен');
-					handlerSetToggleStatusAuth(true);
-					handlerSetToggleLoadedAuth(true);
-					userSlice.handlerSetUser(response.data);
-
-					return response.data;
-				}
-				// console.log('не обновлен токен');
-				handlerSetToggleLoadedAuth(true);
-				throw new errorService(response.data.errorName, response.data.message, response.data.arrErrors);
-			}
-			handlerSetToggleLoadedAuth(true);
-		} catch (error) {
-			return {
-				errorName: error.name,
-				errorMessage: error.message,
-			};
-		}
-	};
-
 	return {
 		alert,
 		loadedAuth,
@@ -217,8 +180,6 @@ const useAuthSlice = () => {
 		handlerCloseAuthModal,
 		hanlderAuthSignIn,
 		handlerAuthSignUp,
-		handlerAuthSignOut,
-		handlerAuthRefresh,
 	};
 };
 
