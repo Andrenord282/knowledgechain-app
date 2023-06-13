@@ -1,9 +1,9 @@
 class ErrorService extends Error {
-	constructor(name, message, arrErrors) {
+	constructor(name, message, errorLogList = []) {
 		super(message);
 		this.name = name;
-		this.arrErrors = arrErrors;
+		this.errorLogList = errorLogList;
 	}
 }
 
-export default ErrorService;
+export { ErrorService };

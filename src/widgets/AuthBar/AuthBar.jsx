@@ -22,7 +22,7 @@ const AuthBar = (props) => {
 	const statusAuth = useSelector(selectStatusAuth);
 
 	return (
-		<div className={inheritClasses + ' auth-bar'}>
+		<div className={`${inheritClasses} auth-bar`}>
 			{!loadedAuth && !statusAuth && <AuthBarSkeleton classes="auth-bar__item" />}
 			{loadedAuth && !statusAuth && <AuthBarUnknown classes="auth-bar__item" />}
 			{statusAuth && <AuthBarKnown classes="auth-bar__item" />}

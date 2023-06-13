@@ -1,16 +1,17 @@
 //-----hooks-----//
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import useClasses from 'hooks/useClasses';
 import useAlertState from 'hooks/useAlertState';
 
 //-----controllers-----//
-import { useAuthController } from '../../controllers';
+import { useAuthController } from 'controllers';
 
 //-----redux-----//
 import { useSelector } from 'react-redux';
 
 //-----selectors-----//
-import { selectLockAuthModal } from 'store/authSlice';
+import { selectRequestAuth, selectLockAuthModal } from 'store/authSlice';
 
 //-----сomponents-----//
 import Button from 'сomponents/Button';
@@ -23,7 +24,9 @@ import './AuthSignUp.scss';
 const AuthSignUp = (props) => {
 	const { classes } = props;
 	const inheritClasses = useClasses(classes);
+	const requestAuth = useSelector(selectRequestAuth);
 	const lockAuthModal = useSelector(selectLockAuthModal);
+	const [errorLogList, setErrorLogList] = useState({});
 	const alert = useAlertState();
 	const authController = useAuthController();
 	const {
@@ -34,6 +37,33 @@ const AuthSignUp = (props) => {
 		formState: { errors, isValid },
 	} = useForm({ mode: 'onChange' });
 
+	const inputUserEmail = watch('userEmail');
+	const inputUserName = watch('userName');
+
+	useEffect(() => {
+		setErrorLogList((prevErrorLogList) => {
+			const newErrorLogList = { ...prevErrorLogList };
+			for (const error in newErrorLogList) {
+				if (newErrorLogList[error].name === 'userName') {
+					delete newErrorLogList[error];
+				}
+			}
+			return { ...newErrorLogList };
+		});
+	}, [inputUserName]);
+
+	useEffect(() => {
+		setErrorLogList((prevErrorLogList) => {
+			const newErrorLogList = { ...prevErrorLogList };
+			for (const error in newErrorLogList) {
+				if (newErrorLogList[error].name === 'userEmail') {
+					delete newErrorLogList[error];
+				}
+			}
+			return { ...newErrorLogList };
+		});
+	}, [inputUserEmail]);
+
 	const handlerCloseAuthModal = () => {
 		authController.closeAuthModal(lockAuthModal);
 	};
@@ -41,28 +71,17 @@ const AuthSignUp = (props) => {
 	const handlerSetAuthFormType = () => {
 		authController.setAuthFormType('signIn');
 	};
-
 	const handlerSignUp = async (data) => {
-		const response = await authController.signUp(alert, data);
-		if (response?.errorName) {
-			response.arrErrors.map((error) => {
-				if (error.field) {
-					setError(error.field, {
-						message: error.message,
-					});
-				}
-			});
-			return;
-		}
+		await authController.signUp(alert, data, setErrorLogList, requestAuth);
 	};
 
 	const handlerFormSignUp = handleSubmit(handlerSignUp);
 
 	return (
-		<>
+		<div className={`${inheritClasses} auth-sign-up`}>
 			{!alert.toggleAlert && (
 				<form
-					className={inheritClasses + ' auth-sign-up'}
+					className="auth-sign-up__form"
 					onSubmit={handlerFormSignUp}
 					onClick={(e) => {
 						e.stopPropagation();
@@ -77,12 +96,16 @@ const AuthSignUp = (props) => {
 								Напишите Вашу почту
 							</label>
 							<input
-								id="email"
-								name="email"
+								id="userEmail"
+								name="userEmail"
 								type="text"
 								placeholder="Введите почту"
-								className={errors.email ? 'auth-sign-up__input error' : 'auth-sign-up__input'}
-								{...register('email', {
+								className={
+									errors.userEmail || errorLogList?.userEmailExists
+										? 'auth-sign-up__input error'
+										: 'auth-sign-up__input'
+								}
+								{...register('userEmail', {
 									required: 'Обязательное поле',
 									pattern: {
 										value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -90,7 +113,14 @@ const AuthSignUp = (props) => {
 									},
 								})}
 							/>
-							{errors.email && <span className="auth-sign-up__input-alert">{errors.email.message}</span>}
+							{errors.userEmail && (
+								<span className="auth-sign-up__input-alert">{errors.userEmail.message}</span>
+							)}
+							{errorLogList?.userEmailExists && (
+								<span className="auth-sign-up__input-alert">
+									{errorLogList?.userEmailExists.message}
+								</span>
+							)}
 						</div>
 						<div className="auth-sign-up__input-content">
 							<label htmlFor="userName" className="auth-sign-up__label">
@@ -101,7 +131,11 @@ const AuthSignUp = (props) => {
 								name="userName"
 								type="text"
 								placeholder="Введите логин"
-								className={errors.userName ? 'auth-sign-up__input error' : 'auth-sign-up__input'}
+								className={
+									errors.userName || errorLogList?.userNameExists
+										? 'auth-sign-up__input error'
+										: 'auth-sign-up__input'
+								}
 								{...register('userName', {
 									required: 'Обязательное поле',
 									pattern: {
@@ -117,17 +151,22 @@ const AuthSignUp = (props) => {
 							{errors.userName && (
 								<span className="auth-sign-up__input-alert">{errors.userName.message}</span>
 							)}
+							{errorLogList?.userNameExists && (
+								<span className="auth-sign-up__input-alert">
+									{errorLogList?.userNameExists.message}
+								</span>
+							)}
 						</div>
 						<div className="auth-sign-up__input-content">
-							<label htmlFor="password" className="auth-sign-up__label">
+							<label htmlFor="userPassword" className="auth-sign-up__label">
 								Напишите Ваш пароль
 							</label>
 							<input
-								id="password"
+								id="userPassword"
 								type="password"
 								placeholder="Введите пароль"
 								className={errors.password ? 'auth-sign-up__input error' : 'auth-sign-up__input'}
-								{...register('password', {
+								{...register('userPassword', {
 									required: 'Обязательное поле',
 									validate: {
 										minLength: (value) =>
@@ -137,8 +176,8 @@ const AuthSignUp = (props) => {
 									},
 								})}
 							/>
-							{errors.password && (
-								<span className="auth-sign-up__input-alert">{errors.password.message}</span>
+							{errors.userPassword && (
+								<span className="auth-sign-up__input-alert">{errors.userPassword.message}</span>
 							)}
 						</div>
 						<div className="auth-sign-up__input-content">
@@ -153,7 +192,8 @@ const AuthSignUp = (props) => {
 								{...register('confirmPassword', {
 									required: 'Обязательное поле',
 									validate: {
-										matchPassword: (value) => value === watch('password') || 'Пароли не совпадает',
+										matchPassword: (value) =>
+											value === watch('userPassword') || 'Пароли не совпадает',
 									},
 								})}
 							/>
@@ -180,7 +220,7 @@ const AuthSignUp = (props) => {
 					textALert={alert.textALert}
 				/>
 			)}
-		</>
+		</div>
 	);
 };
 

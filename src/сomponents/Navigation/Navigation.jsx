@@ -8,7 +8,7 @@ const Navigation = (props) => {
 	const { classes, children } = props;
 	const inheritClasses = useClasses(classes);
 	return (
-		<div className={inheritClasses + ' '}>
+		<div className={`${inheritClasses} nav`}>
 			<div className="nav__container">
 				<div className="nav__content">{children}</div>
 			</div>

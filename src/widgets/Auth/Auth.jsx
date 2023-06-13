@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 
 //-----controllers-----//
-import { useAuthController } from './controllers';
+import { useAuthController } from 'controllers';
 
 //-----redux-----//
 import { useSelector } from 'react-redux';
@@ -10,15 +10,10 @@ import { useSelector } from 'react-redux';
 //-----selectors-----//
 import { selectToggleAuthModal, selectLockAuthModal, selectTypeAuth } from 'store/authSlice';
 
-//-----pages-----//
-import Layout from 'layouts/Layout';
-
 //-----сomponents-----//
+import Modal from 'сomponents/Modal';
 import AuthSignUp from './сomponents/AuthSignUp';
 import AuthSignIn from './сomponents/AuthSignIn';
-
-//-----style-----//
-import './Auth.scss';
 
 const Auth = () => {
 	const accessToken = localStorage.getItem('accessToken');
@@ -36,15 +31,10 @@ const Auth = () => {
 	};
 
 	return (
-		<>
-			<Layout />
-			{toggleAuthModal && (
-				<div className="auth" onClick={handlerCloseAuthModal}>
-					{typeAuth === 'signIn' && <AuthSignIn classes="auth__item" />}
-					{typeAuth === 'signUp' && <AuthSignUp classes="auth__item" />}
-				</div>
-			)}
-		</>
+		<Modal isOpen={toggleAuthModal} onClose={handlerCloseAuthModal}>
+			{typeAuth === 'signIn' && <AuthSignIn classes="modal__item" />}
+			{typeAuth === 'signUp' && <AuthSignUp classes="modal__item" />}
+		</Modal>
 	);
 };
 

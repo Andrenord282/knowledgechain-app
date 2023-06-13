@@ -1,7 +1,7 @@
 //-----hooks-----//
 import { useRef } from 'react';
 import useClasses from 'hooks/useClasses';
-import useAutosizeTextArea from 'hooks/useAutosizeTextArea';
+import useAutosizeTextArea from './hooks/useAutosizeTextArea';
 
 //-----style-----//
 import './TextAreaCustom.scss';
@@ -15,7 +15,7 @@ const TextAreaCustom = (props) => {
 	return (
 		<textarea
 			ref={nodeTextArea}
-			className={inheritClasses + ' text-area-custom'}
+			className={`${inheritClasses} text-area-custom`}
 			value={value}
 			placeholder={placeholder}
 			onFocus={handlerFocus ? handlerFocus : null}

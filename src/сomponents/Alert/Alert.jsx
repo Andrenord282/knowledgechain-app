@@ -12,7 +12,7 @@ const Alert = (props) => {
 	const inheritClasses = useClasses(classes);
 
 	return (
-		<div className={inheritClasses + ' alert'}>
+		<div className={`${inheritClasses} alert`}>
 			<div className="alert__content">
 				{iconALert && <AlertIcon iconALert={iconALert} />}
 				{titleALert && <h4 className="alert__title">{titleALert}</h4>}

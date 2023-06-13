@@ -2,7 +2,7 @@
 import useClasses from 'hooks/useClasses';
 
 //-----controllers-----//
-import { useAuthController } from '../../controllers';
+import { useAuthController } from 'controllers';
 
 //-----сomponents-----//
 import LinkCustom from 'сomponents/LinkCustom/LinkCustom';
@@ -17,7 +17,7 @@ const AuthBarKnownList = (props) => {
 	const authController = useAuthController();
 
 	return (
-		<div className={inheritClasses + ' auth-bar-known-list active'}>
+		<div className={`${inheritClasses} auth-bar-known-list`}>
 			<LinkCustom classes="auth-bar-known-list__btn" link={'/profile'}>
 				<span className="btn-text">Профиль</span>
 			</LinkCustom>

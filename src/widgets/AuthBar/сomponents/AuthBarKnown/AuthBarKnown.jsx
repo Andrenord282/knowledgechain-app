@@ -43,7 +43,7 @@ const AuthBarKnown = (props) => {
 	});
 
 	return (
-		<div className={inheritClasses + ' auth-bar-known'} ref={authBarKnowRef}>
+		<div className={`${inheritClasses} auth-bar-known`} ref={authBarKnowRef}>
 			<div className="auth-bar-known__user-item">
 				<img src={ava} alt="Ваша фотография" className="auth-bar-known__user-img" />
 				<span className="auth-bar-known__user-name">{userName}</span>

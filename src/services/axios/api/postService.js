@@ -1,9 +1,10 @@
 import apiServer from 'services/axios/client';
 
 class PostsService {
-	createNewPost = async (data) => {
+	createPost = async (data) => {
 		try {
-			const response = await apiServer.post('/posts', data);
+			console.log(data);
+			const response = await apiServer.post('/post', data);
 			return response;
 		} catch (error) {
 			return error.response;
@@ -11,7 +12,7 @@ class PostsService {
 	};
 	getPosts = async (query) => {
 		try {
-			const response = await apiServer.get('/posts', { params: { ...query } });
+			const response = await apiServer.get('/post', { params: { ...query } });
 			return response;
 		} catch (error) {
 			return error.response;

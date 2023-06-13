@@ -15,7 +15,7 @@ apiServer.interceptors.response.use(
 		if (error.response.status == 401 && error.config && !error.config.retry) {
 			originalRequest.retry = true;
 			try {
-				const response = await apiServer.get('/refresh', { withCredentials: true });
+				const response = await apiServer.get('auth/refresh', { withCredentials: true });
 
 				localStorage.setItem('accessToken', response.data.accessToken);
 				return apiServer.request(originalRequest);

@@ -2,17 +2,17 @@ import { useState } from 'react';
 
 const useInputChange = (initialValue) => {
 	const [value, setValue] = useState(initialValue);
-	const [prevLength, setPrevLength] = useState('');
+	const [prevValueLength, setPrevValueLength] = useState('');
 
-	const handleKeyDown = (e) => {
-		setPrevLength(value.length);
-	};
+	// const handleKeyDown = (e) => {
+	// 	setPrevValueLength(e.target.value.length);
+	// };
 
-	const handleKeyUp = (e, callback, ...args) => {
-		if (value.length < prevLength) {
-			callback(...args);
-		}
-	};
+	// const handleKeyUp = (e, callback, ...args) => {
+	// 	if (e.target.value.length !== prevValueLength || e.target.value.length === 0) {
+	// 		callback(...args);
+	// 	}
+	// };
 
 	const onChenge = (e) => {
 		setValue(e.target.value);
@@ -22,7 +22,14 @@ const useInputChange = (initialValue) => {
 		setValue('');
 	};
 
-	return { value, onChenge, onReset, setValue, handleKeyDown, handleKeyUp };
+	return {
+		value,
+		onChenge,
+		onReset,
+		setValue,
+		// handleKeyDown,
+		//  handleKeyUp
+	};
 };
 
 export default useInputChange;

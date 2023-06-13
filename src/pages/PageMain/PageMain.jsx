@@ -15,11 +15,11 @@ const PageMain = () => {
 			<div className="main__container">
 				<div className="main__content">
 					<Navigation classes="main__nav nav">
-						<LinkCustom classes="nav__link" link={'/editor-post'}>
+						<LinkCustom classes="nav__link" link={'/post-creator'}>
 							<Icon.Plus className="nav__link-icon" />
 						</LinkCustom>
 					</Navigation>
-					<PostList classes="main__post-list" />
+					{/* <PostList classes="main__post-list" /> */}
 				</div>
 			</div>
 		</section>

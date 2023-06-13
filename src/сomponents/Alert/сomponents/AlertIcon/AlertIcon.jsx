@@ -1,7 +1,7 @@
 //-----сomponents-----//
 import * as Icon from 'сomponents/Icon';
 
-const AlertIcon = (props) => {
+const AlertModalIcon = (props) => {
 	const { iconALert } = props;
 
 	switch (true) {
@@ -29,4 +29,4 @@ const AlertIcon = (props) => {
 	}
 };
 
-export default AlertIcon;
+export default AlertModalIcon;

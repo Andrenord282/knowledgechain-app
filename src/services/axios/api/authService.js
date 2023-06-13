@@ -1,13 +1,13 @@
 import apiServer from 'services/axios/client';
 
 class AuthService {
-	registration = async (data) => {
+	logUp = async (data) => {
 		try {
-			const response = await apiServer.post('auth/registration', data, {
+			const response = await apiServer.post('auth/logup', data, {
 				withCredentials: true,
 			});
 			localStorage.setItem('accessToken', response.data.accessToken);
-			
+
 			return response;
 		} catch (error) {
 			return error.response;
@@ -20,7 +20,7 @@ class AuthService {
 				withCredentials: true,
 			});
 			localStorage.setItem('accessToken', response.data.accessToken);
-			
+
 			return response;
 		} catch (error) {
 			return error.response;
@@ -33,7 +33,6 @@ class AuthService {
 				withCredentials: true,
 			});
 			localStorage.setItem('accessToken', '');
-
 		} catch (error) {
 			return error.response;
 		}
@@ -45,14 +44,12 @@ class AuthService {
 				withCredentials: true,
 			});
 			localStorage.setItem('accessToken', response.data.accessToken);
-			
+
 			return response;
 		} catch (error) {
 			return error.response;
 		}
 	};
-
-	
 }
 
 export default new AuthService();

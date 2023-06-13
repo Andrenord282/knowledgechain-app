@@ -13,7 +13,7 @@ const AuthBarSkeleton = (props) => {
 	const inheritClasses = useClasses(classes);
 
 	return (
-		<div className={inheritClasses + ' auth-bar-skeleton'}>
+		<div className={`${inheritClasses} auth-bar-skeleton`}>
 			<Skeleton baseColor="#1e252b" highlightColor="#2c353d" enableAnimation={true} height={30} width={'100%'} />
 		</div>
 	);

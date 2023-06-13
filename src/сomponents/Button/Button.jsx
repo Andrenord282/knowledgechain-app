@@ -12,7 +12,7 @@ const Button = (props) => {
 		<button
 			type={type ? type : 'button'}
 			{...otherProps}
-			className={'btn ' + inheritClasses}
+			className={`${inheritClasses} btn`}
 			onClick={(e) => {
 				if (type !== 'submit') {
 					e.preventDefault();

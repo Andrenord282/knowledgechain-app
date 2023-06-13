@@ -28,7 +28,9 @@ const authSlice = createSlice({
 		},
 
 		setToggleAuthModal: (state, action) => {
-			state.toggleAuthModal = !state.toggleAuthModal;
+			const { toggle } = action.payload;
+
+			state.toggleAuthModal = toggle;
 		},
 
 		setLockAuthModal: (state, action) => {

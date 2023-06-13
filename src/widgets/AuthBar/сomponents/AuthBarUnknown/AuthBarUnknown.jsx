@@ -2,7 +2,7 @@
 import useClasses from 'hooks/useClasses';
 
 //-----controllers-----//
-import { useAuthController } from '../../controllers';
+import { useAuthController } from 'controllers';
 
 //-----сomponents-----//
 import Button from 'сomponents/Button';
@@ -21,7 +21,7 @@ const AuthBarUnknown = (props) => {
 
 	return (
 		<>
-			<div className={inheritClasses + ' auth-bar-unknown'}>
+			<div className={`${inheritClasses} auth-bar-unknown`}>
 				<Button classes="auth-bar-unknown__btn" handleClick={hanlderOpenAuthModal}>
 					<span className="btn-text">Войти</span>
 				</Button>

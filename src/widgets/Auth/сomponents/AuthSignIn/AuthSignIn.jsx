@@ -1,16 +1,17 @@
 //-----hooks-----//
 import { useForm } from 'react-hook-form';
+import { useState, useEffect } from 'react';
 import useClasses from 'hooks/useClasses';
 import useAlertState from 'hooks/useAlertState';
 
 //-----controllers-----//
-import { useAuthController } from '../../controllers';
+import { useAuthController } from 'controllers';
 
 //-----redux-----//
 import { useSelector } from 'react-redux';
 
 //-----selectors-----//
-import { selectLockAuthModal } from 'store/authSlice';
+import { selectRequestAuth, selectLockAuthModal } from 'store/authSlice';
 
 //-----сomponents-----//
 import Button from 'сomponents/Button';
@@ -23,15 +24,44 @@ import './AuthSignIn.scss';
 const AuthSignIn = (props) => {
 	const { classes } = props;
 	const inheritClasses = useClasses(classes);
+	const requestAuth = useSelector(selectRequestAuth);
 	const lockAuthModal = useSelector(selectLockAuthModal);
+	const [errorLogList, setErrorLogList] = useState({});
 	const alert = useAlertState();
 	const authController = useAuthController();
 	const {
 		register,
 		handleSubmit,
-		setError,
-		formState: { isValid, errors },
+		watch,
+		formState: { isValid },
 	} = useForm();
+
+	const inputUserName = watch('userName');
+	const inputUserPassword = watch('userPassword');
+
+	useEffect(() => {
+		setErrorLogList((prevErrorLogList) => {
+			const newErrorLogList = { ...prevErrorLogList };
+			for (const error in newErrorLogList) {
+				if (newErrorLogList[error].name === 'userName') {
+					delete newErrorLogList[error];
+				}
+			}
+			return { ...newErrorLogList };
+		});
+	}, [inputUserName]);
+
+	useEffect(() => {
+		setErrorLogList((prevErrorLogList) => {
+			const newErrorLogList = { ...prevErrorLogList };
+			for (const error in newErrorLogList) {
+				if (newErrorLogList[error].name === 'userPassword') {
+					delete newErrorLogList[error];
+				}
+			}
+			return { ...newErrorLogList };
+		});
+	}, [inputUserPassword]);
 
 	const handlerCloseAuthModal = () => {
 		authController.closeAuthModal(lockAuthModal);
@@ -42,26 +72,16 @@ const AuthSignIn = (props) => {
 	};
 
 	const handlerSignIn = async (data) => {
-		const response = await authController.signIn(alert, data);
-		if (response?.errorName) {
-			response.arrErrors.map((error) => {
-				if (error.field) {
-					setError(error.field, {
-						message: error.message,
-					});
-				}
-			});
-			return;
-		}
+		await authController.signIn(alert, data, setErrorLogList, requestAuth);
 	};
 
 	const handlerFormSignIn = handleSubmit(handlerSignIn);
 
 	return (
-		<>
+		<div className={`${inheritClasses} auth-sign-in`}>
 			{!alert.toggleAlert && (
 				<form
-					className={inheritClasses + ' auth-sign-in'}
+					className="auth-sign-in__form"
 					onSubmit={handlerFormSignIn}
 					onClick={(e) => {
 						e.stopPropagation();
@@ -80,13 +100,24 @@ const AuthSignIn = (props) => {
 								name="userName"
 								type="text"
 								placeholder="Введите логин"
-								className={errors.userName ? 'auth-sign-in__input error' : 'auth-sign-in__input'}
+								className={
+									errorLogList?.userNameNotFound || errorLogList?.userNameNotMatch
+										? 'auth-sign-in__input error'
+										: 'auth-sign-in__input'
+								}
 								{...register('userName', {
 									required: true,
 								})}
 							/>
-							{errors.userName && (
-								<span className="auth-sign-in__input-alert">{errors.userName.message}</span>
+							{errorLogList?.userNameNotFound && (
+								<span className="auth-sign-in__input-alert">
+									{errorLogList.userNameNotFound.message}
+								</span>
+							)}
+							{errorLogList?.userNameNotMatch && (
+								<span className="auth-sign-in__input-alert">
+									{errorLogList?.userNameNotMatch.message}
+								</span>
 							)}
 						</div>
 						<div className="auth-sign-in__input-content">
@@ -97,13 +128,19 @@ const AuthSignIn = (props) => {
 								id="password"
 								type="password"
 								placeholder="Введите пароль"
-								className={errors.password ? 'auth-sign-in__input error' : 'auth-sign-in__input'}
-								{...register('password', {
+								className={
+									errorLogList?.userPasswordNotMatch
+										? 'auth-sign-in__input error'
+										: 'auth-sign-in__input'
+								}
+								{...register('userPassword', {
 									required: true,
 								})}
 							/>
-							{errors.password && (
-								<span className="auth-sign-in__input-alert">{errors.password.message}</span>
+							{errorLogList?.userPasswordNotMatch && (
+								<span className="auth-sign-in__input-alert">
+									{errorLogList?.userPasswordNotMatch.message}
+								</span>
 							)}
 						</div>
 					</div>
@@ -125,7 +162,7 @@ const AuthSignIn = (props) => {
 					textALert={alert.textALert}
 				/>
 			)}
-		</>
+		</div>
 	);
 };
 

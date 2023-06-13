@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import formService from 'shared/formService';
 import postService from 'services/axios/api/postService';
 import searchService from 'services/axios/api/searchService';
-import errorService from 'shared/errorService/errorService';
+import { ErrorService, errorAuthList } from 'shared/errorService/errorService';
 
 //-----hooks-----//
 import { useState, useEffect } from 'react';
@@ -15,7 +15,7 @@ import useDebouncePromise from 'hooks/useDebouncePromise';
 import { useDispatch, useSelector } from 'react-redux';
 
 //-----selectors-----//
-import { selectEditorPost, selectPostSchema } from 'store/editorPostSlice';
+import { selectPostCreator, selectPostSchema } from 'store/postCreatorSlice';
 
 //-----actions-----//
 import {
@@ -25,7 +25,7 @@ import {
 	deleteSchemaItem,
 	pushPostTopic,
 	deletePostTopic,
-} from 'store/editorPostSlice';
+} from 'store/postCreatorSlice';
 
 const errorList = {
 	title: {
@@ -38,10 +38,10 @@ const errorList = {
 	},
 };
 
-const useEditorPostSlice = () => {
+const usePostCreatorSlice = () => {
 	const dispatch = useDispatch();
 	const alert = useAlertState();
-	const dataNewPost = useSelector(selectEditorPost);
+	const dataNewPost = useSelector(selectPostCreator);
 	const postSchema = useSelector(selectPostSchema);
 	const [isDirty, setIsDirty] = useState(false);
 	const [showError, setShowError] = useState(false);
@@ -189,7 +189,7 @@ const useEditorPostSlice = () => {
 
 					return;
 				}
-				throw new errorService(response.data.errorName, response.data.message);
+				throw new ErrorService(response.data.errorName, response.data.message);
 			} else {
 				setShowError(true);
 			}
@@ -219,4 +219,4 @@ const useEditorPostSlice = () => {
 		submitNewPost,
 	};
 };
-export default useEditorPostSlice;
+export default usePostCreatorSlice;

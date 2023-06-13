@@ -14,7 +14,7 @@ const userSlice = createSlice({
 	reducers: {
 		setUser: (state, action) => {
 			const { userId, userName, email, userImgUrl } = action.payload;
-
+			state.loadedUser = true;
 			state.userId = userId;
 			state.userName = userName;
 			state.email = email;
@@ -22,6 +22,7 @@ const userSlice = createSlice({
 		},
 
 		resetUser: (state) => {
+			state.loadedUser = false;
 			state.userId = null;
 			state.userName = null;
 			state.email = null;

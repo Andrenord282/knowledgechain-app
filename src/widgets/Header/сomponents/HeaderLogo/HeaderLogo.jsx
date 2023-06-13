@@ -11,7 +11,7 @@ const HeaderLogo = (props) => {
 	const inheritClasses = useClasses(classes);
 
 	return (
-		<div className={inheritClasses + ' header-logo'}>
+		<div className={`${inheritClasses} header-logo`}>
 			<Icon.LogoHeader className="header-logo__img" />
 			<h2 className="header-logo__title">Knowledgechain</h2>
 		</div>
