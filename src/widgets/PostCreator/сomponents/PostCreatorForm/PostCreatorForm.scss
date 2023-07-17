@@ -1,42 +1,39 @@
 .post-creator-form {
-
 }
 
 .post-creator-form__title {
-	width: 100%;
+    width: 100%;
 }
 
 .post-creator-form__text {
-	width: 100%;
+    width: 100%;
 }
 
 .post-creator-form__text:last-of-type {
-	margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 .post-creator-form__image {
-	width: 100%;
+    width: 100%;
 }
 
 .post-creator-form__topics {
 }
 
 .post-creator-form__btn-send {
-	display: block;
-	padding: 6px 12px;
-	border-radius: 10px;
-	background-color: var(--first-btn-bg-color);
-	transition: background-color 0.1s linear;
-	margin-right: 20px;
-	margin-left: auto;
+    display: block;
+    padding: 6px 12px;
+    border-radius: 10px;
+    background-color: var(--btn-bg-primary);
+    transition: background-color 0.1s linear;
+    margin-right: 20px;
+    margin-left: auto;
 }
 
 .post-creator-form__btn-send.inactive {
-	
 }
 
 .post-creator-form__btn-send:hover {
-	
 }
 
 .post-creator-form__btn-send .btn-text {

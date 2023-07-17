@@ -1,40 +1,40 @@
 .nav {
-	background-color: var(--first-component-bg-color);
+    background-color: var(--component-bg-primary);
 }
 
 .nav__container {
-	padding: 0 10px;
+    padding: 0 10px;
 }
 
 .nav__content {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 10px 0;
 }
 
 .nav__link {
-	padding: 4px;
-	border: 2px solid var(--second-border-color);
-	border-radius: 10px;
-	background-color: transparent;
-	transition: background-color 0.1s linear, border 0.1s linear;
-	margin-left: auto;
+    padding: 4px;
+    border: 2px solid var(--border-secondary);
+    border-radius: 10px;
+    background-color: transparent;
+    transition: background-color 0.1s linear, border 0.1s linear;
+    margin-left: auto;
 }
 
 .nav__link-icon {
-	fill: var(--second-fill-color);
-	width: 20px;
-	height: 20px;
-	transition: fill 0.1s linear;
+    fill: var(--fill-secondary);
+    width: 20px;
+    height: 20px;
+    transition: fill 0.1s linear;
 }
 
 .nav__link:hover {
-	border: 2px solid var(--fourth-border-color);
-	background-color: var(--third-text-color);
+    border: 2px solid var(--border-primary-hover);
+    background-color: var(--text-tertiary);
 }
 
 .nav__link:hover .nav__link-icon {
-	fill: var(--fourth-fill-color);
+    fill: var(--fill-primary-hover);
 }

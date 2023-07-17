@@ -1,29 +1,29 @@
 .auth-bar-known-list {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	position: absolute;
-	top: 100%;
-	max-width: 150px;
-	z-index: 150;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 100%;
+    max-width: 150px;
+    z-index: 150;
 }
 
 .auth-bar-known-list__btn {
-	width: 100%;
-	max-width: 100%;
-	padding: 12px 24px;
-	background-color: var(--first-btn-bg-color);
-	transition: background-color 0.3s linear, color 0.3s linear;
+    width: 100%;
+    max-width: 100%;
+    padding: 12px 24px;
+    background-color: var(--btn-bg-primary);
+    transition: background-color 0.3s linear, color 0.3s linear;
 }
 
 .auth-bar-known-list__btn:hover {
-	background-color: var(--first-btn-bg-color-hover);
+    background-color: var(--btn-bg-primary-hover);
 }
 
 .auth-bar-known-list__btn .btn-text {
-	color: var(--first-text-color);
+    color: var(--text-primary);
 }
 
 .auth-bar-known-list__btn:hover .btn-text {
-	color: var(--third-text-color);
+    color: var(--text-tertiary);
 }

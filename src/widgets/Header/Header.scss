@@ -1,26 +1,26 @@
 .header {
-	background-color: var(--first-component-bg-color);
-	margin-bottom: 30px;
+    background-color: var(--component-bg-primary);
+    margin-bottom: 30px;
 }
 
 .header__container {
-	max-width: 900px;
-	padding: 0 10px;
-	margin: 0 auto;
-	
-	@media (max-width: 768px) {
-		max-width: 100%;
-	}
+    max-width: 900px;
+    padding: 0 10px;
+    margin: 0 auto;
+
+    @media (max-width: 768px) {
+        max-width: 100%;
+    }
 }
 
 .header__content {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .header__logo {
-	margin-right: auto;
+    margin-right: auto;
 }
 
 .header__auth-bar {

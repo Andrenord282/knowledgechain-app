@@ -1,40 +1,46 @@
 :root {
-	// Fonts //
-	--fontMain: 'Source Sans Pro', sans-serif;
+    // Fonts //
+    --fontMain: 'Source Sans Pro', sans-serif;
 
-	// component color  //
-	--first-component-bg-color: #262d34;
-	--second-component-bg-color: #2c353d;
-	--first-body-bg-color: #1e252b;
-	--first-modal-bg-color: #1e252bcc;
-	--first-outline-color: #ff4400;
+    // component color  //
+    --body-bg-primary: #1e252b;
+    --component-bg-primary: #262d34;
+    --component-bg-secondary: #2c353d;
+    --modal-overlay-primary: #1e252bcc;
 
-	// title color  //
-	--first-title-color: #f7f7f7;
-	--second-title-color: #ff571a;
-	--third-title-color: #1e252b;  
-	--fourth-title-color: #ff4400;
+    // title color  //
+    --title-primary: #f7f7f7;
+    --title-secondary: #ff571a;
+    --title-tertiary: #1e252b;
+    --title-primary-hover: #ff4400;
+    --title-primary-active: #ff4400;
 
-	// text color   //
-	--first-text-color: #f7f7f7;
-	--second-text-color: #ff571a;
-	--third-text-color: #1e252b;
-	--fourth-text-color: #ff4400;
+    // text color   //
+    --text-primary: #f7f7f7;
+    --text-secondary: #ff571a;
+    --text-tertiary: #1e252b;
+    --text-primary-hover: #ff4400;
+    --text-primary-active: #ff4400;
 
-	// background сolor button //
-	--first-btn-bg-color: #ff571a;
-	--first-btn-bg-color-hover: #ff4400;
-	--first-btn-bg-color-inactive: #da6d46;
+    // background сolor button //
+    --btn-bg-primary: #ff571a;
+    --btn-bg-primary-hover: #ff4400;
+    --btn-bg-primary-inactive: #da6d46;
 
-	// fill svg //
-	--first-fill-color: #f7f7f7;
-	--second-fill-color: #ff571a;
-	--third-fill-color: #1e252b;
-	--fourth-fill-color: #ff4400;
+    // fill svg //
+    --fill-primary: #f7f7f7;
+    --fill-secondary: #ff571a;
+    --fill-tertiary: #1e252b;
+    --fill-primary-hover: #ff4400;
+    --fill-primary-active: #ff4400;
 
-	// border color  //
-	--first-border-color: #f7f7f7;
-	--second-border-color: #ff571a;
-	--third-border-color: #1e252b;
-	--fourth-border-color: #ff4400;
+    // border color  //
+    --border-primary: #f7f7f7;
+    --border-secondary: #ff571a;
+    --border-tertiary: #1e252b;
+    --border-primary-hover: #ff4400;
+    --border-primary-active: #ff4400;
+
+    // outline //
+    --outline-primary: #ff4400;
 }

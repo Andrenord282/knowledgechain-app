@@ -1,22 +1,22 @@
 *,
 *::before,
 *::after {
-	padding: 0;
-	margin: 0;
-	list-style: none;
-	box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    box-sizing: border-box;
 }
 
 *:focus {
-	outline: 1px solid var(--first-outline-color);
+    outline: 1px solid var(--outline-primary);
 }
 
 body {
-	font-family: var(--fontMain);
-	font-weight: 400;
-	font-size: 18px;
-	color: var(--first-text-color);
-	background-color: var(--first-body-bg-color);
+    font-family: var(--fontMain);
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--text-primary);
+    background-color: var(--body-bg-primary);
 }
 
 h1,
@@ -25,18 +25,18 @@ h3,
 h4,
 h5,
 h6 {
-	font-size: 22px;
-	color: var(--first-title-color);
+    font-size: 22px;
+    color: var(--title-primary);
 }
 
 a {
-	text-decoration-line: none;
+    text-decoration-line: none;
 }
 
 input {
-	border: none;
+    border: none;
 }
 
 textarea {
-	resize: none;
+    resize: none;
 }

@@ -2,125 +2,125 @@
 }
 
 .auth-sign-in__form {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding: 30px 30px;
-	background-color: var(--first-component-bg-color);
-	z-index: 31;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 30px;
+    background-color: var(--component-bg-primary);
+    z-index: 31;
 }
 
 .auth-sign-in__btn-close {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 50px;
-	padding: 5px;
-	background-color: var(--first-btn-bg-color);
-	overflow: hidden;
-	position: absolute;
-	transition: background-color 0.2s linear;
-	top: 1.5%;
-	right: 1.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    padding: 5px;
+    background-color: var(--btn-bg-primary);
+    overflow: hidden;
+    position: absolute;
+    transition: background-color 0.2s linear;
+    top: 1.5%;
+    right: 1.5%;
 }
 
 .auth-sign-in__btn-close:hover {
-	background-color: var(--first-btn-bg-color-hover);
-	transition: background-color 0.2s linear;
+    background-color: var(--btn-bg-primary-hover);
+    transition: background-color 0.2s linear;
 }
 
 .auth-sign-in__btn-close .btn-icon {
-	width: 15px;
-	height: 15px;
-	fill: var(--third-fill-color);
-	transition: fill 0.2s linear;
+    width: 15px;
+    height: 15px;
+    fill: var(--fill-tertiary);
+    transition: fill 0.2s linear;
 }
 
 .auth-sign-in__btn-close:hover .btn-icon {
-	fill: var(--first-fill-color);
-	transition: fill 0.2s linear;
+    fill: var(--fill-primary);
+    transition: fill 0.2s linear;
 }
 
 .auth-sign-in__title {
-	font-size: 26px;
-	margin-bottom: 20px;
+    font-size: 26px;
+    margin-bottom: 20px;
 
-	@media (max-width: 768px) {
-		font-size: 22px;
-	}
+    @media (max-width: 768px) {
+        font-size: 22px;
+    }
 }
 
 .auth-sign-in__body {
-	margin-bottom: 40px;
+    margin-bottom: 40px;
 }
 
 .auth-sign-in__input-content {
-	position: relative;
-	display: flex;
-	flex-direction: column;
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .auth-sign-in__input-content:not(:last-of-type) {
-	margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .auth-sign-in__label {
-	font-size: 16px;
-	margin-bottom: 5px;
+    font-size: 16px;
+    margin-bottom: 5px;
 
-	@media (max-width: 768px) {
-		font-size: 20px;
-	}
+    @media (max-width: 768px) {
+        font-size: 20px;
+    }
 }
 
 .auth-sign-in__input {
-	width: 250px;
-	font-size: 16px;
-	padding: 10px;
-	color: var(--first-text-color);
-	background-color: var(--second-component-bg-color);
+    width: 250px;
+    font-size: 16px;
+    padding: 10px;
+    color: var(--text-primary);
+    background-color: var(--component-bg-secondary);
 
-	@media (max-width: 768px) {
-		width: 250px;
-		font-size: 20px;
-	}
+    @media (max-width: 768px) {
+        width: 250px;
+        font-size: 20px;
+    }
 }
 
 .auth-sign-in__input:-webkit-autofill {
-	background-color: var(--second-component-bg-color) !important;
-	color: var(--first-text-color) !important;
-	-webkit-box-shadow: 0 0 0px 1000px var(--second-component-bg-color) inset !important;
-	-webkit-text-fill-color: var(--first-text-color) !important;
+    background-color: var(--component-bg-secondary) !important;
+    color: var(--text-primary) !important;
+    -webkit-box-shadow: 0 0 0px 1000px var(--component-bg-secondary) inset !important;
+    -webkit-text-fill-color: var(--text-primary) !important;
 }
 
 .auth-sign-in__input.error {
-	outline: 1px solid var(--first-outline-color);
+    outline: 1px solid var(--outline-primary);
 }
 
 .auth-sign-in__input-alert {
-	font-size: 12px;
-	color: var(--second-text-color);
+    font-size: 12px;
+    color: var(--text-secondary);
 }
 
 .auth-sign-in__btn-auth {
-	width: 100%;
-	color: var(--first-text-color);
-	padding: 6px 12px;
-	border-radius: 10px;
-	background-color: var(--first-btn-bg-color);
-	transition: background-color 0.1s linear;
+    width: 100%;
+    color: var(--text-primary);
+    padding: 6px 12px;
+    border-radius: 10px;
+    background-color: var(--btn-bg-primary);
+    transition: background-color 0.1s linear;
 }
 
 .auth-sign-in__btn-auth.inactive {
-	pointer-events: none;
-	background-color: var(--first-btn-bg-color-inactive);
+    pointer-events: none;
+    background-color: var(--btn-bg-primary-inactive);
 }
 
 .auth-sign-in__btn-auth:hover {
-	background-color: var(--first-btn-bg-color-hover);
+    background-color: var(--btn-bg-primary-hover);
 }
 
 .auth-sign-in__btn-auth:not(:last-of-type) {
-	margin-bottom: 20px;
+    margin-bottom: 20px;
 }
