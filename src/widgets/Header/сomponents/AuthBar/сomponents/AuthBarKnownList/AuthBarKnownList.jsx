@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 //-----hooks-----//
 import { useRef } from 'react';
-import useNavigateElements from 'hooks/useNavigateElements';
+import useTabNavigateElementList from 'hooks/useTabNavigateElementList';
 
 //-----controllers-----//
 import { useAuthController } from 'controllers';
@@ -17,26 +17,25 @@ import './AuthBarKnownList.scss';
 
 const AuthBarKnownList = (props) => {
     const { classes, setAuthBarKnownList } = props;
-    const authBarKnowLastBtnRef = useRef(null);
+    const authBarKnownListRef = useRef(null);
     const authController = useAuthController();
 
-
-    useNavigateElements(authBarKnowLastBtnRef, () => {
+    useTabNavigateElementList(authBarKnownListRef, null, () => {
         setAuthBarKnownList(false);
-    }, 'blur');
+    });
 
     const hanldeSignOut = () => {
         authController.signOut();
     };
 
     return (
-        <div className={classNames(classes, 'auth-bar-known-list')}>
+        <div className={classNames(classes, 'auth-bar-known-list')}
+            ref={authBarKnownListRef}>
             <LinkCustom classes="btn auth-bar-known-list__btn"
                 link={'/profile'}>
                 <span className="btn-text">Профиль</span>
             </LinkCustom>
             <Button classes="auth-bar-known-list__btn"
-                ref={authBarKnowLastBtnRef}
                 handleClick={hanldeSignOut}>
                 <span className="btn-text">Выйти</span>
             </Button>

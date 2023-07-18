@@ -27,7 +27,7 @@
     color: var(--title-primary-hover);
 }
 
-.post-creator-text__btn-reset {
+.post-creator-text__reset-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,26 +45,42 @@
         width: 18px;
         height: 18px;
     }
-}
 
-.post-creator-text__btn-reset:hover {
-    background-color: var(--btn-bg-primary-hover);
-}
+    & .btn-icon {
+        width: 14px;
+        height: 14px;
+        color: var(--fill-primary);
 
-.post-creator-text__btn-reset .btn-icon {
-    width: 14px;
-    height: 14px;
-    fill: var(--fill-tertiary);
-    transition: fill 0.1s linear;
-
-    @media (max-width: 768px) {
-        width: 8px;
-        height: 8px;
+        @media (max-width: 768px) {
+            width: 8px;
+            height: 8px;
+        }
     }
-}
 
-.post-creator-text__btn-reset:hover .btn-icon {
-    fill: var(--fill-primary);
+    &:focus {
+        background-color: var(--btn-bg-primary-active);
+
+        & .btn-icon {
+            color: var(--fill-tertiary-active);
+        }
+    }
+    &:active {
+        background-color: var(--btn-bg-primary-active);
+
+        & .btn-icon {
+            color: var(--fill-tertiary-active);
+        }
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            background-color: var(--btn-bg-primary-hover);
+
+            & .btn-icon {
+                color: var(--fill-tertiary-hover);
+            }
+        }
+    }
 }
 
 .post-creator-text__btn-toggle {

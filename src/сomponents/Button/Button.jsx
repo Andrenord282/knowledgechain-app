@@ -8,13 +8,15 @@ import { forwardRef } from 'react';
 import './Button.scss';
 
 const Button = forwardRef((props, ref) => {
-    const { classes, type, children, handleClick } = props;
+    const { classes, type, disabled, children, handleBlur, handleClick } = props;
 
     return (
         <button
             ref={ref}
+            disabled={disabled}
             type={type ? type : 'button'}
             className={classNames(classes, 'btn')}
+            onBlur={handleBlur}
             onClick={(e) => {
                 if (type === 'submit') {
                     e.preventDefault();

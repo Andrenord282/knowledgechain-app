@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 //-----router-----//
 import { Outlet, Navigate } from 'react-router-dom';
 
@@ -24,7 +25,7 @@ const AuthRequired = () => {
             authController.setToggleRequestAuth(true);
             authController.openAuthModal();
         }
-    }, [authStatus, authController]);
+    }, [authStatus]);
 
     return authStatus === 'init' || authStatus === 'unidentifiedUser' ? (
         <Navigate to="/" state={{ from: handlerNavigate.location.pathname }} replace />

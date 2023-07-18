@@ -1,15 +1,18 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import { userReducer } from './userSlice';
 import { authReducer } from './authSlice';
-import { postCreatorParamsReducer } from './postCreatorParamsSlice';
+import { userReducer } from './userSlice';
+import { postCreatorReducer } from './postCreatorSlice/postCreatorSlice';
+
+
+
 import { postCreatorSchemaReducer } from './postCreatorSchemaSlice';
 import { postCreatorTopicsReducer } from './postCreatorTopicsSlice';
 import { postListReducer } from './postListSlice/postListSlice';
 
 const rootReducer = combineReducers({
-	user: userReducer,
 	auth: authReducer,
-	postCreatorParams: postCreatorParamsReducer,
+	user: userReducer,
+    postCreator: postCreatorReducer,
 	postCreatorSchema: postCreatorSchemaReducer,
 	postCreatorTopics: postCreatorTopicsReducer,
 	postList: postListReducer,

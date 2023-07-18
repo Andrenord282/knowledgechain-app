@@ -1,15 +1,15 @@
 import { useCallback, useRef } from 'react';
 
 const useDebouncePromise = (callback, delay = 500) => {
-	const timer = useRef();
+	const timerRef = useRef();
 
 	const debouncedCallback = useCallback(
 		(...args) => {
 			return new Promise((resolve) => {
-				if (timer.current) {
-					clearTimeout(timer.current);
+				if (timerRef.current) {
+					clearTimeout(timerRef.current);
 				}
-				timer.current = setTimeout(() => {
+				timerRef.current = setTimeout(() => {
 					resolve(callback(...args));
 				}, delay);
 			});

@@ -18,11 +18,11 @@ import Button from 'сomponents/Button';
 const PostCreatorAddImage = (props) => {
 	const { classes, schemaItemIndex } = props;
 	const inheritClasses = useClasses(classes);
-	const fileInputRed = useRef();
+	const fileInputRef = useRef();
 	const postCreatorSchemaController = usePostCreatorSchemaController();
 
 	const hanlderOpenFileInput = () => {
-		fileInputRed.current.click();
+		fileInputRef.current.click();
 	};
 
 	const handlerChangeFile = (event) => {
@@ -40,7 +40,7 @@ const PostCreatorAddImage = (props) => {
 			</Button>
 			<input
 				multiple
-				ref={fileInputRed}
+				ref={fileInputRef}
 				type="file"
 				id="PostCreatorAddImage"
 				className={inheritClasses + '-input'}

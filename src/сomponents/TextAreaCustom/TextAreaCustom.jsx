@@ -9,12 +9,12 @@ import './TextAreaCustom.scss';
 const TextAreaCustom = (props) => {
 	const { classes, value, onChange, placeholder, handlerFocus, handlerBlur } = props;
 	const inheritClasses = useClasses(classes);
-	const nodeTextArea = useRef(null);
-	useAutosizeTextArea(nodeTextArea.current, value);
+	const textAreaRef = useRef(null);
+	useAutosizeTextArea(textAreaRef.current, value);
 
 	return (
 		<textarea
-			ref={nodeTextArea}
+			ref={textAreaRef}
 			className={`${inheritClasses} text-area-custom`}
 			value={value}
 			placeholder={placeholder}

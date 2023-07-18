@@ -27,7 +27,7 @@ const Auth = () => {
         if (authStatus === 'init') {
             authController.refresh();
         }
-    }, [authStatus, authController]);
+    }, [authStatus]);
 
     const handlerCloseAuthModal = () => {
         authController.closeAuthModal(lockAuthModal);
