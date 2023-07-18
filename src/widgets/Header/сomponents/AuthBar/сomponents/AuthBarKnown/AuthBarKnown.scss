@@ -1,0 +1,85 @@
+.auth-bar-known {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 150;
+}
+
+.auth-bar-known__user-item {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.auth-bar-known__user-img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.auth-bar-known__list-btn {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom 0.3s linear;
+
+    & .btn-text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-right: 4px;
+        color: var(--text-primary);
+    }
+
+    & .btn-icon {
+        width: 8px;
+        height: 8px;
+        transform: rotate(-180deg);
+        transition: color 0.3s linear, tr ansform 0.1s linear;
+    }
+
+    & .btn-icon.active {
+        transform: rotate(0);
+    }
+
+    &:focus {
+        outline: none;
+        background-color: transparent;
+        border-bottom: 1px solid var(--border-primary-active);
+
+        & .btn-text {
+            color: var(--text-primary-active);
+        }
+
+        & .btn-icon {
+            color: var(--fill-primary-active);
+        }
+    }
+
+    &:active {
+        & .btn-text {
+            color: var(--text-primary-active);
+        }
+
+        & .btn-icon {
+            color: var(--fill-primary-active);
+        }
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            background-color: transparent;
+
+            & .btn-text {
+                color: var(--text-primary-hover);
+            }
+
+            & .btn-icon {
+                color: var(--fill-primary-hover);
+            }
+        }
+    }
+}

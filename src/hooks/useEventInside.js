@@ -8,18 +8,18 @@ const useEventInside = (ref, callback, eventName = 'click') => {
 	}, [callback]);
 
 	useEffect(() => {
-		const handleClickOutside = (e) => {
+		const handleClickInside = (e) => {
 			if (ref.current && ref.current.contains(e.target)) {
-				callbackRef.current(e);
+				callbackRef.current();
 			}
 		};
 
-		document.addEventListener(eventName, handleClickOutside);
+		document.addEventListener(eventName, handleClickInside);
 
 		return () => {
-			document.removeEventListener(eventName, handleClickOutside);
+			document.removeEventListener(eventName, handleClickInside);
 		};
-	}, [ref]);
+	}, [ref, eventName]);
 };
 
 export default useEventInside;

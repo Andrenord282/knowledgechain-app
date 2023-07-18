@@ -8,34 +8,37 @@ import { useAuthController } from 'controllers';
 import { useSelector } from 'react-redux';
 
 //-----selectors-----//
-import { selectToggleAuthModal, selectLockAuthModal, selectTypeAuth } from 'store/authSlice';
+import { selectAuthStatus, selectToggleAuthModal, selectLockAuthModal, selectTypeAuth, } from 'store/authSlice';
 
 //-----сomponents-----//
+import Render from "сomponents/Render";
 import Modal from 'сomponents/Modal';
-import AuthSignUp from './сomponents/AuthSignUp';
 import AuthSignIn from './сomponents/AuthSignIn';
+import AuthSignUp from './сomponents/AuthSignUp';
 
 const Auth = () => {
-	const accessToken = localStorage.getItem('accessToken');
-	const toggleAuthModal = useSelector(selectToggleAuthModal);
-	const lockAuthModal = useSelector(selectLockAuthModal);
-	const typeAuth = useSelector(selectTypeAuth);
-	const authController = useAuthController();
+    const authStatus = useSelector(selectAuthStatus);
+    const toggleAuthModal = useSelector(selectToggleAuthModal);
+    const lockAuthModal = useSelector(selectLockAuthModal);
+    const typeAuth = useSelector(selectTypeAuth);
+    const authController = useAuthController();
 
-	useEffect(() => {
-		authController.refresh(accessToken);
-	}, []);
+    useEffect(() => {
+        if (authStatus === 'init') {
+            authController.refresh();
+        }
+    }, [authStatus, authController]);
 
-	const handlerCloseAuthModal = () => {
-		authController.closeAuthModal(lockAuthModal);
-	};
+    const handlerCloseAuthModal = () => {
+        authController.closeAuthModal(lockAuthModal);
+    };
 
-	return (
-		<Modal isOpen={toggleAuthModal} onClose={handlerCloseAuthModal}>
-			{typeAuth === 'signIn' && <AuthSignIn classes="modal__item" />}
-			{typeAuth === 'signUp' && <AuthSignUp classes="modal__item" />}
-		</Modal>
-	);
+    return (
+        <Modal isOpen={toggleAuthModal} onClose={handlerCloseAuthModal}>
+            {typeAuth === 'signIn' && <AuthSignIn classes="modal__item" />}
+            {typeAuth === 'signUp' && <Render name='AuthSignIn'><AuthSignUp classes="modal__item" /></Render>}
+        </Modal>
+    );
 };
 
 export default Auth;

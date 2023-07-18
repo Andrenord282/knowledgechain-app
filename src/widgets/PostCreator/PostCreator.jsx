@@ -31,7 +31,7 @@ import './PostCreator.scss';
 const PostCreator = (props) => {
 	const { classes } = props;
 	const inheritClasses = useClasses(classes);
-	const loadedUser = useSelector(selectLoadedUser);
+	// const loadedUser = useSelector(selectLoadedUser);
 	const userName = useSelector(selectUserName);
 	const userId = useSelector(selectUserId);
 	const postParams = useSelector(selectPostCreatorParams);
@@ -42,11 +42,11 @@ const PostCreator = (props) => {
 	const postCreatorParamsController = usePostCreatorParamsController();
 	const postCreatorSubmitController = usePostCreatorSubmitController();
 
-	useEffect(() => {
-		if (loadedUser) {
-			postCreatorParamsController.initPostParams(userId, userName);
-		}
-	}, [loadedUser]);
+	// useEffect(() => {
+	// 	if (loadedUser) {
+	// 		postCreatorParamsController.initPostParams(userId, userName);
+	// 	}
+	// }, [loadedUser]);
 
 	useEffect(() => {
 		validatePostCreator.validation(postSchema);

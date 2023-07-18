@@ -1,13 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-	loadedAuth: false,
+    authStatus: 'init',  // 'init' || 'unidentifiedUser' || 'identifiedUser'
 	requestAuth: false,
-	statusAuth: false,
 	toggleAuthModal: false,
 	lockAuthModal: false,
 	typeAuth: 'signIn',
-	verifiedUser: false,
 	accessToken: '',
 };
 
@@ -15,16 +13,16 @@ const authSlice = createSlice({
 	name: 'auth',
 	initialState,
 	reducers: {
-		setToggleLoadedAuth: (state, action) => {
-			const { toggle } = action.payload;
+        setAuthStatus: (state, action) => {
+			const { status } = action.payload;
 
-			state.loadedAuth = toggle;
+			state.authStatus = status;
 		},
 
-		setToggleStatusAuth: (state, action) => {
+        setToggleRequestAuth: (state, action) => {
 			const { toggle } = action.payload;
 
-			state.statusAuth = toggle;
+			state.requestAuth = toggle;
 		},
 
 		setToggleAuthModal: (state, action) => {
@@ -45,11 +43,12 @@ const authSlice = createSlice({
 			state.typeAuth = typeAuth;
 		},
 
-		setToggleRequestAuth: (state, action) => {
-			const { toggle } = action.payload;
+        setAccessToken: (state, action) => {
+			const { token } = action.payload;
 
-			state.requestAuth = toggle;
+			state.accessToken = token;
 		},
+
 	},
 });
 

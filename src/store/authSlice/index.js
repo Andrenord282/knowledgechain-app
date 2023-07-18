@@ -3,12 +3,12 @@ export { authReducer } from './authSlice';
 
 //-----selectors-----//
 export {
-	selectLoadedAuth,
-	selectRequestAuth,
-	selectStatusAuth,
-	selectToggleAuthModal,
-	selectLockAuthModal,
-	selectTypeAuth,
+    selectAuthStatus,
+    selectRequestAuth,
+    selectToggleAuthModal,
+    selectLockAuthModal,
+    selectTypeAuth,
+    selectAccessToken,
 } from './selectors';
 
 //-----actions-----//

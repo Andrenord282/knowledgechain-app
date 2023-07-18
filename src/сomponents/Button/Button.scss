@@ -9,3 +9,55 @@
         font-size: 14px;
     }
 }
+
+.btn {
+    background-color: var(--btn-bg-primary);
+    transition: background-color 0.3s linear;
+
+    @media (hover: hover) {
+        &:hover {
+            background-color: var(--btn-bg-primary-hover);
+        }
+    }
+}
+
+.btn:active {
+    background-color: var(--btn-bg-primary-active);
+}
+
+.btn:focus {
+    background-color: var(--btn-bg-primary-active);
+}
+
+.btn .btn-text {
+    color: var(--text-primary);
+    transition: color 0.3s linear;
+}
+
+.btn:hover .btn-text {
+    color: var(--text-tertiary-hover);
+}
+
+.btn:active .btn-text {
+    color: var(--text-tertiary-active);
+}
+
+.btn:focus .btn-text {
+    color: var(--text-tertiary-active);
+}
+
+.btn .btn-icon {
+    transition: color 0.3s linear;
+}
+
+.btn:hover .btn-icon {
+    color: var(--fill-tertiary-hover);
+}
+
+.btn:active .btn-icon {
+    color: var(--fill-tertiary-active);
+}
+
+.btn:focus .btn-icon {
+    color: var(--fill-tertiary-active);
+}

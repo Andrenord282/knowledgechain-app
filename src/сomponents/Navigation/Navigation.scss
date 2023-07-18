@@ -14,13 +14,49 @@
     padding: 10px 0;
 }
 
-.nav__link {
+.nav__link-btn {
     padding: 4px;
     border: 2px solid var(--border-secondary);
     border-radius: 10px;
     background-color: transparent;
     transition: background-color 0.1s linear, border 0.1s linear;
     margin-left: auto;
+
+    & .btn-icon {
+        width: 18px;
+        height: 18px;
+        color: var(--fill-secondary);
+    }
+
+    &:focus {
+        outline: none;
+        border: 2px solid var(--border-tertiary-hover);
+        background-color: var(--text-primary-hover);
+
+        & .btn-text {
+            color: var(--text-tertiary-active);
+        }
+    }
+
+    &:active {
+        border: 2px solid var(--border-tertiary-hover);
+        background-color: var(--text-primary-hover);
+
+        & .btn-text {
+            color: var(--text-tertiary-active);
+        }
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            border: 2px solid var(--border-tertiary-hover);
+            background-color: var(--text-primary-hover);
+
+            & .btn-text {
+                color: var(--text-tertiary-hover);
+            }
+        }
+    }
 }
 
 .nav__link-icon {

@@ -15,8 +15,8 @@ const PageMain = () => {
 			<div className="main__container">
 				<div className="main__content">
 					<Navigation classes="main__nav nav">
-						<LinkCustom classes="nav__link" link={'/post-creator'}>
-							<Icon.Plus className="nav__link-icon" />
+						<LinkCustom classes="nav__link-btn btn" link={'/post-creator'}>
+							<Icon.Plus className="btn-icon" />
 						</LinkCustom>
 					</Navigation>
 					{/* <PostList classes="main__post-list" /> */}

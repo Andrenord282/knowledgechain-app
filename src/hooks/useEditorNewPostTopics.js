@@ -5,7 +5,7 @@ import searchService from 'services/axios/api/searchService';
 import { useEffect, useRef, useState } from 'react';
 import useInputChange from 'hooks/useInputChange';
 import useDebouncePromise from './useDebouncePromise';
-import useFocusComponent from 'hooks/useFocusComponent';
+import {useFocusComponent} from 'hooks/useFocusComponent';
 
 const useEditorNewPostTopics = (postCreatorSlice) => {
 	const focusRef = useRef(null);

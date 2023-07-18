@@ -5,7 +5,7 @@ import { ErrorService } from 'shared/errorService/errorService';
 import { useEffect, useRef, useState } from 'react';
 import useInputChange from 'hooks/useInputChange';
 import useDebouncePromise from 'hooks/useDebouncePromise';
-import useFocusComponent from 'hooks/useFocusComponent';
+import {useFocusComponent} from 'hooks/useFocusComponent';
 
 //-----redux-----//
 import { useDispatch } from 'react-redux';

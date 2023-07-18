@@ -20,11 +20,16 @@
     --text-secondary: #ff571a;
     --text-tertiary: #1e252b;
     --text-primary-hover: #ff4400;
+    --text-secondary-hover: #f7f7f7;
+    --text-tertiary-hover: #1e252b;
     --text-primary-active: #ff4400;
+    --text-secondary-active: #f7f7f7;
+    --text-tertiary-active: #1e252b;
 
     // background сolor button //
     --btn-bg-primary: #ff571a;
     --btn-bg-primary-hover: #ff4400;
+    --btn-bg-primary-active: #ff4400;
     --btn-bg-primary-inactive: #da6d46;
 
     // fill svg //
@@ -32,15 +37,25 @@
     --fill-secondary: #ff571a;
     --fill-tertiary: #1e252b;
     --fill-primary-hover: #ff4400;
+    --fill-secondary-hover: #f7f7f7;
+    --fill-tertiary-hover: #1e252b;
     --fill-primary-active: #ff4400;
+    --fill-secondary-active: #f7f7f7;
+    --fill-tertiary-active: #1e252b;
 
     // border color  //
     --border-primary: #f7f7f7;
     --border-secondary: #ff571a;
     --border-tertiary: #1e252b;
     --border-primary-hover: #ff4400;
+    --border-secondary-hover: #f7f7f7;
+    --border-tertiary-hover: #1e252b;
     --border-primary-active: #ff4400;
+    --border-secondary-active: #f7f7f7;
+    --border-tertiary-active: #1e252b;
 
     // outline //
-    --outline-primary: #ff4400;
+    --outline-primary: #f7f7f7;
+    --outline-secondary: #ff571a;
+    --outline-tertiary: #1e252b;
 }

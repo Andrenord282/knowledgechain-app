@@ -12,26 +12,25 @@ import { useAuthController } from 'controllers';
 import { useSelector } from 'react-redux';
 
 //-----selectors-----//
-import { selectLoadedAuth, selectStatusAuth } from 'store/authSlice';
+import { selectAuthStatus } from 'store/authSlice';
 
 const AuthRequired = () => {
-	const loadedAuth = useSelector(selectLoadedAuth);
-	const statusAuth = useSelector(selectStatusAuth);
-	const handlerNavigate = useNavigateLocation();
-	const authController = useAuthController();
+    const authStatus = useSelector(selectAuthStatus);
+    const handlerNavigate = useNavigateLocation();
+    const authController = useAuthController();
 
-	useEffect(() => {
-		if (loadedAuth && !statusAuth) {
-			authController.setToggleRequestAuth(true);
-			authController.openAuthModal();
-		}
-	}, [loadedAuth, statusAuth]);
+    useEffect(() => {
+        if (authStatus === 'init' || authStatus === 'unidentifiedUser') {
+            authController.setToggleRequestAuth(true);
+            authController.openAuthModal();
+        }
+    }, [authStatus, authController]);
 
-	return loadedAuth && !statusAuth ? (
-		<Navigate to="/" state={{ from: handlerNavigate.location.pathname }} replace />
-	) : (
-		<Outlet />
-	);
+    return authStatus === 'init' || authStatus === 'unidentifiedUser' ? (
+        <Navigate to="/" state={{ from: handlerNavigate.location.pathname }} replace />
+    ) : (
+        <Outlet />
+    );
 };
 
 export default AuthRequired;

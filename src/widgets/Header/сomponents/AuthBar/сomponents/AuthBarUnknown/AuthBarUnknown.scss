@@ -1,0 +1,11 @@
+.auth-bar-unknown {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.auth-bar-unknown__btn {
+    height: 100%;
+    padding: 4px 12px;
+    border-radius: 10px;
+}

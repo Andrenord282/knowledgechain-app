@@ -1,8 +1,7 @@
-//-----widgets-----//
-import AuthBar from 'widgets/AuthBar';
-
 //-----сomponents-----//
 import HeaderLogo from './сomponents/HeaderLogo';
+import AuthBar from './сomponents/AuthBar';
+
 
 //-----style-----//
 import './Header.scss';

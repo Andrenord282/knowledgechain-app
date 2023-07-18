@@ -1,27 +1,30 @@
+//-----modules-----//
+import classNames from "classnames";
+
 //-----hooks-----//
-import useClasses from 'hooks/useClasses';
+import { forwardRef } from 'react';
 
 //-----style-----//
 import './Button.scss';
 
-const Button = (props) => {
-	const { classes, type, children, handleClick, ...otherProps } = props;
-	const inheritClasses = useClasses(classes);
+const Button = forwardRef((props, ref) => {
+    const { classes, type, children, handleClick } = props;
 
-	return (
-		<button
-			type={type ? type : 'button'}
-			{...otherProps}
-			className={`${inheritClasses} btn`}
-			onClick={(e) => {
-				if (type !== 'submit') {
-					e.preventDefault();
-					handleClick(e);
-				}
-			}}>
-			{children}
-		</button>
-	);
-};
+    return (
+        <button
+            ref={ref}
+            type={type ? type : 'button'}
+            className={classNames(classes, 'btn')}
+            onClick={(e) => {
+                if (type === 'submit') {
+                    e.preventDefault();
+                }
+                handleClick(e);
+            }}
+        >
+            {children}
+        </button>
+    );
+});
 
 export default Button;

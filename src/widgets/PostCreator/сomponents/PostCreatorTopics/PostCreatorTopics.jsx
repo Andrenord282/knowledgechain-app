@@ -2,7 +2,7 @@
 import { useState, useRef, memo } from 'react';
 import useClasses from 'hooks/useClasses';
 import useInputChange from 'hooks/useInputChange';
-import useFocusComponent from 'hooks/useFocusComponent';
+import {useFocusComponent} from 'hooks/useFocusComponent';
 
 //-----controllers-----//
 import { usePostCreatorTopicsController } from 'controllers';

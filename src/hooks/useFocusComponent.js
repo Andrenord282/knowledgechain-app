@@ -1,11 +1,12 @@
 const useFocusComponent = (ref) => {
-	const onFocus = () => {
-		ref.current.focus();
-	};
+    const onFocus = () => {
+        ref.current.focus();
+        console.log(ref.current)
+    };
 
-	return {
-		onFocus,
-	};
+    return {
+        onFocus,
+    };
 };
 
-export default useFocusComponent;
+export { useFocusComponent };
