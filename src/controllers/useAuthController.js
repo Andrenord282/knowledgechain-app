@@ -1,8 +1,8 @@
 //-----modules-----//
-import authService from 'services/axios/api/authService';
+import { authService } from 'services/axios/api/authService';
 import { ErrorService } from 'shared/errorService/errorService';
 
-import useNavigateLocation from 'hooks/useNavigateLocation';
+import { useNavigateLocation } from 'hooks/useNavigateLocation';
 
 //-----redux-----//
 import { useDispatch } from 'react-redux';
@@ -68,7 +68,7 @@ const useAuthController = () => {
             alert.setIconAlert(null);
             alert.setTitleAlert(null);
             dispatch(authActions.setLockAuthModal({ lock: false }));
-            
+
             throw new ErrorService(
                 response.data.errorName,
                 response.data.message,
@@ -115,7 +115,7 @@ const useAuthController = () => {
             alert.setIconAlert(null);
             alert.setTitleAlert(null);
             dispatch(authActions.setLockAuthModal({ lock: false }));
-            
+
             throw new ErrorService(
                 response.data.errorName,
                 response.data.message,

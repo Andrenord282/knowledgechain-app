@@ -37,20 +37,10 @@
     background-color: var(--btn-bg-primary);
     transition: fill 0.1s linear;
 
-    @media (max-width: 768px) {
-        width: 18px;
-        height: 18px;
-    }
-
     & .btn-icon {
         width: 14px;
         height: 14px;
         color: var(--fill-primary);
-
-        @media (max-width: 768px) {
-            width: 8px;
-            height: 8px;
-        }
     }
 
     &:focus {

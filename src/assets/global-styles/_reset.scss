@@ -35,8 +35,17 @@ a {
 
 input {
     border: none;
+
+    &:focus {
+        outline: 1px solid var(--outline-secondary);
+    }
 }
 
 textarea {
+    border: none;
     resize: none;
+
+    &:focus {
+        outline: 1px solid var(--outline-secondary);
+    }
 }

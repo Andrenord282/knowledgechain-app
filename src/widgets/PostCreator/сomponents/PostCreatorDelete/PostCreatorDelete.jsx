@@ -1,27 +1,26 @@
-//-----hooks-----//
-import useClasses from 'hooks/useClasses';
+//-----modules-----//
+import classNames from "classnames";
 
 //-----controllers-----//
-import { usePostCreatorSchemaController } from 'controllers';
+import { usePostCreatorController } from 'controllers';
 
 //-----сomponents-----//
 import * as Icon from 'сomponents/Icon';
 import Button from 'сomponents/Button';
 
 const PostCreatorDelete = (props) => {
-	const { classes, schemaItemIndex } = props;
-	const inheritClasses = useClasses(classes);
-	const postCreatorSchemaController = usePostCreatorSchemaController();
+    const { classes, schemaItemIndex } = props;
+    const postCreatorController = usePostCreatorController();
 
-	const handlerDeleteSchemaItem = () => {
-		postCreatorSchemaController.deleteSchemaItem(schemaItemIndex);
-	};
+    const handleDeleteSchemaItem = () => {
+        postCreatorController.deleteSchemaItem(schemaItemIndex);
+    };
 
-	return (
-		<Button classes={inheritClasses} handleClick={handlerDeleteSchemaItem}>
-			<Icon.Delete className="btn-icon" />
-		</Button>
-	);
+    return (
+        <Button classes={classNames(classes)} handleClick={handleDeleteSchemaItem}>
+            <Icon.Delete className="btn-icon" />
+        </Button>
+    );
 };
 
 export default PostCreatorDelete;

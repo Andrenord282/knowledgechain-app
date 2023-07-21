@@ -41,20 +41,10 @@
     background-color: var(--btn-bg-primary);
     transition: fill 0.1s linear;
 
-    @media (max-width: 768px) {
-        width: 18px;
-        height: 18px;
-    }
-
     & .btn-icon {
         width: 14px;
         height: 14px;
         color: var(--fill-primary);
-
-        @media (max-width: 768px) {
-            width: 8px;
-            height: 8px;
-        }
     }
 
     &:focus {
@@ -83,39 +73,50 @@
     }
 }
 
-.post-creator-text__btn-toggle {
-    position: absolute;
-    top: 72px;
-    right: 5px;
-    border-radius: 50px;
-    background-color: var(--btn-bg-primary);
-    align-self: flex-end;
-    transition: fill 0.1s linear;
-}
-
-.post-creator-text__btn-toggle:hover {
-    background-color: var(--btn-bg-primary-hover);
-}
-
-.post-creator-text__btn-toggle .btn-icon {
+.post-creator-text__toggle-btn {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
     width: 24px;
     height: 24px;
-    border-radius: 50%;
+    top: 72px;
+    right: 5px;
     padding: 3px;
-    fill: var(--fill-tertiary);
-    transition: fill 0.1s linear;
+    border-radius: 50px;
+    background-color: var(--btn-bg-primary);
+    align-self: flex-end;
 
-    @media (max-width: 768px) {
-        width: 18px;
-        height: 18px;
+    & .btn-icon {
+        width: 14px;
+        height: 14px;
+        color: var(--fill-primary);
     }
-}
 
-.post-creator-text__btn-toggle:hover .btn-icon {
-    fill: var(--fill-primary);
+    &:focus {
+        background-color: var(--btn-bg-primary-active);
+
+        & .btn-icon {
+            color: var(--fill-tertiary-active);
+        }
+    }
+    &:active {
+        background-color: var(--btn-bg-primary-active);
+
+        & .btn-icon {
+            color: var(--fill-tertiary-active);
+        }
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            background-color: var(--btn-bg-primary-hover);
+
+            & .btn-icon {
+                color: var(--fill-tertiary-hover);
+            }
+        }
+    }
 }
 
 .post-creator-text__tools {

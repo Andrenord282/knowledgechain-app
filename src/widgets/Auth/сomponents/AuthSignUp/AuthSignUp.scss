@@ -60,13 +60,13 @@
     margin-bottom: 40px;
 }
 
-.auth-sign-up__input-content {
+.auth-sign-up__input-body {
     position: relative;
     display: flex;
     flex-direction: column;
 }
 
-.auth-sign-up__input-content:not(:last-of-type) {
+.auth-sign-up__input-body:not(:last-of-type) {
     margin-bottom: 20px;
 }
 

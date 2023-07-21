@@ -1,8 +1,17 @@
 import { useEffect, useRef } from 'react';
 
-const useTabNavigateElementList = (delegateElementRef, handleActivate = null, handleDeactivate) => {
+const useTabNavigateElementList = (
+    delegateElementRef,
+    handleActivate = null,
+    handleDeactivate = null,
+) => {
     const handleActivateRef = useRef(handleActivate);
     const handleDeactivateRef = useRef(handleDeactivate);
+
+    useEffect(() => {
+        handleActivateRef.current = handleActivate;
+        handleDeactivateRef.current = handleDeactivate;
+    }, [handleActivate, handleDeactivate]);
 
     useEffect(() => {
         const delegateElement = delegateElementRef.current;
@@ -31,7 +40,7 @@ const useTabNavigateElementList = (delegateElementRef, handleActivate = null, ha
         return () => {
             document.removeEventListener('focusin', handleFocusinElement);
         };
-    }, [delegateElementRef, handleActivate, handleDeactivate]);
+    }, [delegateElementRef]);
 };
 
-export default useTabNavigateElementList;
+export { useTabNavigateElementList };

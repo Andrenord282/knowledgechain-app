@@ -101,4 +101,4 @@ const useValidatePostCreator = () => {
     };
 };
 
-export default useValidatePostCreator;
+export { useValidatePostCreator };

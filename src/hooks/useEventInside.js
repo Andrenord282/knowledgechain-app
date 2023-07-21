@@ -1,25 +1,25 @@
 import { useEffect, useRef } from 'react';
 
-const useEventInside = (ref, callback, eventName = 'click') => {
-	const callbackRef = useRef(callback);
+const useEventInside = (elementRef, handleActivate, eventName = 'click') => {
+    const handleActivateRef = useRef(handleActivate);
 
-	useEffect(() => {
-		callbackRef.current = callback;
-	}, [callback]);
+    useEffect(() => {
+        handleActivateRef.current = handleActivate;
+    }, [handleActivate]);
 
-	useEffect(() => {
-		const handleClickInside = (e) => {
-			if (ref.current && ref.current.contains(e.target)) {
-				callbackRef.current();
-			}
-		};
+    useEffect(() => {
+        const handleClickInside = (e) => {
+            if (elementRef.current && elementRef.current.contains(e.target)) {
+                handleActivateRef.current();
+            }
+        };
 
-		document.addEventListener(eventName, handleClickInside);
+        document.addEventListener(eventName, handleClickInside);
 
-		return () => {
-			document.removeEventListener(eventName, handleClickInside);
-		};
-	}, [ref, eventName]);
+        return () => {
+            document.removeEventListener(eventName, handleClickInside);
+        };
+    }, [elementRef, eventName]);
 };
 
-export default useEventInside;
+export { useEventInside };

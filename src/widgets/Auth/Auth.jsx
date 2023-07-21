@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 //-----hooks-----//
 import { useEffect } from 'react';
 
@@ -11,7 +12,6 @@ import { useSelector } from 'react-redux';
 import { selectAuthStatus, selectToggleAuthModal, selectLockAuthModal, selectTypeAuth, } from 'store/authSlice';
 
 //-----сomponents-----//
-import Render from "сomponents/Render";
 import Modal from 'сomponents/Modal';
 import AuthSignIn from './сomponents/AuthSignIn';
 import AuthSignUp from './сomponents/AuthSignUp';
@@ -29,14 +29,14 @@ const Auth = () => {
         }
     }, [authStatus]);
 
-    const handlerCloseAuthModal = () => {
+    const handleCloseAuthModal = () => {
         authController.closeAuthModal(lockAuthModal);
     };
 
     return (
-        <Modal isOpen={toggleAuthModal} onClose={handlerCloseAuthModal}>
+        <Modal isOpen={toggleAuthModal} onClose={handleCloseAuthModal}>
             {typeAuth === 'signIn' && <AuthSignIn classes="modal__item" />}
-            {typeAuth === 'signUp' && <Render name='AuthSignIn'><AuthSignUp classes="modal__item" /></Render>}
+            {typeAuth === 'signUp' && <AuthSignUp classes="modal__item" />}
         </Modal>
     );
 };

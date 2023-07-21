@@ -2,18 +2,18 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const useNavigateLocation = () => {
-	const location = useLocation();
-	const navigate = useNavigate();
-	const fromPage = location.state?.from || '/';
+    const location = useLocation();
+    const navigate = useNavigate();
+    const fromPage = location.state?.from || '/';
 
-	const setLocationPage = (location) => {
-		navigate(location ? location : fromPage, { replace: true, state: null });
-	};
+    const setLocationPage = (location) => {
+        navigate(location ? location : fromPage, { replace: true, state: null });
+    };
 
-	return {
-		location,
-		setLocationPage,
-	};
+    return {
+        location,
+        setLocationPage,
+    };
 };
 
-export default useNavigateLocation;
+export { useNavigateLocation };

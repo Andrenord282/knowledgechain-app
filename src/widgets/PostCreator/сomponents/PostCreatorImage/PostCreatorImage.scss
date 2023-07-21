@@ -5,7 +5,7 @@
 }
 
 .post-creator-image__wrapper-item {
-    padding: 0 15px;
+    padding: 15px 10px 15px 10px;
     margin-bottom: 1px;
     margin-bottom: 10px;
 }
@@ -13,7 +13,7 @@
 .post-creator-image__item {
     display: block;
     max-width: 100%;
-    margin: 25px auto 0 auto;
+    margin: 0 auto;
 }
 
 .post-creator-image__nav {
@@ -27,34 +27,51 @@
 .post-creator-image__tools {
 }
 
-.post-creator-image__btn-toggle {
-    display: block;
-    margin-left: auto;
-    border-radius: 50px;
-    background-color: var(--btn-bg-primary);
-}
-
-.post-creator-image__btn-toggle:hover {
-    background-color: var(--btn-bg-primary-hover);
-}
-
-.post-creator-image__btn-toggle .btn-icon {
+.post-creator-image__toggle-btn {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left: auto;
     width: 24px;
     height: 24px;
-    border-radius: 50%;
+    border-radius: 50px;
     padding: 3px;
-    fill: var(--fill-tertiary);
-    transition: fill 0.1s linear;
+    background-color: var(--btn-bg-primary);
 
-    @media (max-width: 768px) {
-        width: 18px;
-        height: 18px;
+    & .btn-icon {
+        width: 14px;
+        height: 14px;
+        color: var(--fill-primary);
+
+        @media (max-width: 768px) {
+            width: 8px;
+            height: 8px;
+        }
+    }
+
+    &:focus {
+        background-color: var(--btn-bg-primary-active);
+
+        & .btn-icon {
+            color: var(--fill-tertiary-active);
+        }
+    }
+    &:active {
+        background-color: var(--btn-bg-primary-active);
+
+        & .btn-icon {
+            color: var(--fill-tertiary-active);
+        }
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            background-color: var(--btn-bg-primary-hover);
+
+            & .btn-icon {
+                color: var(--fill-tertiary-hover);
+            }
+        }
     }
 }
 
-.post-creator-image__btn-toggle:hover .btn-icon {
-    fill: var(--text-primary);
-}

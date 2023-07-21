@@ -7,18 +7,18 @@ dayjs.locale('ru');
 dayjs.extend(relativeTime);
 
 const useDayJs = (date) => {
-	const setDate = () => {
-		const dateCursor = dayjs().subtract(30, 'hours');
-		if (dayjs(date).isAfter(dateCursor)) {
-			return dayjs(date).fromNow();
-		}
+    const setDate = () => {
+        const dateCursor = dayjs().subtract(30, 'hours');
+        if (dayjs(date).isAfter(dateCursor)) {
+            return dayjs(date).fromNow();
+        }
 
-		if (!dayjs(date).isAfter(dateCursor)) {
-			return dayjs(date).format('DD.MM.YYYY');
-		}
-	};
+        if (!dayjs(date).isAfter(dateCursor)) {
+            return dayjs(date).format('DD.MM.YYYY');
+        }
+    };
 
-	return setDate();
+    return setDate();
 };
 
-export default useDayJs;
+export { useDayJs };

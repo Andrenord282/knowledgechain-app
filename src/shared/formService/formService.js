@@ -1,26 +1,32 @@
-class formService {
-	constructor() {
-		this.fileList = {};
-	}
+class FormService {
+    constructor() {
+        this.fileList = {};
+    }
 
-	pushFile = (nameId, file) => {
-		this.fileList[nameId] = file;
-	};
+    pushFile = (nameId, file) => {
+        this.fileList[nameId] = file;
+    };
 
-	collectPostData = (data) => {
-		const formData = new FormData();
-		const dataJSON = JSON.stringify(data);
-		formData.append('postData', dataJSON);
+    resetFileList = () => {
+        this.fileList = {};
+    };
 
-		if (Object.entries(this.fileList).length > 0) {
-			data.postSchema.forEach((schemaItem) => {
-				if (schemaItem.type === 'image') {
-					formData.append(`${schemaItem.id}`, this.fileList[schemaItem.id]);
-				}
-			});
-		}
-		return formData;
-	};
+    collectData = (data) => {
+        const formData = new FormData();
+        const dataJSON = JSON.stringify(data);
+        formData.append('data', dataJSON);
+
+        if (Object.entries(this.fileList).length > 0) {
+            data.schema.forEach((schemaItem) => {
+                if (schemaItem.type === 'image') {
+                    formData.append(`${schemaItem.id}`, this.fileList[schemaItem.id]);
+                }
+            });
+        }
+        return formData;
+    };
 }
 
-export default new formService();
+const formService = new FormService();
+
+export { formService };

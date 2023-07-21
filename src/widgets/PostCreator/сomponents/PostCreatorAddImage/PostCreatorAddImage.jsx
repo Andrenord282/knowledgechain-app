@@ -1,12 +1,12 @@
 //-----modules-----//
-import formService from 'shared/formService';
+import classNames from "classnames";
+import { formService } from 'shared/formService';
 
 //-----hooks-----//
 import { useRef } from 'react';
-import useClasses from 'hooks/useClasses';
 
 //-----controllers-----//
-import { usePostCreatorSchemaController } from 'controllers';
+import { usePostCreatorController } from 'controllers';
 
 //-----redux-----//
 import { nanoid } from '@reduxjs/toolkit';
@@ -16,38 +16,36 @@ import * as Icon from 'сomponents/Icon';
 import Button from 'сomponents/Button';
 
 const PostCreatorAddImage = (props) => {
-	const { classes, schemaItemIndex } = props;
-	const inheritClasses = useClasses(classes);
-	const fileInputRef = useRef();
-	const postCreatorSchemaController = usePostCreatorSchemaController();
+    const { classes, schemaItemIndex } = props;
+    const fileInputRef = useRef();
+    const postCreatorController = usePostCreatorController();
 
-	const hanlderOpenFileInput = () => {
-		fileInputRef.current.click();
-	};
+    const handleOpenFileInput = () => {
+        fileInputRef.current.click();
+    };
 
-	const handlerChangeFile = (event) => {
-		const nameId = nanoid(5);
-		const file = event.target.files[0];
-		const imageUrl = URL.createObjectURL(file);
-		postCreatorSchemaController.addSchemaItem(schemaItemIndex, imageUrl, 'image', nameId);
-		formService.pushFile(nameId, file);
-	};
+    const handleChangeFile = (e) => {
+        const nameId = nanoid(5);
+        const file = e.target.files[0];
+        const imageUrl = URL.createObjectURL(file);
+        postCreatorController.addSchemaItem(schemaItemIndex, imageUrl, 'image', nameId);
+        formService.pushFile(nameId, file);
+    };
 
-	return (
-		<>
-			<Button classes={inheritClasses} handleClick={hanlderOpenFileInput}>
-				<Icon.AddImage className="btn-icon" />
-			</Button>
-			<input
-				multiple
-				ref={fileInputRef}
-				type="file"
-				id="PostCreatorAddImage"
-				className={inheritClasses + '-input'}
-				onChange={handlerChangeFile}
-			/>
-		</>
-	);
+    return (
+        <>
+            <Button classes={classNames(classes)} handleClick={handleOpenFileInput}>
+                <Icon.AddImage className="btn-icon" />
+            </Button>
+            <input
+                multiple
+                ref={fileInputRef}
+                type="file"
+                className={classNames(classes) + '-input'}
+                onChange={handleChangeFile}
+            />
+        </>
+    );
 };
 
 export default PostCreatorAddImage;

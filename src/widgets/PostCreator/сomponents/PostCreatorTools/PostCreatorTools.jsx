@@ -1,5 +1,7 @@
+//-----modules-----//
+import classNames from "classnames";
+
 //-----hooks-----//
-import useClasses from 'hooks/useClasses';
 
 //-----сomponents-----//
 import PostCreatorAddText from '../PostCreatorAddText';
@@ -10,18 +12,17 @@ import PostCreatorAddImage from '../PostCreatorAddImage';
 import './PostCreatorTools.scss';
 
 const PostCreatorTools = (props) => {
-	const { classes, schemaItemIndex, schemaLength } = props;
-	const inheritClasses = useClasses(classes);
+    const { classes, schemaItemIndex, schemaLength } = props;
 
-	return (
-		<div className={`${inheritClasses} post-creator-tools`}>
-			<PostCreatorAddText classes="post-creator-tools__btn-tools" schemaItemIndex={schemaItemIndex} />
-			<PostCreatorAddImage classes="post-creator-tools__btn-tools" schemaItemIndex={schemaItemIndex} />
-			{schemaLength > 2 && (
-				<PostCreatorDelete classes="post-creator-tools__btn-tools" schemaItemIndex={schemaItemIndex} />
-			)}
-		</div>
-	);
+    return (
+        <div className={classNames(classes, 'post-creator-tools')}>
+            <PostCreatorAddText classes="post-creator-tools__tool-btn" schemaItemIndex={schemaItemIndex} />
+            <PostCreatorAddImage classes="post-creator-tools__tool-btn" schemaItemIndex={schemaItemIndex} />
+            {schemaLength > 2 && (
+                <PostCreatorDelete classes="post-creator-tools__tool-btn" schemaItemIndex={schemaItemIndex} />
+            )}
+        </div>
+    );
 };
 
 export default PostCreatorTools;

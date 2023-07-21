@@ -1,11 +1,12 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 //-----modules-----//
 import classNames from "classnames";
 
 //-----hooks-----//
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import useAlertState from 'hooks/useAlertState';
-import useFormErrorLoglist from "../../hooks/useErrorLostList";
+import { useAlertState } from 'hooks/useAlertState';
+import { useFormErrorLoglist } from "../../hooks/useErrorLostList";
 
 //-----controllers-----//
 import { useAuthController } from 'controllers';
@@ -49,34 +50,34 @@ const AuthSignIn = (props) => {
 
     useFormErrorLoglist(inputUserPassword, 'userPassword', setErrorLogList);
 
-    const handlerCloseAuthModal = () => {
+    const handleCloseAuthModal = () => {
         authController.closeAuthModal(lockAuthModal);
     };
 
-    const handlerSetAuthType = () => {
+    const handleSetAuthType = () => {
         authController.setAuthFormType('signUp');
     };
 
-    const handlerSignIn = async (data) => {
+    const handleSignIn = async (data) => {
         await authController.signIn(alert, data, setErrorLogList, requestAuth);
     };
 
-    const handlerFormSignIn = handleSubmit(handlerSignIn);
+    const handleFormSignIn = handleSubmit(handleSignIn);
     return (
         <div className={classNames(classes, 'auth-sign-in')}>
             {!alert.toggleAlert && (
                 <form
                     className="auth-sign-in__form"
-                    onSubmit={handlerFormSignIn}
+                    onSubmit={handleFormSignIn}
                     onClick={(e) => {
                         e.stopPropagation();
                     }}>
-                    <Button classes="auth-sign-in__close-btn" handleClick={handlerCloseAuthModal}>
+                    <Button classes="auth-sign-in__close-btn" handleClick={handleCloseAuthModal}>
                         <Icon.СrossClose className="btn-icon" />
                     </Button>
                     <h4 className="auth-sign-in__title">Авторизация</h4>
                     <div className="auth-sign-in__body">
-                        <div className="auth-sign-in__input-content">
+                        <div className="auth-sign-in__input-body">
                             <label htmlFor="email" className="auth-sign-in__label">
                                 Введите Ваш логин
                             </label>
@@ -105,7 +106,7 @@ const AuthSignIn = (props) => {
                                 </span>
                             )}
                         </div>
-                        <div className="auth-sign-in__input-content">
+                        <div className="auth-sign-in__input-body">
                             <label htmlFor="password" className="auth-sign-in__label">
                                 Введите Ваш пароль
                             </label>
@@ -134,7 +135,7 @@ const AuthSignIn = (props) => {
                         type="submit">
                         <span className="btn-text">Войти</span>
                     </button>
-                    <Button classes="auth-sign-in__auth-btn" handleClick={handlerSetAuthType}>
+                    <Button classes="auth-sign-in__auth-btn" handleClick={handleSetAuthType}>
                         <span className="btn-text">Создать учетную запись</span>
                     </Button>
                 </form>

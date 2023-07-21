@@ -15,4 +15,4 @@ const useFormErrorLoglist = (dependentInput, inputFieldName, setFormErrorLogList
     }, [dependentInput, inputFieldName, setFormErrorLogList]);
 };
 
-export default useFormErrorLoglist;
+export { useFormErrorLoglist };

@@ -36,6 +36,10 @@
         & .btn-text {
             color: var(--text-tertiary-active);
         }
+
+        & .btn-icon {
+            color: var(--text-tertiary-active);
+        }
     }
 
     &:active {
@@ -43,6 +47,10 @@
         background-color: var(--text-primary-hover);
 
         & .btn-text {
+            color: var(--text-tertiary-active);
+        }
+
+        & .btn-icon {
             color: var(--text-tertiary-active);
         }
     }
@@ -55,22 +63,11 @@
             & .btn-text {
                 color: var(--text-tertiary-hover);
             }
+
+            & .btn-icon {
+                color: var(--text-tertiary-hover);
+            }
         }
     }
 }
 
-.nav__link-icon {
-    fill: var(--fill-secondary);
-    width: 20px;
-    height: 20px;
-    transition: fill 0.1s linear;
-}
-
-.nav__link:hover {
-    border: 2px solid var(--border-primary-hover);
-    background-color: var(--text-tertiary);
-}
-
-.nav__link:hover .nav__link-icon {
-    fill: var(--fill-primary-hover);
-}

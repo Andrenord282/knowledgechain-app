@@ -1,3 +1,1 @@
-import filesService from './formService';
-
-export default filesService;
+export { formService } from './formService';

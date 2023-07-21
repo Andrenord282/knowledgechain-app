@@ -1,11 +1,9 @@
 //-----modules-----//
+import classNames from "classnames";
 
 //-----router-----//
 
 //-----hooks-----//
-import { useEffect } from 'react';
-import useClasses from 'hooks/useClasses';
-import usePostListSlice from 'hooks/slices/usePostListSlice';
 
 //-----redux-----//
 
@@ -18,24 +16,13 @@ import PostListItem from '../PostListItem';
 import './PostList.scss';
 
 const PostList = (props) => {
-	const { classes } = props;
-	const inheritClasses = useClasses(classes);
-	const postListModel = usePostListSlice();
+    const { classes } = props;
 
-	useEffect(() => {
-		if (!postListModel.postListLoaded) {
-			postListModel.requestPostList();
-		}
-	}, [postListModel.postListLoaded]);
-
-	return (
-		<div className={inheritClasses + ' post-list'}>
-			{postListModel.postList.length > 0 &&
-				postListModel.postList.map((postListItem) => {
-					return <PostListItem classes="post-list__item" key={postListItem._id} {...postListItem} />;
-				})}
-		</div>
-	);
+    return (
+        <div className={classNames(classes, 'post-list')}>
+            <PostListItem classes="post-list__item" />;
+        </div>
+    );
 };
 
 export default PostList;

@@ -8,7 +8,7 @@ const initialState = {
         postName: null,
     },
     schema: [], // { id: null, type: 'title', value: '' }, { id: null, type: 'text', value: '' },
-    topics: [],
+    topics: [], // [topic, topic, topic]
 };
 
 const postCreatorSlice = createSlice({
@@ -45,24 +45,50 @@ const postCreatorSlice = createSlice({
                     value: data,
                 };
             };
-            const newSchemaItem = сreateSchemaItem(data, type, idItem);
-            const postSchema = JSON.parse(JSON.stringify(state.schema));
 
-            if (activationIndex === postSchema.length - 1) {
-                state.schema = [...postSchema, newSchemaItem];
+            const newSchemaItem = сreateSchemaItem(data, type, idItem);
+            const schema = JSON.parse(JSON.stringify(state.schema));
+
+            if (activationIndex === schema.length - 1) {
+                state.schema = [...schema, newSchemaItem];
             } else {
-                const startpostSchema = postSchema.slice(0, activationIndex + 1);
-                const endpostSchema = postSchema.slice(activationIndex + 1);
-                state.schema = [...startpostSchema, newSchemaItem, ...endpostSchema];
+                const startSchema = schema.slice(0, activationIndex + 1);
+                const endSchema = schema.slice(activationIndex + 1);
+                state.schema = [...startSchema, newSchemaItem, ...endSchema];
             }
         },
 
         deleteSchemaItem: (state, action) => {
             const { schemaItemIndex } = action.payload;
-            const postSchema = JSON.parse(JSON.stringify(state.schema));
-            postSchema.splice(schemaItemIndex, 1);
+            const schema = JSON.parse(JSON.stringify(state.schema));
+            schema.splice(schemaItemIndex, 1);
 
-            state.schema = [...postSchema];
+            state.schema = [...schema];
+        },
+
+        addTopic: (state, action) => {
+            const { topicName } = action.payload;
+
+            if (!state.topics.includes(topicName)) {
+                state.topics = [...state.topics, topicName];
+            }
+        },
+
+        deleteTopic: (state, action) => {
+            const { topicIndex } = action.payload;
+
+            state.topics = state.topics.filter((_, index) => index !== topicIndex);
+        },
+
+        resetState: (state) => {
+            state.params = {
+                authorId: null,
+                authorName: null,
+                postId: null,
+                postName: null,
+            };
+            state.schema = [];
+            state.topics = [];
         },
     },
 });

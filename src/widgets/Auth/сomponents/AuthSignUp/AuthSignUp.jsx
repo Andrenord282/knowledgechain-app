@@ -4,8 +4,8 @@ import classNames from "classnames";
 //-----hooks-----//
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import useAlertState from 'hooks/useAlertState';
-import useFormErrorLoglist from "../../hooks/useErrorLostList";
+import { useAlertState } from 'hooks/useAlertState';
+import { useFormErrorLoglist } from "../../hooks/useErrorLostList";
 
 //-----controllers-----//
 import { useAuthController } from 'controllers';
@@ -51,34 +51,34 @@ const AuthSignUp = (props) => {
 
     useFormErrorLoglist(inputUserName, 'userName', setErrorLogList);
 
-    const handlerCloseAuthModal = () => {
+    const handleCloseAuthModal = () => {
         authController.closeAuthModal(lockAuthModal);
     };
 
-    const handlerSetAuthType = () => {
+    const handleSetAuthType = () => {
         authController.setAuthFormType('signIn');
     };
-    const handlerSignUp = async (data) => {
+    const handleSignUp = async (data) => {
         await authController.signUp(alert, data, setErrorLogList, requestAuth);
     };
 
-    const handlerFormSignUp = handleSubmit(handlerSignUp);
+    const handleFormSignUp = handleSubmit(handleSignUp);
 
     return (
         <div className={classNames(classes, 'auth-sign-up')}>
             {!alert.toggleAlert && (
                 <form
                     className="auth-sign-up__form"
-                    onSubmit={handlerFormSignUp}
+                    onSubmit={handleFormSignUp}
                     onClick={(e) => {
                         e.stopPropagation();
                     }}>
-                    <Button classes="auth-sign-up__close-btn" handleClick={handlerCloseAuthModal}>
+                    <Button classes="auth-sign-up__close-btn" handleClick={handleCloseAuthModal}>
                         <Icon.СrossClose className="btn-icon" />
                     </Button>
                     <h4 className="auth-sign-up__title">Регистрация</h4>
                     <div className="auth-sign-up__body">
-                        <div className="auth-sign-up__input-content">
+                        <div className="auth-sign-up__input-body">
                             <label htmlFor="email" className="auth-sign-up__label">
                                 Напишите Вашу почту
                             </label>
@@ -109,7 +109,7 @@ const AuthSignUp = (props) => {
                                 </span>
                             )}
                         </div>
-                        <div className="auth-sign-up__input-content">
+                        <div className="auth-sign-up__input-body">
                             <label htmlFor="userName" className="auth-sign-up__label">
                                 Напишите Ваш Логин
                             </label>
@@ -144,7 +144,7 @@ const AuthSignUp = (props) => {
                                 </span>
                             )}
                         </div>
-                        <div className="auth-sign-up__input-content">
+                        <div className="auth-sign-up__input-body">
                             <label htmlFor="userPassword" className="auth-sign-up__label">
                                 Напишите Ваш пароль
                             </label>
@@ -167,7 +167,7 @@ const AuthSignUp = (props) => {
                                 <span className="auth-sign-up__input-alert">{errors.userPassword.message}</span>
                             )}
                         </div>
-                        <div className="auth-sign-up__input-content">
+                        <div className="auth-sign-up__input-body">
                             <label htmlFor="confirmPassword" className="auth-sign-up__label">
                                 Повторите Ваш пароль
                             </label>
@@ -194,7 +194,7 @@ const AuthSignUp = (props) => {
                         type="submit">
                         <span className="btn-text">Регистрация</span>
                     </button>
-                    <Button classes="auth-sign-up__auth-btn" handleClick={handlerSetAuthType}>
+                    <Button classes="auth-sign-up__auth-btn" handleClick={handleSetAuthType}>
                         <span className="btn-text">Войти в учетную запись</span>
                     </Button>
                 </form>

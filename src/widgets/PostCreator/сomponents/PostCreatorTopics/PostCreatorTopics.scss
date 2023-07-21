@@ -46,7 +46,7 @@
     background-color: var(--component-bg-secondary);
 }
 
-.post-creator-topics__btn-variant {
+.post-creator-topics__variant-btn {
     width: 100%;
     display: flex;
     align-items: center;
@@ -54,42 +54,63 @@
     padding: 10px 15px;
     background-color: var(--btn-bg-primary);
     border-bottom: 1px solid var(--border-tertiary);
-    transition: border-bottom 0.1s linear, background-color 0.1s linear;
+
+    & .btn-text {
+        color: var(--text-tertiary);
+    }
+
+    & .btn-icon {
+        width: 14px;
+        height: 14px;
+        color: var(--fill-tertiary);
+    }
+
+    &:focus {
+        background-color: var(--btn-bg-primary-hover);
+
+        & .btn-text {
+            color: var(--text-secondary-hover);
+        }
+
+        & .btn-icon {
+            color: var(--fill-secondary-hover);
+        }
+    }
+
+    &:active {
+        background-color: var(--btn-bg-primary-hover);
+        border-bottom: 1px solid var(--border-secondary-hover);
+
+        & .btn-text {
+            color: var(--text-secondary-hover);
+        }
+
+        & .btn-icon {
+            color: var(--fill-secondary-hover);
+        }
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            background-color: var(--btn-bg-primary-hover);
+            border-bottom: 1px solid var(--border-secondary-hover);
+
+            & .btn-text {
+                color: var(--text-secondary-hover);
+            }
+
+            & .btn-icon {
+                color: var(--fill-secondary-hover);
+            }
+        }
+    }
 }
 
-.post-creator-topics__btn-variant:hover {
-    background-color: var(--btn-bg-primary-hover);
-    border-bottom: 1px solid var(--border-primary);
-    transition: border-bottom 0.1s linear, background-color 0.1s linear;
-}
-
-.post-creator-topics__btn-variant .btn-text {
-    color: var(--text-tertiary);
-    transition: color 0.1s linear;
-}
-
-.post-creator-topics__btn-variant:hover .btn-text {
-    color: var(--title-primary);
-    transition: color 0.1s linear;
-}
-
-.post-creator-topics__btn-variant .btn-icon {
-    width: 10px;
-    height: 10px;
-    fill: var(--fill-tertiary);
-    transition: fill 0.1s linear;
-}
-
-.post-creator-topics__btn-variant:hover .btn-icon {
-    fill: var(--fill-primary);
-    transition: fill 0.1s linear;
-}
-
-.post-creator-topics__navigate {
+.post-creator-topics__nav-lists {
     flex: 1 1 auto;
 }
 
-.post-creator-topics__selected-list {
+.post-creator-topics__nav-lists-list {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -97,91 +118,81 @@
     gap: 10px;
 }
 
-.post-creator-topics__btn-selected {
+.post-creator-topics__nav-btn {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 5px 10px;
     border-radius: 10px;
     background-color: var(--btn-bg-primary);
-    transition: border-bottom 0.1s linear, background-color 0.1s linear;
+    border: 1px solid transparent;
+
+    & .btn-text {
+        text-align: left;
+        color: var(--text-primary);
+        margin-right: 10px;
+    }
+
+    & .btn-icon {
+        width: 10px;
+        height: 10px;
+        color: var(--text-primary);
+    }
+
+    &:focus {
+        background-color: var(--btn-bg-primary-active);
+
+        & .btn-text {
+            color: var(--fill-tertiary-active);
+        }
+
+        & .btn-icon {
+            color: var(--fill-tertiary-active);
+        }
+    }
+    &:active {
+        background-color: var(--btn-bg-primary-active);
+
+        & .btn-text {
+            color: var(--fill-tertiary-active);
+        }
+
+        & .btn-icon {
+            color: var(--fill-tertiary-active);
+        }
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            background-color: var(--btn-bg-primary-hover);
+
+            & .btn-text {
+                color: var(--fill-tertiary-hover);
+            }
+
+            & .btn-icon {
+                color: var(--fill-tertiary-hover);
+            }
+        }
+    }
 }
 
-.post-creator-topics__btn-selected:hover {
-    background-color: var(--btn-bg-primary-hover);
-    transition: background-color 0.1s linear;
-}
-
-.post-creator-topics__btn-selected .btn-text {
-    text-align: left;
-    color: var(--text-primary);
-    margin-right: 10px;
-    transition: color 0.1s linear;
-}
-
-.post-creator-topics__btn-selected:hover .btn-text {
-    color: var(--text-tertiary);
-    transition: color 0.1s linear;
-}
-
-.post-creator-topics__btn-selected .btn-icon {
-    width: 10px;
-    height: 10px;
-    fill: var(--text-primary);
-    transition: fill 0.1s linear;
-}
-
-.post-creator-topics__btn-selected:hover .btn-icon {
-    fill: var(--border-tertiary);
-    transition: fill 0.1s linear;
-}
-
-.post-creator-topics__sibling-list {
+.post-creator-topics__nav-list {
     width: 100%;
     display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 5px 10px;
-    border-top: 1px solid var(--border-tertiary);
+    border-top: 1px solid var(--border-secondary);
     padding-top: 10px;
-    margin-top: 20px;
 }
 
-.post-creator-topics__sibling-list-title {
+.post-creator-topics__nav-list:not(:last-child) { 
+    margin-bottom: 20px;
+}
+
+.post-creator-topics__nav-list-title {
     width: 100%;
-    color: var(--text-tertiary);
-}
-
-.post-creator-topics__btn-sibling {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5px 10px;
-    border-radius: 10px;
-    background-color: var(--btn-bg-primary);
-    transition: border-bottom 0.1s linear, background-color 0.1s linear;
-}
-
-.post-creator-topics__btn-sibling .btn-text {
-    text-align: left;
     color: var(--text-primary);
-    margin-right: 10px;
-    transition: color 0.1s linear;
-}
-
-.post-creator-topics__btn-sibling:hover .btn-text {
-    color: var(--text-secondary);
-    transition: color 0.1s linear;
-}
-
-.post-creator-topics__btn-sibling .btn-icon {
-    width: 10px;
-    height: 10px;
-    fill: var(--text-primary);
-    transition: fill 0.1s linear;
-}
-
-.post-creator-topics__btn-sibling:hover .btn-icon {
-    fill: var(--text-secondary);
-    transition: fill 0.1s linear;
+    margin-bottom: 10px;
 }

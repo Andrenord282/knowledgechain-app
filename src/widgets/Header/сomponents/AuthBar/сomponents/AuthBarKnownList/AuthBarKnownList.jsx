@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 //-----hooks-----//
 import { useRef } from 'react';
-import useTabNavigateElementList from 'hooks/useTabNavigateElementList';
+import { useTabNavigateElementList } from 'hooks/useTabNavigateElementList';
 
 //-----controllers-----//
 import { useAuthController } from 'controllers';

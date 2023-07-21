@@ -4,7 +4,7 @@ import { Outlet, Navigate } from 'react-router-dom';
 
 //-----hooks-----//
 import { useEffect } from 'react';
-import useNavigateLocation from 'hooks/useNavigateLocation';
+import { useNavigateLocation } from 'hooks/useNavigateLocation';
 
 //-----controllers-----//
 import { useAuthController } from 'controllers';
@@ -17,21 +17,25 @@ import { selectAuthStatus } from 'store/authSlice';
 
 const AuthRequired = () => {
     const authStatus = useSelector(selectAuthStatus);
-    const handlerNavigate = useNavigateLocation();
+    const handleNavigate = useNavigateLocation();
     const authController = useAuthController();
 
     useEffect(() => {
-        if (authStatus === 'init' || authStatus === 'unidentifiedUser') {
+        if (authStatus === 'unidentifiedUser') {
             authController.setToggleRequestAuth(true);
             authController.openAuthModal();
         }
+
     }, [authStatus]);
 
-    return authStatus === 'init' || authStatus === 'unidentifiedUser' ? (
-        <Navigate to="/" state={{ from: handlerNavigate.location.pathname }} replace />
-    ) : (
-        <Outlet />
-    );
+    if (authStatus === 'unidentifiedUser') {
+        return <Navigate to="/" state={{ from: handleNavigate.location.pathname }} replace />;
+    }
+
+    if (authStatus === 'identifiedUser') {
+        return <Outlet />
+    }
+
 };
 
 export default AuthRequired;

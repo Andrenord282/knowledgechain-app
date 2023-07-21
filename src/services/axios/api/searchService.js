@@ -14,4 +14,5 @@ class SearchService {
 	};
 }
 
-export default new SearchService();
+export const searchService = new SearchService();
+

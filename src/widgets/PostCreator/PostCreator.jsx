@@ -4,27 +4,25 @@ import classNames from "classnames";
 
 //-----hooks-----//
 import { useEffect } from 'react';
-import useAlertState from 'hooks/useAlertState';
-import useValidatePostCreator from './hooks/useValidatePostCreator';
+import { useAlertState } from 'hooks/useAlertState';
+import { useValidatePostCreator } from './hooks/useValidatePostCreator';
 
 //-----controllers-----//
 import { usePostCreatorController } from "controllers";
-// import { usePostCreatorParamsController } from 'controllers';
-import { usePostCreatorSubmitController } from 'controllers';
 
 //-----redux-----//
 import { useSelector } from 'react-redux';
 
 //-----selectors-----//
 import { selectUserStatus, selectUserId, selectUserName, } from 'store/userSlice';
-import { selectSchema } from "store/postCreatorSlice";
-
-import { selectPostSchema } from 'store/postCreatorSchemaSlice';
-import { selectTopicListSelected } from 'store/postCreatorTopicsSlice';
+import { selectParams, selectSchema, selectTopics } from "store/postCreatorSlice";
 
 //-----сomponents-----//
 import Button from 'сomponents/Button';
 import Alert from 'сomponents/Alert';
+import Navigation from 'сomponents/Navigation';
+import LinkCustom from 'сomponents/LinkCustom';
+import * as Icon from 'сomponents/Icon';
 import PostCreatorTitle from './сomponents/PostCreatorTitle';
 import PostCreatorText from './сomponents/PostCreatorText';
 import PostCreatorImage from './сomponents/PostCreatorImage';
@@ -38,19 +36,13 @@ const PostCreator = (props) => {
     const userStatus = useSelector(selectUserStatus);
     const userId = useSelector(selectUserId);
     const userName = useSelector(selectUserName);
+    const params = useSelector(selectParams);
     const schema = useSelector(selectSchema);
-
-
+    const topics = useSelector(selectTopics);
+    const alert = useAlertState();
+    const validatePostCreator = useValidatePostCreator();
     const postCreatopController = usePostCreatorController();
 
-
-    // const postParams = useSelector(selectPostCreatorParams);
-    const postSchema = useSelector(selectPostSchema);
-    const postTopics = useSelector(selectTopicListSelected);
-    const validatePostCreator = useValidatePostCreator();
-    const alert = useAlertState();
-    // const postCreatorParamsController = usePostCreatorParamsController();
-    const postCreatorSubmitController = usePostCreatorSubmitController();
 
     useEffect(() => {
         if (userStatus === 'loaded') {
@@ -62,14 +54,22 @@ const PostCreator = (props) => {
         validatePostCreator.validation(schema);
     }, [schema]);
 
-
     const handlerSubmitPost = (e) => {
         e.preventDefault();
-        // postCreatorSubmitController.submitPost(alert, postParams, postSchema, postTopics);
+        postCreatopController.submitPost(alert, params, schema, topics);
+    };
+
+    const handleBackMainPage = () => {
+        postCreatopController.backMainPage();
     };
 
     return (
         <div className={classNames(classes, 'post-creator')}>
+            <Navigation classes="post-creator__nav nav">
+                <LinkCustom classes="nav__link-btn btn" link={'/'} handleClick={handleBackMainPage}>
+                    <Icon.ArrowBack className="btn-icon" />
+                </LinkCustom>
+            </Navigation>
             <form encType="multipart/form-data" className="post-creator__form" onSubmit={handlerSubmitPost}>
                 {schema.map((schemaItem, schemaItemIndex) => {
                     const schemaLength = schema.length;
@@ -81,7 +81,7 @@ const PostCreator = (props) => {
                                 <PostCreatorTitle
                                     key={schemaItem.id}
                                     classes="post-creator__title"
-                                    validError={validatePostCreator.validErrorsList[schemaItem.id]}
+                                    validError={validatePostCreator.validErrorsList[schemaItem.id] || null}
                                     schemaItemIndex={schemaItemIndex}
                                 />
                             );
@@ -90,7 +90,7 @@ const PostCreator = (props) => {
                                 <PostCreatorText
                                     key={schemaItem.id}
                                     classes="post-creator__text"
-                                    validError={validatePostCreator.validErrorsList[schemaItem.id]}
+                                    validError={validatePostCreator.validErrorsList[schemaItem.id] || null}
                                     schemaItemIndex={schemaItemIndex}
                                     schemaLength={schemaLength}
                                     schemaItemIsLast={schemaItemIsLast}

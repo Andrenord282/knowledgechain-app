@@ -1,35 +1,22 @@
 import { useState } from 'react';
 
 const useInputChange = (initialValue) => {
-	const [value, setValue] = useState(initialValue);
-	const [prevValueLength, setPrevValueLength] = useState('');
+    const [value, setValue] = useState(initialValue);
 
-	// const handleKeyDown = (e) => {
-	// 	setPrevValueLength(e.target.value.length);
-	// };
+    const onChenge = (e) => {
+        setValue(e.target.value);
+    };
 
-	// const handleKeyUp = (e, callback, ...args) => {
-	// 	if (e.target.value.length !== prevValueLength || e.target.value.length === 0) {
-	// 		callback(...args);
-	// 	}
-	// };
+    const onReset = () => {
+        setValue('');
+    };
 
-	const onChenge = (e) => {
-		setValue(e.target.value);
-	};
-
-	const onReset = () => {
-		setValue('');
-	};
-
-	return {
-		value,
-		onChenge,
-		onReset,
-		setValue,
-		// handleKeyDown,
-		//  handleKeyUp
-	};
+    return {
+        value,
+        onChenge,
+        onReset,
+        setValue,
+    };
 };
 
-export default useInputChange;
+export { useInputChange };

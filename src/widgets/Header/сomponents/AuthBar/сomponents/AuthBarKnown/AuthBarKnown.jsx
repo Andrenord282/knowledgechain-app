@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 //-----hooks-----//
 import { useState, useRef } from 'react';
-import useEventOutside from 'hooks/useEventOutside';
+import { useEventOutside } from 'hooks/useEventOutside';
 
 //-----redux-----//
 import { useSelector } from 'react-redux';
@@ -31,11 +31,11 @@ const AuthBarKnown = (props) => {
         setAuthBarKnownList(false);
     });
 
-    const handlerToggleAuthBarKnownList = () => {
+    const handleToggleAuthBarKnownList = () => {
         setAuthBarKnownList((prevToggleList) => !prevToggleList);
     };
 
-    const authBarActiveClass = classNames({
+    const classAuthBarActive = classNames({
         active: toggleAuthBarKnownList,
         '': !toggleAuthBarKnownList,
     });
@@ -44,9 +44,9 @@ const AuthBarKnown = (props) => {
         <div className={classNames(classes, 'auth-bar-known')} >
             <div className="auth-bar-known__user-item" ref={authBarKnowRef} >
                 <img src={ava} alt="Ваша фотография" className="auth-bar-known__user-img" />
-                <Button classes='auth-bar-known__list-btn' handleClick={handlerToggleAuthBarKnownList}>
+                <Button classes='auth-bar-known__list-btn' handleClick={handleToggleAuthBarKnownList}>
                     <span className="btn-text">{userName}</span>
-                    <Icon.Triangle className={`btn-icon  ${authBarActiveClass}`} />
+                    <Icon.Triangle className={`btn-icon  ${classAuthBarActive}`} />
                 </Button>
             </div>
             {toggleAuthBarKnownList && <AuthBarKnownList
