@@ -1,41 +1,45 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-	postListLoaded: false,
-	cursorPost: 0,
-	postLimit: 10,
-	sortPost: { value: 'rating', order: -1 },
-	filterPost: {},
-	postList: [],
+    postsStatus: 'init',
+    cursor: 0,
+    limit: 10,
+    sort: { value: 'rating', order: -1 }, // -1 === desc || 1 === asc
+    filter: {},
+    posts: [],
 };
 
 const postListSlice = createSlice({
-	name: 'postList',
-	initialState,
-	reducers: {
-		togglePostListLoaded: (state, action) => {
-			const { toggle } = action.payload;
-			state.postListLoaded = toggle;
-		},
+    name: 'postList',
+    initialState,
+    reducers: {
+        setPostListStatus: (state, action) => {
+            const { status } = action.payload;
+            state.postsStatus = status;
+        },
 
-		updatePostList: (state, action) => {
-			const { postList } = action.payload;
-			state.postList = [...state.postList, ...postList];
-		},
+        initPosts: (state, action) => {
+            const { posts } = action.payload;
+            state.posts = [...posts];
+        },
 
-		setCursorPost: (state, action) => {
-			const { option } = action.payload;
+        updatePostList: (state, action) => {
+            const { postList } = action.payload;
+            state.posts = [...state.posts, ...postList];
+        },
 
-			if (option === 'reset') {
-				state.cursorPost = 0;
-			}
-			if (option === 'upCursorPost') {
-				state.cursorPost = state.cursorPost + state.postLimit;
-			}
-		},
-	},
+        setCursorPost: (state, action) => {
+            const { option } = action.payload;
+
+            if (option === 'reset') {
+                state.cursor = 0;
+            }
+            if (option === 'upCursorPost') {
+                state.cursor = state.cursor + state.limit;
+            }
+        },
+    },
 });
 
-export const { togglePostListLoaded, updatePostList, setCursorPost } = postListSlice.actions;
-const postListReducer = postListSlice.reducer;
-export { postListReducer };
+export const postListActions = postListSlice.actions;
+export const postListReducer = postListSlice.reducer;

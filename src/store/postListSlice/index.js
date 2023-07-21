@@ -3,13 +3,13 @@ export { postListReducer } from './postListSlice';
 
 //-----selectors-----//
 export {
-	selectPostListLoaded,
-	selectCursorPost,
-	selectPostLimit,
-	selectSortPost,
-	selectFilterPost,
-	selectPostList,
+    selectPostsStatus,
+    selectCursor,
+    selectLimit,
+    selectSort,
+    selectFilter,
+    selectPosts,
 } from './selectors';
 
 //-----actions-----//
-export { togglePostListLoaded, updatePostList, setCursorPost } from './postListSlice';
+export { postListActions } from './postListSlice';

@@ -1,6 +1,6 @@
-export const selectPostListLoaded = (state) => state.postList.postListLoaded;
-export const selectCursorPost = (state) => state.postList.cursorPost;
-export const selectPostLimit = (state) => state.postList.postLimit;
-export const selectSortPost = (state) => state.postList.sortPost;
-export const selectFilterPost = (state) => state.postList.filterPost;
-export const selectPostList = (state) => state.postList.postList;
+export const selectPostsStatus = (state) => state.postList.postsStatus;
+export const selectCursor = (state) => state.postList.cursor;
+export const selectLimit = (state) => state.postList.limit;
+export const selectSort = (state) => state.postList.sort;
+export const selectFilter = (state) => state.postList.filter;
+export const selectPosts = (state) => state.postList.posts;

@@ -1,25 +1,15 @@
 //-----widgets-----//
 import PostList from 'widgets/PostList';
 
-//-----сomponents-----//
-import Navigation from 'сomponents/Navigation';
-import LinkCustom from 'сomponents/LinkCustom';
-import * as Icon from 'сomponents/Icon';
-
 //-----style-----//
 import './PageMain.scss';
 
 const PageMain = () => {
 	return (
-		<section className="main">
-			<div className="main__container">
-				<div className="main__content">
-					<Navigation classes="main__nav nav">
-						<LinkCustom classes="nav__link-btn btn" link={'/post-creator'}>
-							<Icon.Plus className="btn-icon" />
-						</LinkCustom>
-					</Navigation>
-					{/* <PostList classes="main__post-list" /> */}
+		<section className="page-main">
+			<div className="page-main__container">
+				<div className="page-main__content">
+					<PostList classes="page-main-post-list" />
 				</div>
 			</div>
 		</section>

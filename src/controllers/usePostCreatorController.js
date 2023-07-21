@@ -87,7 +87,7 @@ const usePostCreatorController = () => {
                 alert.setToggleAlert(false);
                 alert.setIconAlert(null);
                 alert.setTitleAlert(null);
-            }, 1000000);
+            }, 1000);
         }
     };
 
