@@ -16,10 +16,10 @@ const usePostListController = () => {
     const getPosts = async (query) => {
         try {
             const response = await postService.getPosts(query);
-            console.log(response)
+
             if (response.status === 200) {
                 const posts = response.data;
-                dispatch(postListActions.initPosts(posts));
+                dispatch(postListActions.initPosts({ posts }));
             }
 
             throw new ErrorService(

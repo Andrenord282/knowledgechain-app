@@ -1,0 +1,120 @@
+.post-list-item-footer {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px 20px;
+    padding: 20px;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 30px 20px;
+    }
+}
+
+.post-list-item-footer__topic-list {
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 10px;
+
+    @media (max-width: 768px) {
+        max-width: 100%;
+    }
+}
+
+.post-list-item-footer__topic-btn {
+    padding: 5px;
+    border: 1px solid transparent;
+    transition: background-color 0.3s linear, border 0.3s linear;
+
+    & .btn-text {
+        color: var(--text-tertiary);
+    }
+
+    &:focus {
+        outline: none;
+        background-color: var(--btn-bg-primary-active);
+        border: 1px solid var(--border-secondary-active);
+
+        & .btn-text {
+            color: var(--text-secondary-active);
+        }
+    }
+
+    &:active {
+        background-color: var(--btn-bg-primary-active);
+        border: 1px solid var(--border-secondary-active);
+
+        & .btn-text {
+            color: var(--text-secondary-active);
+        }
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            background-color: var(--btn-bg-primary-hover);
+            border: 1px solid var(--border-secondary-active);
+            
+            & .btn-text {
+                color: var(--text-secondary-hover);
+            }
+        }
+    }
+}
+
+.post-list-item-footer__comments-btn {
+    background-color: transparent;
+    margin-left: auto;
+
+    & .btn-icon {
+        color: var(--fill-secondary);
+        margin-right: 10px;
+    }
+
+    & .btn-text {
+        color: var(--text-secondary);
+        border-bottom: 1px solid transparent;
+        transition: color 0.3s linear, border-bottom 0.3s linear;
+    }
+
+    &:focus {
+        outline: none;
+        background-color: transparent;
+
+        & .btn-icon {
+            color: var(--fill-primary-active);
+        }
+
+        & .btn-text {
+            color: var(--text-primary-active);
+            border-bottom: 1px solid var(--border-primary-active);
+        }
+    }
+
+    &:active {
+        & .btn-icon {
+            color: var(--fill-primary-active);
+        }
+
+        & .btn-text {
+            color: var(--text-primary-active);
+            border-bottom: 1px solid var(--border-primary-active);
+        }
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            background-color: transparent;
+
+            & .btn-icon {
+                color: var(--fill-primary-hover);
+            }
+
+            & .btn-text {
+                color: var(--text-primary-hover);
+                border-bottom: 1px solid var(--border-primary-hover);
+            }
+        }
+    }
+}

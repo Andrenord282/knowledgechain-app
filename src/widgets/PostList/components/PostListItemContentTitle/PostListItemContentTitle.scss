@@ -1,0 +1,35 @@
+.post-list-item-content-title-btn {
+    background-color: transparent;
+
+    & .btn-title {
+        color: var(--title-primary);
+    }
+
+    &:focus {
+        outline: none;
+
+        & .btn-title {
+            color: var(--title-primary-active);
+        }
+    }
+
+    &:active {
+        outline: none;
+        background-color: transparent;
+
+        & .btn-title {
+            background-color: transparent;
+            color: var(--title-primary-active);
+        }
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            background-color: transparent;
+
+            & .btn-title {
+                color: var(--title-primary-hover);
+            }
+        }
+    }
+}

@@ -15,13 +15,11 @@ import { useSelector } from "react-redux";
 //-----selectors-----//
 import { selectCursor, selectFilter, selectLimit, selectPosts, selectPostsStatus, selectSort } from "store/postListSlice";
 
-//-----widgets-----//
-import PostListItem from '../PostListItem';
-
-//-----сomponents-----//
-import Navigation from 'сomponents/Navigation';
-import LinkCustom from 'сomponents/LinkCustom';
-import * as Icon from 'сomponents/Icon';
+//-----components-----//
+import Navigation from 'components/Navigation';
+import LinkCustom from 'components/LinkCustom';
+import * as Icon from 'components/Icon';
+import PostListItem from './components/PostListItem';
 
 //-----style-----//
 import './PostList.scss';
@@ -53,7 +51,9 @@ const PostList = (props) => {
                     <Icon.Plus className="btn-icon" />
                 </LinkCustom>
             </Navigation>
-            {/* <PostListItem classes="post-list__item" /> */}
+            {posts && posts.length > 0 && posts.map((post, index) => {
+                return <PostListItem classes="post-list__item" key={post._id} {...post} />;
+            })}
         </div>
     );
 };

@@ -1,0 +1,89 @@
+.post-list-item-header {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    gap: 10px 30px;
+
+    @media (max-width: 768px) {
+        flex-wrap: wrap;
+        
+        @media (max-width: 475px) {
+            padding: 10px 10px;
+        }
+    }
+}
+
+.post-list-item-header__author {
+    display: flex;
+    align-items: center;
+}
+
+.post-list-item-header__author-text {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.post-list-item-header__author-btn {
+    font-size: 18px;
+    background-color: transparent;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom 0.3s linear;
+
+    & .btn-text {
+        color: var(--text-secondary);
+    }
+
+    &:focus {
+        outline: none;
+        background-color: transparent;
+        border-bottom: 1px solid var(--border-primary-active);
+
+        & .btn-text {
+            color: var(--text-primary-active);
+        }
+    }
+
+    &:active {
+        outline: none;
+        background-color: transparent;
+
+        & .btn-text {
+            background-color: transparent;
+            color: var(--text-primary-active);
+        }
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            background-color: transparent;
+            border-bottom: 1px solid var(--border-primary-active);
+
+            & .btn-text {
+                color: var(--text-primary-hover);
+            }
+        }
+    }
+}
+
+.post-list-item-header__created {
+    margin-right: auto;
+}
+
+.post-list-item-header__created-value {
+    font-size: 18px;
+}
+
+.post-list-item-header__view {
+    display: flex;
+    align-items: center;
+}
+
+.post-list-item-header__view-value {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.post-list-item-header__view-icon {
+    flex: 0 0 auto;
+    font-size: 18px;
+}

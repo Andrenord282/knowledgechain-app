@@ -11,10 +11,10 @@ import { useSelector } from 'react-redux';
 //-----selectors-----//
 import { selectAuthStatus, selectToggleAuthModal, selectLockAuthModal, selectTypeAuth, } from 'store/authSlice';
 
-//-----сomponents-----//
-import Modal from 'сomponents/Modal';
-import AuthSignIn from './сomponents/AuthSignIn';
-import AuthSignUp from './сomponents/AuthSignUp';
+//-----components-----//
+import Modal from 'components/Modal';
+import AuthSignIn from './components/AuthSignIn';
+import AuthSignUp from './components/AuthSignUp';
 
 const Auth = () => {
     const authStatus = useSelector(selectAuthStatus);

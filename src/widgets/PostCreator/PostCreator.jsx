@@ -17,16 +17,16 @@ import { useSelector } from 'react-redux';
 import { selectUserStatus, selectUserId, selectUserName, } from 'store/userSlice';
 import { selectParams, selectSchema, selectTopics } from "store/postCreatorSlice";
 
-//-----сomponents-----//
-import Button from 'сomponents/Button';
-import Alert from 'сomponents/Alert';
-import Navigation from 'сomponents/Navigation';
-import LinkCustom from 'сomponents/LinkCustom';
-import * as Icon from 'сomponents/Icon';
-import PostCreatorTitle from './сomponents/PostCreatorTitle';
-import PostCreatorText from './сomponents/PostCreatorText';
-import PostCreatorImage from './сomponents/PostCreatorImage';
-import PostCreatorTopics from './сomponents/PostCreatorTopics';
+//-----components-----//
+import Button from 'components/Button';
+import Alert from 'components/Alert';
+import Navigation from 'components/Navigation';
+import LinkCustom from 'components/LinkCustom';
+import * as Icon from 'components/Icon';
+import PostCreatorTitle from './components/PostCreatorTitle';
+import PostCreatorText from './components/PostCreatorText';
+import PostCreatorImage from './components/PostCreatorImage';
+import PostCreatorTopics from './components/PostCreatorTopics';
 
 //-----style-----//
 import './PostCreator.scss';
