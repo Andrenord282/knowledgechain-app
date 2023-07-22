@@ -32,7 +32,7 @@ const PostListItemFooter = (props) => {
             </div>
             <LinkCustom link={'/page-post'} classes='post-list-item-footer__comments-btn btn'>
                 <Icon.Comments className="btn-icon" />
-                <span className="btn-text">{1000}</span>
+                <span className="btn-text">{commentsCounter}</span>
             </LinkCustom>
         </div>
     );

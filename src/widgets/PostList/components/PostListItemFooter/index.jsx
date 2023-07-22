@@ -1,3 +1,3 @@
-import PostListItemFooter from './PostListItemFooter';
+import postListItemFooter from './PostListItemFooter';
 
-export default PostListItemFooter;
+export default postListItemFooter;

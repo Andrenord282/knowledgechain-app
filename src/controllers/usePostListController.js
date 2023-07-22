@@ -20,6 +20,7 @@ const usePostListController = () => {
             if (response.status === 200) {
                 const posts = response.data;
                 dispatch(postListActions.initPosts({ posts }));
+                dispatch(postListActions.setPostListStatus({ status: 'loaded' }));
             }
 
             throw new ErrorService(
@@ -30,8 +31,20 @@ const usePostListController = () => {
         } catch (error) {}
     };
 
+    const setSortValue = (variant) => {
+        dispatch(postListActions.setSortValue({ ...variant }));
+        dispatch(postListActions.setPostListStatus({ status: 'reloading' }));
+    };
+
+    const setSortOrder = () => {
+        dispatch(postListActions.setSortOrder());
+        dispatch(postListActions.setPostListStatus({ status: 'reloading' }));
+    };
+
     return {
         getPosts,
+        setSortValue,
+        setSortOrder,
     };
 };
 

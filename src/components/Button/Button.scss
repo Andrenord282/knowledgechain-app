@@ -29,7 +29,7 @@
         transition: color 0.3s linear;
     }
 
-    :focus {
+    &:focus {
         background-color: var(--btn-bg-primary-active);
 
         & .btn-title {
@@ -45,7 +45,7 @@
         }
     }
 
-    :active {
+    &:active {
         background-color: var(--btn-bg-primary-active);
 
         & .btn-title {
@@ -53,6 +53,7 @@
         }
 
         & .btn-text {
+            background-color: transparent;
             color: var(--text-tertiary-active);
         }
 

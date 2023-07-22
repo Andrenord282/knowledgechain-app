@@ -19,6 +19,7 @@ import { selectCursor, selectFilter, selectLimit, selectPosts, selectPostsStatus
 import Navigation from 'components/Navigation';
 import LinkCustom from 'components/LinkCustom';
 import * as Icon from 'components/Icon';
+import PostListSort from "./components/PostListSort";
 import PostListItem from './components/PostListItem';
 
 //-----style-----//
@@ -37,7 +38,7 @@ const PostList = (props) => {
     const postListController = usePostListController();
 
     useEffect(() => {
-        if (postsStatus === 'init') {
+        if (postsStatus === 'init' || postsStatus === 'reloading') {
             postListController.getPosts({ cursor, limit, sort });
         }
 
@@ -51,6 +52,7 @@ const PostList = (props) => {
                     <Icon.Plus className="btn-icon" />
                 </LinkCustom>
             </Navigation>
+            <PostListSort classes='post-list__sort' />
             {posts && posts.length > 0 && posts.map((post, index) => {
                 return <PostListItem classes="post-list__item" key={post._id} {...post} />;
             })}

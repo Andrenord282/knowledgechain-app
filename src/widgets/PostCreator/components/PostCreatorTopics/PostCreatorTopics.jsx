@@ -1,14 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 //-----modules-----//
-import classNames from "classnames";
+import classNames from 'classnames';
 
 //-----hooks-----//
 import { useState, useRef, memo, useEffect } from 'react';
-import { useDebounce } from "hooks/useDebounce";
+import { useDebounce } from 'hooks/useDebounce';
 import { useInputChange } from 'hooks/useInputChange';
 
 //-----controllers-----//
-import { usePostCreatorController } from "controllers";
+import { usePostCreatorController } from 'controllers';
 
 //-----redux-----//
 import { useSelector } from 'react-redux';
@@ -55,7 +55,7 @@ const PostCreatorTopics = (props) => {
         const topicBtnSimilar = self.closest('[data-btn-role="add-similar"]');
 
         if (topicBtnVariant) {
-            const topicIndex = topicBtnVariant.dataset.indexBtn;
+            const topicIndex = topicBtnVariant.dataset.btnIndex;
             postCreatorController.addTopic(topicVariantList[topicIndex].name);
 
             if (topicVariantList[topicIndex].topicsSimilar.length > 0) {
@@ -70,7 +70,7 @@ const PostCreatorTopics = (props) => {
         }
 
         if (topicBtnSimilar) {
-            const topicIndex = topicBtnSimilar.dataset.indexBtn;
+            const topicIndex = topicBtnSimilar.dataset.btnIndex;
             postCreatorController.addTopic(topicSimilarList[topicIndex].name);
 
             const newTopicSimilarList = topicSimilarList.filter((similarItem) => {
@@ -86,34 +86,34 @@ const PostCreatorTopics = (props) => {
         const self = e.target;
         const topicBtnSelected = self.closest('[data-btn-role="delete-topic"]');
         if (topicBtnSelected) {
-            const topicIndex = +topicBtnSelected.dataset.indexBtn;
+            const topicIndex = +topicBtnSelected.dataset.btnIndex;
             postCreatorController.deleteTopic(topicIndex);
         }
     };
 
     return (
         <div className={classNames(classes, 'post-creator-topics')}>
-            <div className="post-creator-topics__input-body">
+            <div className='post-creator-topics__input-body'>
                 <input
                     ref={topicInputRef}
-                    type="text"
-                    className="post-creator-topics__input"
-                    placeholder="Добавьте тему поста"
+                    type='text'
+                    className='post-creator-topics__input'
+                    placeholder='Добавьте тему поста'
                     value={topicInput.value}
                     onChange={hanldeChangeTopic}
                 />
                 {topicVariantList.length > 0 && (
-                    <div className="post-creator-topics__variant-list">
+                    <div className='post-creator-topics__variant-list'>
                         {topicVariantList.map((topicVariantItem, itemIndex) => {
                             return (
                                 <Button
-                                    classes="post-creator-topics__variant-btn"
+                                    classes='post-creator-topics__variant-btn'
                                     key={topicVariantItem._id}
-                                    data-btn-role={'add-variant'}
-                                    data-index-btn={itemIndex}
+                                    data-btn-role='add-variant'
+                                    data-btn-index={itemIndex}
                                     handleClick={handleAddTopic}>
-                                    <span className="btn-text">{topicVariantItem.name}</span>
-                                    <Icon.Plus className="btn-icon" />
+                                    <span className='btn-text'>{topicVariantItem.name}</span>
+                                    <Icon.Plus className='btn-icon' />
                                 </Button>
                             );
                             // }
@@ -121,38 +121,38 @@ const PostCreatorTopics = (props) => {
                     </div>
                 )}
             </div>
-            <div className="post-creator-topics__nav-lists">
+            <div className='post-creator-topics__nav-lists'>
                 {topicsSelected.length > 0 && (
-                    <div className="post-creator-topics__nav-list">
-                        <p className="post-creator-topics__nav-list-title">Выбранные темы:</p>
+                    <div className='post-creator-topics__nav-list'>
+                        <p className='post-creator-topics__nav-list-title'>Выбранные темы:</p>
                         {topicsSelected.map((selectedItem, itemIndex) => {
                             return (
                                 <Button
-                                    classes="post-creator-topics__nav-btn"
+                                    classes='post-creator-topics__nav-btn'
                                     key={selectedItem}
-                                    data-btn-role={'delete-topic'}
-                                    data-index-btn={itemIndex}
+                                    data-btn-role='delete-topic'
+                                    data-btn-index={itemIndex}
                                     handleClick={handleDeletTopic}>
-                                    <span className="btn-text"> {selectedItem}</span>
-                                    <Icon.СrossClose className="btn-icon" />
+                                    <span className='btn-text'> {selectedItem}</span>
+                                    <Icon.СrossClose className='btn-icon' />
                                 </Button>
                             );
                         })}
                     </div>
                 )}
                 {topicSimilarList.length > 0 && topicsSelected.length > 0 && (
-                    <div className="post-creator-topics__nav-list">
-                        <p className="post-creator-topics__nav-list-title">Похожие темы:</p>
+                    <div className='post-creator-topics__nav-list'>
+                        <p className='post-creator-topics__nav-list-title'>Похожие темы:</p>
                         {topicSimilarList.map((similarItem, itemIndex) => {
                             return (
                                 <Button
-                                    classes="post-creator-topics__nav-btn"
+                                    classes='post-creator-topics__nav-btn'
                                     key={similarItem._id}
-                                    data-btn-role={'add-similar'}
-                                    data-index-btn={itemIndex}
+                                    data-btn-role='add-similar'
+                                    data-btn-index={itemIndex}
                                     handleClick={handleAddTopic}>
-                                    <span className="btn-text"> {similarItem.name}</span>
-                                    <Icon.Plus className="btn-icon" />
+                                    <span className='btn-text'> {similarItem.name}</span>
+                                    <Icon.Plus className='btn-icon' />
                                 </Button>
                             );
                         })}

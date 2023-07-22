@@ -7,14 +7,13 @@
 
     &:focus {
         outline: none;
-
+        background-color: transparent;
         & .btn-title {
             color: var(--title-primary-active);
         }
     }
 
     &:active {
-        outline: none;
         background-color: transparent;
 
         & .btn-title {

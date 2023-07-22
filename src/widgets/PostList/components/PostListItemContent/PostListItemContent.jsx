@@ -19,7 +19,7 @@ import './PostListItemContent.scss';
 
 const PostListItemContent = (props) => {
     const { classes, schema } = props;
-    
+
     return (
         <div className={classNames(classes, 'post-list-item-content')}>
             {schema.map((schemaItem) => {
