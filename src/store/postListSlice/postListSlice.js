@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    postsStatus: 'init',
+    postsStatus: 'init', // 'init, 'loaded', 'reloading', 'updating'
     cursor: 0,
     limit: 10,
+    totalCount: null,
     sort: { value: 'ratingCounter', text: 'Рейтинг', order: -1 }, // -1 === desc || 1 === asc
     filter: {},
     posts: [],
@@ -22,13 +23,21 @@ const postListSlice = createSlice({
         initPosts: (state, action) => {
             const { posts } = action.payload;
 
+            state.cursor += 10;
             state.posts = [...posts];
         },
 
-        updatepPostList: (state, action) => {
-            const { postList } = action.payload;
+        setPostTotal: (state, action) => {
+            const { totalCount } = action.payload;
 
-            state.posts = [...state.posts, ...postList];
+            state.totalCount = totalCount;
+        },
+
+        updatePosts: (state, action) => {
+            const { posts } = action.payload;
+
+            state.cursor += 10;
+            state.posts = [...state.posts, ...posts];
         },
 
         resetPostList: (state) => {
@@ -38,25 +47,17 @@ const postListSlice = createSlice({
         setSortValue: (state, action) => {
             const { value, text, order } = action.payload;
 
+            state.cursor = 0;
             state.sort = { value, text, order };
         },
 
         setSortOrder: (state) => {
             if (state.sort.order === -1) {
+                state.cursor = 0;
                 state.sort.order = 1;
             } else {
-                state.sort.order = -1;
-            }
-        },
-
-        setCursorPost: (state, action) => {
-            const { option } = action.payload;
-
-            if (option === 'reset') {
                 state.cursor = 0;
-            }
-            if (option === 'upCursorPost') {
-                state.cursor = state.cursor + state.limit;
+                state.sort.order = -1;
             }
         },
     },

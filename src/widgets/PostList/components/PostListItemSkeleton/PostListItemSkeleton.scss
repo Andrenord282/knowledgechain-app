@@ -1,0 +1,25 @@
+.post-list-skeleton-item {
+    padding: 15px 0 20px 0;
+    background-color: var(--component-bg-primary);
+}
+
+.post-list-skeleton-item:not(:last-of-type) {
+    margin-bottom: 40px;
+}
+
+.post-list-skeleton-item__header {
+    height: 24px;
+    padding: 0 20px;
+    margin-bottom: 15px;
+}
+
+.post-list-skeleton-item__body {
+    height: 400px;
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+.post-list-skeleton-item__footer {
+    height: 34px;
+    padding: 0 20px;
+}

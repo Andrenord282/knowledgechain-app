@@ -1,5 +1,5 @@
-//-----hooks-----//
-import useClasses from 'hooks/useClasses';
+//-----modules-----//
+import classNames from "classnames";
 
 //-----components-----//
 import AlertIcon from './components/AlertIcon';
@@ -9,10 +9,9 @@ import './Alert.scss';
 
 const Alert = (props) => {
     const { classes, iconALert, titleALert, textALert } = props;
-    const inheritClasses = useClasses(classes);
 
     return (
-        <div className={`${inheritClasses} alert`}>
+        <div className={classNames(classes, 'alert')}>
             <div className="alert__content">
                 {iconALert && <AlertIcon iconALert={iconALert} />}
                 {titleALert && <h4 className="alert__title">{titleALert}</h4>}

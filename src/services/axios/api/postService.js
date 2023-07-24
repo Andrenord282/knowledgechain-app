@@ -9,7 +9,7 @@ class PostService {
             return error.response;
         }
     };
-    
+
     getPosts = async (query) => {
         try {
             const response = await apiServer.get('/post', { params: { ...query } });
@@ -18,7 +18,15 @@ class PostService {
             return error.response;
         }
     };
+
+    getPostsTotalCount = async (query) => {
+        try {
+            const response = await apiServer.get('/post/total-count', { params: { ...query } });
+            return response;
+        } catch (error) {
+            return error.response;
+        }
+    };
 }
 
 export const postService = new PostService();
-

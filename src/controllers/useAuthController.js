@@ -155,7 +155,6 @@ const useAuthController = () => {
                 response.data.errorList,
             );
         } catch (error) {
-            console.log(error);
         }
     };
 

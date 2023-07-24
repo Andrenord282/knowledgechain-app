@@ -6,6 +6,7 @@ export {
     selectPostsStatus,
     selectCursor,
     selectLimit,
+    selectTotalCount,
     selectSort,
     selectFilter,
     selectPosts,
